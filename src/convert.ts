@@ -1,5 +1,6 @@
 import {svgo} from './svgo';
 import {getInterfaceDefenition} from './interface-def';
+import * as camelCase from 'lodash.camelcase';
 
 const util = require('util');
 const path = require('path');
@@ -24,22 +25,28 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
         const files = await readdir(directoryPath);
         let types = `type ${convertionOptions.typeName} = `;
 
-        for (const fileName of files) {
+        for (let i = 0; i < files.length; i++) {
+            const fileName = files[i];
             const filenameWithoutEnding = fileName.split('.')[0];
             const rawSvg = await extractSvgContent(fileName, directoryPath);
             const optimizedSvg = await svgo.optimize(rawSvg);
 
             const fileNameUpperCase = filenameWithoutEnding[0].toUpperCase() + filenameWithoutEnding.slice(1);
-            const variableName = `${convertionOptions.prefix}${fileNameUpperCase}`;
-            // TODO kk: check if file is last
-            types += `'${filenameWithoutEnding}' | `;
-            fileContent += `export const ${variableName}: SVGIcon = {
+            const variableName = `${convertionOptions.prefix}${camelCase(fileNameUpperCase)}`;
+
+            if (i === files.length - 1) {
+                types += `'${filenameWithoutEnding}'`;
+            } else {
+                types += `'${filenameWithoutEnding}' | `;
+            }
+
+            fileContent += `export const ${variableName}: ${convertionOptions.interfaceName} = {
                 name: '${filenameWithoutEnding}',
                 data: '${optimizedSvg.data}'
             };`;
         }
         fileContent += types += getInterfaceDefenition(convertionOptions.interfaceName);
-        if (!fs.existsSync(convertionOptions.outputDirectory)){
+        if (!fs.existsSync(convertionOptions.outputDirectory)) {
             fs.mkdirSync(convertionOptions.outputDirectory);
         }
         console.log('FileContent', fileContent);
