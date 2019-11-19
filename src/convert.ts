@@ -1,6 +1,8 @@
 import {svgo} from './svgo';
 import {getInterfaceDefenition} from './interface-def';
 import * as camelCase from 'lodash.camelcase';
+import * as prettier from 'prettier/standalone';
+import typescriptParser from 'prettier/parser-typescript';
 
 const util = require('util');
 const path = require('path');
@@ -35,7 +37,7 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
             const variableName = `${convertionOptions.prefix}${camelCase(fileNameUpperCase)}`;
 
             if (i === files.length - 1) {
-                types += `'${filenameWithoutEnding}'`;
+                types += `'${filenameWithoutEnding}';`;
             } else {
                 types += `'${filenameWithoutEnding}' | `;
             }
@@ -50,7 +52,10 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
             fs.mkdirSync(convertionOptions.outputDirectory);
         }
         console.log('FileContent', fileContent);
-        await writeFile(path.join(convertionOptions.outputDirectory, 'icons.ts'), fileContent);
+        await writeFile(path.join(convertionOptions.outputDirectory, 'icons.ts'), prettier.format(fileContent, {
+            parser: 'typescript',
+            plugins: [typescriptParser]
+        }));
     } catch (error) {
         console.error('Error', error);
     }
