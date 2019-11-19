@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "format:check": "prettier --list-different 'src/**/*.ts'",
+    "format:write": "prettier --write 'src/**/*.ts'"
   },
   "repository": {
     "type": "git",
