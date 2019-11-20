@@ -71,20 +71,11 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 ![expressionless](https://raw.githubusercontent.com/kreuzerk/tsvg/master/inputfiles/expressionless.svg)
 
 - expressionless.svg
-
-![full](https://raw.githubusercontent.com/kreuzerk/tsvg/master/inputfiles/full.svg)
-
 - full.svg
-
-![laughing](https://raw.githubusercontent.com/kreuzerk/tsvg/master/inputfiles/laughing.svg)
-
 - laughing.svg
-
-![smiling-face](https://raw.githubusercontent.com/kreuzerk/tsvg/master/inputfiles/smiling-face.svg)
-
 - smiling-face.svg
 
 We can now run `tsvg -i ./inputfiles`
 and we end up with the following file in our `dist` folder.
 
-![output](https://raw.githubusercontent.com/kreuzerk/tsvg/master/assets/tsvgOutput.svg)
+![output](https://raw.githubusercontent.com/kreuzerk/tsvg/master/assets/tsvgOutput.png)
