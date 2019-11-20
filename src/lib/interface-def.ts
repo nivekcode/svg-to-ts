@@ -1,6 +1,9 @@
-export const getInterfaceDefenition = (interfaceName: string) => {
+export const getInterfaceDefenition = (
+  interfaceName: string,
+  typeName: string
+) => {
   return `export interface ${interfaceName}{
-        name: string;
+        name: ${typeName};
         data: string;
     }`;
 };

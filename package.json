@@ -13,6 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/kreuzerk/tsvg.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "bin": {
+    "tsvg": "./src/bin/tsgv.bin.js"
+  },
   "keywords": [
     "SVG",
     "TypeScript",
@@ -27,6 +35,8 @@
   "homepage": "https://github.com/kreuzerk/tsvg#readme",
   "devDependencies": {
     "@types/node": "^12.12.8",
+    "husky": "^3.1.0",
+    "pretty-quick": "^2.0.1",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },

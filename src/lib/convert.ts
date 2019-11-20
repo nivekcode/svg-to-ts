@@ -51,7 +51,8 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
             };`;
     }
     fileContent += types += getInterfaceDefenition(
-      convertionOptions.interfaceName
+      convertionOptions.interfaceName,
+      convertionOptions.typeName
     );
     if (!fs.existsSync(convertionOptions.outputDirectory)) {
       fs.mkdirSync(convertionOptions.outputDirectory);
