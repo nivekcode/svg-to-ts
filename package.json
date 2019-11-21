@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "report:coverage": "echo 'not yet implemented'",
     "bump-version": "rjp package.json version $VERSION",
+    "report:coverage": "echo 'not yet implemented'",
+    "copy:readme": "copyfiles ./README.md ./dist",
     "format:check": "prettier --list-different 'src/**/*.ts'",
     "format:write": "prettier --write 'src/**/*.ts'",
+    "prebuild": "npm run copy:readme",
     "start": "ts-node index.ts",
     "semantic-release": "semantic-release"
   },
@@ -48,11 +50,12 @@
     "@semantic-release/exec": "^3.3.2",
     "@semantic-release/git": "^7.0.6",
     "@types/node": "^12.12.8",
+    "copyfiles": "^2.1.1",
     "husky": "^3.1.0",
     "pretty-quick": "^2.0.1",
     "replace-json-property": "^1.4.1",
+    "semantic-release": "^15.13.31",
     "ts-node": "^8.5.2",
-    "typescript": "^3.7.2",
-    "semantic-release": "^15.13.31"
+    "typescript": "^3.7.2"
   }
 }
