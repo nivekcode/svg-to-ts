@@ -1,12 +1,12 @@
-import { svgo } from "./svgo";
-import { getInterfaceDefenition } from "./interface-def";
-import * as camelCase from "lodash.camelcase";
-import * as prettier from "prettier/standalone";
-import typescriptParser from "prettier/parser-typescript";
+import { svgo } from './svgo';
+import { getInterfaceDefenition } from './interface-def';
+import * as camelCase from 'lodash.camelcase';
+import * as prettier from 'prettier/standalone';
+import typescriptParser from 'prettier/parser-typescript';
 
-const util = require("util");
-const path = require("path");
-const fs = require("fs");
+const util = require('util');
+const path = require('path');
+const fs = require('fs');
 
 const readdir = util.promisify(fs.readdir);
 const readfile = util.promisify(fs.readFile);
@@ -21,7 +21,7 @@ export interface ConvertionOptions {
 }
 
 export const convert = async (convertionOptions: ConvertionOptions) => {
-  let fileContent = "";
+  let fileContent = '';
   const directoryPath = path.join(convertionOptions.srcDirectory);
   try {
     const files = await readdir(directoryPath);
@@ -29,7 +29,7 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
 
     for (let i = 0; i < files.length; i++) {
       const fileName = files[i];
-      const filenameWithoutEnding = fileName.split(".")[0];
+      const filenameWithoutEnding = fileName.split('.')[0];
       const rawSvg = await extractSvgContent(fileName, directoryPath);
       const optimizedSvg = await svgo.optimize(rawSvg);
 
@@ -57,16 +57,16 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
     if (!fs.existsSync(convertionOptions.outputDirectory)) {
       fs.mkdirSync(convertionOptions.outputDirectory);
     }
-    console.log("FileContent", fileContent);
+    console.log('FileContent', fileContent);
     await writeFile(
-      path.join(convertionOptions.outputDirectory, "icons.ts"),
+      path.join(convertionOptions.outputDirectory, 'icons.ts'),
       prettier.format(fileContent, {
-        parser: "typescript",
+        parser: 'typescript',
         plugins: [typescriptParser]
       })
     );
   } catch (error) {
-    console.error("Error", error);
+    console.error('Error', error);
   }
 };
 
@@ -76,7 +76,7 @@ const extractSvgContent = async (
 ): Promise<string> => {
   const fileContentRaw = await readfile(
     path.join(directoryPath, fileName),
-    "utf-8"
+    'utf-8'
   );
-  return fileContentRaw.replace(/\r?\n|\r/g, " ");
+  return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };

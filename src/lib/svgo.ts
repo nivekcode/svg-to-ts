@@ -1,4 +1,4 @@
-const SVGO = require("svgo");
+const SVGO = require('svgo');
 
 export const svgo = new SVGO({
   plugins: [
@@ -102,7 +102,7 @@ export const svgo = new SVGO({
       removeDimensions: true
     },
     {
-      removeAttrs: { attrs: "(stroke|fill)" }
+      removeAttrs: { attrs: '(stroke|fill)' }
     }
   ]
 });
