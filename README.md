@@ -68,7 +68,7 @@ The CLI can be used with the `tsvg` command. This command accepts the following 
 
 Let's say we have the following four svg files in a `inputfiles` folder.
 
-![expressionless](https://raw.githubusercontent.com/kreuzerk/tsvg/master/inputfiles/expressionless.svg)
+![expressionless](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/inputfiles/expressionless.svg)
 
 - expressionless.svg
 - full.svg
@@ -78,4 +78,4 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 We can now run `tsvg -i ./inputfiles`
 and we end up with the following file in our `dist` folder.
 
-![output](https://raw.githubusercontent.com/kreuzerk/tsvg/master/assets/tsvgOutput.png)
+![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/tsvgOutput.png)
