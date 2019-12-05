@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v1.0.0...v1.0.1) (2019-12-05)
+
+
+### Bug Fixes
+
+* **camelcase:** fix camel case is not a function ([dd6af14](https://github.com/kreuzerk/svg-to-ts/commit/dd6af14a1f4f43d816521d4a0e4799d4fbbe8cf7))
+
 # 1.0.0 (2019-11-21)
 
 
