@@ -1,6 +1,6 @@
 import { svgo } from './svgo';
 import { getInterfaceDefenition } from './interface-def';
-import * as camelCase from 'lodash.camelcase';
+import camelCase from 'lodash.camelcase';
 import * as prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 
