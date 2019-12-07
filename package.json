@@ -11,7 +11,8 @@
     "format:check": "prettier --list-different 'src/**/*.ts'",
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
-    "start": "ts-node index.ts",
+    "start": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -o ./dist -t something -i test -p icon",
+    "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "semantic-release": "semantic-release"
   },
   "repository": {
@@ -24,8 +25,8 @@
     }
   },
   "bin": {
-    "svgtots": "./src/bin/tsgv.bin.js",
-    "svg-to-ts": "./src/bin/tsgv.bin.js"
+    "svgtots": "./src/bin/svg-to-ts.bin.js",
+    "svg-to-ts": "./src/bin/svg-to-ts.bin.js"
   },
   "keywords": [
     "SVG",

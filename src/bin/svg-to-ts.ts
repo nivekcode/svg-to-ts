@@ -5,7 +5,7 @@ import { convert } from '../lib/convert';
 
 commander
   .version(packgeJSON.version)
-  .option('-t --typeName <string>', 'name of the generated type')
+  .option('-t --typeName <string>', 'name of the generated enumeration type')
   .option('-p --prefix <string>', 'prefix for the generated svg constants')
   .option('-i --interfaceName <string>', 'name for the generated interface')
   .option('-s --srcDirectory <string>', 'name of the source directory', '.')
@@ -23,6 +23,7 @@ const {
   srcDirectory,
   outputDirectory
 } = commander;
+
 const convertionOptions = {
   typeName,
   prefix,
