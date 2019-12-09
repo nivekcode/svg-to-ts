@@ -6,6 +6,7 @@ import {
 } from './definitions';
 import camelCase from 'lodash.camelcase';
 import * as prettier from 'prettier/standalone';
+import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
 
 const util = require('util');
@@ -24,16 +25,9 @@ export interface ConvertionOptions {
   outputDirectory: string;
 }
 
-function getVariableName(
-  convertionOptions: ConvertionOptions,
-  filenameWithoutEnding
-) {
-  const fileNameUpperCase =
-    filenameWithoutEnding[0].toUpperCase() + filenameWithoutEnding.slice(1);
-  return `${convertionOptions.prefix}${camelCase(fileNameUpperCase)}`;
-}
-
-export const convert = async (convertionOptions: ConvertionOptions) => {
+export const convert = async (
+  convertionOptions: ConvertionOptions
+): Promise<void> => {
   let svgConstants = '';
   const directoryPath = path.join(convertionOptions.srcDirectory);
   let types = getTypeDefinition(convertionOptions.typeName);
@@ -65,16 +59,24 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
       convertionOptions
     );
     await writeIconsFile(convertionOptions, fileContent);
+    console.log(
+      chalk.blue.bold('svg-to-ts:'),
+      chalk.green('Icons file successfully generated under'),
+      chalk.green.underline(convertionOptions.outputDirectory)
+    );
   } catch (error) {
-    console.error('Error', error);
+    console.log(
+      chalk.blue.bold('svg-to-ts:'),
+      chalk.red('Something went wrong', error)
+    );
   }
 };
 
-function generateFileContent(
+const generateFileContent = (
   svgContstants: string,
   types: string,
   convertionOptions: ConvertionOptions
-): string {
+): string => {
   const fileContent = (svgContstants += types += getInterfaceDefinition(
     convertionOptions.interfaceName,
     convertionOptions.typeName
@@ -83,12 +85,12 @@ function generateFileContent(
     parser: 'typescript',
     plugins: [typescriptParser]
   });
-}
+};
 
-async function writeIconsFile(
+const writeIconsFile = async (
   convertionOptions: ConvertionOptions,
   fileContent: string
-) {
+): Promise<void> => {
   if (!fs.existsSync(convertionOptions.outputDirectory)) {
     fs.mkdirSync(convertionOptions.outputDirectory);
   }
@@ -96,7 +98,16 @@ async function writeIconsFile(
     path.join(convertionOptions.outputDirectory, 'icons.ts'),
     fileContent
   );
-}
+};
+
+const getVariableName = (
+  convertionOptions: ConvertionOptions,
+  filenameWithoutEnding
+): string => {
+  const fileNameUpperCase =
+    filenameWithoutEnding[0].toUpperCase() + filenameWithoutEnding.slice(1);
+  return `${convertionOptions.prefix}${camelCase(fileNameUpperCase)}`;
+};
 
 const extractSvgContent = async (
   fileName: string,
