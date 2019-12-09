@@ -26,8 +26,8 @@
     }
   },
   "bin": {
-    "svgtots": "./src/bin/svg-to-ts.bin.js",
-    "svg-to-ts": "./src/bin/svg-to-ts.bin.js"
+    "svgtots": "./src/bin/svg-to-ts.js",
+    "svg-to-ts": "./src/bin/svg-to-ts.js"
   },
   "keywords": [
     "SVG",
