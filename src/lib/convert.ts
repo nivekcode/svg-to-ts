@@ -104,9 +104,9 @@ const getVariableName = (
   convertionOptions: ConvertionOptions,
   filenameWithoutEnding
 ): string => {
-  const fileNameUpperCase =
-    filenameWithoutEnding[0].toUpperCase() + filenameWithoutEnding.slice(1);
-  return `${convertionOptions.prefix}${camelCase(fileNameUpperCase)}`;
+  return `${convertionOptions.prefix}${capitalize(
+    camelCase(filenameWithoutEnding)
+  )}`;
 };
 
 const extractSvgContent = async (
@@ -118,4 +118,8 @@ const extractSvgContent = async (
     'utf-8'
   );
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
+};
+
+const capitalize = (value: string): string => {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 };

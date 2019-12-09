@@ -11,7 +11,7 @@
     "format:check": "prettier --list-different 'src/**/*.ts'",
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
-    "start": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -o ./dist -t something -i test -p icon",
+    "start": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "semantic-release": "semantic-release"
   },

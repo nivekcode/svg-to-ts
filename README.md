@@ -1,55 +1,60 @@
-#Tsvg
+![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
+
 This module is designed for authors of UI frameworks which aim to
 provide an SVG Icon library in a tree shakable way.
 
 To make SVGs tree shakeable its a good way to export them as string constants.
 Of course you don't always want to regenerate all the strings by hand. That's where
-tsvg comes in.
+svg-to-ts comes in.
 
 # What it does
 
-Tsvg automates the following things:
+This library generates a Typescript file with your svg definitons. The file
+will be generated in the following format:
 
-- Reads the content of all svg icons in a folder
-- Optimized the svg content with svgo
-  - cleanupAttrs
-  - removeDoctype
-  - removeXMLProcInst
-  - removeComments
-  - removeMetadata
-  - removeTitle
-  - removeDesc
-  - removeUselessDefs
-  - removeEditorsNSData
-  - removeEmptyAttrs
-  - removeHiddenElems
-  - removeEmptyText
-  - removeEmptyContainers
-  - removeViewBox
-  - cleanupEnableBackground
-  - convertStyleToAttrs
-  - convertColors
-  - convertPathData
-  - convertTransform
-  - removeUnknownsAndDefaults
-  - removeNonInheritableGroupAttrs
-  - removeUselessStrokeAndFill
-  - removeUnusedNS
-  - cleanupIDs
-  - cleanupNumericValues
-  - moveElemsAttrsToGroup
-  - moveGroupAttrsToElems
-  - collapseGroups
-  - removeRasterImages
-  - mergePaths
-  - convertShapeToPath
-  - sortAttrs
-  - removeDimensions
-  - removeAttrs
-- It then creates a const for each svg (with the prefix + the file name in camelcase)
-- adds a `name` and a `data` attribute to the const. The `name` attribute can
-  later be used to register the icon in a registry service.
-- exports an interface for the consts - (Interfacename can be passed as argument)
+- For each SVG file we generate a const with a `name` and a `data` property.
+- We generate the types which match the name properties of the SVGS. This types are helpful to ensure the user adds only known icons
+- We generate an interface to ensure the structure of each SVG constant
+
+![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/howItWorks.png)
+
+# SVG optimizations
+
+Additonally we also optimize the SVG icons with the help of the `svgo` package. To optimize the SVG we use the following configurations.
+
+- cleanupAttrs
+- removeDoctype
+- removeXMLProcInst
+- removeComments
+- removeMetadata
+- removeTitle
+- removeDesc
+- removeUselessDefs
+- removeEditorsNSData
+- removeEmptyAttrs
+- removeHiddenElems
+- removeEmptyText
+- removeEmptyContainers
+- removeViewBox
+- cleanupEnableBackground
+- convertStyleToAttrs
+- convertColors
+- convertPathData
+- convertTransform
+- removeUnknownsAndDefaults
+- removeNonInheritableGroupAttrs
+- removeUselessStrokeAndFill
+- removeUnusedNS
+- cleanupIDs
+- cleanupNumericValues
+- moveElemsAttrsToGroup
+- moveGroupAttrsToElems
+- collapseGroups
+- removeRasterImages
+- mergePaths
+- convertShapeToPath
+- sortAttrs
+- removeDimensions
 
 # API
 
@@ -75,7 +80,8 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - laughing.svg
 - smiling-face.svg
 
-We can now run `tsvg -i ./inputfiles`
+We can now run
+`svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon`
 and we end up with the following file in our `dist` folder.
 
-![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/tsvgOutput.png)
+![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/output.png)
