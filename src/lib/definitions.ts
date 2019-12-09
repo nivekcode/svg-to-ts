@@ -6,8 +6,7 @@ export const getInterfaceDefinition = (
 ) => {
   return `export interface ${interfaceName}{
         name: ${typeName};
-        data: string;
-    }`;
+        data: string;}`;
 };
 
 export const getTypeDefinition = (typeName: string): string => {
@@ -16,12 +15,12 @@ export const getTypeDefinition = (typeName: string): string => {
 
 export const getSvgConstant = (
   variableName: string,
-  convertionOptions: ConvertionOptions,
-  filenameWithoutEnding,
-  optimizedSvg
+  interfaceName: string,
+  filenameWithoutEnding: string,
+  data: string
 ): string => {
-  return `export const ${variableName}: ${convertionOptions.interfaceName} = {
+  return `export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
-                data: '${optimizedSvg.data}'
+                data: '${data}'
             };`;
 };

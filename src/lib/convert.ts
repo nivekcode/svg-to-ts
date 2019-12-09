@@ -54,9 +54,9 @@ export const convert = async (convertionOptions: ConvertionOptions) => {
         : (types += `'${filenameWithoutEnding}' | `);
       svgConstants += getSvgConstant(
         variableName,
-        convertionOptions,
+        convertionOptions.interfaceName,
         filenameWithoutEnding,
-        optimizedSvg
+        optimizedSvg.data
       );
     }
     const fileContent = generateFileContent(
