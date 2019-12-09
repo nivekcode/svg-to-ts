@@ -1,9 +1,6 @@
 import { ConvertionOptions } from './convert';
 
-export const getInterfaceDefinition = (
-  interfaceName: string,
-  typeName: string
-) => {
+export const getInterfaceDefinition = (interfaceName: string, typeName: string) => {
   return `export interface ${interfaceName}{
         name: ${typeName};
         data: string;}`;

@@ -1,9 +1,5 @@
 import { svgo } from './svgo';
-import {
-  getInterfaceDefinition,
-  getSvgConstant,
-  getTypeDefinition
-} from './definitions';
+import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 import camelCase from 'lodash.camelcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
@@ -25,9 +21,7 @@ export interface ConvertionOptions {
   outputDirectory: string;
 }
 
-export const convert = async (
-  convertionOptions: ConvertionOptions
-): Promise<void> => {
+export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
   let svgConstants = '';
   const directoryPath = path.join(convertionOptions.srcDirectory);
   let types = getTypeDefinition(convertionOptions.typeName);
@@ -39,13 +33,8 @@ export const convert = async (
       const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
       const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
       const optimizedSvg = await svgo.optimize(rawSvg);
-      const variableName = getVariableName(
-        convertionOptions,
-        filenameWithoutEnding
-      );
-      i === files.length - 1
-        ? (types += `'${filenameWithoutEnding}';`)
-        : (types += `'${filenameWithoutEnding}' | `);
+      const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
+      i === files.length - 1 ? (types += `'${filenameWithoutEnding}';`) : (types += `'${filenameWithoutEnding}' | `);
       svgConstants += getSvgConstant(
         variableName,
         convertionOptions.interfaceName,
@@ -53,11 +42,7 @@ export const convert = async (
         optimizedSvg.data
       );
     }
-    const fileContent = generateFileContent(
-      svgConstants,
-      types,
-      convertionOptions
-    );
+    const fileContent = generateFileContent(svgConstants, types, convertionOptions);
     await writeIconsFile(convertionOptions, fileContent);
     console.log(
       chalk.blue.bold('svg-to-ts:'),
@@ -65,18 +50,11 @@ export const convert = async (
       chalk.green.underline(convertionOptions.outputDirectory)
     );
   } catch (error) {
-    console.log(
-      chalk.blue.bold('svg-to-ts:'),
-      chalk.red('Something went wrong', error)
-    );
+    console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
   }
 };
 
-const generateFileContent = (
-  svgContstants: string,
-  types: string,
-  convertionOptions: ConvertionOptions
-): string => {
+const generateFileContent = (svgContstants: string, types: string, convertionOptions: ConvertionOptions): string => {
   const fileContent = (svgContstants += types += getInterfaceDefinition(
     convertionOptions.interfaceName,
     convertionOptions.typeName
@@ -87,36 +65,19 @@ const generateFileContent = (
   });
 };
 
-const writeIconsFile = async (
-  convertionOptions: ConvertionOptions,
-  fileContent: string
-): Promise<void> => {
+const writeIconsFile = async (convertionOptions: ConvertionOptions, fileContent: string): Promise<void> => {
   if (!fs.existsSync(convertionOptions.outputDirectory)) {
     fs.mkdirSync(convertionOptions.outputDirectory);
   }
-  await writeFile(
-    path.join(convertionOptions.outputDirectory, 'icons.ts'),
-    fileContent
-  );
+  await writeFile(path.join(convertionOptions.outputDirectory, 'icons.ts'), fileContent);
 };
 
-const getVariableName = (
-  convertionOptions: ConvertionOptions,
-  filenameWithoutEnding
-): string => {
-  return `${convertionOptions.prefix}${capitalize(
-    camelCase(filenameWithoutEnding)
-  )}`;
+const getVariableName = (convertionOptions: ConvertionOptions, filenameWithoutEnding): string => {
+  return `${convertionOptions.prefix}${capitalize(camelCase(filenameWithoutEnding))}`;
 };
 
-const extractSvgContent = async (
-  fileName: string,
-  directoryPath: string
-): Promise<string> => {
-  const fileContentRaw = await readfile(
-    path.join(directoryPath, fileName),
-    'utf-8'
-  );
+const extractSvgContent = async (fileName: string, directoryPath: string): Promise<string> => {
+  const fileContentRaw = await readfile(path.join(directoryPath, fileName), 'utf-8');
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };
 

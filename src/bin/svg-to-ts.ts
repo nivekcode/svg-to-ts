@@ -9,20 +9,10 @@ commander
   .option('-p --prefix <string>', 'prefix for the generated svg constants')
   .option('-i --interfaceName <string>', 'name for the generated interface')
   .option('-s --srcDirectory <string>', 'name of the source directory', '.')
-  .option(
-    '-o --outputDirectory <string>',
-    'name of the output directory',
-    './dist'
-  )
+  .option('-o --outputDirectory <string>', 'name of the output directory', './dist')
   .parse(process.argv);
 
-const {
-  typeName,
-  prefix,
-  interfaceName,
-  srcDirectory,
-  outputDirectory
-} = commander;
+const { typeName, prefix, interfaceName, srcDirectory, outputDirectory } = commander;
 
 const convertionOptions = {
   typeName,

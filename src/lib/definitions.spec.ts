@@ -1,8 +1,4 @@
-import {
-  getInterfaceDefinition,
-  getSvgConstant,
-  getTypeDefinition
-} from './definitions';
+import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 
 describe('Definitions', () => {
   it('should return the correct interface definition', () => {
@@ -11,9 +7,7 @@ describe('Definitions', () => {
     const expectedDefinition = `export interface ${interfaceName}{
         name: ${typeName};
         data: string;}`;
-    expect(getInterfaceDefinition(interfaceName, typeName)).toEqual(
-      expectedDefinition
-    );
+    expect(getInterfaceDefinition(interfaceName, typeName)).toEqual(expectedDefinition);
   });
 
   it('should return the correct type definition', () => {
@@ -32,8 +26,6 @@ describe('Definitions', () => {
                 name: '${filenameWithoutEnding}',
                 data: '${data}'
             };`;
-    expect(
-      getSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)
-    ).toEqual(expectedSVGConstant);
+    expect(getSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
   });
 });
