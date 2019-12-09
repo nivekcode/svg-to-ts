@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v1.0.1...v1.1.0) (2019-12-09)
+
+
+### Features
+
+* **filename:** accept fileName as input property ([b99809d](https://github.com/kreuzerk/svg-to-ts/commit/b99809dbcee4e13387c76868eae22590e0e12418))
+
 ## [1.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v1.0.0...v1.0.1) (2019-12-05)
 
 
