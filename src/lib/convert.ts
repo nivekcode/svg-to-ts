@@ -16,6 +16,7 @@ const writeFile = util.promisify(fs.writeFile);
 export interface ConvertionOptions {
   typeName: string;
   prefix: string;
+  fileName: string;
   interfaceName: string;
   srcDirectory: string;
   outputDirectory: string;
@@ -69,7 +70,7 @@ const writeIconsFile = async (convertionOptions: ConvertionOptions, fileContent:
   if (!fs.existsSync(convertionOptions.outputDirectory)) {
     fs.mkdirSync(convertionOptions.outputDirectory);
   }
-  await writeFile(path.join(convertionOptions.outputDirectory, 'icons.ts'), fileContent);
+  await writeFile(path.join(convertionOptions.outputDirectory, `${convertionOptions.fileName}.ts`), fileContent);
 };
 
 const getVariableName = (convertionOptions: ConvertionOptions, filenameWithoutEnding): string => {
