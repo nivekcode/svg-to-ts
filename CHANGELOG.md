@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.0...v1.1.1) (2019-12-09)
+
+
+### Bug Fixes
+
+* **bin:** fix wrong path to bin file ([bbb9565](https://github.com/kreuzerk/svg-to-ts/commit/bbb95658e4946171d7198f42fba9aafe09364a93))
+
 # [1.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v1.0.1...v1.1.0) (2019-12-09)
 
 
