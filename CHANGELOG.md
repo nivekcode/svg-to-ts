@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.1...v1.1.2) (2019-12-09)
+
+
+### Bug Fixes
+
+* **output:** generate output with single quotes instead of double quotes ([bbd38f6](https://github.com/kreuzerk/svg-to-ts/commit/bbd38f69f88d614ef715f33edd31d0d4c3671e93))
+
 ## [1.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.0...v1.1.1) (2019-12-09)
 
 
