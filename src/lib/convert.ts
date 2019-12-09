@@ -62,7 +62,8 @@ const generateFileContent = (svgContstants: string, types: string, convertionOpt
   ));
   return prettier.format(fileContent, {
     parser: 'typescript',
-    plugins: [typescriptParser]
+    plugins: [typescriptParser],
+    singleQuote: true
   });
 };
 
