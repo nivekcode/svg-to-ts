@@ -29,22 +29,24 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
   let types = getTypeDefinition(convertionOptions.typeName);
 
   try {
-    const files = await readdir(directoryPath);
+    const files = await readdir(directoryPath, { withFileTypes: true });
     for (let i = 0; i < files.length; i++) {
-      const fileNameWithEnding = files[i];
-      const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
-      const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
-      const optimizedSvg = await svgo.optimize(rawSvg);
-      const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-      i === files.length - 1
-        ? (types += `'${snakeCase(filenameWithoutEnding)}';`)
-        : (types += `'${snakeCase(filenameWithoutEnding)}' | `);
-      svgConstants += getSvgConstant(
-        variableName,
-        convertionOptions.interfaceName,
-        snakeCase(filenameWithoutEnding),
-        optimizedSvg.data
-      );
+      if (files[i].isFile()) {
+        const fileNameWithEnding = files[i].name;
+        const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
+        const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
+        const optimizedSvg = await svgo.optimize(rawSvg);
+        const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
+        i === files.length - 1
+          ? (types += `'${snakeCase(filenameWithoutEnding)}';`)
+          : (types += `'${snakeCase(filenameWithoutEnding)}' | `);
+        svgConstants += getSvgConstant(
+          variableName,
+          convertionOptions.interfaceName,
+          snakeCase(filenameWithoutEnding),
+          optimizedSvg.data
+        );
+      }
     }
     const fileContent = generateFileContent(svgConstants, types, convertionOptions);
     await writeIconsFile(convertionOptions, fileContent);
