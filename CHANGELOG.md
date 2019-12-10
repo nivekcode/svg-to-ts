@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.1...v2.0.2) (2019-12-10)
+
+
+### Bug Fixes
+
+* **type:** add missing export statement ([ddab6ae](https://github.com/kreuzerk/svg-to-ts/commit/ddab6ae40e241b3b38948de2426afee853625fdb))
+
 ## [2.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.0...v2.0.1) (2019-12-10)
 
 
