@@ -5,7 +5,7 @@ export const getInterfaceDefinition = (interfaceName: string, typeName: string) 
 };
 
 export const getTypeDefinition = (typeName: string): string => {
-  return `type ${typeName} = `;
+  return `export type ${typeName} = `;
 };
 
 export const getSvgConstant = (

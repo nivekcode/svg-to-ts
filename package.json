@@ -1,6 +1,6 @@
 {
   "name": "svg-to-ts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Command line util that converts SVGs from a directory into a single TypeScript file",
   "main": "index.js",
   "scripts": {
@@ -44,6 +44,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
+    "lodash.camelcase": "^4.3.0",
     "lodash.snakecase": "^4.1.1",
     "prettier": "^1.19.1",
     "svgo": "^1.3.2"

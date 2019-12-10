@@ -1,6 +1,7 @@
 import { svgo } from './svgo';
 import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 import snakeCase from 'lodash.snakecase';
+import camelCase from 'lodash.camelcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
@@ -31,15 +32,17 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
     const files = await readdir(directoryPath);
     for (let i = 0; i < files.length; i++) {
       const fileNameWithEnding = files[i];
-      const filenameWithoutEnding = snakeCase(fileNameWithEnding.split('.')[0]);
+      const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
       const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
       const optimizedSvg = await svgo.optimize(rawSvg);
       const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-      i === files.length - 1 ? (types += `'${filenameWithoutEnding}';`) : (types += `'${filenameWithoutEnding}' | `);
+      i === files.length - 1
+        ? (types += `'${snakeCase(filenameWithoutEnding)}';`)
+        : (types += `'${snakeCase(filenameWithoutEnding)}' | `);
       svgConstants += getSvgConstant(
         variableName,
         convertionOptions.interfaceName,
-        filenameWithoutEnding,
+        snakeCase(filenameWithoutEnding),
         optimizedSvg.data
       );
     }
@@ -75,7 +78,7 @@ const writeIconsFile = async (convertionOptions: ConvertionOptions, fileContent:
 };
 
 const getVariableName = (convertionOptions: ConvertionOptions, filenameWithoutEnding): string => {
-  return `${convertionOptions.prefix}${capitalize(filenameWithoutEnding)}`;
+  return `${convertionOptions.prefix}${capitalize(camelCase(filenameWithoutEnding))}`;
 };
 
 const extractSvgContent = async (fileName: string, directoryPath: string): Promise<string> => {
