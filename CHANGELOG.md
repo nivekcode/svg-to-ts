@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.0...v2.0.1) (2019-12-10)
+
+
+### Bug Fixes
+
+* **conversion:** use camel case for variable names ([89acef3](https://github.com/kreuzerk/svg-to-ts/commit/89acef3c6904c68f9327cd746776ff3856f9551d))
+
 # [2.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.2...v2.0.0) (2019-12-10)
 
 
