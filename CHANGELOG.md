@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.2...v2.0.3) (2019-12-10)
+
+
+### Bug Fixes
+
+* **input:** Exclude folders to source directory ([d2878a7](https://github.com/kreuzerk/svg-to-ts/commit/d2878a79cc0555bdcc507f72280cd701bd2d4928))
+
 ## [2.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.1...v2.0.2) (2019-12-10)
 
 
