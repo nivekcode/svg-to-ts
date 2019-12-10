@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.2...v2.0.0) (2019-12-10)
+
+
+### Features
+
+* **conversion:** use snake case instead of camel case ([8963ce7](https://github.com/kreuzerk/svg-to-ts/commit/8963ce7eb8bda578270570542013a7950a9648ac))
+
+
+### BREAKING CHANGES
+
+* **conversion:** Generate types and variable names in snake case instead of camel case
+
 ## [1.1.2](https://github.com/kreuzerk/svg-to-ts/compare/v1.1.1...v1.1.2) (2019-12-09)
 
 
