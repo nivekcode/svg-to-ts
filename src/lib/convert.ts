@@ -30,6 +30,7 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
 
   try {
     const files = await readdir(directoryPath, { withFileTypes: true });
+    const typesDelimitor = ' | ';
     for (let i = 0; i < files.length; i++) {
       if (files[i].isFile()) {
         const fileNameWithEnding = files[i].name;
@@ -37,9 +38,7 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
         const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-        i === files.length - 1
-          ? (types += `'${snakeCase(filenameWithoutEnding)}';`)
-          : (types += `'${snakeCase(filenameWithoutEnding)}' | `);
+        types += `'${snakeCase(filenameWithoutEnding)}'${typesDelimitor}`;
         svgConstants += getSvgConstant(
           variableName,
           convertionOptions.interfaceName,
@@ -48,6 +47,7 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
         );
       }
     }
+    types = types.substring(0, types.length - typesDelimitor.length) + ';';
     const fileContent = generateFileContent(svgConstants, types, convertionOptions);
     await writeIconsFile(convertionOptions, fileContent);
     console.log(
