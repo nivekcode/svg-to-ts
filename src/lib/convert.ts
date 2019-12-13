@@ -5,6 +5,7 @@ import camelCase from 'lodash.camelcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
+import { Dirent } from 'fs';
 
 const util = require('util');
 const path = require('path');
@@ -19,22 +20,35 @@ export interface ConvertionOptions {
   prefix: string;
   fileName: string;
   interfaceName: string;
-  srcDirectory: string;
+  srcDirectories: string[];
   outputDirectory: string;
 }
 
 export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
   let svgConstants = '';
-  const directoryPath = path.join(convertionOptions.srcDirectory);
+
   let types = getTypeDefinition(convertionOptions.typeName);
 
   try {
-    const files = await readdir(directoryPath, { withFileTypes: true });
+    const srcDirectories = convertionOptions.srcDirectories;
     const typesDelimitor = ' | ';
+    let files: Dirent[] = [];
+    let filesDirectoryPath = {};
+    for (let i = 0; i < srcDirectories.length; i++) {
+      const directoryPath: string = path.join(srcDirectories[i]);
+      const directoryContent: Dirent[] = await readdir(directoryPath, { withFileTypes: true });
+
+      files.push(...directoryContent);
+      directoryContent.forEach(file => {
+        filesDirectoryPath[file.name] = directoryPath;
+      });
+    }
+
     for (let i = 0; i < files.length; i++) {
       if (files[i].isFile()) {
         const fileNameWithEnding = files[i].name;
         const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
+        const directoryPath = filesDirectoryPath[fileNameWithEnding];
         const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);

@@ -12,6 +12,7 @@
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
     "start": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles",
+    "start:multiple-source": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -s ./inputfilesBis",
     "start:custom": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "semantic-release": "semantic-release"
