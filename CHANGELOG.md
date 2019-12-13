@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.3...v2.1.0) (2019-12-13)
+
+
+### Bug Fixes
+
+* **types:** Fix error in type generation when last item is a folder ([c70c15d](https://github.com/kreuzerk/svg-to-ts/commit/c70c15d23348c0164869fb2f788ff585b46f4229))
+
+
+### Features
+
+* **input:** Handle multiple sourceDir ([fe9fd84](https://github.com/kreuzerk/svg-to-ts/commit/fe9fd84c15de90676366160ad6e0896891e92cf7))
+
 ## [2.0.3](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.2...v2.0.3) (2019-12-10)
 
 
