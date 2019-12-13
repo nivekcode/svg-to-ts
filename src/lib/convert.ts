@@ -30,8 +30,8 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
   let types = getTypeDefinition(convertionOptions.typeName);
 
   try {
-    const srcDirectories = convertionOptions.srcDirectories;
     const typesDelimitor = ' | ';
+    const srcDirectories = convertionOptions.srcDirectories;
     let files: Dirent[] = [];
     let filesDirectoryPath = {};
     for (let i = 0; i < srcDirectories.length; i++) {
