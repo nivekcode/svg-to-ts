@@ -12,6 +12,7 @@
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
     "start": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles",
+    "start:kebap": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -d KEBAB",
     "start:multiple-source": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -s ./inputfilesBis",
     "start:custom": "ts-node ./src/bin/svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
@@ -46,6 +47,7 @@
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "lodash.camelcase": "^4.3.0",
+    "lodash.kebabcase": "^4.1.1",
     "lodash.snakecase": "^4.1.1",
     "prettier": "^1.19.1",
     "svgo": "^1.3.2"

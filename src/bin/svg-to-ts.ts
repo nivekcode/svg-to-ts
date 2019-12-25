@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 import * as packgeJSON from '../../package.json';
 import commander from 'commander';
-import { convert } from '../lib/convert';
+import { convert, Delimiter } from '../lib/convert';
 
 const DEFAULTS = {
-  typeName: 'myIcons',
-  interfaceName: 'MyIcon',
   fileName: 'my-icons',
+  delimiter: Delimiter.SNAKE,
+  interfaceName: 'MyIcon',
+  outputDirectory: './dist',
   prefix: 'myIcon',
   sourceDirectories: ['.'],
-  outputDirectory: './dist'
+  typeName: 'myIcons'
 };
 
 function collect(value, previous) {
@@ -20,13 +21,18 @@ commander
   .version(packgeJSON.version)
   .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULTS.typeName)
   .option('-f --fileName <string>', 'name of the generated file', DEFAULTS.fileName)
+  .option(
+    '-d --delimiter <Delimiter>',
+    `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,
+    DEFAULTS.delimiter
+  )
   .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULTS.prefix)
   .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
   .option('-s --srcDirectory <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
   .parse(process.argv);
 
-const { typeName, fileName, prefix, interfaceName, outputDirectory } = commander;
+const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } = commander;
 
 // Because of commander adding default value to params
 // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
@@ -36,6 +42,7 @@ if (srcDirectories.length === 0) {
 }
 
 const convertionOptions = {
+  delimiter,
   typeName,
   fileName,
   prefix,

@@ -1,21 +1,24 @@
-import { svgo } from './svgo';
-import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 import snakeCase from 'lodash.snakecase';
 import camelCase from 'lodash.camelcase';
+import kebapCase from 'lodash.kebabcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
-import { Dirent } from 'fs';
 
-const util = require('util');
-const path = require('path');
-const fs = require('fs');
+import { Dirent } from 'fs';
+import * as util from 'util';
+import * as path from 'path';
+import * as fs from 'fs';
+
+import { svgo } from './svgo';
+import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 
 const readdir = util.promisify(fs.readdir);
 const readfile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 export interface ConvertionOptions {
+  delimiter: Delimiter;
   typeName: string;
   prefix: string;
   fileName: string;
@@ -23,6 +26,22 @@ export interface ConvertionOptions {
   srcDirectories: string[];
   outputDirectory: string;
 }
+
+export enum Delimiter {
+  CAMEL = 'CAMEL',
+  KEBAB = 'KEBAB',
+  SNAKE = 'SNAKE'
+}
+
+const getType = (filenameWithoutEnding, typesDelimitor: string, delimiter: Delimiter): string => {
+  if (delimiter === Delimiter.CAMEL) {
+    return `'${camelCase(filenameWithoutEnding)}'${typesDelimitor}`;
+  }
+  if (delimiter === Delimiter.KEBAB) {
+    return `'${kebapCase(filenameWithoutEnding)}'${typesDelimitor}`;
+  }
+  return `'${snakeCase(filenameWithoutEnding)}'${typesDelimitor}`;
+};
 
 export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
   let svgConstants = '';
@@ -52,7 +71,7 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
         const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-        types += `'${snakeCase(filenameWithoutEnding)}'${typesDelimitor}`;
+        types += getType(filenameWithoutEnding, typesDelimitor, convertionOptions.delimiter);
         svgConstants += getSvgConstant(
           variableName,
           convertionOptions.interfaceName,
