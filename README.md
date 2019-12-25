@@ -7,6 +7,8 @@ To make SVGs tree shakeable its a good way to export them as string constants.
 Of course you don't always want to regenerate all the strings by hand. That's where
 svg-to-ts comes in.
 
+**Do you want to find out how to create your own icon library?** [Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
+
 # What it does
 
 This library generates a Typescript file with your svg definitons. The file
