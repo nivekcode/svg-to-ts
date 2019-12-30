@@ -33,16 +33,6 @@ export enum Delimiter {
   SNAKE = 'SNAKE'
 }
 
-const getType = (filenameWithoutEnding, typesDelimitor: string, delimiter: Delimiter): string => {
-  if (delimiter === Delimiter.CAMEL) {
-    return `'${camelCase(filenameWithoutEnding)}'${typesDelimitor}`;
-  }
-  if (delimiter === Delimiter.KEBAB) {
-    return `'${kebapCase(filenameWithoutEnding)}'${typesDelimitor}`;
-  }
-  return `'${snakeCase(filenameWithoutEnding)}'${typesDelimitor}`;
-};
-
 export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
   let svgConstants = '';
 
@@ -71,13 +61,9 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
         const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-        types += getType(filenameWithoutEnding, typesDelimitor, convertionOptions.delimiter);
-        svgConstants += getSvgConstant(
-          variableName,
-          convertionOptions.interfaceName,
-          snakeCase(filenameWithoutEnding),
-          optimizedSvg.data
-        );
+        const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
+        types += `'${typeName}'${typesDelimitor}`;
+        svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
       }
     }
     types = types.substring(0, types.length - typesDelimitor.length) + ';';
@@ -91,6 +77,16 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
   } catch (error) {
     console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
   }
+};
+
+const getTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
+  if (delimiter === Delimiter.CAMEL) {
+    return `${camelCase(filenameWithoutEnding)}`;
+  }
+  if (delimiter === Delimiter.KEBAB) {
+    return `${kebapCase(filenameWithoutEnding)}`;
+  }
+  return `${snakeCase(filenameWithoutEnding)}`;
 };
 
 const generateFileContent = (svgContstants: string, types: string, convertionOptions: ConvertionOptions): string => {
