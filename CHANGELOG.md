@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.1.0...v2.2.0) (2019-12-31)
+
+
+### Features
+
+* **delimiter:** add delimiter option to allow a custom delimiter ([c69358e](https://github.com/kreuzerk/svg-to-ts/commit/c69358e77aead04444ef7b312de04ed4b547d276))
+* **type:** generate the types with the correct delimiter ([c6d1ebc](https://github.com/kreuzerk/svg-to-ts/commit/c6d1ebcb652432de2890f8a28b9a9f24da6ada0e))
+
 # [2.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.0.3...v2.1.0) (2019-12-13)
 
 
