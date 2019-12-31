@@ -62,15 +62,16 @@ Additonally we also optimize the SVG icons with the help of the `svgo` package. 
 
 The CLI can be used with the `tsvg` command. This command accepts the following arguments.
 
-| -v  | --version                  | output the version number                             |
-| --- | -------------------------- | ----------------------------------------------------- |
-| -t  | --typeName <string>        | name of the generated type (myIcons)                  |
-| -p  | --prefix <string>          | prefix for the generated svg constants (myIcon)       |
-| -i  | --interfaceName <string>   | name for the generated interface (MyIcon)             |
-| -f  | --fileName <string>        | file name of the generated file (default: "my-icons") |
-| -s  | --srcDirectory <string>    | name of the source directory (default: ".")           |
-| -o  | --outputDirectory <string> | name of the output directory (default: "./dist")      |
-| -h  | --help                     | output usage information                              |
+| -v  | --version                  | output the version number                                                                                |
+| --- | -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| -t  | --typeName <string>        | name of the generated type (myIcons)                                                                     |
+| -p  | --prefix <string>          | prefix for the generated svg constants (myIcon)                                                          |
+| -i  | --interfaceName <string>   | name for the generated interface (MyIcon)                                                                |
+| -f  | --fileName <string>        | file name of the generated file (default: "my-icons")                                                    |
+| -d  | --delimiter <Delimiter>    | delimiter which is used to generate the types and name properties (CAMEL,KEBAB,SNAKE) (default: "SNAKE") |
+| -s  | --srcDirectory <string>    | name of the source directory (default: ".")                                                              |
+| -o  | --outputDirectory <string> | name of the output directory (default: "./dist")                                                         |
+| -h  | --help                     | output usage information                                                                                 |
 
 # Example
 
