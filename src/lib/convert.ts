@@ -1,27 +1,36 @@
-import { svgo } from './svgo';
-import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 import snakeCase from 'lodash.snakecase';
 import camelCase from 'lodash.camelcase';
+import kebapCase from 'lodash.kebabcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
-import { Dirent } from 'fs';
 
-const util = require('util');
-const path = require('path');
-const fs = require('fs');
+import { Dirent } from 'fs';
+import * as util from 'util';
+import * as path from 'path';
+import * as fs from 'fs';
+
+import { svgo } from './svgo';
+import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 
 const readdir = util.promisify(fs.readdir);
 const readfile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
 export interface ConvertionOptions {
+  delimiter: Delimiter;
   typeName: string;
   prefix: string;
   fileName: string;
   interfaceName: string;
   srcDirectories: string[];
   outputDirectory: string;
+}
+
+export enum Delimiter {
+  CAMEL = 'CAMEL',
+  KEBAB = 'KEBAB',
+  SNAKE = 'SNAKE'
 }
 
 export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
@@ -52,13 +61,9 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
         const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-        types += `'${snakeCase(filenameWithoutEnding)}'${typesDelimitor}`;
-        svgConstants += getSvgConstant(
-          variableName,
-          convertionOptions.interfaceName,
-          snakeCase(filenameWithoutEnding),
-          optimizedSvg.data
-        );
+        const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
+        types += `'${typeName}'${typesDelimitor}`;
+        svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
       }
     }
     types = types.substring(0, types.length - typesDelimitor.length) + ';';
@@ -72,6 +77,16 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
   } catch (error) {
     console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
   }
+};
+
+const getTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
+  if (delimiter === Delimiter.CAMEL) {
+    return `${camelCase(filenameWithoutEnding)}`;
+  }
+  if (delimiter === Delimiter.KEBAB) {
+    return `${kebapCase(filenameWithoutEnding)}`;
+  }
+  return `${snakeCase(filenameWithoutEnding)}`;
 };
 
 const generateFileContent = (svgContstants: string, types: string, convertionOptions: ConvertionOptions): string => {
