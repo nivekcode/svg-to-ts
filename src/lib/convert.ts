@@ -56,14 +56,17 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
     for (let i = 0; i < files.length; i++) {
       if (files[i].isFile()) {
         const fileNameWithEnding = files[i].name;
-        const filenameWithoutEnding = fileNameWithEnding.split('.')[0];
-        const directoryPath = filesDirectoryPath[fileNameWithEnding];
-        const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
-        const optimizedSvg = await svgo.optimize(rawSvg);
-        const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-        const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
-        types += `'${typeName}'${typesDelimitor}`;
-        svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
+        const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
+
+        if (extension === 'svg') {
+          const directoryPath = filesDirectoryPath[fileNameWithEnding];
+          const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
+          const optimizedSvg = await svgo.optimize(rawSvg);
+          const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
+          const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
+          types += `'${typeName}'${typesDelimitor}`;
+          svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
+        }
       }
     }
     types = types.substring(0, types.length - typesDelimitor.length) + ';';
