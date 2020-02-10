@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v2.2.0...v2.2.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* **conversion:** check to allow only svg files ([9fc3111](https://github.com/kreuzerk/svg-to-ts/commit/9fc31110f783998668671d043be9cadf962fefc0))
+
 # [2.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.1.0...v2.2.0) (2019-12-31)
 
 
