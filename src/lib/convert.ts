@@ -4,8 +4,7 @@ import kebapCase from 'lodash.kebabcase';
 import * as prettier from 'prettier/standalone';
 import chalk from 'chalk';
 import typescriptParser from 'prettier/parser-typescript';
-
-import { Dirent } from 'fs';
+import { Glob } from 'glob';
 import * as util from 'util';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -13,9 +12,9 @@ import * as fs from 'fs';
 import { svgo } from './svgo';
 import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
 
-const readdir = util.promisify(fs.readdir);
 const readfile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
+const getFilesFromRegex = util.promisify(Glob);
 
 export interface ConvertionOptions {
   delimiter: Delimiter;
@@ -23,7 +22,7 @@ export interface ConvertionOptions {
   prefix: string;
   fileName: string;
   interfaceName: string;
-  srcDirectories: string[];
+  srcFiles: string[];
   outputDirectory: string;
 }
 
@@ -40,43 +39,48 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
 
   try {
     const typesDelimitor = ' | ';
-    const srcDirectories = convertionOptions.srcDirectories;
-    let files: Dirent[] = [];
-    let filesDirectoryPath = {};
-    for (let i = 0; i < srcDirectories.length; i++) {
-      const directoryPath: string = path.join(srcDirectories[i]);
-      const directoryContent: Dirent[] = await readdir(directoryPath, { withFileTypes: true });
-
-      files.push(...directoryContent);
-      directoryContent.forEach(file => {
-        filesDirectoryPath[file.name] = directoryPath;
+    const srcFiles = convertionOptions.srcFiles;
+    let filesPath: string[] = [];
+    for (let i = 0; i < srcFiles.length; i++) {
+      const directoryFiles = await getFilesFromRegex(srcFiles[i], {
+        nodir: true
       });
-    }
 
-    for (let i = 0; i < files.length; i++) {
-      if (files[i].isFile()) {
-        const fileNameWithEnding = files[i].name;
-        const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
-
-        if (extension === 'svg') {
-          const directoryPath = filesDirectoryPath[fileNameWithEnding];
-          const rawSvg = await extractSvgContent(fileNameWithEnding, directoryPath);
-          const optimizedSvg = await svgo.optimize(rawSvg);
-          const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
-          const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
-          types += `'${typeName}'${typesDelimitor}`;
-          svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
-        }
+      if (directoryFiles.length === 0) {
+        console.log(
+          chalk.blue.bold('svg-to-ts:'),
+          chalk.green(`No file found for directory ${srcFiles[i]}`),
+          chalk.green.underline(convertionOptions.outputDirectory)
+        );
+      } else {
+        filesPath.push(...directoryFiles);
       }
     }
-    types = types.substring(0, types.length - typesDelimitor.length) + ';';
-    const fileContent = generateFileContent(svgConstants, types, convertionOptions);
-    await writeIconsFile(convertionOptions, fileContent);
-    console.log(
-      chalk.blue.bold('svg-to-ts:'),
-      chalk.green('Icons file successfully generated under'),
-      chalk.green.underline(convertionOptions.outputDirectory)
-    );
+
+    for (let i = 0; i < filesPath.length; i++) {
+      const fileNameWithEnding = path.basename(filesPath[i]);
+      const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
+
+      if (extension === 'svg') {
+        const rawSvg = await extractSvgContent(filesPath[i]);
+        const optimizedSvg = await svgo.optimize(rawSvg);
+        const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
+        const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
+        types += `'${typeName}'${typesDelimitor}`;
+        svgConstants += getSvgConstant(variableName, convertionOptions.interfaceName, typeName, optimizedSvg.data);
+      }
+    }
+
+    if (svgConstants !== '') {
+      types = types.substring(0, types.length - typesDelimitor.length) + ';';
+      const fileContent = generateFileContent(svgConstants, types, convertionOptions);
+      await writeIconsFile(convertionOptions, fileContent);
+      console.log(
+        chalk.blue.bold('svg-to-ts:'),
+        chalk.green('Icons file successfully generated under'),
+        chalk.green.underline(convertionOptions.outputDirectory)
+      );
+    }
   } catch (error) {
     console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
   }
@@ -115,8 +119,8 @@ const getVariableName = (convertionOptions: ConvertionOptions, filenameWithoutEn
   return `${convertionOptions.prefix}${capitalize(camelCase(filenameWithoutEnding))}`;
 };
 
-const extractSvgContent = async (fileName: string, directoryPath: string): Promise<string> => {
-  const fileContentRaw = await readfile(path.join(directoryPath, fileName), 'utf-8');
+const extractSvgContent = async (filePath: string): Promise<string> => {
+  const fileContentRaw = await readfile(filePath, 'utf-8');
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };
 
