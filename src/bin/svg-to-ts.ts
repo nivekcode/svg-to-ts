@@ -9,7 +9,7 @@ const DEFAULTS = {
   interfaceName: 'MyIcon',
   outputDirectory: './dist',
   prefix: 'myIcon',
-  sourceDirectories: ['*.svg'],
+  sourceFilesRegex: ['*.svg'],
   typeName: 'myIcons'
 };
 
@@ -38,7 +38,7 @@ const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } 
 // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
 let srcFiles = commander.srcFiles;
 if (srcFiles.length === 0) {
-  srcFiles = DEFAULTS.sourceDirectories;
+  srcFiles = DEFAULTS.sourceFilesRegex;
 }
 
 const convertionOptions = {
