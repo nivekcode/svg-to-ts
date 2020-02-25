@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.2.1...v3.0.0) (2020-02-25)
+
+
+### Features
+
+* **input:** Handle regex as sourceDir ([12d7bf9](https://github.com/kreuzerk/svg-to-ts/commit/12d7bf94002963a33938f68c87404a9c84fc884b))
+* **sources:** use source files as regex ([69547dd](https://github.com/kreuzerk/svg-to-ts/commit/69547dd289ef71435dda2d644cb10fc81c2ba202))
+
+
+### BREAKING CHANGES
+
+* **sources:** srcDirectories is gone and we should now use srcFiles
+
 ## [2.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v2.2.0...v2.2.1) (2020-02-10)
 
 
