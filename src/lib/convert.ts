@@ -34,35 +34,30 @@ export enum Delimiter {
 
 export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
   let svgConstants = '';
-
   let types = getTypeDefinition(convertionOptions.typeName);
 
   try {
     const typesDelimitor = ' | ';
-    const srcFiles = convertionOptions.srcFiles;
-    let filesPath: string[] = [];
-    for (let i = 0; i < srcFiles.length; i++) {
-      const directoryFiles = await getFilesFromRegex(srcFiles[i], {
+    const srcFilesRegexExpressions = convertionOptions.srcFiles;
+    const filePaths: string[] = [];
+
+    for (const regex of srcFilesRegexExpressions) {
+      const directoryFiles = await getFilesFromRegex(regex, {
         nodir: true
       });
-
       if (directoryFiles.length === 0) {
-        console.log(
-          chalk.blue.bold('svg-to-ts:'),
-          chalk.green(`No file found for directory ${srcFiles[i]}`),
-          chalk.green.underline(convertionOptions.outputDirectory)
-        );
+        console.log(chalk.blue.bold('svg-to-ts:'), chalk.yellow(`No matching files for regex: "${regex}"`));
       } else {
-        filesPath.push(...directoryFiles);
+        filePaths.push(...directoryFiles);
       }
     }
 
-    for (let i = 0; i < filesPath.length; i++) {
-      const fileNameWithEnding = path.basename(filesPath[i]);
+    for (let i = 0; i < filePaths.length; i++) {
+      const fileNameWithEnding = path.basename(filePaths[i]);
       const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
 
       if (extension === 'svg') {
-        const rawSvg = await extractSvgContent(filesPath[i]);
+        const rawSvg = await extractSvgContent(filePaths[i]);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = getVariableName(convertionOptions, filenameWithoutEnding);
         const typeName = getTypeName(filenameWithoutEnding, convertionOptions.delimiter);
