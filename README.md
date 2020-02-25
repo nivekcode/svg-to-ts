@@ -69,7 +69,7 @@ The CLI can be used with the `tsvg` command. This command accepts the following 
 | -i  | --interfaceName <string>   | name for the generated interface (MyIcon)                                                                |
 | -f  | --fileName <string>        | file name of the generated file (default: "my-icons")                                                    |
 | -d  | --delimiter <Delimiter>    | delimiter which is used to generate the types and name properties (CAMEL,KEBAB,SNAKE) (default: "SNAKE") |
-| -s  | --srcDirectory <string>    | name of the source directory (default: ".")                                                              |
+| -s  | --srcFiles <string>        | input files matching the given filename pattern (default: "\*.svg")                                      |
 | -o  | --outputDirectory <string> | name of the output directory (default: "./dist")                                                         |
 | -h  | --help                     | output usage information                                                                                 |
 

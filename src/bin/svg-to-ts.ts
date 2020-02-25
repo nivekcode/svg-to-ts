@@ -9,7 +9,7 @@ const DEFAULTS = {
   interfaceName: 'MyIcon',
   outputDirectory: './dist',
   prefix: 'myIcon',
-  sourceDirectories: ['.'],
+  sourceFilesRegex: ['*.svg'],
   typeName: 'myIcons'
 };
 
@@ -28,7 +28,7 @@ commander
   )
   .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULTS.prefix)
   .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
-  .option('-s --srcDirectory <value>', 'name of the source directory', collect, [])
+  .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
   .parse(process.argv);
 
@@ -36,9 +36,9 @@ const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } 
 
 // Because of commander adding default value to params
 // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
-let srcDirectories = commander.srcDirectory;
-if (srcDirectories.length === 0) {
-  srcDirectories = DEFAULTS.sourceDirectories;
+let srcFiles = commander.srcFiles;
+if (srcFiles.length === 0) {
+  srcFiles = DEFAULTS.sourceFilesRegex;
 }
 
 const convertionOptions = {
@@ -47,7 +47,7 @@ const convertionOptions = {
   fileName,
   prefix,
   interfaceName,
-  srcDirectories,
+  srcFiles,
   outputDirectory
 };
 convert(convertionOptions);
