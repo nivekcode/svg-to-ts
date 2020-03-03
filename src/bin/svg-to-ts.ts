@@ -3,6 +3,7 @@ import * as packgeJSON from '../../package.json';
 import commander from 'commander';
 import { Delimiter } from '../lib/generators/generators';
 import { convertToSingleFile } from '../lib/converters/single-file.converter';
+import { convertToMultipleFiles } from '../lib/converters/multiple-files.converter';
 
 export interface ConvertionOptions {
   delimiter: Delimiter;
@@ -62,4 +63,5 @@ const convertionOptions = {
   outputDirectory
 };
 
-convertToSingleFile(convertionOptions);
+// convertToSingleFile(convertionOptions);
+convertToMultipleFiles(convertionOptions);

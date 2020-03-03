@@ -14,15 +14,12 @@ export const extractSvgContent = async (filePath: string): Promise<string> => {
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };
 
-export const writeIconsFile = async (convertionOptions: ConvertionOptions, fileContent: string): Promise<void> => {
+export const writeIconsFile = async (outputDirectory: string, fileName: string, fileContent: string): Promise<void> => {
   const formatedFileContent = formatContent(fileContent);
-  if (!fs.existsSync(convertionOptions.outputDirectory)) {
-    fs.mkdirSync(convertionOptions.outputDirectory);
+  if (!fs.existsSync(outputDirectory)) {
+    fs.mkdirSync(outputDirectory);
   }
-  await writeFile(
-    path.join(convertionOptions.outputDirectory, `${convertionOptions.fileName}.ts`),
-    formatedFileContent
-  );
+  await writeFile(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
 };
 
 const formatContent = (fileContent: string) =>

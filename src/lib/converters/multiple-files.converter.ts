@@ -15,7 +15,7 @@ import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 const typesDelimitor = ' | ';
 
-export const convertToSingleFile = async (convertionOptions: ConvertionOptions): Promise<void> => {
+export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
   const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles, fileName } = convertionOptions;
   let svgConstants = '';
   let types = generateTypeDefinition(typeName);
@@ -33,20 +33,24 @@ export const convertToSingleFile = async (convertionOptions: ConvertionOptions):
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateSvgConstant(variableName, interfaceName, typeName, optimizedSvg.data);
 
+        await writeIconsFile(outputDirectory, `${prefix}-${filenameWithoutEnding}.icon`, svgConstant);
+
         svgConstants += svgConstant;
         types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
       }
     }
 
-    if (svgConstants !== '') {
-      const fileContent = (svgConstants += types += generateInterfaceDefinition(interfaceName, typeName));
-      await writeIconsFile(outputDirectory, fileName, fileContent);
-      console.log(
-        chalk.blue.bold('svg-to-ts:'),
-        chalk.green('Icons file successfully generated under'),
-        chalk.green.underline(outputDirectory)
-      );
-    }
+    /*
+        if (svgConstants !== '') {
+            const fileContent = (svgConstants += types += generateInterfaceDefinition(interfaceName, typeName));
+            await writeIconsFile(outputDirectory, fileName, fileContent);
+            console.log(
+                chalk.blue.bold('svg-to-ts:'),
+                chalk.green('Icons file successfully generated under'),
+                chalk.green.underline(outputDirectory)
+            );
+        }
+         */
   } catch (error) {
     console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
   }
