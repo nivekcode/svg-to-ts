@@ -1,7 +1,18 @@
 #!/usr/bin/env node
 import * as packgeJSON from '../../package.json';
 import commander from 'commander';
-import { convert, Delimiter } from '../lib/convert';
+import { convert } from '../lib/convert';
+import { Delimiter } from '../lib/generators/generators';
+
+export interface ConvertionOptions {
+  delimiter: Delimiter;
+  typeName: string;
+  prefix: string;
+  fileName: string;
+  interfaceName: string;
+  srcFiles: string[];
+  outputDirectory: string;
+}
 
 const DEFAULTS = {
   fileName: 'my-icons',

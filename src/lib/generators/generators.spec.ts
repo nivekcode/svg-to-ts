@@ -1,19 +1,19 @@
-import { getInterfaceDefinition, getSvgConstant, getTypeDefinition } from './definitions';
+import { generateInterfaceDefinition, generateSvgConstant, generateTypeDefinition } from './generators';
 
-describe('Definitions', () => {
+describe('Generators', () => {
   it('should return the correct interface definition', () => {
     const interfaceName = 'TestIcons';
     const typeName = 'myAwesomeIcons';
     const expectedDefinition = `export interface ${interfaceName}{
         name: ${typeName};
         data: string;}`;
-    expect(getInterfaceDefinition(interfaceName, typeName)).toEqual(expectedDefinition);
+    expect(generateInterfaceDefinition(interfaceName, typeName)).toEqual(expectedDefinition);
   });
 
   it('should return the correct type definition', () => {
     const typeName = 'awesomeType';
     const expectedTypeDefinition = `type ${typeName} = `;
-    expect(getTypeDefinition(typeName)).toEqual(expectedTypeDefinition);
+    expect(generateTypeDefinition(typeName)).toEqual(expectedTypeDefinition);
   });
 
   it('should return the correct svg constant definition', () => {
@@ -26,6 +26,6 @@ describe('Definitions', () => {
                 name: '${filenameWithoutEnding}',
                 data: '${data}'
             };`;
-    expect(getSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
+    expect(generateSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
   });
 });
