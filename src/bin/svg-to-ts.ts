@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as packgeJSON from '../../package.json';
 import commander from 'commander';
-import { convert } from '../lib/convert';
 import { Delimiter } from '../lib/generators/generators';
+import { convertToSingleFile } from '../lib/converters/single-file.converter';
 
 export interface ConvertionOptions {
   delimiter: Delimiter;
@@ -61,4 +61,5 @@ const convertionOptions = {
   srcFiles,
   outputDirectory
 };
-convert(convertionOptions);
+
+convertToSingleFile(convertionOptions);

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import * as path from 'path';
-import { svgo } from './svgo';
+import { svgo } from '../svgo';
 
 import {
   generateInterfaceDefinition,
@@ -8,14 +8,14 @@ import {
   generateTypeDefinition,
   generateTypeName,
   generateVariableName
-} from './generators/generators';
-import { getFilePathsFromRegex } from './regex-helpers';
-import { extractSvgContent, writeIconsFile } from './file-helpers';
-import { ConvertionOptions } from '../bin/svg-to-ts';
+} from '../generators/generators';
+import { getFilePathsFromRegex } from '../regex-helpers';
+import { extractSvgContent, writeIconsFile } from '../file-helpers';
+import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 const typesDelimitor = ' | ';
 
-export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
+export const convertToSingleFile = async (convertionOptions: ConvertionOptions): Promise<void> => {
   const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles } = convertionOptions;
   let svgConstants = '';
   let types = generateTypeDefinition(typeName);
