@@ -25,7 +25,7 @@ const DEFAULTS = {
   prefix: 'myIcon',
   sourceFilesRegex: ['*.svg'],
   typeName: 'myIcons',
-  optimizeForLayzLoading: false
+  optimizeForLazyLoading: false
 };
 
 function collect(value, previous) {
@@ -45,7 +45,7 @@ commander
   .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
   .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
-  .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLayzLoading)
+  .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLazyLoading)
   .parse(process.argv);
 
 const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } = commander;
