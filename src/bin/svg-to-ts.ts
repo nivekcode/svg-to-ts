@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-import * as packgeJSON from '../../package.json';
 import commander from 'commander';
-import { Delimiter } from '../lib/generators/generators';
+
+import { Delimiter } from '../lib/generators/code-snippet-generators';
 import { convertToSingleFile } from '../lib/converters/single-file.converter';
 import { convertToMultipleFiles } from '../lib/converters/multiple-files.converter';
+
+import * as packgeJSON from '../../package.json';
 
 export interface ConvertionOptions {
   delimiter: Delimiter;

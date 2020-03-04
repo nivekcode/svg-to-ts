@@ -8,7 +8,7 @@ import {
   generateTypeDefinition,
   generateTypeName,
   generateVariableName
-} from '../generators/generators';
+} from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { success, underlineSuccess } from '../helpers/log-helper';

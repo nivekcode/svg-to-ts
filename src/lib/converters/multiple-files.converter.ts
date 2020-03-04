@@ -7,7 +7,7 @@ import {
   generateTypeName,
   generateUntypedSvgConstant,
   generateVariableName
-} from '../generators/generators';
+} from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { compileSources } from '../compiler/typescript-compiler';
