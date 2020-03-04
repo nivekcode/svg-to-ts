@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.1...v3.1.2) (2020-03-04)
+
+
+### Bug Fixes
+
+* **compiler:** reduce strictness ([19f6480](https://github.com/kreuzerk/svg-to-ts/commit/19f6480b9d8c3c047e99b5398c80f754be8db6c1))
+
 ## [3.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.0...v3.1.1) (2020-03-04)
 
 
