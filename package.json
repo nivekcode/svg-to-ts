@@ -12,11 +12,15 @@
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
     "start": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg'",
+    "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "start:regex": "ts-node ./src/bin/svg-to-ts.ts -s './inputfilesRegex/**/*.svg'",
-    "start:kebap": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg -d KEBAB'",
+    "start:kebap": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' -d KEBAB",
     "start:multiple-source": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' -s './inputfilesBis/*.svg'",
     "start:custom": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
-    "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
+    "start:ofl:regex": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfilesRegex/**/*.svg'",
+    "start:ofl:kebap": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -d KEBAB",
+    "start:ofl:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -s './inputfilesBis/*.svg'",
+    "start:ofl:custom": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "semantic-release": "semantic-release"
   },
   "repository": {

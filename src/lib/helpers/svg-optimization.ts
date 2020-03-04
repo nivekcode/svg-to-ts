@@ -1,6 +1,6 @@
-const SVGO = require('svgo');
+const SvgOptimization = require('svgo');
 
-export const svgo = new SVGO({
+export const svgo = new SvgOptimization({
   plugins: [
     {
       cleanupAttrs: true

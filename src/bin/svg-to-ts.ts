@@ -22,7 +22,8 @@ const DEFAULTS = {
   outputDirectory: './dist',
   prefix: 'myIcon',
   sourceFilesRegex: ['*.svg'],
-  typeName: 'myIcons'
+  typeName: 'myIcons',
+  optimizeForLayzLoading: false
 };
 
 function collect(value, previous) {
@@ -42,6 +43,7 @@ commander
   .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
   .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
+  .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLayzLoading)
   .parse(process.argv);
 
 const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } = commander;
@@ -52,6 +54,7 @@ let srcFiles = commander.srcFiles;
 if (srcFiles.length === 0) {
   srcFiles = DEFAULTS.sourceFilesRegex;
 }
+const optimizeForLazyLoading = commander.optimizeForLazyLoading;
 
 const convertionOptions = {
   delimiter,
@@ -63,5 +66,8 @@ const convertionOptions = {
   outputDirectory
 };
 
-// convertToSingleFile(convertionOptions);
-convertToMultipleFiles(convertionOptions);
+if (optimizeForLazyLoading) {
+  convertToMultipleFiles(convertionOptions);
+} else {
+  convertToSingleFile(convertionOptions);
+}

@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { svgo } from '../svgo';
+
+import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 import {
   generateExportStatement,
@@ -9,9 +10,9 @@ import {
 } from '../generators/generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
-import { ConvertionOptions } from '../../bin/svg-to-ts';
 import { compileSources } from '../compiler/typescript-compiler';
 import { info, success } from '../helpers/log-helper';
+import { svgo } from '../helpers/svg-optimization';
 
 export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
   const { prefix, delimiter, outputDirectory, srcFiles } = convertionOptions;

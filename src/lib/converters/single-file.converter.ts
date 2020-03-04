@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { svgo } from '../svgo';
+
+import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 import {
   generateInterfaceDefinition,
@@ -10,8 +11,8 @@ import {
 } from '../generators/generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { extractSvgContent, writeFile } from '../helpers/file-helpers';
-import { ConvertionOptions } from '../../bin/svg-to-ts';
 import { success, underlineSuccess } from '../helpers/log-helper';
+import { svgo } from '../helpers/svg-optimization';
 
 const typesDelimitor = ' | ';
 
