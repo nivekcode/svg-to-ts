@@ -9,5 +9,5 @@ export const compileSources = (filePaths: string[]): void => {
     target: ts.ScriptTarget.ESNext,
     module: ts.ModuleKind.ESNext
   };
-  ts.createProgram(filePaths, compilerOptions);
+  ts.createProgram(filePaths, compilerOptions).emit();
 };

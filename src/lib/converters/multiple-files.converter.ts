@@ -22,8 +22,8 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
 
   try {
     const filePaths = await getFilePathsFromRegex(srcFiles);
-    await deleteFolder(`${outputDirectory}/icons`);
-    info(`deleting output directory: ${outputDirectory}`);
+    await deleteFolder(`${outputDirectory}/${generateIconsFolderName}`);
+    info(`deleting output directory: ${outputDirectory}/${generateIconsFolderName}`);
 
     for (let i = 0; i < filePaths.length; i++) {
       const fileNameWithEnding = path.basename(filePaths[i]);
