@@ -14,6 +14,8 @@ import { compileSources } from '../compiler/typescript-compiler';
 import { info, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 
+const generateIconsFolderName = 'build';
+
 export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
   const { prefix, delimiter, outputDirectory, srcFiles } = convertionOptions;
   let indexFileContent = '';
@@ -35,15 +37,15 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateUntypedSvgConstant(variableName, typeName, optimizedSvg.data);
         const generatedFileName = `${prefix}-${filenameWithoutEnding}.icon`;
-        indexFileContent += generateExportStatement(generatedFileName);
-        await writeFile(`${outputDirectory}/icons`, generatedFileName, svgConstant);
-        info(`write file svg: ${outputDirectory}/icons/${generatedFileName}.ts`);
+        indexFileContent += generateExportStatement(generatedFileName, generateIconsFolderName);
+        await writeFile(`${outputDirectory}/${generateIconsFolderName}`, generatedFileName, svgConstant);
+        info(`write file svg: ${outputDirectory}/${generateIconsFolderName}/${generatedFileName}.ts`);
       }
     }
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
     const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
-      `${outputDirectory}/icons/*.ts`,
+      `${outputDirectory}/${generateIconsFolderName}/*.ts`,
       `${outputDirectory}/index.ts`
     ]);
     compileSources(generatedTypeScriptFilePaths);
