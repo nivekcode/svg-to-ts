@@ -2,7 +2,7 @@ import * as ts from 'typescript';
 
 export const compileSources = (filePaths: string[]): void => {
   const compilerOptions = {
-    noEmitOnError: true,
+    noEmitOnError: false,
     noImplicitAny: true,
     declaration: true,
     moduleResolution: ts.ModuleResolutionKind.NodeJs,
