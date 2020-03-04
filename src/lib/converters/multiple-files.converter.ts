@@ -12,7 +12,7 @@ import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { compileSources } from '../compiler/typescript-compiler';
 import { info, success } from '../helpers/log-helper';
-import { svgo } from '../helpers/svg-optimization';
+import { svgOptimizer } from '../helpers/svg-optimization';
 
 export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
   const { prefix, delimiter, outputDirectory, srcFiles } = convertionOptions;
@@ -30,7 +30,7 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
       if (extension === 'svg') {
         const rawSvg = await extractSvgContent(filePaths[i]);
         info(`optimize svg: ${fileNameWithEnding}`);
-        const optimizedSvg = await svgo.optimize(rawSvg);
+        const optimizedSvg = await svgOptimizer.optimize(rawSvg);
         const variableName = generateVariableName(prefix, filenameWithoutEnding);
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateUntypedSvgConstant(variableName, typeName, optimizedSvg.data);

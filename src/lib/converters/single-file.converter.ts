@@ -12,7 +12,7 @@ import {
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { success, underlineSuccess } from '../helpers/log-helper';
-import { svgo } from '../helpers/svg-optimization';
+import { svgOptimizer } from '../helpers/svg-optimization';
 
 const typesDelimitor = ' | ';
 
@@ -29,7 +29,7 @@ export const convertToSingleFile = async (convertionOptions: ConvertionOptions):
 
       if (extension === 'svg') {
         const rawSvg = await extractSvgContent(filePaths[i]);
-        const optimizedSvg = await svgo.optimize(rawSvg);
+        const optimizedSvg = await svgOptimizer.optimize(rawSvg);
         const variableName = generateVariableName(prefix, filenameWithoutEnding);
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateSvgConstant(variableName, interfaceName, typeName, optimizedSvg.data);
