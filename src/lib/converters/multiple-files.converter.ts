@@ -1,57 +1,62 @@
-import chalk from 'chalk';
 import * as path from 'path';
 import { svgo } from '../svgo';
 
 import {
-  generateInterfaceDefinition,
-  generateSvgConstant,
-  generateTypeDefinition,
+  generateExportStatement,
   generateTypeName,
   generateUntypedSvgConstant,
   generateVariableName
 } from '../generators/generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { deleteFolder, extractSvgContent, writeIconsFile } from '../helpers/file-helpers';
+import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { ConvertionOptions } from '../../bin/svg-to-ts';
 import { compileSources } from '../compiler/typescript-compiler';
-
-const typesDelimitor = ' | ';
+import { info, success } from '../helpers/log-helper';
 
 export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
-  const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles, fileName } = convertionOptions;
+  const { prefix, delimiter, outputDirectory, srcFiles } = convertionOptions;
+  let indexFileContent = '';
 
   try {
     const filePaths = await getFilePathsFromRegex(srcFiles);
     await deleteFolder(`${outputDirectory}/icons`);
+    info(`deleting output directory: ${outputDirectory}`);
+
     for (let i = 0; i < filePaths.length; i++) {
       const fileNameWithEnding = path.basename(filePaths[i]);
       const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
 
       if (extension === 'svg') {
         const rawSvg = await extractSvgContent(filePaths[i]);
+        info(`optimize svg: ${fileNameWithEnding}`);
         const optimizedSvg = await svgo.optimize(rawSvg);
         const variableName = generateVariableName(prefix, filenameWithoutEnding);
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateUntypedSvgConstant(variableName, typeName, optimizedSvg.data);
-
-        await writeIconsFile(`${outputDirectory}/icons`, `${prefix}-${filenameWithoutEnding}.icon`, svgConstant);
+        const generatedFileName = `${prefix}-${filenameWithoutEnding}.icon`;
+        indexFileContent += generateExportStatement(generatedFileName);
+        await writeFile(`${outputDirectory}/icons`, generatedFileName, svgConstant);
+        info(`write file svg: ${outputDirectory}/icons/${generatedFileName}.ts`);
       }
     }
-    const outputFiles = await getFilePathsFromRegex([`${outputDirectory}/icons/*.ts`]);
-    compileSources(outputFiles);
+    await writeFile(outputDirectory, 'index', indexFileContent);
+    info(`write index.ts`);
+    const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
+      `${outputDirectory}/icons/*.ts`,
+      `${outputDirectory}/index.ts`
+    ]);
+    compileSources(generatedTypeScriptFilePaths);
+    info(`compile Typescript - generate JS and d.ts`);
+    deleteFiles(generatedTypeScriptFilePaths);
+    info(`delete Typescript files`);
 
-    /*
-            if (svgConstants !== '') {
-                const fileContent = (svgConstants += types += generateInterfaceDefinition(interfaceName, typeName));
-                await writeIconsFile(outputDirectory, fileName, fileContent);
-                console.log(
-                    chalk.blue.bold('svg-to-ts:'),
-                    chalk.green('Icons file successfully generated under'),
-                    chalk.green.underline(outputDirectory)
-                );
-            }
-             */
+    success('========================================================');
+    success(`your files were successfully created under: ${outputDirectory}`);
+    success(
+      `don't forget to copy this folder to your dist in a post build script - enjoy your tree-shakable icon library 😎`
+    );
+    success('========================================================');
   } catch (error) {
-    console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
+    error('Something went wrong', error);
   }
 };

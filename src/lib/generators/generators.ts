@@ -53,6 +53,8 @@ export const generateSvgStandaloneFile = (
             };`;
 };
 
+export const generateExportStatement = (fileName: string) => `export * from './icons/${fileName}';`;
+
 export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
   if (delimiter === Delimiter.CAMEL) {
     return `${camelCase(filenameWithoutEnding)}`;

@@ -1,16 +1,18 @@
 import * as ts from 'typescript';
+import { error, info } from '../helpers/log-helper';
 
 const compile = (filePaths: string[], compilerOptions: ts.CompilerOptions): void => {
   let program = ts.createProgram(filePaths, compilerOptions);
   let emitResult = program.emit();
-
-  reportDiagnostics(ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics));
-
-  let exitCode = emitResult.emitSkipped ? 1 : 0;
-  process.exit(exitCode);
+  if (emitResult.emitSkipped) {
+    error('Error during compilation of Typesript files');
+    reportDiagnostics(ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics));
+  } else {
+    info('Typescript files successfully compiled');
+  }
 };
 
-function reportDiagnostics(diagnostics: ts.Diagnostic[]): void {
+const reportDiagnostics = (diagnostics: ts.Diagnostic[]): void => {
   diagnostics.forEach(diagnostic => {
     let message = 'Error';
     if (diagnostic.file) {
@@ -18,9 +20,9 @@ function reportDiagnostics(diagnostics: ts.Diagnostic[]): void {
       message += ` ${diagnostic.file.fileName} (${line + 1},${character + 1})`;
     }
     message += ': ' + ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n');
-    console.log(message);
+    info(message);
   });
-}
+};
 
 export const compileSources = (filePaths: string[]): void => {
   const tsOptions = {

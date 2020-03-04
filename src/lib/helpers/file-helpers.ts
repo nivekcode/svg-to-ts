@@ -4,20 +4,20 @@ import * as path from 'path';
 import * as prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
 
-const readfile = util.promisify(fs.readFile);
-const writeFile = util.promisify(fs.writeFile);
+const readfileFromFS = util.promisify(fs.readFile);
+const writeFileToFS = util.promisify(fs.writeFile);
 
 export const extractSvgContent = async (filePath: string): Promise<string> => {
-  const fileContentRaw = await readfile(filePath, 'utf-8');
+  const fileContentRaw = await readfileFromFS(filePath, 'utf-8');
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };
 
-export const writeIconsFile = async (outputDirectory: string, fileName: string, fileContent: string): Promise<void> => {
+export const writeFile = async (outputDirectory: string, fileName: string, fileContent: string): Promise<void> => {
   const formatedFileContent = formatContent(fileContent);
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
-  await writeFile(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
+  await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
 };
 
 export const deleteFolder = async (directoryPath: string) => {
@@ -32,6 +32,10 @@ export const deleteFolder = async (directoryPath: string) => {
     });
     fs.rmdirSync(directoryPath);
   }
+};
+
+export const deleteFiles = (filePaths: string[]): void => {
+  filePaths.forEach((filePath: string) => fs.unlinkSync(filePath));
 };
 
 const formatContent = (fileContent: string) =>

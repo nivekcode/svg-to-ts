@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import * as path from 'path';
 import { svgo } from '../svgo';
 
@@ -9,9 +8,10 @@ import {
   generateTypeName,
   generateVariableName
 } from '../generators/generators';
-import { getFilePathsFromRegex } from '../regex-helpers';
-import { extractSvgContent, writeIconsFile } from '../file-helpers';
+import { getFilePathsFromRegex } from '../helpers/regex-helpers';
+import { extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { ConvertionOptions } from '../../bin/svg-to-ts';
+import { success, underlineSuccess } from '../helpers/log-helper';
 
 const typesDelimitor = ' | ';
 
@@ -40,14 +40,10 @@ export const convertToSingleFile = async (convertionOptions: ConvertionOptions):
 
     if (svgConstants !== '') {
       const fileContent = (svgConstants += types += generateInterfaceDefinition(interfaceName, typeName));
-      await writeIconsFile(outputDirectory, fileName, fileContent);
-      console.log(
-        chalk.blue.bold('svg-to-ts:'),
-        chalk.green('Icons file successfully generated under'),
-        chalk.green.underline(outputDirectory)
-      );
+      await writeFile(outputDirectory, fileName, fileContent);
+      success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
     }
   } catch (error) {
-    console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
+    error('Something went wrong', error);
   }
 };
