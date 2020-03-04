@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.0...v3.1.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* **generation:** fix generated folder name ([680f1f1](https://github.com/kreuzerk/svg-to-ts/commit/680f1f139403a69b93caec89b37fe78a1b565cd1))
+
 # [3.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.0.0...v3.1.0) (2020-03-04)
 
 
