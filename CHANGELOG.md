@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.2...v3.1.3) (2020-03-04)
+
+
+### Bug Fixes
+
+* **compiler:** emit compiled sources ([592ef68](https://github.com/kreuzerk/svg-to-ts/commit/592ef682addcfe76b77a4ac4d2698ccefb0673a1))
+
 ## [3.1.2](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.1...v3.1.2) (2020-03-04)
 
 
