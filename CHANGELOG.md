@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.0.0...v3.1.0) (2020-03-04)
+
+
+### Features
+
+* **compiler:** compile ts files ([a911b7c](https://github.com/kreuzerk/svg-to-ts/commit/a911b7cfe78e58afeb0ca3db6cb0cf2f046f9c9a))
+* **converter:** convert to multiple files ([fe13a4c](https://github.com/kreuzerk/svg-to-ts/commit/fe13a4c21d5d861956682e24b5abfe7b6ea0f074))
+* **multifiles:** generate multiple files ([d933e1e](https://github.com/kreuzerk/svg-to-ts/commit/d933e1e03e4f9f5c799b9b2a1f2cda7a7bea4105))
+
 # [3.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v2.2.1...v3.0.0) (2020-02-25)
 
 
