@@ -1,6 +1,6 @@
-import chalk from 'chalk';
 import * as path from 'path';
-import { svgo } from './svgo';
+
+import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 import {
   generateInterfaceDefinition,
@@ -8,15 +8,16 @@ import {
   generateTypeDefinition,
   generateTypeName,
   generateVariableName
-} from './generators/generators';
-import { getFilePathsFromRegex } from './regex-helpers';
-import { extractSvgContent, writeIconsFile } from './file-helpers';
-import { ConvertionOptions } from '../bin/svg-to-ts';
+} from '../generators/code-snippet-generators';
+import { getFilePathsFromRegex } from '../helpers/regex-helpers';
+import { extractSvgContent, writeFile } from '../helpers/file-helpers';
+import { success, underlineSuccess } from '../helpers/log-helper';
+import { svgOptimizer } from '../helpers/svg-optimization';
 
 const typesDelimitor = ' | ';
 
-export const convert = async (convertionOptions: ConvertionOptions): Promise<void> => {
-  const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles } = convertionOptions;
+export const convertToSingleFile = async (convertionOptions: ConvertionOptions): Promise<void> => {
+  const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles, fileName } = convertionOptions;
   let svgConstants = '';
   let types = generateTypeDefinition(typeName);
 
@@ -28,7 +29,7 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
 
       if (extension === 'svg') {
         const rawSvg = await extractSvgContent(filePaths[i]);
-        const optimizedSvg = await svgo.optimize(rawSvg);
+        const optimizedSvg = await svgOptimizer.optimize(rawSvg);
         const variableName = generateVariableName(prefix, filenameWithoutEnding);
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateSvgConstant(variableName, interfaceName, typeName, optimizedSvg.data);
@@ -40,14 +41,10 @@ export const convert = async (convertionOptions: ConvertionOptions): Promise<voi
 
     if (svgConstants !== '') {
       const fileContent = (svgConstants += types += generateInterfaceDefinition(interfaceName, typeName));
-      await writeIconsFile(convertionOptions, fileContent);
-      console.log(
-        chalk.blue.bold('svg-to-ts:'),
-        chalk.green('Icons file successfully generated under'),
-        chalk.green.underline(outputDirectory)
-      );
+      await writeFile(outputDirectory, fileName, fileContent);
+      success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
     }
   } catch (error) {
-    console.log(chalk.blue.bold('svg-to-ts:'), chalk.red('Something went wrong', error));
+    error('Something went wrong', error);
   }
 };

@@ -30,6 +30,31 @@ export const generateSvgConstant = (
             };`;
 };
 
+export const generateUntypedSvgConstant = (
+  variableName: string,
+  filenameWithoutEnding: string,
+  data: string
+): string => {
+  return `export const ${variableName} = {
+                name: '${filenameWithoutEnding}',
+                data: '${data}'
+            };`;
+};
+
+export const generateSvgStandaloneFile = (
+  variableName: string,
+  interfaceName: string,
+  filenameWithoutEnding: string,
+  data: string
+): string => {
+  return `export const ${variableName}: ${interfaceName} = {
+                name: '${filenameWithoutEnding}',
+                data: '${data}'
+            };`;
+};
+
+export const generateExportStatement = (fileName: string) => `export * from './icons/${fileName}';`;
+
 export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
   if (delimiter === Delimiter.CAMEL) {
     return `${camelCase(filenameWithoutEnding)}`;

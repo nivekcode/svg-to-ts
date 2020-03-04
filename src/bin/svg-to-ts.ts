@@ -1,8 +1,11 @@
 #!/usr/bin/env node
-import * as packgeJSON from '../../package.json';
 import commander from 'commander';
-import { convert } from '../lib/convert';
-import { Delimiter } from '../lib/generators/generators';
+
+import { Delimiter } from '../lib/generators/code-snippet-generators';
+import { convertToSingleFile } from '../lib/converters/single-file.converter';
+import { convertToMultipleFiles } from '../lib/converters/multiple-files.converter';
+
+import * as packgeJSON from '../../package.json';
 
 export interface ConvertionOptions {
   delimiter: Delimiter;
@@ -21,7 +24,8 @@ const DEFAULTS = {
   outputDirectory: './dist',
   prefix: 'myIcon',
   sourceFilesRegex: ['*.svg'],
-  typeName: 'myIcons'
+  typeName: 'myIcons',
+  optimizeForLazyLoading: false
 };
 
 function collect(value, previous) {
@@ -41,6 +45,7 @@ commander
   .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
   .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
+  .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLazyLoading)
   .parse(process.argv);
 
 const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } = commander;
@@ -51,6 +56,7 @@ let srcFiles = commander.srcFiles;
 if (srcFiles.length === 0) {
   srcFiles = DEFAULTS.sourceFilesRegex;
 }
+const optimizeForLazyLoading = commander.optimizeForLazyLoading;
 
 const convertionOptions = {
   delimiter,
@@ -61,4 +67,9 @@ const convertionOptions = {
   srcFiles,
   outputDirectory
 };
-convert(convertionOptions);
+
+if (optimizeForLazyLoading) {
+  convertToMultipleFiles(convertionOptions);
+} else {
+  convertToSingleFile(convertionOptions);
+}

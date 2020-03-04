@@ -1,6 +1,6 @@
-import chalk from 'chalk';
 import * as util from 'util';
 import { Glob } from 'glob';
+import { info } from './log-helper';
 
 const getFilesFromRegex = util.promisify(Glob);
 
@@ -13,7 +13,7 @@ export const getFilePathsFromRegex = async (srcFiles: string[]) => {
       nodir: true
     });
     if (directoryFiles.length === 0) {
-      console.log(chalk.blue.bold('svg-to-ts:'), chalk.yellow(`No matching files for regex: "${regex}"`));
+      info(`No matching files for regex: "${regex}"`);
     } else {
       filePaths.push(...directoryFiles);
     }
