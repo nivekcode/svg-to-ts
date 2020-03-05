@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.2.0...v3.2.1) (2020-03-05)
+
+
+### Bug Fixes
+
+* **icon:** generate name as type any ([08bd563](https://github.com/kreuzerk/svg-to-ts/commit/08bd563eb14fad4f0ed4957a907b485e62dd02bc))
+
 # [3.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.4...v3.2.0) (2020-03-05)
 
 
