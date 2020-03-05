@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.4...v3.2.0) (2020-03-05)
+
+
+### Features
+
+* **model:** generate model to a different path ([c10d322](https://github.com/kreuzerk/svg-to-ts/commit/c10d3223a7223486e282229289f19438224eadb7))
+
 ## [3.1.4](https://github.com/kreuzerk/svg-to-ts/compare/v3.1.3...v3.1.4) (2020-03-04)
 
 
