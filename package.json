@@ -20,6 +20,7 @@
     "start:ofl:regex": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfilesRegex/**/*.svg'",
     "start:ofl:kebap": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -d KEBAB",
     "start:ofl:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -s './inputfilesBis/*.svg'",
+    "start:ofl:customModel": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfilesRegex/**/*.svg' --modelOutputPath ./dist/model --modelFileName test-model -t sampleIcon -i SampleIcon",
     "start:ofl:custom": "ts-node ./src/bin/svg-to-ts.ts --optimizeForLazyLoading true -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "semantic-release": "semantic-release"
   },

@@ -4,6 +4,8 @@ import { ConvertionOptions } from '../../bin/svg-to-ts';
 
 import {
   generateExportStatement,
+  generateInterfaceDefinition,
+  generateTypeDefinition,
   generateTypeName,
   generateUntypedSvgConstant,
   generateVariableName
@@ -15,10 +17,21 @@ import { info, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 
 const generateIconsFolderName = 'build';
+const typesDelimitor = ' | ';
 
 export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
-  const { prefix, delimiter, outputDirectory, srcFiles } = convertionOptions;
+  const {
+    typeName,
+    interfaceName,
+    prefix,
+    delimiter,
+    outputDirectory,
+    srcFiles,
+    modelOutputPath,
+    modelFileName
+  } = convertionOptions;
   let indexFileContent = '';
+  let types = generateTypeDefinition(typeName);
 
   try {
     const filePaths = await getFilePathsFromRegex(srcFiles);
@@ -40,6 +53,8 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
         indexFileContent += generateExportStatement(generatedFileName, generateIconsFolderName);
         await writeFile(`${outputDirectory}/${generateIconsFolderName}`, generatedFileName, svgConstant);
         info(`write file svg: ${outputDirectory}/${generateIconsFolderName}/${generatedFileName}.ts`);
+
+        types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
       }
     }
     await writeFile(outputDirectory, 'index', indexFileContent);
@@ -52,6 +67,12 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
     info(`compile Typescript - generate JS and d.ts`);
     deleteFiles(generatedTypeScriptFilePaths);
     info(`delete Typescript files`);
+
+    if (modelOutputPath && modelFileName) {
+      const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
+      await writeFile(modelOutputPath, `${modelFileName}.model`, modelFile);
+      info(`model-file successfully generated under ${modelOutputPath}/${modelFileName}.model.ts`);
+    }
 
     success('========================================================');
     success(`your files were successfully created under: ${outputDirectory}`);
