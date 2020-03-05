@@ -15,6 +15,8 @@ export interface ConvertionOptions {
   interfaceName: string;
   srcFiles: string[];
   outputDirectory: string;
+  modelOutputPath: string;
+  modelFileName: string;
 }
 
 const DEFAULTS = {
@@ -46,9 +48,20 @@ commander
   .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
   .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
   .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLazyLoading)
+  .option('--modelOutputPath <string>', 'Output path for the types file')
+  .option('--modelFileName <string>', 'FileName of the model file')
   .parse(process.argv);
 
-const { delimiter, fileName, interfaceName, outputDirectory, prefix, typeName } = commander;
+const {
+  delimiter,
+  fileName,
+  interfaceName,
+  outputDirectory,
+  prefix,
+  typeName,
+  modelFileName,
+  modelOutputPath
+} = commander;
 
 // Because of commander adding default value to params
 // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
@@ -65,7 +78,9 @@ const convertionOptions = {
   prefix,
   interfaceName,
   srcFiles,
-  outputDirectory
+  outputDirectory,
+  modelOutputPath,
+  modelFileName
 };
 
 if (optimizeForLazyLoading) {
