@@ -39,7 +39,7 @@ export const generateUntypedSvgConstant = (
   filenameWithoutEnding: string,
   data: string
 ): string => {
-  return `export const ${variableName} = {
+  return `export const ${variableName}: {name: any, data: string} = {
                 name: '${filenameWithoutEnding}',
                 data: '${data}'
             };`;
