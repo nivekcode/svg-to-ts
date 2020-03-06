@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import commander from 'commander';
+import { cosmiconfig, cosmiconfigSync } from 'cosmiconfig';
 
 import { Delimiter } from '../lib/generators/code-snippet-generators';
 import { convertToSingleFile } from '../lib/converters/single-file.converter';
@@ -33,6 +34,12 @@ const DEFAULTS = {
 function collect(value, previous) {
   return previous.concat([value]);
 }
+
+const moduleName = 'svg-to-ts';
+const explorerSync = cosmiconfigSync(moduleName);
+
+const searchedFor = explorerSync.search();
+console.log('Searchedfor', searchedFor);
 
 commander
   .version(packgeJSON.version)
