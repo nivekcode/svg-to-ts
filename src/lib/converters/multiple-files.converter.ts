@@ -1,7 +1,5 @@
 import * as path from 'path';
 
-import { ConvertionOptions } from '../../bin/svg-to-ts';
-
 import {
   generateExportStatement,
   generateInterfaceDefinition,
@@ -15,11 +13,11 @@ import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../help
 import { compileSources } from '../compiler/typescript-compiler';
 import { info, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
+import { MultiFileConvertionOptions } from '../options/convertion-options';
 
-const generateIconsFolderName = 'build';
 const typesDelimitor = ' | ';
 
-export const convertToMultipleFiles = async (convertionOptions: ConvertionOptions): Promise<void> => {
+export const convertToMultipleFiles = async (convertionOptions: MultiFileConvertionOptions): Promise<void> => {
   const {
     typeName,
     interfaceName,
@@ -28,15 +26,16 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
     outputDirectory,
     srcFiles,
     modelOutputPath,
-    modelFileName
+    modelFileName,
+    iconsFolderName
   } = convertionOptions;
   let indexFileContent = '';
   let types = generateTypeDefinition(typeName);
 
   try {
     const filePaths = await getFilePathsFromRegex(srcFiles);
-    await deleteFolder(`${outputDirectory}/${generateIconsFolderName}`);
-    info(`deleting output directory: ${outputDirectory}/${generateIconsFolderName}`);
+    await deleteFolder(`${outputDirectory}/${iconsFolderName}`);
+    info(`deleting output directory: ${outputDirectory}/${iconsFolderName}`);
 
     for (let i = 0; i < filePaths.length; i++) {
       const fileNameWithEnding = path.basename(filePaths[i]);
@@ -50,9 +49,9 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
         const svgConstant = generateUntypedSvgConstant(variableName, typeName, optimizedSvg.data);
         const generatedFileName = `${prefix}-${filenameWithoutEnding}.icon`;
-        indexFileContent += generateExportStatement(generatedFileName, generateIconsFolderName);
-        await writeFile(`${outputDirectory}/${generateIconsFolderName}`, generatedFileName, svgConstant);
-        info(`write file svg: ${outputDirectory}/${generateIconsFolderName}/${generatedFileName}.ts`);
+        indexFileContent += generateExportStatement(generatedFileName, iconsFolderName);
+        await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
+        info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
 
         types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
       }
@@ -60,7 +59,7 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
     const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
-      `${outputDirectory}/${generateIconsFolderName}/*.ts`,
+      `${outputDirectory}/${iconsFolderName}/*.ts`,
       `${outputDirectory}/index.ts`
     ]);
     compileSources(generatedTypeScriptFilePaths);
@@ -70,7 +69,7 @@ export const convertToMultipleFiles = async (convertionOptions: ConvertionOption
 
     if (modelOutputPath && modelFileName) {
       const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
-      await writeFile(modelOutputPath, `${modelFileName}.model`, modelFile);
+      await writeFile(modelOutputPath, modelFileName, modelFile);
       info(`model-file successfully generated under ${modelOutputPath}/${modelFileName}.model.ts`);
     }
 

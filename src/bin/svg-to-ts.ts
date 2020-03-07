@@ -1,97 +1,54 @@
 #!/usr/bin/env node
 import commander from 'commander';
-import { cosmiconfig, cosmiconfigSync } from 'cosmiconfig';
 
+import * as packgeJSON from '../../package.json';
 import { Delimiter } from '../lib/generators/code-snippet-generators';
 import { convertToSingleFile } from '../lib/converters/single-file.converter';
 import { convertToMultipleFiles } from '../lib/converters/multiple-files.converter';
+import { DEFAULT_OPTIONS } from '../lib/options/default-options';
+import { getOptions, MultiFileConvertionOptions, SingleFileConvertionOptions } from '../lib/options/convertion-options';
 
-import * as packgeJSON from '../../package.json';
-
-export interface ConvertionOptions {
-  delimiter: Delimiter;
-  typeName: string;
-  prefix: string;
-  fileName: string;
-  interfaceName: string;
-  srcFiles: string[];
-  outputDirectory: string;
-  modelOutputPath: string;
-  modelFileName: string;
-}
-
-const DEFAULTS = {
-  fileName: 'my-icons',
-  delimiter: Delimiter.SNAKE,
-  interfaceName: 'MyIcon',
-  outputDirectory: './dist',
-  prefix: 'myIcon',
-  sourceFilesRegex: ['*.svg'],
-  typeName: 'myIcons',
-  optimizeForLazyLoading: false
-};
-
-function collect(value, previous) {
-  return previous.concat([value]);
-}
-
-const moduleName = 'svg-to-ts';
-const explorerSync = cosmiconfigSync(moduleName);
-
-const searchedFor = explorerSync.search();
-console.log('Searchedfor', searchedFor);
+const collect = (value, previous) => previous.concat([value]);
 
 commander
   .version(packgeJSON.version)
-  .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULTS.typeName)
-  .option('-f --fileName <string>', 'name of the generated file', DEFAULTS.fileName)
+  .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
+  .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
   .option(
     '-d --delimiter <Delimiter>',
     `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,
-    DEFAULTS.delimiter
+    DEFAULT_OPTIONS.delimiter
   )
-  .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULTS.prefix)
-  .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULTS.interfaceName)
+  .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULT_OPTIONS.prefix)
+  .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULT_OPTIONS.interfaceName)
   .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
-  .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULTS.outputDirectory)
-  .option('--optimizeForLazyLoading <boolean>', 'optimize the output for lazyloading', DEFAULTS.optimizeForLazyLoading)
-  .option('--modelOutputPath <string>', 'Output path for the types file')
-  .option('--modelFileName <string>', 'FileName of the model file')
+  .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULT_OPTIONS.outputDirectory)
+  .option(
+    '--optimizeForLazyLoading <boolean>',
+    'optimize the output for lazyloading',
+    DEFAULT_OPTIONS.optimizeForLazyLoading
+  )
+  .option(
+    '--modelOutputPath <string>',
+    'Output path for the types file (only necessary when optimizeForLazyLoading option is enabled)',
+    DEFAULT_OPTIONS.modelOutputPath
+  )
+  .option(
+    '--modelFileName <string>',
+    'FileName of the model file (only necessary when optimizeForLazyLoading option is enabled)',
+    DEFAULT_OPTIONS.modelFileName
+  )
+  .option(
+    '--iconsFolderName <string>',
+    'Name of the folder the icons will be generated to (only necessary when optimizeForLazyLoading option is enabled)',
+    DEFAULT_OPTIONS.iconsFolderName
+  )
   .parse(process.argv);
 
-const {
-  delimiter,
-  fileName,
-  interfaceName,
-  outputDirectory,
-  prefix,
-  typeName,
-  modelFileName,
-  modelOutputPath
-} = commander;
+const convertionOptions = getOptions();
 
-// Because of commander adding default value to params
-// See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
-let srcFiles = commander.srcFiles;
-if (srcFiles.length === 0) {
-  srcFiles = DEFAULTS.sourceFilesRegex;
-}
-const optimizeForLazyLoading = commander.optimizeForLazyLoading;
-
-const convertionOptions = {
-  delimiter,
-  typeName,
-  fileName,
-  prefix,
-  interfaceName,
-  srcFiles,
-  outputDirectory,
-  modelOutputPath,
-  modelFileName
-};
-
-if (optimizeForLazyLoading) {
-  convertToMultipleFiles(convertionOptions);
+if (convertionOptions.optimizeForLazyLoading) {
+  convertToMultipleFiles(convertionOptions as MultiFileConvertionOptions);
 } else {
-  convertToSingleFile(convertionOptions);
+  convertToSingleFile(convertionOptions as SingleFileConvertionOptions);
 }
