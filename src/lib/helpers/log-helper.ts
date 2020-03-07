@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import { log } from 'util';
 
 const messagePrefix = 'svg-to-ts: ';
 
