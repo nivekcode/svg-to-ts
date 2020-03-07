@@ -11,7 +11,7 @@ import {
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { compileSources } from '../compiler/typescript-compiler';
-import { info, success } from '../helpers/log-helper';
+import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
 
@@ -37,6 +37,7 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     await deleteFolder(`${outputDirectory}/${iconsFolderName}`);
     info(`deleting output directory: ${outputDirectory}/${iconsFolderName}`);
 
+    separatorStart('File optimization');
     for (let i = 0; i < filePaths.length; i++) {
       const fileNameWithEnding = path.basename(filePaths[i]);
       const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
@@ -56,6 +57,7 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
         types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
       }
     }
+    separatorEnd();
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
     const generatedTypeScriptFilePaths = await getFilePathsFromRegex([

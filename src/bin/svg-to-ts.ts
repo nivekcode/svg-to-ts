@@ -7,6 +7,7 @@ import { convertToSingleFile } from '../lib/converters/single-file.converter';
 import { convertToMultipleFiles } from '../lib/converters/multiple-files.converter';
 import { DEFAULT_OPTIONS } from '../lib/options/default-options';
 import { getOptions, MultiFileConvertionOptions, SingleFileConvertionOptions } from '../lib/options/convertion-options';
+import { printLogo } from '../lib/helpers/log-helper';
 
 const collect = (value, previous) => previous.concat([value]);
 
@@ -45,6 +46,7 @@ commander
   )
   .parse(process.argv);
 
+printLogo();
 const convertionOptions = getOptions();
 
 if (convertionOptions.optimizeForLazyLoading) {
