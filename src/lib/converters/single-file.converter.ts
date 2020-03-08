@@ -1,7 +1,5 @@
 import * as path from 'path';
 
-import { ConvertionOptions } from '../../bin/svg-to-ts';
-
 import {
   generateInterfaceDefinition,
   generateSvgConstant,
@@ -11,12 +9,13 @@ import {
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { extractSvgContent, writeFile } from '../helpers/file-helpers';
-import { success, underlineSuccess } from '../helpers/log-helper';
+import { error, success, underlineSuccess } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
+import { SingleFileConvertionOptions } from '../options/convertion-options';
 
 const typesDelimitor = ' | ';
 
-export const convertToSingleFile = async (convertionOptions: ConvertionOptions): Promise<void> => {
+export const convertToSingleFile = async (convertionOptions: SingleFileConvertionOptions): Promise<void> => {
   const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles, fileName } = convertionOptions;
   let svgConstants = '';
   let types = generateTypeDefinition(typeName);
@@ -44,7 +43,7 @@ export const convertToSingleFile = async (convertionOptions: ConvertionOptions):
       await writeFile(outputDirectory, fileName, fileContent);
       success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
     }
-  } catch (error) {
-    error('Something went wrong', error);
+  } catch (exception) {
+    error(`Something went wrong: ${exception}`);
   }
 };
