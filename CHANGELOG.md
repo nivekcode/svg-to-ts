@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.2.1...v3.3.0) (2020-03-08)
+
+
+### Features
+
+* **config:** read config from package.json, rc file and args ([524655f](https://github.com/kreuzerk/svg-to-ts/commit/524655fea3518e57c86c04896bb6c1ad6d4e4151))
+
 ## [3.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.2.0...v3.2.1) (2020-03-05)
 
 
