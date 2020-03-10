@@ -9,8 +9,7 @@ import {
   generateVariableName
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
-import { compileSources } from '../compiler/typescript-compiler';
+import { deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
@@ -60,14 +59,6 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     separatorEnd();
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
-    const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
-      `${outputDirectory}/${iconsFolderName}/*.ts`,
-      `${outputDirectory}/index.ts`
-    ]);
-    compileSources(generatedTypeScriptFilePaths);
-    info(`compile Typescript - generate JS and d.ts`);
-    deleteFiles(generatedTypeScriptFilePaths);
-    info(`delete Typescript files`);
 
     if (modelOutputPath && modelFileName) {
       const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
