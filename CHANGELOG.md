@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.0...v3.3.1) (2020-03-10)
+
+
+### Bug Fixes
+
+* **compile:** do not compile typescript sources ([ef8b79d](https://github.com/kreuzerk/svg-to-ts/commit/ef8b79dc3dc2db329b14754aa3b341efa76d6a80))
+
 # [3.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.2.1...v3.3.0) (2020-03-08)
 
 
