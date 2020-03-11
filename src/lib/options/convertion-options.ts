@@ -19,7 +19,6 @@ export interface SingleFileConvertionOptions extends ConvertionOptions {
 
 export interface MultiFileConvertionOptions extends ConvertionOptions {
   modelFileName: string;
-  modelOutputPath: string;
   iconsFolderName: string;
 }
 

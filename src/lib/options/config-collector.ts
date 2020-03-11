@@ -48,11 +48,6 @@ const mergeWithDefaults = (
   }
 
   if (configOptions.optimizeForLazyLoading) {
-    if (!(configOptions as MultiFileConvertionOptions).modelOutputPath) {
-      (configOptions as MultiFileConvertionOptions).modelOutputPath = DEFAULT_OPTIONS.modelOutputPath;
-      info(`No modelOutputPath provided, "${DEFAULT_OPTIONS.modelOutputPath}" will be used`);
-    }
-
     if (!(configOptions as MultiFileConvertionOptions).modelFileName) {
       (configOptions as MultiFileConvertionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
       info(`No modelFileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);

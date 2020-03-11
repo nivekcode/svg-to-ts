@@ -11,7 +11,6 @@ export const collectArgumentOptions = (): SingleFileConvertionOptions | MultiFil
     prefix,
     typeName,
     modelFileName,
-    modelOutputPath,
     iconsFolderName,
     optimizeForLazyLoading
   } = commander;
@@ -32,7 +31,6 @@ export const collectArgumentOptions = (): SingleFileConvertionOptions | MultiFil
     prefix,
     typeName,
     modelFileName,
-    modelOutputPath,
     iconsFolderName,
     optimizeForLazyLoading
   };

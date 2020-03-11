@@ -34,12 +34,17 @@ export const generateSvgConstant = (
             };`;
 };
 
-export const generateUntypedSvgConstant = (
+export const generateSvgConstantWithImport = (
   variableName: string,
   filenameWithoutEnding: string,
+  interfaceName: string,
+  modelFileName: string,
   data: string
 ): string => {
-  return `export const ${variableName}: {name: any, data: string} = {
+  return `
+    import {${interfaceName}} from './${modelFileName}';
+  
+    export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
                 data: '${data}'
             };`;

@@ -3,9 +3,9 @@ import * as path from 'path';
 import {
   generateExportStatement,
   generateInterfaceDefinition,
+  generateSvgConstantWithImport,
   generateTypeDefinition,
   generateTypeName,
-  generateUntypedSvgConstant,
   generateVariableName
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
@@ -24,7 +24,6 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     delimiter,
     outputDirectory,
     srcFiles,
-    modelOutputPath,
     modelFileName,
     iconsFolderName
   } = convertionOptions;
@@ -47,7 +46,13 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
         const optimizedSvg = await svgOptimizer.optimize(rawSvg);
         const variableName = generateVariableName(prefix, filenameWithoutEnding);
         const typeName = generateTypeName(filenameWithoutEnding, delimiter);
-        const svgConstant = generateUntypedSvgConstant(variableName, typeName, optimizedSvg.data);
+        const svgConstant = generateSvgConstantWithImport(
+          variableName,
+          typeName,
+          interfaceName,
+          modelFileName,
+          optimizedSvg.data
+        );
         const generatedFileName = `${prefix}-${filenameWithoutEnding}.icon`;
         indexFileContent += generateExportStatement(generatedFileName, iconsFolderName);
         await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
@@ -57,13 +62,14 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
       }
     }
     separatorEnd();
+    indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
 
-    if (modelOutputPath && modelFileName) {
+    if (modelFileName) {
       const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
-      await writeFile(modelOutputPath, modelFileName, modelFile);
-      info(`model-file successfully generated under ${modelOutputPath}/${modelFileName}.model.ts`);
+      await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
+      info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
     }
 
     success('========================================================');

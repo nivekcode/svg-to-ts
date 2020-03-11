@@ -30,11 +30,6 @@ commander
     DEFAULT_OPTIONS.optimizeForLazyLoading
   )
   .option(
-    '--modelOutputPath <string>',
-    'Output path for the types file (only necessary when optimizeForLazyLoading option is enabled)',
-    DEFAULT_OPTIONS.modelOutputPath
-  )
-  .option(
     '--modelFileName <string>',
     'FileName of the model file (only necessary when optimizeForLazyLoading option is enabled)',
     DEFAULT_OPTIONS.modelFileName
