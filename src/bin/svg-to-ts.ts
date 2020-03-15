@@ -40,8 +40,13 @@ commander
     DEFAULT_OPTIONS.iconsFolderName
   )
   .option(
+    '--additionalModelOutputPath <string>',
+    'Additional outputpath for the models file (only helpful when optimizeForLazyLoading option is enabled)',
+    DEFAULT_OPTIONS.additionalModelOutputPath
+  )
+  .option(
     '--preCompileSources <boolean>',
-    'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files',
+    'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when optimizeForLazyLoading option is enabled)',
     DEFAULT_OPTIONS.preCompileSources
   )
   .parse(process.argv);

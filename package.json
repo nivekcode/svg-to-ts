@@ -14,6 +14,7 @@
     "start": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg'",
     "start:ofl": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true",
     "start:ofl:preCompile": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true --preCompileSources true",
+    "start:ofl:preCompile-additionalPath": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true --preCompileSources true --additionalModelOutputPath ./additional",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "start:regex": "ts-node ./src/bin/svg-to-ts.ts -s './inputfilesRegex/**/*.svg'",
     "start:kebap": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' -d KEBAB",

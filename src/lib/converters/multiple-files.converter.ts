@@ -26,6 +26,7 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     outputDirectory,
     srcFiles,
     modelFileName,
+    additionalModelOutputPath,
     iconsFolderName,
     preCompileSources
   } = convertionOptions;
@@ -71,6 +72,11 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
       const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
       await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
       info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
+
+      if (additionalModelOutputPath) {
+        await writeFile(`${additionalModelOutputPath}`, modelFileName, modelFile);
+        info(`additional model-file successfully generated under ${additionalModelOutputPath}/${modelFileName}.ts`);
+      }
     }
 
     if (preCompileSources) {
