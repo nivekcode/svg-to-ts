@@ -39,6 +39,11 @@ commander
     'Name of the folder the icons will be generated to (only necessary when optimizeForLazyLoading option is enabled)',
     DEFAULT_OPTIONS.iconsFolderName
   )
+  .option(
+    '--preCompileSources <boolean>',
+    'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files',
+    DEFAULT_OPTIONS.preCompileSources
+  )
   .parse(process.argv);
 
 printLogo();

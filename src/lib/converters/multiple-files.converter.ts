@@ -9,10 +9,11 @@ import {
   generateVariableName
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
+import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
+import { compileSources } from '../compiler/typescript-compiler';
 
 const typesDelimitor = ' | ';
 
@@ -25,7 +26,8 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     outputDirectory,
     srcFiles,
     modelFileName,
-    iconsFolderName
+    iconsFolderName,
+    preCompileSources
   } = convertionOptions;
   let indexFileContent = '';
   let types = generateTypeDefinition(typeName);
@@ -57,7 +59,6 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
         indexFileContent += generateExportStatement(generatedFileName, iconsFolderName);
         await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
         info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
-
         types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
       }
     }
@@ -70,6 +71,17 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
       const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
       await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
       info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
+    }
+
+    if (preCompileSources) {
+      const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
+        `${outputDirectory}/${iconsFolderName}/*.ts`,
+        `${outputDirectory}/index.ts`
+      ]);
+      compileSources(generatedTypeScriptFilePaths);
+      info(`compile Typescript - generate JS and d.ts`);
+      deleteFiles(generatedTypeScriptFilePaths);
+      info(`delete Typescript files`);
     }
 
     success('========================================================');

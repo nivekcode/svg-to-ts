@@ -20,6 +20,7 @@ export interface SingleFileConvertionOptions extends ConvertionOptions {
 export interface MultiFileConvertionOptions extends ConvertionOptions {
   modelFileName: string;
   iconsFolderName: string;
+  preCompileSources: boolean;
 }
 
 export const getOptions = (): MultiFileConvertionOptions | SingleFileConvertionOptions => {

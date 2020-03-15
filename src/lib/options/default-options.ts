@@ -13,5 +13,6 @@ export const DEFAULT_OPTIONS = {
   optimizeForLazyLoading: false,
   modelOutputPath: DEFAULT_OUTPUT_PATH,
   modelFileName: 'my-icons.model',
-  iconsFolderName: 'build'
+  iconsFolderName: 'build',
+  preCompileSources: false
 };

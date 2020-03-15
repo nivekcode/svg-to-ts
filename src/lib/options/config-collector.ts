@@ -58,6 +58,10 @@ const mergeWithDefaults = (
       info(`No iconsFolderName provided, "${DEFAULT_OPTIONS.iconsFolderName}" will be used`);
     }
 
+    if (!(configOptions as MultiFileConvertionOptions).preCompileSources) {
+      (configOptions as MultiFileConvertionOptions).preCompileSources = DEFAULT_OPTIONS.preCompileSources;
+      info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.preCompileSources}" will be used`);
+    }
     return configOptions as MultiFileConvertionOptions;
   } else {
     if (!(configOptions as SingleFileConvertionOptions).fileName) {
