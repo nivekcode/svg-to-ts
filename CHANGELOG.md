@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.1...v3.3.2) (2020-03-11)
+
+
+### Bug Fixes
+
+* **modelfile:** remove output path ([9f03426](https://github.com/kreuzerk/svg-to-ts/commit/9f03426a0fbd8ea39e109c2d73f38d75c9d72620))
+
 ## [3.3.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.0...v3.3.1) (2020-03-10)
 
 
