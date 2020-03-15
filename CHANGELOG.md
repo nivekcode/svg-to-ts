@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.2...v3.4.0) (2020-03-15)
+
+
+### Features
+
+* **precompilation:** add flag to precompile sources ([0f59a83](https://github.com/kreuzerk/svg-to-ts/commit/0f59a83e16af9f5f73e33a068c9f8d0fe8322e97))
+
 ## [3.3.2](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.1...v3.3.2) (2020-03-11)
 
 
