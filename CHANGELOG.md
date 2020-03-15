@@ -1,3 +1,11 @@
+# [3.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.4.0...v3.5.0) (2020-03-15)
+
+
+### Features
+
+* **modelOutput:** add additional model output path ([614b37a](https://github.com/kreuzerk/svg-to-ts/commit/614b37a485bf2ea1a789202a1385d1772509111b))
+* **modelOutput:** add warning icon ([8bde4d8](https://github.com/kreuzerk/svg-to-ts/commit/8bde4d890a88c2208e3cef5ad94d559420bb7d36))
+
 # [3.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.3.2...v3.4.0) (2020-03-15)
 
 
