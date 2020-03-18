@@ -1,6 +1,6 @@
 {
   "name": "svg-to-ts",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "Command line util that converts SVGs from a directory into a single TypeScript file",
   "main": "index.js",
   "scripts": {

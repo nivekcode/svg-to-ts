@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.5.0...v3.5.1) (2020-03-18)
+
+
+### Bug Fixes
+
+* **helpmenu:** add typescript as dependency ([65655e5](https://github.com/kreuzerk/svg-to-ts/commit/65655e554b250fdac957334336965ca954c58c0a))
+
 # [3.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.4.0...v3.5.0) (2020-03-15)
 
 
