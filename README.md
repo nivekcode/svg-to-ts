@@ -1,10 +1,10 @@
+![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
-- [What is svg-to-ts](#what-is-svg-to-ts)
-- [Who is this for](#who-is-this-for)
+- [What is svg-to-ts?](#what-is-svg-to-ts)
+- [Who is this for?](#who-is-this-for)
 - [Why you should use svg-to-ts](#why-you-should-use-svg-to-ts)
 - [How to use svg-to-ts](#how-to-use-svg-to-ts)
   - [Usage](#usage)
@@ -22,31 +22,34 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
+# What is svg-to-ts?
 
-# What is svg-to-ts
+`svg-to-ts` is a helper tool that converts your SVG icons to TypeScript. `svg-to-ts` can convert
+SVGs to either one TypeScript file with exported constants, multiple TypeScript files or
+compiled JavaScript files with according declaration files. Furthermore it generates all
+typings in form of interfaces and types.
 
-svg-to-ts is a helper tool that converts your SVG icons to TypeScript. svg-to-ts can convert
-SVGs to either one TypeScript file with exported constants, multiple TypeScript file or allready
-compiled JavaScript files with the according declaration files.
+The generated output can then be used in combination with a iconregistry to create a tree shakable icon library.
+[(More informations...)](#use-cases)
 
-# Who is this for
+# Who is this for?
 
-svg-to-ts is designed for autors of component libraries or icon libraries. Our examples and tutorials
-are made with Angular, however svg-to-ts can also be used with other frameworks or vanilla TypeScript / JavaScript.
+`svg-to-ts` is designed for autors of component libraries or icon libraries. Our examples and tutorials
+are made with Angular, however `svg-to-ts` can also be used with other frameworks or vanilla TypeScript / JavaScript.
 
 # Why you should use svg-to-ts
 
-- svg-to-ts was developed with the experiences of providin an icon library for a large enterprise.
-- The main goal is to provide icons in a tree shakable and performant way.
+- `svg-to-ts` helps you provide icons in a tree shakable and performant way.
 - You get free step to step guides in form of blog posts, that walk you through the process of creating your own tree shakable
   icon library
 - `svg-to-ts` optimizes your SVG icons under the hood
-- Automatic generation of types and interfaces for Typesafety
+- `svg-to-ts` automatically generates types and interfaces for your icons to improve typesafety
+- `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
+- highly configurable - supports multiple use cases.
 
 # How to use svg-to-ts
 
-svg-to-ts can supports multiple scenarios and can be used in multiple ways. It can either be used over the command line or
+`svg-to-ts` is a command line tool, it can either be used directly in your terminal or
 via npm script.
 
 ## Usage
@@ -55,7 +58,7 @@ via npm script.
 
 To execute `svg-to-ts` on the commmand line simply run `npx svg-to-ts --help` to see a list of available parameters.
 Once you know which parameters to use, you can use npx to execute svg-to-ts and pass some parameters to it. For example, if
-you want to convert all SVG file in your current folder to TypeScript constants. `npx svg-to-ts -s './*.svgh'`.
+you want to convert all SVG file in your current folder to TypeScript constants. `npx svg-to-ts -s './*.svg'`.
 
 ### Configuration in package.json or .rc file
 
@@ -125,7 +128,7 @@ If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sen
 ## Use-cases
 
 As mentioned above, `svg-to-ts` supports different use-cases. You can either generate you library to a single TypeScript file with multiple constants, to single TypeScript file per Icon
-or to allready precompiled icons.
+or to allready precompiled JavaScript files.
 
 ### Use Case 1 - Treeshakable and typesafe with one file (simpler use cases)
 
@@ -172,7 +175,7 @@ applications, you may want to make the icons even more tree shakable.
 In Angular, for example, having all icons in a single file shakes out the icons that are not used. However, icons always
 end up together in a chunk. The `optimizeForLazyLoading` flag allows you to configure `svg-to-ts` that icons are
 generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
-gets reduced, but also, where they end up. Means, a icon that is only used in a lazy loaded Angular feature module, will only
+gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-scr2.png)
 
