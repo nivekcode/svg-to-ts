@@ -1,3 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [What is svg-to-ts](#what-is-svg-to-ts)
+- [Who is this for](#who-is-this-for)
+- [Why you should use svg-to-ts](#why-you-should-use-svg-to-ts)
+- [How to use svg-to-ts](#how-to-use-svg-to-ts)
+  - [Usage](#usage)
+    - [Command line](#command-line)
+    - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
+      - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
+      - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
+  - [Use-cases](#use-cases)
+    - [Use Case 1 - Treeshakable and typesafe with one file (simpler use cases)](#use-case-1---treeshakable-and-typesafe-with-one-file-simpler-use-cases)
+      - [Example usage](#example-usage)
+    - [Use Case 2 - Fully tree shakable and optimized for lazy loading (more sophisticated)](#use-case-2---fully-tree-shakable-and-optimized-for-lazy-loading-more-sophisticated)
+- [FAQ](#faq)
+  - [Which approach should I use](#which-approach-should-i-use)
+  - [Standalone library](#standalone-library)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 # What is svg-to-ts
@@ -108,9 +132,6 @@ or to allready precompiled icons.
 ![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/example-src1.png)
 Only the icons included in the consuming SPA also end up in the final bundle of the SPA.
 
-when using this option, each file gets optimized and converted into a constant. Interface and type also get automatically generated.
-![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/howItWorks.png)
-
 **We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
 [Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
 
@@ -126,6 +147,21 @@ Available configurations:
 | srcFiles        | string              | "/\*.svg" | input files matching the given filename pattern                   |
 | outputDirectory | string              | "./dist"  | name of the output directory                                      |
 | outputDirectory | string              | "./dist"  | name of the output directory                                      |
+
+#### Example usage
+
+Let's say we have the following four svg files in a `inputfiles` folder.
+
+- expressionless.svg
+- full.svg
+- laughing.svg
+- smiling-face.svg
+
+We can now run
+`svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon`
+and we end up with the following file in our `dist` folder.
+
+![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/output.png)
 
 ### Use Case 2 - Fully tree shakable and optimized for lazy loading (more sophisticated)
 
@@ -176,18 +212,3 @@ advantages:
 - Simplified build process
 - Icons can be released independent of the component library
 - No need to let `svg-to-ts` compile the icons - just set the `compile` flag to false.
-
-# Example
-
-Let's say we have the following four svg files in a `inputfiles` folder.
-
-- expressionless.svg
-- full.svg
-- laughing.svg
-- smiling-face.svg
-
-We can now run
-`svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon`
-and we end up with the following file in our `dist` folder.
-
-![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/output.png)
