@@ -103,90 +103,79 @@ If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sen
 As mentioned above, `svg-to-ts` supports different use-cases. You can either generate you library to a single TypeScript file with multiple constants, to single TypeScript file per Icon
 or to allready precompiled icons.
 
-### Single file with multiple constants
+### Use Case 1 - Treeshakable and typesafe with one file (simpler use cases)
+
+![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/example-src1.png)
+Only the icons included in the consuming SPA also end up in the final bundle of the SPA.
 
 when using this option, each file gets optimized and converted into a constant. Interface and type also get automatically generated.
-![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/howItWorks.png)
+![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/howItWorks.png)
 
-We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.
+**We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
 [Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
 
 Available configurations:
 
-| --version       | type      | default   | output the version number                                         |
-| --------------- | --------- | --------- | ----------------------------------------------------------------- |
-| typeName        | string    | myIcons   | name of the generated type                                        |
-| prefix          | string    | myIcon    | prefix for the generated svg constants                            |
-| interfaceName   | string    | MyIcon    | name for the generated interface                                  |
-| fileName        | stirng    | my-icons  | file name of the generated file                                   |
-| delimiter       | Delimiter | SNAKE     | delimiter which is used to generate the types and name properties |
-| srcFiles        | string    | "/\*.svg" | input files matching the given filename pattern                   |
-| outputDirectory | string    | "./dist"  | name of the output directory                                      |
-| outputDirectory | string    | "./dist"  | name of the output directory                                      |
+| --version       | type                | default   | output the version number                                         |
+| --------------- | ------------------- | --------- | ----------------------------------------------------------------- |
+| typeName        | string              | myIcons   | name of the generated type                                        |
+| prefix          | string              | myIcon    | prefix for the generated svg constants                            |
+| interfaceName   | string              | MyIcon    | name for the generated interface                                  |
+| fileName        | stirng              | my-icons  | file name of the generated file                                   |
+| delimiter       | CAMEL, KEBAP, SNAKE | SNAKE     | delimiter which is used to generate the types and name properties |
+| srcFiles        | string              | "/\*.svg" | input files matching the given filename pattern                   |
+| outputDirectory | string              | "./dist"  | name of the output directory                                      |
+| outputDirectory | string              | "./dist"  | name of the output directory                                      |
 
-### Multiple files with multiple constants - optimized for lazy loading
+### Use Case 2 - Fully tree shakable and optimized for lazy loading (more sophisticated)
 
-# What it does
+![fully tree shakable](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/fully-treeshakable.png)
+Often, having the SVGs in a single file is enough. However if you are in a more complex environment with bigger business
+applications, you may want to make the icons even more tree shakable.
 
-This library generates a Typescript file with your svg definitons. The file
-will be generated in the following format:
+In Angular, for example, having all icons in a single file shakes out the icons that are not used. However, icons always
+end up together in a chunk. The `optimizeForLazyLoading` flag allows you to configure `svg-to-ts` that icons are
+generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
+gets reduced, but also, where they end up. Means, a icon that is only used in a lazy loaded Angular feature module, will only
+end up there.
+![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-scr2.png)
 
-- For each SVG file we generate a const with a `name` and a `data` property.
-- We generate the types which match the name properties of the SVGS. This types are helpful to ensure the user adds only known icons
-- We generate an interface to ensure the structure of each SVG constant
+**We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
+[Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
 
-# SVG optimizations
+Available configurations:
 
-Additonally we also optimize the SVG icons with the help of the `svgo` package. To optimize the SVG we use the following configurations.
+| --version                 | type                | default   | output the version number                                                                                                                                                       |
+| ------------------------- | ------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| typeName                  | string              | myIcons   | name of the generated type                                                                                                                                                      |
+| prefix                    | string              | myIcon    | prefix for the generated svg constants                                                                                                                                          |
+| interfaceName             | string              | MyIcon    | name for the generated interface                                                                                                                                                |
+| fileName                  | stirng              | my-icons  | file name of the generated file                                                                                                                                                 |
+| delimiter                 | CAMEL, KEBAP, SNAKE | SNAKE     | delimiter which is used to generate the types and name properties                                                                                                               |
+| srcFiles                  | string              | "/\*.svg" | input files matching the given filename pattern                                                                                                                                 |
+| outputDirectory           | string              | "./dist"  | name of the output directory                                                                                                                                                    |
+| outputDirectory           | string              | "./dist"  | name of the output directory                                                                                                                                                    |
+| optimizeForLazyLoading    | boolean             | false     | when set to true, multiple files will be generated                                                                                                                              |
+| additionalModelOutputPath | string              | null      | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
+| iconsFolderName           | string              | "build"   | name of the folder we will build the TypeScript files to                                                                                                                        |
+| preCompileSources         | boolean             | false     | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
 
-- cleanupAttrs
-- removeDoctype
-- removeXMLProcInst
-- removeComments
-- removeMetadata
-- removeTitle
-- removeDesc
-- removeUselessDefs
-- removeEditorsNSData
-- removeEmptyAttrs
-- removeHiddenElems
-- removeEmptyText
-- removeEmptyContainers
-- removeViewBox
-- cleanupEnableBackground
-- convertStyleToAttrs
-- convertColors
-- convertPathData
-- convertTransform
-- removeUnknownsAndDefaults
-- removeNonInheritableGroupAttrs
-- removeUselessStrokeAndFill
-- removeUnusedNS
-- cleanupIDs
-- cleanupNumericValues
-- moveElemsAttrsToGroup
-- moveGroupAttrsToElems
-- collapseGroups
-- removeRasterImages
-- mergePaths
-- convertShapeToPath
-- sortAttrs
-- removeDimensions
+# FAQ
 
-# API
+## Which approach should I use
 
-The CLI can be used with the `tsvg` command. This command accepts the following arguments.
+This depends on your use case. If you have a simple application, it's probably enought to go with the single file and the constants.
+If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
 
-| -v  | --version                  | output the version number                                                                                |
-| --- | -------------------------- | -------------------------------------------------------------------------------------------------------- |
-| -t  | --typeName <string>        | name of the generated type (myIcons)                                                                     |
-| -p  | --prefix <string>          | prefix for the generated svg constants (myIcon)                                                          |
-| -i  | --interfaceName <string>   | name for the generated interface (MyIcon)                                                                |
-| -f  | --fileName <string>        | file name of the generated file (default: "my-icons")                                                    |
-| -d  | --delimiter <Delimiter>    | delimiter which is used to generate the types and name properties (CAMEL,KEBAB,SNAKE) (default: "SNAKE") |
-| -s  | --srcFiles <string>        | input files matching the given filename pattern (default: "\*.svg")                                      |
-| -o  | --outputDirectory <string> | name of the output directory (default: "./dist")                                                         |
-| -h  | --help                     | output usage information                                                                                 |
+## Standalone library
+
+The current configurations also allow you to put your icon registry inside the component library and the icons in a dedicated npm package. This has the following
+advantages:
+
+- Icons can be used with different registries
+- Simplified build process
+- Icons can be released independent of the component library
+- No need to let `svg-to-ts` compile the icons - just set the `compile` flag to false.
 
 # Example
 
