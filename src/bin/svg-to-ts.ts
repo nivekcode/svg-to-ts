@@ -47,7 +47,7 @@ commander
   .option(
     '--preCompileSources <boolean>',
     'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when optimizeForLazyLoading option is enabled)',
-    DEFAULT_OPTIONS.preCompileSources
+    DEFAULT_OPTIONS.compileSources
   )
   .parse(process.argv);
 
