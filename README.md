@@ -205,9 +205,9 @@ Available configurations:
 This depends on your use case. If you have a simple application, it's probably enought to go with the single file and the constants.
 If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
 
-## Standalone library
+## Is it possilbe to create a standalone library?
 
-The current configurations also allow you to put your icon registry inside the component library and the icons in a dedicated npm package. This has the following
+Yes, it is. The current configurations also allow you to put your icon registry inside the component library and the icons in a dedicated npm package. This has the following
 advantages:
 
 - Icons can be used with different registries
