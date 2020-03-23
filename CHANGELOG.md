@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.5.1...v4.0.0) (2020-03-23)
+
+
+### Features
+
+* **optimizeforlazyloading:** add compile sources flag ([b177737](https://github.com/kreuzerk/svg-to-ts/commit/b17773702e33d67956fb85cdaa3fd3d01ea621dc))
+
+
+### BREAKING CHANGES
+
+* **optimizeforlazyloading:** Rename preCompile sources to compileSources
+
 ## [3.5.1](https://github.com/kreuzerk/svg-to-ts/compare/v3.5.0...v3.5.1) (2020-03-18)
 
 
