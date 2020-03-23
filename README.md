@@ -179,7 +179,7 @@ gets reduced, but also, where they end up. Means, an icon that is only used in a
 end up there.
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
 
-**A step by step guide is coming soon**
+[Here's a step by step guide on how to create an icon library that is optimized for tree shaking](https://medium.com/angular-in-depth/how-to-create-a-fully-tree-shakable-icon-library-in-angular-c5488cf9cd76)
 
 Available configurations:
 
