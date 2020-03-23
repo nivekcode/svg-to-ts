@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.2...v4.0.3) (2020-03-23)
+
+
+### Bug Fixes
+
+* **README:** link blogpost with step to step guide ([be96c5f](https://github.com/kreuzerk/svg-to-ts/commit/be96c5f8a1ff9bef6dd46e6e66dc6d8accfb239c))
+
 ## [4.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.1...v4.0.2) (2020-03-23)
 
 
