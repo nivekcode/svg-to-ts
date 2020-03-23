@@ -177,7 +177,7 @@ end up together in a chunk. The `optimizeForLazyLoading` flag allows you to conf
 generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
 gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
-![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-scr2.png)
+![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
 
 **A step by step guide is coming soon**
 
