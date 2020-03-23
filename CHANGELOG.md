@@ -1,3 +1,11 @@
+## [4.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.1...v4.0.2) (2020-03-23)
+
+
+### Bug Fixes
+
+* **image:** rename generated file example ([1427eae](https://github.com/kreuzerk/svg-to-ts/commit/1427eae48236b14d8a94c6a45ea6f7c45ddb15e3))
+* **previewimage:** adjust image path ([6aea6d1](https://github.com/kreuzerk/svg-to-ts/commit/6aea6d1535de400c39c9a811a23a34688a106204))
+
 ## [4.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.0...v4.0.1) (2020-03-23)
 
 
