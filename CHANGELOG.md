@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.0...v4.0.1) (2020-03-23)
+
+
+### Bug Fixes
+
+* **image:** overwrite example src image ([2fa0d9f](https://github.com/kreuzerk/svg-to-ts/commit/2fa0d9f29b0817ba0430758b09c1fff98ea11ae2))
+
 # [4.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v3.5.1...v4.0.0) (2020-03-23)
 
 
