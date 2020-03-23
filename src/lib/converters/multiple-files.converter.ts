@@ -13,7 +13,7 @@ import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../help
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { svgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
-import { compileSources } from '../compiler/typescript-compiler';
+import { compile } from '../compiler/typescript-compiler';
 
 const typesDelimitor = ' | ';
 
@@ -28,7 +28,7 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     modelFileName,
     additionalModelOutputPath,
     iconsFolderName,
-    preCompileSources
+    compileSources
   } = convertionOptions;
   let indexFileContent = '';
   let types = generateTypeDefinition(typeName);
@@ -79,12 +79,12 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
       }
     }
 
-    if (preCompileSources) {
+    if (compileSources) {
       const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
         `${outputDirectory}/${iconsFolderName}/*.ts`,
         `${outputDirectory}/index.ts`
       ]);
-      compileSources(generatedTypeScriptFilePaths);
+      compile(generatedTypeScriptFilePaths);
       info(`compile Typescript - generate JS and d.ts`);
       deleteFiles(generatedTypeScriptFilePaths);
       info(`delete Typescript files`);

@@ -14,7 +14,7 @@ export const collectArgumentOptions = (): SingleFileConvertionOptions | MultiFil
     iconsFolderName,
     optimizeForLazyLoading,
     additionalModelOutputPath,
-    preCompileSources
+    compileSources
   } = commander;
 
   // Because of commander adding default value to params
@@ -36,6 +36,6 @@ export const collectArgumentOptions = (): SingleFileConvertionOptions | MultiFil
     iconsFolderName,
     optimizeForLazyLoading,
     additionalModelOutputPath,
-    preCompileSources
+    compileSources
   };
 };

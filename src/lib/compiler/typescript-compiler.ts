@@ -1,6 +1,6 @@
 import * as ts from 'typescript';
 
-export const compileSources = (filePaths: string[]): void => {
+export const compile = (filePaths: string[]): void => {
   const compilerOptions = {
     noEmitOnError: false,
     noImplicitAny: true,

@@ -179,8 +179,7 @@ gets reduced, but also, where they end up. Means, an icon that is only used in a
 end up there.
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-scr2.png)
 
-**We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
-[Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
+**A step by step guide is coming soon**
 
 Available configurations:
 
@@ -197,7 +196,7 @@ Available configurations:
 | optimizeForLazyLoading    | boolean             | false     | when set to true, multiple files will be generated                                                                                                                              |
 | additionalModelOutputPath | string              | null      | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string              | "build"   | name of the folder we will build the TypeScript files to                                                                                                                        |
-| preCompileSources         | boolean             | false     | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+| compileSources            | boolean             | false     | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
 
 # FAQ
 
@@ -206,9 +205,9 @@ Available configurations:
 This depends on your use case. If you have a simple application, it's probably enought to go with the single file and the constants.
 If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
 
-## Standalone library
+## Is it possilbe to create a standalone library?
 
-The current configurations also allow you to put your icon registry inside the component library and the icons in a dedicated npm package. This has the following
+Yes, it is. The current configurations also allow you to put your icon registry inside the component library and the icons in a dedicated npm package. This has the following
 advantages:
 
 - Icons can be used with different registries

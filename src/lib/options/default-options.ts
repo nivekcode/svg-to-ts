@@ -12,5 +12,5 @@ export const DEFAULT_OPTIONS = {
   additionalModelOutputPath: null,
   modelFileName: 'my-icons.model',
   iconsFolderName: 'build',
-  preCompileSources: false
+  compileSources: false
 };
