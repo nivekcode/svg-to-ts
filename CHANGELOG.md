@@ -1,3 +1,16 @@
+# [4.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.5...v4.1.0) (2020-03-25)
+
+
+### Bug Fixes
+
+* **args:** update args ([09fdd27](https://github.com/kreuzerk/svg-to-ts/commit/09fdd274722c8da13327889099b81180c8a012ce))
+
+
+### Features
+
+* **svgo:** use configuration to config svgo ([de279ae](https://github.com/kreuzerk/svg-to-ts/commit/de279ae76fdcc664b9dc5634bda340145cef2787))
+* **svgoconfig:** accept svgo config as parameter ([b2466e2](https://github.com/kreuzerk/svg-to-ts/commit/b2466e2a8fdde0effc20768ca943d635071fa2f6))
+
 ## [4.0.5](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.4...v4.0.5) (2020-03-25)
 
 ### Bug Fixes
