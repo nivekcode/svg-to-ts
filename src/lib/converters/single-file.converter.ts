@@ -10,13 +10,24 @@ import {
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { error, success, underlineSuccess } from '../helpers/log-helper';
-import { svgOptimizer } from '../helpers/svg-optimization';
 import { SingleFileConvertionOptions } from '../options/convertion-options';
+import { generateSvgOptimizer } from '../helpers/svg-optimization';
 
 const typesDelimitor = ' | ';
 
 export const convertToSingleFile = async (convertionOptions: SingleFileConvertionOptions): Promise<void> => {
-  const { typeName, prefix, delimiter, interfaceName, outputDirectory, srcFiles, fileName } = convertionOptions;
+  const {
+    typeName,
+    prefix,
+    delimiter,
+    interfaceName,
+    outputDirectory,
+    srcFiles,
+    fileName,
+    svgoConfig
+  } = convertionOptions;
+  const svgOptimizer = generateSvgOptimizer(svgoConfig);
+
   let svgConstants = '';
   let types = generateTypeDefinition(typeName);
 

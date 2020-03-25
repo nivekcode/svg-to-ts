@@ -20,6 +20,10 @@ export const writeFile = async (outputDirectory: string, fileName: string, fileC
   await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
 };
 
+export const readFile = async (filePath: string): Promise<any> => {
+  return await readfileFromFS(filePath, 'utf-8');
+};
+
 export const deleteFolder = async (directoryPath: string) => {
   if (fs.existsSync(directoryPath)) {
     fs.readdirSync(directoryPath).forEach((filePath: string) => {

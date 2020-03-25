@@ -11,7 +11,7 @@ import {
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
-import { svgOptimizer } from '../helpers/svg-optimization';
+import { generateSvgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
 import { compile } from '../compiler/typescript-compiler';
 
@@ -28,8 +28,11 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     modelFileName,
     additionalModelOutputPath,
     iconsFolderName,
+    svgoConfig,
     compileSources
   } = convertionOptions;
+  const svgOptimizer = generateSvgOptimizer(svgoConfig);
+
   let indexFileContent = '';
   let types = generateTypeDefinition(typeName);
 

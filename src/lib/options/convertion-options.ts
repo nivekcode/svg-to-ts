@@ -9,6 +9,7 @@ export interface ConvertionOptions {
   prefix: string;
   interfaceName: string;
   srcFiles: string[];
+  svgoConfig: any;
   outputDirectory: string;
   optimizeForLazyLoading: string;
 }
@@ -24,8 +25,8 @@ export interface MultiFileConvertionOptions extends ConvertionOptions {
   compileSources: boolean;
 }
 
-export const getOptions = (): MultiFileConvertionOptions | SingleFileConvertionOptions => {
-  const configOptions = collectConfigurationOptions();
+export const getOptions = async (): Promise<MultiFileConvertionOptions | SingleFileConvertionOptions> => {
+  const configOptions = await collectConfigurationOptions();
 
   if (configOptions) {
     return configOptions;
@@ -33,5 +34,5 @@ export const getOptions = (): MultiFileConvertionOptions | SingleFileConvertionO
   info(
     'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)'
   );
-  return collectArgumentOptions();
+  return await collectArgumentOptions();
 };
