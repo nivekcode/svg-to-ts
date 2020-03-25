@@ -86,7 +86,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "optimizeForLazyLoading": true,
     "modelFileName": "dinosaur-icon.model",
     "additionalModelFile": "./projects/dinosaur-icons/src/lib",
-    "preCompileSources": true
+    "compileSources": true
   }
 }
 ```
@@ -108,7 +108,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "optimizeForLazyLoading": true,
     "modelFileName": "dinosaur-icon.model",
     "additionalModelFile": "./projects/dinosaur-icons/src/lib",
-    "preCompileSources": true
+    "compileSources": true
   }
 }
 ```
