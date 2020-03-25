@@ -5,17 +5,20 @@ import { info } from '../helpers/log-helper';
 
 import { MultiFileConvertionOptions, SingleFileConvertionOptions } from './convertion-options';
 import { DEFAULT_OPTIONS } from './default-options';
+import { getSvgoConfig } from '../helpers/svg-optimization';
 
-export const collectConfigurationOptions = (): SingleFileConvertionOptions | MultiFileConvertionOptions | null => {
+export const collectConfigurationOptions = async (): Promise<
+  SingleFileConvertionOptions | MultiFileConvertionOptions | null
+> => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const cosmiConfigResult = explorerSync.search();
   cosmiConfigResult ? info(`Configuration found under: ${cosmiConfigResult.filepath}`) : info('No config found');
-  return cosmiConfigResult ? mergeWithDefaults(cosmiConfigResult.config) : null;
+  return cosmiConfigResult ? await mergeWithDefaults(cosmiConfigResult.config) : null;
 };
 
-const mergeWithDefaults = (
+const mergeWithDefaults = async (
   options: MultiFileConvertionOptions | SingleFileConvertionOptions
-): MultiFileConvertionOptions | SingleFileConvertionOptions => {
+): Promise<MultiFileConvertionOptions | SingleFileConvertionOptions> => {
   const configOptions = { ...options };
   if (!configOptions.typeName) {
     configOptions.typeName = DEFAULT_OPTIONS.typeName;
@@ -45,6 +48,13 @@ const mergeWithDefaults = (
   if (!configOptions.srcFiles) {
     configOptions.srcFiles = DEFAULT_OPTIONS.srcFiles;
     info(`No srcFiles provided, "${DEFAULT_OPTIONS.srcFiles}" will be used`);
+  }
+
+  if (!configOptions.svgoConfig) {
+    configOptions.svgoConfig = DEFAULT_OPTIONS.svgoConfig;
+    info(`No svgoConfig provided, "${DEFAULT_OPTIONS.svgoConfig}" will be used`);
+  } else {
+    configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
   }
 
   if (configOptions.optimizeForLazyLoading) {

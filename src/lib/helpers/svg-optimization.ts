@@ -1,3 +1,5 @@
+import { readFile } from './file-helpers';
+
 const svgo = require('svgo');
 
 export const svgOptimizer = new svgo({
@@ -103,3 +105,10 @@ export const svgOptimizer = new svgo({
     }
   ]
 });
+
+export const getSvgoConfig = async (svgoConfig: any): Promise<string> => {
+  if (typeof svgoConfig === 'string') {
+    return await readFile(svgoConfig);
+  }
+  return svgoConfig;
+};
