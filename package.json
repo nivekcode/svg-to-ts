@@ -12,6 +12,7 @@
     "format:write": "prettier --write 'src/**/*.ts'",
     "prebuild": "npm run copy:readme",
     "start": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg'",
+    "start:svgconfig": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --svgoConfig ./svgo-test.config.json",
     "start:ofl": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true",
     "start:ofl:preCompile": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true --preCompileSources true",
     "start:ofl:preCompile-additionalPath": "ts-node ./src/bin/svg-to-ts.ts -s './inputfiles/*.svg' --optimizeForLazyLoading true --preCompileSources true --additionalModelOutputPath ./additional",

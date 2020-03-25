@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "cleanupAttrs": true
+    },
+    {
+      "removeDoctype": true
+    }
+  ]
+}
