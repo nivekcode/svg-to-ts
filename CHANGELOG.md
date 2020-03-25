@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.4...v4.0.5) (2020-03-25)
+
+
+### Bug Fixes
+
+* **args:** rename preCompileSources to compileSources ([556203b](https://github.com/kreuzerk/svg-to-ts/commit/556203b309e8232e55f956882c70fcadca317650))
+
 ## [4.0.4](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.3...v4.0.4) (2020-03-25)
 
 
