@@ -30,7 +30,7 @@ export const generateSvgConstant = (
 ): string => {
   return `export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
-                data: '${data}'
+                data: \`${data}\`
             };`;
 };
 
@@ -46,7 +46,7 @@ export const generateSvgConstantWithImport = (
   
     export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
-                data: '${data}'
+                data: \`${data}\`
             };`;
 };
 
@@ -58,7 +58,7 @@ export const generateSvgStandaloneFile = (
 ): string => {
   return `export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
-                data: '${data}'
+                data: \`${data}\`
             };`;
 };
 
