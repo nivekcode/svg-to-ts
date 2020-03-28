@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.0...v4.1.1) (2020-03-28)
+
+
+### Bug Fixes
+
+* **escaping:** Use template literals instead of ' quotes to encapsulate svgs, as the quote character can occur in svgs. ([a5fd0a4](https://github.com/kreuzerk/svg-to-ts/commit/a5fd0a42fb7809bcdd5492df7d3d6625386e6b88))
+
 # [4.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.5...v4.1.0) (2020-03-25)
 
 
