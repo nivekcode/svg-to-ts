@@ -1,78 +1,65 @@
-import * as path from 'path';
-
 import {
   generateExportStatement,
   generateInterfaceDefinition,
   generateSvgConstantWithImport,
-  generateTypeDefinition,
-  generateTypeName,
-  generateVariableName
+  generateTypeDefinition
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { deleteFiles, deleteFolder, extractSvgContent, writeFile } from '../helpers/file-helpers';
+import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
-import { generateSvgOptimizer } from '../helpers/svg-optimization';
 import { MultiFileConvertionOptions } from '../options/convertion-options';
 import { compile } from '../compiler/typescript-compiler';
+import { filesProcessor } from './shared.converter';
 
-const typesDelimitor = ' | ';
+const writeFiles = async (outputDirectory, iconsFolderName, modelFileName, prefix, svgDefinitions) => {
+  // Using Promise.all we are making all files be processed in parallel as they have no dependency on each other
+  const fileContent = await Promise.all(
+    svgDefinitions.map(async svgDefinition => {
+      const svgConstant = generateSvgConstantWithImport(
+        svgDefinition.variableName,
+        svgDefinition.typeName,
+        svgDefinition.interfaceName,
+        modelFileName,
+        svgDefinition.data
+      );
+      const generatedFileName = `${prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
+      await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
+      info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
+      return generateExportStatement(generatedFileName, iconsFolderName);
+    })
+  );
+  return fileContent.join('');
+};
 
 export const convertToMultipleFiles = async (convertionOptions: MultiFileConvertionOptions): Promise<void> => {
   const {
     typeName,
     interfaceName,
     prefix,
-    delimiter,
     outputDirectory,
-    srcFiles,
     modelFileName,
     additionalModelOutputPath,
     iconsFolderName,
-    svgoConfig,
     compileSources
   } = convertionOptions;
-  const svgOptimizer = generateSvgOptimizer(svgoConfig);
-
-  let indexFileContent = '';
-  let types = generateTypeDefinition(typeName);
 
   try {
-    const filePaths = await getFilePathsFromRegex(srcFiles);
     await deleteFolder(`${outputDirectory}/${iconsFolderName}`);
     info(`deleting output directory: ${outputDirectory}/${iconsFolderName}`);
 
     separatorStart('File optimization');
-    for (let i = 0; i < filePaths.length; i++) {
-      const fileNameWithEnding = path.basename(filePaths[i]);
-      const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
-
-      if (extension === 'svg') {
-        const rawSvg = await extractSvgContent(filePaths[i]);
-        info(`optimize svg: ${fileNameWithEnding}`);
-        const optimizedSvg = await svgOptimizer.optimize(rawSvg);
-        const variableName = generateVariableName(prefix, filenameWithoutEnding);
-        const typeName = generateTypeName(filenameWithoutEnding, delimiter);
-        const svgConstant = generateSvgConstantWithImport(
-          variableName,
-          typeName,
-          interfaceName,
-          modelFileName,
-          optimizedSvg.data
-        );
-        const generatedFileName = `${prefix}-${filenameWithoutEnding}.icon`;
-        indexFileContent += generateExportStatement(generatedFileName, iconsFolderName);
-        await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
-        info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
-        types += i === filePaths.length - 1 ? `'${typeName}';` : `'${typeName}'${typesDelimitor}`;
-      }
-    }
+    const svgDefinitions = await filesProcessor(convertionOptions);
+    let indexFileContent = await writeFiles(outputDirectory, iconsFolderName, modelFileName, prefix, svgDefinitions);
     separatorEnd();
     indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
 
     if (modelFileName) {
-      const modelFile = (types += generateInterfaceDefinition(interfaceName, typeName));
+      const modelFile = `${generateTypeDefinition(typeName, svgDefinitions)}${generateInterfaceDefinition(
+        interfaceName,
+        typeName
+      )}`;
       await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
       info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
 
