@@ -34,5 +34,5 @@ export const getOptions = async (): Promise<MultiFileConvertionOptions | SingleF
   info(
     'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)'
   );
-  return await collectArgumentOptions();
+  return collectArgumentOptions();
 };

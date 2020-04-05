@@ -21,7 +21,7 @@ export const writeFile = async (outputDirectory: string, fileName: string, fileC
 };
 
 export const readFile = async (filePath: string): Promise<any> => {
-  return await readfileFromFS(filePath, 'utf-8');
+  return readfileFromFS(filePath, 'utf-8');
 };
 
 export const deleteFolder = async (directoryPath: string) => {
