@@ -6,6 +6,8 @@ import { info } from '../helpers/log-helper';
 export interface ConvertionOptions {
   delimiter: Delimiter;
   typeName: string;
+  generateType: boolean;
+  generateTypeObject: boolean;
   prefix: string;
   interfaceName: string;
   srcFiles: string[];

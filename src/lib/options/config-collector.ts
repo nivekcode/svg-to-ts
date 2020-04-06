@@ -20,9 +20,20 @@ const mergeWithDefaults = async (
   options: MultiFileConvertionOptions | SingleFileConvertionOptions
 ): Promise<MultiFileConvertionOptions | SingleFileConvertionOptions> => {
   const configOptions = { ...options };
+
   if (!configOptions.typeName) {
     configOptions.typeName = DEFAULT_OPTIONS.typeName;
     info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
+  }
+
+  if (configOptions.generateType != null) {
+    configOptions.generateType = DEFAULT_OPTIONS.generateType;
+    info(`No noGenerateType provided, "${DEFAULT_OPTIONS.generateType}" will be used`);
+  }
+
+  if (configOptions.generateTypeObject != null) {
+    configOptions.generateTypeObject = DEFAULT_OPTIONS.generateTypeObject;
+    info(`No generateTypeObject provided, "${DEFAULT_OPTIONS.generateTypeObject}" will be used`);
   }
 
   if (!configOptions.interfaceName) {

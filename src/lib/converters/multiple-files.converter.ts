@@ -56,10 +56,9 @@ export const convertToMultipleFiles = async (convertionOptions: MultiFileConvert
     info(`write index.ts`);
 
     if (modelFileName) {
-      const modelFile = `${generateTypeDefinition(typeName, svgDefinitions)}${generateInterfaceDefinition(
-        interfaceName,
-        typeName
-      )}`;
+      const typeDefinition = generateTypeDefinition(convertionOptions, svgDefinitions);
+      const interfaceDefinition = generateInterfaceDefinition(convertionOptions);
+      const modelFile = `${typeDefinition}${interfaceDefinition}`;
       await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
       info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
 
