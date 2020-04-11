@@ -26,12 +26,12 @@ const mergeWithDefaults = async (
     info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
   }
 
-  if (configOptions.generateType != null) {
+  if (configOptions.generateType === null) {
     configOptions.generateType = DEFAULT_OPTIONS.generateType;
     info(`No generateType provided, "${DEFAULT_OPTIONS.generateType}" will be used`);
   }
 
-  if (configOptions.generateTypeObject != null) {
+  if (configOptions.generateTypeObject === null) {
     configOptions.generateTypeObject = DEFAULT_OPTIONS.generateTypeObject;
     info(`No generateTypeObject provided, "${DEFAULT_OPTIONS.generateTypeObject}" will be used`);
   }

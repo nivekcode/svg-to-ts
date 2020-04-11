@@ -16,7 +16,7 @@ export const generateInterfaceDefinition = (
   const iconNameType =
     convertionOptions.generateType || convertionOptions.generateTypeObject ? convertionOptions.typeName : 'string';
   return `export interface ${convertionOptions.interfaceName}{
-        name: ${iconNameType};
+        name: ${convertionOptions.generateType ? iconNameType : 'string'};
         data: string;}`;
 };
 
@@ -29,7 +29,7 @@ export const generateTypeDefinition = (
     
   `;
 
-  if (convertionOptions.generateType || convertionOptions.generateTypeObject) {
+  if (convertionOptions.generateType) {
     typesDefinition += `
     export type ${convertionOptions.typeName} = ${svgDefinitions
       .map(({ typeName }, index) => `'${typeName}'${index === svgDefinitions.length - 1 ? '' : ' | '}`)
@@ -42,7 +42,7 @@ export const generateTypeDefinition = (
       ${svgDefinitions
         .map(
           ({ typeName }, index) =>
-            `${typeName}: '${typeName}' as ${convertionOptions.typeName}${
+            `${typeName}: '${typeName}'${convertionOptions.generateType ? ` as ${convertionOptions.typeName}` : ''}${
               index === svgDefinitions.length - 1 ? '' : ','
             }`
         )
