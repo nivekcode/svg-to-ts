@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.0...v4.2.1) (2020-04-12)
+
+
+### Bug Fixes
+
+* **docs:** add missing options for single file conversion ([0c6c3e1](https://github.com/kreuzerk/svg-to-ts/commit/0c6c3e1684b3532d436a6fef4d53b1998efe56a1))
+
 # [4.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.1...v4.2.0) (2020-04-12)
 
 
