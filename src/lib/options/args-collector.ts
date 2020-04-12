@@ -10,6 +10,8 @@ export const setupCommander = () => {
   commander
     .version(packgeJSON.version)
     .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
+    .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
+    .option('--generateTypeObject <boolean>', 'generate type object', DEFAULT_OPTIONS.generateTypeObject)
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
     .option(
       '-d --delimiter <Delimiter>',
@@ -53,14 +55,30 @@ export const setupCommander = () => {
     .parse(process.argv);
 };
 
+const toBoolean = (str: string, defaultValue: boolean): boolean => {
+  let result = defaultValue;
+  switch (str) {
+    case 'false':
+      result = false;
+      break;
+    case '':
+    case 'true':
+      result = true;
+      break;
+  }
+  return result;
+};
+
 export const collectArgumentOptions = async (): Promise<SingleFileConvertionOptions | MultiFileConvertionOptions> => {
-  const {
+  let {
     delimiter,
     fileName,
     interfaceName,
     outputDirectory,
     prefix,
     typeName,
+    generateType,
+    generateTypeObject,
     modelFileName,
     iconsFolderName,
     optimizeForLazyLoading,
@@ -68,6 +86,12 @@ export const collectArgumentOptions = async (): Promise<SingleFileConvertionOpti
     compileSources
   } = commander;
   let svgoConfig = commander.svgoConfig;
+
+  // Parse boolean values
+  generateType = toBoolean(generateType, DEFAULT_OPTIONS.generateType);
+  generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
+  optimizeForLazyLoading = toBoolean(optimizeForLazyLoading, DEFAULT_OPTIONS.optimizeForLazyLoading);
+  compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
 
   // Because of commander adding default value to params
   // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
@@ -88,6 +112,8 @@ export const collectArgumentOptions = async (): Promise<SingleFileConvertionOpti
     outputDirectory,
     prefix,
     typeName,
+    generateType,
+    generateTypeObject,
     modelFileName,
     iconsFolderName,
     svgoConfig,

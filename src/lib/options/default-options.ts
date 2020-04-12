@@ -8,6 +8,8 @@ export const DEFAULT_OPTIONS = {
   prefix: 'myIcon',
   srcFiles: ['*.svg'],
   typeName: 'myIcons',
+  generateType: true,
+  generateTypeObject: false,
   optimizeForLazyLoading: false,
   additionalModelOutputPath: null,
   modelFileName: 'my-icons.model',

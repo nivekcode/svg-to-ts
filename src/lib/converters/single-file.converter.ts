@@ -25,10 +25,10 @@ export const convertToSingleFile = async (convertionOptions: SingleFileConvertio
   try {
     const svgDefinitions = await filesProcessor(convertionOptions);
     if (svgDefinitions.length) {
-      const fileContent = `${getSvgConstants(svgDefinitions)}${generateTypeDefinition(
-        typeName,
-        svgDefinitions
-      )}${generateInterfaceDefinition(interfaceName, typeName)}`;
+      const svgContants = getSvgConstants(svgDefinitions);
+      const typeDefinition = generateTypeDefinition(convertionOptions, svgDefinitions);
+      const interfaceDefinition = generateInterfaceDefinition(convertionOptions);
+      const fileContent = `${svgContants}${typeDefinition}${interfaceDefinition}`;
       await writeFile(outputDirectory, fileName, fileContent);
       success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
     }
