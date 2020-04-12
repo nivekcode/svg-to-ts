@@ -1,3 +1,11 @@
+# [4.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.1...v4.2.0) (2020-04-12)
+
+
+### Features
+
+* **config:** add options to not generate type and to generate type object ([9e120b3](https://github.com/kreuzerk/svg-to-ts/commit/9e120b32342d470b2aef57563d775e7427b8913c))
+* **config:** add options to not generate type and to generate type object ([8bbec6f](https://github.com/kreuzerk/svg-to-ts/commit/8bbec6f1ee541027bb5bfc886122f58def6edac6))
+
 ## [4.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.0...v4.1.1) (2020-03-28)
 
 
