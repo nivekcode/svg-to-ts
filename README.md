@@ -154,17 +154,19 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 Available configurations:
 
-| --version       | type                    | default                                  | output the version number                                                    |
-| --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| typeName        | string                  | myIcons                                  | name of the generated type                                                   |
-| prefix          | string                  | myIcon                                   | prefix for the generated svg constants                                       |
-| interfaceName   | string                  | MyIcon                                   | name for the generated interface                                             |
-| fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter       | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
-| svgoConfig      | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
-| srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
-| outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
+| --version          | type                    | default                                  | output the version number                                                    |
+| ------------------ | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| typeName           | string                  | myIcons                                  | name of the generated type                                                   |
+| generateType       | boolean                 | false                                    | prevent generating enumeration type                                          |
+| generateTypeObject | boolean                 | false                                    | generate type object                                                         |
+| prefix             | string                  | myIcon                                   | prefix for the generated svg constants                                       |
+| interfaceName      | string                  | MyIcon                                   | name for the generated interface                                             |
+| fileName           | stirng                  | my-icons                                 | file name of the generated file                                              |
+| delimiter          | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
+| svgoConfig         | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
+| srcFiles           | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
+| outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
+| outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
 
 #### Example usage
 
