@@ -10,9 +10,11 @@ import { SvgDefinition } from '../converters/shared.converter';
 describe('Generators', () => {
   describe('generateInterfaceDefinition', () => {
     it('should return the correct interface definition when passing generateType', () => {
-      const options = { generateType: true, typeName: 'AppIcons', interfaceName: 'IconInterface' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = {
+        generateType: true,
+        typeName: 'AppIcons',
+        interfaceName: 'IconInterface'
+      } as SingleFileConvertionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: ${options.typeName};
         data: string;}`;
@@ -20,9 +22,11 @@ describe('Generators', () => {
     });
 
     it('should return the correct interface definition when passing generateTypeObject', () => {
-      const options = { generateTypeObject: true, typeName: 'AppIcons', interfaceName: 'IconInterface' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = {
+        generateTypeObject: true,
+        typeName: 'AppIcons',
+        interfaceName: 'IconInterface'
+      } as SingleFileConvertionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: string;
         data: string;}`;
@@ -30,9 +34,7 @@ describe('Generators', () => {
     });
 
     it('should return the correct interface definition when not generating a type', () => {
-      const options = { typeName: 'AppIcons', interfaceName: 'IconInterface' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = { typeName: 'AppIcons', interfaceName: 'IconInterface' } as SingleFileConvertionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: string;
         data: string;}`;
@@ -49,14 +51,12 @@ describe('Generators', () => {
   `;
     });
     it('should only print the warning', () => {
-      const options = {} as MultiFileConvertionOptions | SingleFileConvertionOptions;
+      const options = {} as SingleFileConvertionOptions;
       expect(generateTypeDefinition(options, [])).toEqual(expected);
     });
 
     it('should create type definition', () => {
-      const options = { generateType: true, typeName: 'AppIcons' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = { generateType: true, typeName: 'AppIcons' } as SingleFileConvertionOptions;
       const types = ['alert', 'noResults'];
       const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
       expected += `
@@ -65,9 +65,7 @@ describe('Generators', () => {
     });
 
     it('should create type definition object', () => {
-      const options = { generateTypeObject: true, typeName: 'AppIcons' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = { generateTypeObject: true, typeName: 'AppIcons' } as SingleFileConvertionOptions;
       const types = ['alert', 'noResults'];
       const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
       expected += `
@@ -78,9 +76,11 @@ describe('Generators', () => {
     });
 
     it('should create both type definitions', () => {
-      const options = { generateType: true, generateTypeObject: true, typeName: 'AppIcons' } as
-        | MultiFileConvertionOptions
-        | SingleFileConvertionOptions;
+      const options = {
+        generateType: true,
+        generateTypeObject: true,
+        typeName: 'AppIcons'
+      } as SingleFileConvertionOptions;
       const types = ['alert', 'noResults'];
       const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
       expected += `
