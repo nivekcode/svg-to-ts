@@ -21,7 +21,7 @@ export const generateInterfaceDefinition = (
 };
 
 export const generateTypeDefinition = (
-  convertionOptions: MultiFileConvertionOptions | SingleFileConvertionOptions,
+  conversionOptions: MultiFileConvertionOptions | SingleFileConvertionOptions,
   svgDefinitions: SvgDefinition[]
 ): string => {
   let typesDefinition = `
@@ -29,20 +29,20 @@ export const generateTypeDefinition = (
     
   `;
 
-  if (convertionOptions.generateType) {
+  if (conversionOptions.generateType) {
     typesDefinition += `
-    export type ${convertionOptions.typeName} = ${svgDefinitions
+    export type ${conversionOptions.typeName} = ${svgDefinitions
       .map(({ typeName }, index) => `'${typeName}'${index === svgDefinitions.length - 1 ? '' : ' | '}`)
       .join('')};`;
   }
 
-  if (convertionOptions.generateTypeObject) {
+  if (conversionOptions.generateTypeObject) {
     typesDefinition += `
-    export const ${convertionOptions.typeName} = {
+    export const ${conversionOptions.typeName} = {
       ${svgDefinitions
         .map(
           ({ typeName }, index) =>
-            `${typeName}: '${typeName}'${convertionOptions.generateType ? ` as ${convertionOptions.typeName}` : ''}${
+            `${typeName}: '${typeName}'${conversionOptions.generateType ? ` as ${conversionOptions.typeName}` : ''}${
               index === svgDefinitions.length - 1 ? '' : ','
             }`
         )
@@ -107,7 +107,8 @@ export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): s
 };
 
 export const generateVariableName = (prefix: string, filenameWithoutEnding): string => {
-  return `${prefix}${capitalize(camelCase(filenameWithoutEnding))}`;
+  const camelCased = camelCase(filenameWithoutEnding);
+  return prefix ? `${prefix}${capitalize(camelCased)}` : camelCased;
 };
 
 const capitalize = (value: string): string => {
