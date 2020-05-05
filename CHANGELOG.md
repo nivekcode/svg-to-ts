@@ -1,3 +1,10 @@
+## [4.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.1...v4.2.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* **prefix:** allow empty prefixes ([6fa8f1f](https://github.com/kreuzerk/svg-to-ts/commit/6fa8f1f1f9ac61b71b75cef3ec2c48b4e1115242))
+
 ## [4.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.0...v4.2.1) (2020-04-12)
 
 
