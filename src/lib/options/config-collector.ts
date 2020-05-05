@@ -41,7 +41,7 @@ const mergeWithDefaults = async (
     info(`No interfaceName provided, "${DEFAULT_OPTIONS.interfaceName}" will be used`);
   }
 
-  if (!configOptions.prefix) {
+  if (typeof configOptions.prefix !== 'string') {
     configOptions.prefix = DEFAULT_OPTIONS.prefix;
     info(`No prefix provided, "${DEFAULT_OPTIONS.prefix}" will be used`);
   }
@@ -63,7 +63,7 @@ const mergeWithDefaults = async (
 
   if (!configOptions.svgoConfig) {
     configOptions.svgoConfig = DEFAULT_OPTIONS.svgoConfig;
-    info(`No svgoConfig provided, "${DEFAULT_OPTIONS.svgoConfig}" will be used`);
+    info(`No svgoConfig provided, default configuration will be used`);
   } else {
     configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
   }
