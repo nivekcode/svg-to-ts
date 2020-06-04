@@ -1,10 +1,7 @@
 {
   "plugins": [
     {
-      "cleanupAttrs": true
-    },
-    {
-      "removeDoctype": true
+      "removeViewBox": false
     }
   ]
 }

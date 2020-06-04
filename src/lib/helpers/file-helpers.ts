@@ -20,7 +20,7 @@ export const writeFile = async (outputDirectory: string, fileName: string, fileC
   await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
 };
 
-export const readFile = async (filePath: string): Promise<any> => {
+export const readFile = async (filePath: string): Promise<string> => {
   return readfileFromFS(filePath, 'utf-8');
 };
 

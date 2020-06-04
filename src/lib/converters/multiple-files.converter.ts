@@ -33,8 +33,6 @@ const writeFiles = async (outputDirectory, iconsFolderName, modelFileName, prefi
 
 export const convertToMultipleFiles = async (convertionOptions: MultiFileConvertionOptions): Promise<void> => {
   const {
-    typeName,
-    interfaceName,
     prefix,
     outputDirectory,
     modelFileName,

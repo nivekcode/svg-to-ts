@@ -6,7 +6,7 @@ export const generateSvgOptimizer = config => new svgo(config);
 
 export const getSvgoConfig = async (svgoConfig: any): Promise<string> => {
   if (typeof svgoConfig === 'string') {
-    return readFile(svgoConfig);
+    return JSON.parse(await readFile(svgoConfig));
   }
   return svgoConfig;
 };
