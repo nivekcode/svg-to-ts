@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.3...v4.3.0) (2020-06-04)
+
+
+### Features
+
+* **svgo:** automatically prefix svg ids with filename ([5bb989b](https://github.com/kreuzerk/svg-to-ts/commit/5bb989b5a8238e9d7c865d01a5b4a8852fbdba96))
+
 ## [4.2.3](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.2...v4.2.3) (2020-06-04)
 
 
