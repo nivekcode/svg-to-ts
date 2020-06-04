@@ -115,6 +115,9 @@ export const DEFAULT_OPTIONS = {
       },
       {
         removeDimensions: true
+      },
+      {
+        prefixIds: true
       }
     ]
   }

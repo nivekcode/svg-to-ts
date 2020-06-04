@@ -28,7 +28,7 @@ export const filesProcessor = async (convertionOptions): Promise<SvgDefinition[]
         if (extension === 'svg') {
           const rawSvg = await extractSvgContent(filePath);
           info(`optimize svg: ${fileNameWithEnding}`);
-          const optimizedSvg = await svgOptimizer.optimize(rawSvg);
+          const optimizedSvg = await svgOptimizer.optimize(rawSvg, { path: filePath });
           const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
           const typeName = generateTypeName(filenameWithoutEnding, delimiter);
