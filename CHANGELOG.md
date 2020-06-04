@@ -1,3 +1,10 @@
+## [4.2.3](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.2...v4.2.3) (2020-06-04)
+
+
+### Bug Fixes
+
+* **svgo:** correctly pick up options from external config file ([9b8d138](https://github.com/kreuzerk/svg-to-ts/commit/9b8d138ddf080fe80cf29f83a2dca54c6c3b5eaa))
+
 ## [4.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.1...v4.2.2) (2020-05-05)
 
 
