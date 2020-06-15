@@ -146,7 +146,7 @@ If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sen
 
 svg-to-ts offers three different kinds of convertion types; Converting your icons to a single object,
 converting your icons to constants or converting your icons to single files. Each approach is designed
-to solve a specific kind of problem. You can switch between approaches by passing `convertionType` property (`object`, `single-file` or `multiple-files`).
+to solve a specific kind of problem. You can switch between approaches by passing `convertionType` property (`object`, `constants` or `files`).
 
 ### 1. Converting to a single object (`convertionType==='object'`)
 
@@ -166,7 +166,7 @@ Available options:
 As mentioned above, `svg-to-ts` supports different use-cases. You can either generate you library to a single TypeScript file with multiple constants, to single TypeScript file per Icon
 or to allready precompiled JavaScript files.
 
-### 2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='single-file'`)
+### 2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='constants'`)
 
 This approach converts your svg icons into multiple constants in the same file so that they can be used
 in combination with an icon registry. It furthermore also generates all necssary types. **We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
@@ -205,7 +205,7 @@ and we end up with the following file in our `dist` folder.
 
 ![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/output.png)
 
-### 3. Fully tree shakable and optimized for lazy loading (`convertionType==='multiple-files'`)
+### 3. Fully tree shakable and optimized for lazy loading (`convertionType==='files'`)
 
 This is the most sophisticated approach and also the approach that doesn't only support tree shaking but also
 supports code splitting which is especially usefull in scenarios where you are using lazy loading.

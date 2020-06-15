@@ -7,7 +7,7 @@ import {
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
-import { MultiFileConvertionOptions } from '../options/convertion-options';
+import { FileConvertionOptions } from '../options/convertion-options';
 import { compile } from '../compiler/typescript-compiler';
 import { filesProcessor } from './shared.converter';
 
@@ -31,7 +31,7 @@ const writeFiles = async (outputDirectory, iconsFolderName, modelFileName, prefi
   return fileContent.join('');
 };
 
-export const convertToMultipleFiles = async (convertionOptions: MultiFileConvertionOptions): Promise<void> => {
+export const convertToMultipleFiles = async (convertionOptions: FileConvertionOptions): Promise<void> => {
   const {
     prefix,
     outputDirectory,

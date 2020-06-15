@@ -1,12 +1,13 @@
-import { Delimiter } from '../generators/code-snippet-generators';
 import { collectConfigurationOptions } from './config-collector';
 import { collectArgumentOptions } from './args-collector';
+
 import { info } from '../helpers/log-helper';
+import { Delimiter } from '../generators/code-snippet-generators';
 
 export enum ConvertionType {
   OBJECT = 'object',
-  SINGLE_FILE = 'single-file',
-  MULTIPLE_FILES = 'multiple-files'
+  CONSTANTS = 'constants',
+  FILES = 'files'
 }
 
 export interface CommonConvertionOptions {
@@ -16,28 +17,30 @@ export interface CommonConvertionOptions {
   delimiter: Delimiter;
 }
 
-export interface CommonFileConvertionOptions extends CommonConvertionOptions {
-  typeName: string;
-  generateType: boolean;
-  generateTypeObject: boolean;
-  prefix: string;
-  interfaceName: string;
-  optimizeForLazyLoading: string;
-}
-
 export interface ObjectConvertionOptions extends CommonConvertionOptions {
   convertionType: ConvertionType.OBJECT;
   fileName: string;
   objectName: string;
 }
 
-export interface SingleFileConvertionOptions extends CommonFileConvertionOptions {
-  convertionType: ConvertionType.SINGLE_FILE;
+export interface ConstantsConvertionOptions extends CommonConvertionOptions {
+  convertionType: ConvertionType.CONSTANTS;
   fileName: string;
+  typeName: string;
+  generateType: boolean;
+  generateTypeObject: boolean;
+  prefix: string;
+  interfaceName: string;
 }
 
-export interface MultiFileConvertionOptions extends CommonFileConvertionOptions {
-  convertionType: ConvertionType.MULTIPLE_FILES;
+export interface FileConvertionOptions extends CommonConvertionOptions {
+  convertionType: ConvertionType.FILES;
+  typeName: string;
+  generateType: boolean;
+  generateTypeObject: boolean;
+  prefix: string;
+  interfaceName: string;
+  optimizeForLazyLoading: string;
   modelFileName: string;
   additionalModelOutputPath: string | null;
   iconsFolderName: string;
@@ -45,7 +48,7 @@ export interface MultiFileConvertionOptions extends CommonFileConvertionOptions 
 }
 
 export const getOptions = async (): Promise<
-  MultiFileConvertionOptions | SingleFileConvertionOptions | ObjectConvertionOptions
+  FileConvertionOptions | ConstantsConvertionOptions | ObjectConvertionOptions
 > => {
   const configOptions = await collectConfigurationOptions();
 

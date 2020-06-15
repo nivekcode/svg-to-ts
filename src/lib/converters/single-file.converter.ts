@@ -5,7 +5,7 @@ import {
 } from '../generators/code-snippet-generators';
 import { writeFile } from '../helpers/file-helpers';
 import { error, success, underlineSuccess } from '../helpers/log-helper';
-import { SingleFileConvertionOptions } from '../options/convertion-options';
+import { ConstantsConvertionOptions } from '../options/convertion-options';
 import { filesProcessor } from './shared.converter';
 
 const getSvgConstants = svgDefinitions => {
@@ -20,7 +20,7 @@ const getSvgConstants = svgDefinitions => {
   return svgConstants.join('');
 };
 
-export const convertToSingleFile = async (convertionOptions: SingleFileConvertionOptions): Promise<void> => {
+export const convertToSingleFile = async (convertionOptions: ConstantsConvertionOptions): Promise<void> => {
   const { outputDirectory, fileName } = convertionOptions;
   try {
     const svgDefinitions = await filesProcessor(convertionOptions);

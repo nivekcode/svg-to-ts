@@ -5,8 +5,8 @@ import { Delimiter } from '../generators/code-snippet-generators';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
 import {
-  MultiFileConvertionOptions,
-  SingleFileConvertionOptions,
+  FileConvertionOptions,
+  ConstantsConvertionOptions,
   ObjectConvertionOptions,
   ConvertionType
 } from './convertion-options';
@@ -17,7 +17,7 @@ export const setupCommander = () => {
   const collect = (value, previous) => previous.concat([value]);
   commander
     .version(packgeJSON.version)
-    .option('-t --convertionType <ConvertionType>', 'convetion type (object, single-file, multiple-files)')
+    .option('--convertionType <ConvertionType>', 'convertion type (object, constants, files)')
     .option('--objectName <string>', 'name of the exported object', DEFAULT_OPTIONS.objectName)
     .option('--typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
@@ -80,7 +80,7 @@ const toBoolean = (str: string, defaultValue: boolean): boolean => {
 };
 
 export const collectArgumentOptions = async (): Promise<
-  SingleFileConvertionOptions | MultiFileConvertionOptions | ObjectConvertionOptions
+  ConstantsConvertionOptions | FileConvertionOptions | ObjectConvertionOptions
 > => {
   if (!commander.convertionType) {
     error(`A convertionType is required, please specify one by passing it via --convertionType. 
@@ -136,7 +136,7 @@ export const collectArgumentOptions = async (): Promise<
     };
   }
 
-  if (convertionType === ConvertionType.SINGLE_FILE) {
+  if (convertionType === ConvertionType.CONSTANTS) {
     return {
       convertionType,
       delimiter,

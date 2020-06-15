@@ -4,9 +4,9 @@ import { convertToMultipleFiles } from '../lib/converters/multiple-files.convert
 import {
   ConvertionType,
   getOptions,
-  MultiFileConvertionOptions,
+  FileConvertionOptions,
   ObjectConvertionOptions,
-  SingleFileConvertionOptions
+  ConstantsConvertionOptions
 } from '../lib/options/convertion-options';
 import { info, printLogo } from '../lib/helpers/log-helper';
 import { setupCommander } from '../lib/options/args-collector';
@@ -17,18 +17,18 @@ import { convertToSingleObject } from '../lib/converters/object.converter';
   printLogo();
   const convertionOptions = await getOptions();
 
-  if (convertionOptions.convertionType === ConvertionType.MULTIPLE_FILES) {
+  if (convertionOptions.convertionType === ConvertionType.FILES) {
     info('We are using the convertiontype "multiple-files"');
-    await convertToMultipleFiles(convertionOptions as MultiFileConvertionOptions);
+    await convertToMultipleFiles(convertionOptions as FileConvertionOptions);
   }
 
-  if (convertionOptions.convertionType === ConvertionType.SINGLE_FILE) {
+  if (convertionOptions.convertionType === ConvertionType.CONSTANTS) {
     info('We are using the convertiontype "single-file"');
-    await convertToSingleFile(convertionOptions as SingleFileConvertionOptions);
+    await convertToSingleFile(convertionOptions as ConstantsConvertionOptions);
   }
 
   if (convertionOptions.convertionType === ConvertionType.OBJECT) {
-    info('We are using the convertiontype "single-object"');
+    info('We are using the convertiontype "object"');
     await convertToSingleObject(convertionOptions as ObjectConvertionOptions);
   }
 })();

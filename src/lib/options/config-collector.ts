@@ -1,20 +1,19 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
+import {
+  ConvertionType,
+  FileConvertionOptions,
+  ObjectConvertionOptions,
+  ConstantsConvertionOptions
+} from './convertion-options';
+import { DEFAULT_OPTIONS } from './default-options';
+
 import * as packgeJSON from '../../../package.json';
 import { error, info } from '../helpers/log-helper';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
-import {
-  ConvertionType,
-  MultiFileConvertionOptions,
-  ObjectConvertionOptions,
-  SingleFileConvertionOptions
-} from './convertion-options';
-import { DEFAULT_OPTIONS } from './default-options';
-import commander from 'commander';
-
 export const collectConfigurationOptions = async (): Promise<
-  SingleFileConvertionOptions | MultiFileConvertionOptions | ObjectConvertionOptions | null
+  ConstantsConvertionOptions | FileConvertionOptions | ObjectConvertionOptions | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const cosmiConfigResult = explorerSync.search();
@@ -24,7 +23,7 @@ export const collectConfigurationOptions = async (): Promise<
 
 const mergeWithDefaults = async (
   options
-): Promise<MultiFileConvertionOptions | SingleFileConvertionOptions | ObjectConvertionOptions> => {
+): Promise<FileConvertionOptions | ConstantsConvertionOptions | ObjectConvertionOptions> => {
   const configOptions = { ...options };
 
   if (!options.convertionType) {
@@ -64,17 +63,14 @@ const mergeWithDefaults = async (
     }
   }
 
-  if (options.convertionType === ConvertionType.SINGLE_FILE || options.convertionType === ConvertionType.OBJECT) {
-    if (!(configOptions as SingleFileConvertionOptions).fileName) {
-      (configOptions as SingleFileConvertionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
+  if (options.convertionType === ConvertionType.CONSTANTS || options.convertionType === ConvertionType.OBJECT) {
+    if (!(configOptions as ConstantsConvertionOptions).fileName) {
+      (configOptions as ConstantsConvertionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
       info(`No fileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
     }
   }
 
-  if (
-    options.convertionType === ConvertionType.SINGLE_FILE ||
-    options.convertionType === ConvertionType.MULTIPLE_FILES
-  ) {
+  if (options.convertionType === ConvertionType.CONSTANTS || options.convertionType === ConvertionType.FILES) {
     if (!configOptions.typeName) {
       configOptions.typeName = DEFAULT_OPTIONS.typeName;
       info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
@@ -101,22 +97,22 @@ const mergeWithDefaults = async (
     }
   }
 
-  if (configOptions.convertionType === ConvertionType.MULTIPLE_FILES) {
-    if (!(configOptions as MultiFileConvertionOptions).modelFileName) {
-      (configOptions as MultiFileConvertionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
+  if (configOptions.convertionType === ConvertionType.FILES) {
+    if (!(configOptions as FileConvertionOptions).modelFileName) {
+      (configOptions as FileConvertionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
       info(`No modelFileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
     }
 
-    if (!(configOptions as MultiFileConvertionOptions).iconsFolderName) {
-      (configOptions as MultiFileConvertionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
+    if (!(configOptions as FileConvertionOptions).iconsFolderName) {
+      (configOptions as FileConvertionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
       info(`No iconsFolderName provided, "${DEFAULT_OPTIONS.iconsFolderName}" will be used`);
     }
 
-    if (!(configOptions as MultiFileConvertionOptions).compileSources) {
-      (configOptions as MultiFileConvertionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
+    if (!(configOptions as FileConvertionOptions).compileSources) {
+      (configOptions as FileConvertionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
       info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.compileSources}" will be used`);
     }
-    return configOptions as MultiFileConvertionOptions;
+    return configOptions as FileConvertionOptions;
   }
-  return configOptions as SingleFileConvertionOptions;
+  return configOptions as ConstantsConvertionOptions;
 };
