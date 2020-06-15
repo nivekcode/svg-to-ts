@@ -4,6 +4,7 @@ export const DEFAULT_OPTIONS = {
   fileName: 'my-icons',
   delimiter: Delimiter.SNAKE,
   interfaceName: 'MyIcon',
+  objectName: 'icons',
   outputDirectory: './dist',
   prefix: 'myIcon',
   srcFiles: ['*.svg'],

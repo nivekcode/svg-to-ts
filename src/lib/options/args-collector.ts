@@ -1,15 +1,25 @@
 import commander from 'commander';
-import { MultiFileConvertionOptions, SingleFileConvertionOptions } from './convertion-options';
-import { DEFAULT_OPTIONS } from './default-options';
+
 import * as packgeJSON from '../../../package.json';
 import { Delimiter } from '../generators/code-snippet-generators';
 import { getSvgoConfig } from '../helpers/svg-optimization';
+
+import {
+  MultiFileConvertionOptions,
+  SingleFileConvertionOptions,
+  ObjectConvertionOptions,
+  ConvertionType
+} from './convertion-options';
+import { DEFAULT_OPTIONS } from './default-options';
+import { error } from '../helpers/log-helper';
 
 export const setupCommander = () => {
   const collect = (value, previous) => previous.concat([value]);
   commander
     .version(packgeJSON.version)
-    .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
+    .option('-t --convertionType <ConvertionType>', 'convetion type (object, single-file, multiple-files)')
+    .option('--objectName <string>', 'name of the exported object', DEFAULT_OPTIONS.objectName)
+    .option('--typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
     .option('--generateTypeObject <boolean>', 'generate type object', DEFAULT_OPTIONS.generateTypeObject)
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
@@ -69,8 +79,18 @@ const toBoolean = (str: string, defaultValue: boolean): boolean => {
   return result;
 };
 
-export const collectArgumentOptions = async (): Promise<SingleFileConvertionOptions | MultiFileConvertionOptions> => {
+export const collectArgumentOptions = async (): Promise<
+  SingleFileConvertionOptions | MultiFileConvertionOptions | ObjectConvertionOptions
+> => {
+  if (!commander.convertionType) {
+    error(`A convertionType is required, please specify one by passing it via --convertionType. 
+    Valid convertiontypes are (object, single-file or multiple-files)`);
+    process.exit();
+  }
+
   let {
+    convertionType,
+    objectName,
     delimiter,
     fileName,
     interfaceName,
@@ -104,9 +124,38 @@ export const collectArgumentOptions = async (): Promise<SingleFileConvertionOpti
     svgoConfig = await getSvgoConfig(svgoConfig);
   }
 
+  if (convertionType === ConvertionType.OBJECT) {
+    return {
+      convertionType,
+      delimiter,
+      srcFiles,
+      outputDirectory,
+      svgoConfig,
+      fileName,
+      objectName
+    };
+  }
+
+  if (convertionType === ConvertionType.SINGLE_FILE) {
+    return {
+      convertionType,
+      delimiter,
+      fileName,
+      interfaceName,
+      srcFiles,
+      outputDirectory,
+      prefix,
+      typeName,
+      generateType,
+      generateTypeObject,
+      svgoConfig,
+      optimizeForLazyLoading
+    };
+  }
+
   return {
+    convertionType,
     delimiter,
-    fileName,
     interfaceName,
     srcFiles,
     outputDirectory,

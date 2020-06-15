@@ -45,7 +45,8 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - `svg-to-ts` optimizes your SVG icons under the hood
 - `svg-to-ts` automatically generates types and interfaces for your icons to improve typesafety
 - `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
-- highly configurable - supports multiple use cases.
+- offers three different convertion modes ('object', 'single-file' and 'multiple-files')
+- each method is highly configurable to supports multiple use cases.
 
 # How to use svg-to-ts
 
@@ -78,6 +79,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "generate-icons": "svg-to-ts"
   },
   "svg-to-ts": {
+    "convertionType": "single-file",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -107,6 +109,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
 ```json
 {
   "svg-to-ts": {
+    "convertionType": "single-file",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -139,18 +142,38 @@ If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sen
 }
 ```
 
-## Use-cases
+## ConvertionTypes
+
+svg-to-ts offers three different kinds of convertion types; Converting your icons to a single object,
+converting your icons to constants or converting your icons to single files. Each approach is designed
+to solve a specific kind of problem. You can switch between approaches by passing `convertionType` property (`object`, `single-file` or `multiple-files`).
+
+### 1. Converting to a single object (`convertionType==='object'`)
+
+In this scenario the SVG icons are converted to a single object. It's an approach that is suitable if your icon registry
+accepts an object with the filename as key and the svg data as key.
+
+Available options:
+
+| --version       | type                    | default                                  | output the version number                                                    |
+| --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
+| delimiter       | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
+| svgoConfig      | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
+| srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
+| outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
 
 As mentioned above, `svg-to-ts` supports different use-cases. You can either generate you library to a single TypeScript file with multiple constants, to single TypeScript file per Icon
 or to allready precompiled JavaScript files.
 
-### Use Case 1 - Treeshakable and typesafe with one file (simpler use cases)
+### 2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='single-file'`)
+
+This approach converts your svg icons into multiple constants in the same file so that they can be used
+in combination with an icon registry. It furthermore also generates all necssary types. **We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
+[Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
 
 ![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/example-src1.png)
 Only the icons included in the consuming SPA also end up in the final bundle of the SPA.
-
-**We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
-[Find out more in this blogpost](https://medium.com/angular-in-depth/how-to-create-an-icon-library-in-angular-4f8863d95a)
 
 Available configurations:
 
@@ -165,7 +188,6 @@ Available configurations:
 | delimiter          | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
 | svgoConfig         | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
 | srcFiles           | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
 | outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
 
 #### Example usage
@@ -183,7 +205,12 @@ and we end up with the following file in our `dist` folder.
 
 ![output](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/output.png)
 
-### Use Case 2 - Fully tree shakable and optimized for lazy loading (more sophisticated)
+### 3. Fully tree shakable and optimized for lazy loading (`convertionType==='multiple-files'`)
+
+This is the most sophisticated approach and also the approach that doesn't only support tree shaking but also
+supports code splitting which is especially usefull in scenarios where you are using lazy loading.
+
+[Here's a step by step guide on how to create an icon library that is optimized for tree shaking](https://medium.com/angular-in-depth/how-to-create-a-fully-tree-shakable-icon-library-in-angular-c5488cf9cd76)
 
 ![fully tree shakable](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/fully-treeshakable.png)
 Often, having the SVGs in a single file is enough. However if you are in a more complex environment with bigger business
@@ -195,8 +222,6 @@ generated in a way that they can even be split to lazy loaded chunks. Means not 
 gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
-
-[Here's a step by step guide on how to create an icon library that is optimized for tree shaking](https://medium.com/angular-in-depth/how-to-create-a-fully-tree-shakable-icon-library-in-angular-c5488cf9cd76)
 
 Available configurations:
 
@@ -212,7 +237,6 @@ Available configurations:
 | srcFiles                  | string                  | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
 | svgoConfig                | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
 | outputDirectory           | string                  | "./dist"                                 | name of the output directory                                                                                                                                                    |
-| outputDirectory           | string                  | "./dist"                                 | name of the output directory                                                                                                                                                    |
 | optimizeForLazyLoading    | boolean                 | false                                    | when set to true, multiple files will be generated                                                                                                                              |
 | additionalModelOutputPath | string                  | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                  | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
@@ -222,7 +246,7 @@ Available configurations:
 
 ## Which approach should I use
 
-This depends on your use case. If you have a simple application, it's probably enought to go with the single file and the constants.
+This depends on your use case. If you have a simple application, it's probably enought to go with the single file or even a object.
 If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
 
 ## Is it possilbe to create a standalone library?
