@@ -11,6 +11,7 @@ import { DEFAULT_OPTIONS } from './default-options';
 import * as packgeJSON from '../../../package.json';
 import { error, info } from '../helpers/log-helper';
 import { getSvgoConfig } from '../helpers/svg-optimization';
+import { Delimiter } from '../generators/code-snippet-generators';
 
 export const collectConfigurationOptions = async (): Promise<
   ConstantsConvertionOptions | FileConvertionOptions | ObjectConvertionOptions | null
@@ -50,8 +51,8 @@ const mergeWithDefaults = async (
   }
 
   if (!configOptions.delimiter) {
-    configOptions.delimiter = DEFAULT_OPTIONS.delimiter;
-    info(`No delimiter provided, "${DEFAULT_OPTIONS.delimiter}" will be used`);
+    configOptions.delimiter = options.convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+    info(`No delimiter provided, "${configOptions.delimiter}" will be used`);
   }
 
   if (options.convertionType === ConvertionType.OBJECT) {

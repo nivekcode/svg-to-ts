@@ -156,7 +156,7 @@ Available options:
 | --version       | type                    | default                                  | output the version number                                                    |
 | --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
 | fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter       | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
+| delimiter       | CAMEL, KEBAP, SNAKE     | CAMEL                                    | delimiter which is used to generate the types and name properties            |
 | svgoConfig      | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
 | srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
 | outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |

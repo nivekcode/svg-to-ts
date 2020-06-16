@@ -5,10 +5,10 @@ import { Delimiter } from '../generators/code-snippet-generators';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
 import {
-  FileConvertionOptions,
   ConstantsConvertionOptions,
-  ObjectConvertionOptions,
-  ConvertionType
+  ConvertionType,
+  FileConvertionOptions,
+  ObjectConvertionOptions
 } from './convertion-options';
 import { DEFAULT_OPTIONS } from './default-options';
 import { error } from '../helpers/log-helper';
@@ -25,8 +25,7 @@ export const setupCommander = () => {
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
     .option(
       '-d --delimiter <Delimiter>',
-      `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,
-      DEFAULT_OPTIONS.delimiter
+      `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`
     )
     .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULT_OPTIONS.prefix)
     .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULT_OPTIONS.interfaceName)
@@ -105,6 +104,8 @@ export const collectArgumentOptions = async (): Promise<
   generateType = toBoolean(generateType, DEFAULT_OPTIONS.generateType);
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
+
+  delimiter = convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
 
   // Because of commander adding default value to params
   // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default

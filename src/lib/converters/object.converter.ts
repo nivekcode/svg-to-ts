@@ -10,7 +10,11 @@ export const convertToSingleObject = async (convertionOptions: ObjectConvertionO
     const svgObject = {};
     const svgDefinitions = await filesProcessor(convertionOptions);
     svgDefinitions.forEach((svgDefinition: SvgDefinition) => (svgObject[svgDefinition.typeName] = svgDefinition.data));
-    await writeFile(outputDirectory, fileName, `export const ${objectName} = ${JSON.stringify(svgObject)}`);
+    const fileContent =
+      objectName === 'default'
+        ? `export default ${JSON.stringify(svgObject)}`
+        : `export const ${objectName} = ${JSON.stringify(svgObject)}`;
+    await writeFile(outputDirectory, fileName, fileContent);
     success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
   } catch (exception) {
     error(`Something went wrong: ${exception}`);
