@@ -1,14 +1,20 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
-import * as packgeJSON from '../../../package.json';
-import { info } from '../helpers/log-helper';
-
-import { MultiFileConvertionOptions, SingleFileConvertionOptions } from './convertion-options';
+import {
+  ConversionType,
+  FileConversionOptions,
+  ObjectConversionOptions,
+  ConstantsConversionOptions
+} from './conversion-options';
 import { DEFAULT_OPTIONS } from './default-options';
+
+import * as packgeJSON from '../../../package.json';
+import { error, info } from '../helpers/log-helper';
 import { getSvgoConfig } from '../helpers/svg-optimization';
+import { Delimiter } from '../generators/code-snippet-generators';
 
 export const collectConfigurationOptions = async (): Promise<
-  SingleFileConvertionOptions | MultiFileConvertionOptions | null
+  ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const cosmiConfigResult = explorerSync.search();
@@ -17,38 +23,14 @@ export const collectConfigurationOptions = async (): Promise<
 };
 
 const mergeWithDefaults = async (
-  options: MultiFileConvertionOptions | SingleFileConvertionOptions
-): Promise<MultiFileConvertionOptions | SingleFileConvertionOptions> => {
+  options
+): Promise<FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions> => {
   const configOptions = { ...options };
 
-  if (!configOptions.typeName) {
-    configOptions.typeName = DEFAULT_OPTIONS.typeName;
-    info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
-  }
-
-  if (configOptions.generateType === null) {
-    configOptions.generateType = DEFAULT_OPTIONS.generateType;
-    info(`No generateType provided, "${DEFAULT_OPTIONS.generateType}" will be used`);
-  }
-
-  if (configOptions.generateTypeObject === null) {
-    configOptions.generateTypeObject = DEFAULT_OPTIONS.generateTypeObject;
-    info(`No generateTypeObject provided, "${DEFAULT_OPTIONS.generateTypeObject}" will be used`);
-  }
-
-  if (!configOptions.interfaceName) {
-    configOptions.interfaceName = DEFAULT_OPTIONS.interfaceName;
-    info(`No interfaceName provided, "${DEFAULT_OPTIONS.interfaceName}" will be used`);
-  }
-
-  if (typeof configOptions.prefix !== 'string') {
-    configOptions.prefix = DEFAULT_OPTIONS.prefix;
-    info(`No prefix provided, "${DEFAULT_OPTIONS.prefix}" will be used`);
-  }
-
-  if (!configOptions.delimiter) {
-    configOptions.delimiter = DEFAULT_OPTIONS.delimiter;
-    info(`No delimiter provided, "${DEFAULT_OPTIONS.delimiter}" will be used`);
+  if (!options.conversionType) {
+    error(`A conversionType is required, please specify one by passing it via --conversionType. 
+    Valid conversion types are (object, constants or files)`);
+    process.exit();
   }
 
   if (!configOptions.outputDirectory) {
@@ -68,27 +50,61 @@ const mergeWithDefaults = async (
     configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
   }
 
-  if (configOptions.optimizeForLazyLoading) {
-    if (!(configOptions as MultiFileConvertionOptions).modelFileName) {
-      (configOptions as MultiFileConvertionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
+  if (!configOptions.delimiter) {
+    configOptions.delimiter = options.conversionType === ConversionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+    info(`No delimiter provided, "${configOptions.delimiter}" will be used`);
+  }
+
+  if (options.conversionType === ConversionType.CONSTANTS || options.conversionType === ConversionType.OBJECT) {
+    if (!(configOptions as ConstantsConversionOptions).fileName) {
+      (configOptions as ConstantsConversionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
+      info(`No fileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
+    }
+  }
+
+  if (options.conversionType === ConversionType.CONSTANTS || options.conversionType === ConversionType.FILES) {
+    if (!configOptions.typeName) {
+      configOptions.typeName = DEFAULT_OPTIONS.typeName;
+      info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
+    }
+
+    if (configOptions.generateType === null) {
+      configOptions.generateType = DEFAULT_OPTIONS.generateType;
+      info(`No generateType provided, "${DEFAULT_OPTIONS.generateType}" will be used`);
+    }
+
+    if (configOptions.generateTypeObject === null) {
+      configOptions.generateTypeObject = DEFAULT_OPTIONS.generateTypeObject;
+      info(`No generateTypeObject provided, "${DEFAULT_OPTIONS.generateTypeObject}" will be used`);
+    }
+
+    if (!configOptions.interfaceName) {
+      configOptions.interfaceName = DEFAULT_OPTIONS.interfaceName;
+      info(`No interfaceName provided, "${DEFAULT_OPTIONS.interfaceName}" will be used`);
+    }
+
+    if (typeof configOptions.prefix !== 'string') {
+      configOptions.prefix = DEFAULT_OPTIONS.prefix;
+      info(`No prefix provided, "${DEFAULT_OPTIONS.prefix}" will be used`);
+    }
+  }
+
+  if (configOptions.conversionType === ConversionType.FILES) {
+    if (!(configOptions as FileConversionOptions).modelFileName) {
+      (configOptions as FileConversionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
       info(`No modelFileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
     }
 
-    if (!(configOptions as MultiFileConvertionOptions).iconsFolderName) {
-      (configOptions as MultiFileConvertionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
+    if (!(configOptions as FileConversionOptions).iconsFolderName) {
+      (configOptions as FileConversionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
       info(`No iconsFolderName provided, "${DEFAULT_OPTIONS.iconsFolderName}" will be used`);
     }
 
-    if (!(configOptions as MultiFileConvertionOptions).compileSources) {
-      (configOptions as MultiFileConvertionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
+    if (!(configOptions as FileConversionOptions).compileSources) {
+      (configOptions as FileConversionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
       info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.compileSources}" will be used`);
     }
-    return configOptions as MultiFileConvertionOptions;
-  } else {
-    if (!(configOptions as SingleFileConvertionOptions).fileName) {
-      (configOptions as SingleFileConvertionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
-      info(`No fileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
-    }
-    return configOptions as SingleFileConvertionOptions;
+    return configOptions as FileConversionOptions;
   }
+  return configOptions as ConstantsConversionOptions;
 };

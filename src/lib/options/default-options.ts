@@ -1,16 +1,13 @@
-import { Delimiter } from '../generators/code-snippet-generators';
-
 export const DEFAULT_OPTIONS = {
   fileName: 'my-icons',
-  delimiter: Delimiter.SNAKE,
   interfaceName: 'MyIcon',
+  objectName: 'icons',
   outputDirectory: './dist',
   prefix: 'myIcon',
   srcFiles: ['*.svg'],
   typeName: 'myIcons',
   generateType: true,
   generateTypeObject: false,
-  optimizeForLazyLoading: false,
   additionalModelOutputPath: null,
   modelFileName: 'my-icons.model',
   iconsFolderName: 'build',

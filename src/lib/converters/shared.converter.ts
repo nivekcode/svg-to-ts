@@ -13,8 +13,8 @@ export interface SvgDefinition {
   filenameWithoutEnding: string;
 }
 
-export const filesProcessor = async (convertionOptions): Promise<SvgDefinition[]> => {
-  const { prefix, delimiter, interfaceName, srcFiles, svgoConfig } = convertionOptions;
+export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]> => {
+  const { prefix, delimiter, interfaceName, srcFiles, svgoConfig } = conversionOptions;
   const svgOptimizer = generateSvgOptimizer(svgoConfig);
   const filePaths = await getFilePathsFromRegex(srcFiles);
 

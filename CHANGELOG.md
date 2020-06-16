@@ -1,58 +1,50 @@
 # [4.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.3...v4.3.0) (2020-06-04)
 
-
 ### Features
 
-* **svgo:** automatically prefix svg ids with filename ([5bb989b](https://github.com/kreuzerk/svg-to-ts/commit/5bb989b5a8238e9d7c865d01a5b4a8852fbdba96))
+- **svgo:** automatically prefix svg ids with filename ([5bb989b](https://github.com/kreuzerk/svg-to-ts/commit/5bb989b5a8238e9d7c865d01a5b4a8852fbdba96))
 
 ## [4.2.3](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.2...v4.2.3) (2020-06-04)
 
-
 ### Bug Fixes
 
-* **svgo:** correctly pick up options from external config file ([9b8d138](https://github.com/kreuzerk/svg-to-ts/commit/9b8d138ddf080fe80cf29f83a2dca54c6c3b5eaa))
+- **svgo:** correctly pick up options from external config file ([9b8d138](https://github.com/kreuzerk/svg-to-ts/commit/9b8d138ddf080fe80cf29f83a2dca54c6c3b5eaa))
 
 ## [4.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.1...v4.2.2) (2020-05-05)
 
-
 ### Bug Fixes
 
-* **prefix:** allow empty prefixes ([6fa8f1f](https://github.com/kreuzerk/svg-to-ts/commit/6fa8f1f1f9ac61b71b75cef3ec2c48b4e1115242))
+- **prefix:** allow empty prefixes ([6fa8f1f](https://github.com/kreuzerk/svg-to-ts/commit/6fa8f1f1f9ac61b71b75cef3ec2c48b4e1115242))
 
 ## [4.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.0...v4.2.1) (2020-04-12)
 
-
 ### Bug Fixes
 
-* **docs:** add missing options for single file conversion ([0c6c3e1](https://github.com/kreuzerk/svg-to-ts/commit/0c6c3e1684b3532d436a6fef4d53b1998efe56a1))
+- **docs:** add missing options for single file conversion ([0c6c3e1](https://github.com/kreuzerk/svg-to-ts/commit/0c6c3e1684b3532d436a6fef4d53b1998efe56a1))
 
 # [4.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.1...v4.2.0) (2020-04-12)
 
-
 ### Features
 
-* **config:** add options to not generate type and to generate type object ([9e120b3](https://github.com/kreuzerk/svg-to-ts/commit/9e120b32342d470b2aef57563d775e7427b8913c))
-* **config:** add options to not generate type and to generate type object ([8bbec6f](https://github.com/kreuzerk/svg-to-ts/commit/8bbec6f1ee541027bb5bfc886122f58def6edac6))
+- **config:** add options to not generate type and to generate type object ([9e120b3](https://github.com/kreuzerk/svg-to-ts/commit/9e120b32342d470b2aef57563d775e7427b8913c))
+- **config:** add options to not generate type and to generate type object ([8bbec6f](https://github.com/kreuzerk/svg-to-ts/commit/8bbec6f1ee541027bb5bfc886122f58def6edac6))
 
 ## [4.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.0...v4.1.1) (2020-03-28)
 
-
 ### Bug Fixes
 
-* **escaping:** Use template literals instead of ' quotes to encapsulate svgs, as the quote character can occur in svgs. ([a5fd0a4](https://github.com/kreuzerk/svg-to-ts/commit/a5fd0a42fb7809bcdd5492df7d3d6625386e6b88))
+- **escaping:** Use template literals instead of ' quotes to encapsulate svgs, as the quote character can occur in svgs. ([a5fd0a4](https://github.com/kreuzerk/svg-to-ts/commit/a5fd0a42fb7809bcdd5492df7d3d6625386e6b88))
 
 # [4.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.5...v4.1.0) (2020-03-25)
 
-
 ### Bug Fixes
 
-* **args:** update args ([09fdd27](https://github.com/kreuzerk/svg-to-ts/commit/09fdd274722c8da13327889099b81180c8a012ce))
-
+- **args:** update args ([09fdd27](https://github.com/kreuzerk/svg-to-ts/commit/09fdd274722c8da13327889099b81180c8a012ce))
 
 ### Features
 
-* **svgo:** use configuration to config svgo ([de279ae](https://github.com/kreuzerk/svg-to-ts/commit/de279ae76fdcc664b9dc5634bda340145cef2787))
-* **svgoconfig:** accept svgo config as parameter ([b2466e2](https://github.com/kreuzerk/svg-to-ts/commit/b2466e2a8fdde0effc20768ca943d635071fa2f6))
+- **svgo:** use configuration to config svgo ([de279ae](https://github.com/kreuzerk/svg-to-ts/commit/de279ae76fdcc664b9dc5634bda340145cef2787))
+- **svgoconfig:** accept svgo config as parameter ([b2466e2](https://github.com/kreuzerk/svg-to-ts/commit/b2466e2a8fdde0effc20768ca943d635071fa2f6))
 
 ## [4.0.5](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.4...v4.0.5) (2020-03-25)
 
