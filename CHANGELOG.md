@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.4.0...v5.0.0) (2020-06-16)
+
+
+### Features
+
+* **options:** add conversion options ([217b3ef](https://github.com/kreuzerk/svg-to-ts/commit/217b3ef266c29a32735b9818eb0a39b6d6e72df4))
+
+
+### BREAKING CHANGES
+
+* **options:** conversion option is required
+
 # [4.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.3.0...v4.4.0) (2020-06-16)
 
 
