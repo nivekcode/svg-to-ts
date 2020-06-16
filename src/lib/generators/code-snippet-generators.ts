@@ -2,7 +2,7 @@ import snakeCase from 'lodash.snakecase';
 import camelCase from 'lodash.camelcase';
 import kebapCase from 'lodash.kebabcase';
 import { SvgDefinition } from '../converters/shared.converter';
-import { FileConvertionOptions, ConstantsConvertionOptions } from '../options/convertion-options';
+import { FileConversionOptions, ConstantsConversionOptions } from '../options/conversion-options';
 
 export enum Delimiter {
   CAMEL = 'CAMEL',
@@ -10,16 +10,16 @@ export enum Delimiter {
   SNAKE = 'SNAKE'
 }
 
-export const generateInterfaceDefinition = (convertionOptions: FileConvertionOptions | ConstantsConvertionOptions) => {
+export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
   const iconNameType =
-    convertionOptions.generateType || convertionOptions.generateTypeObject ? convertionOptions.typeName : 'string';
-  return `export interface ${convertionOptions.interfaceName}{
-        name: ${convertionOptions.generateType ? iconNameType : 'string'};
+    conversionOptions.generateType || conversionOptions.generateTypeObject ? conversionOptions.typeName : 'string';
+  return `export interface ${conversionOptions.interfaceName}{
+        name: ${conversionOptions.generateType ? iconNameType : 'string'};
         data: string;}`;
 };
 
 export const generateTypeDefinition = (
-  conversionOptions: FileConvertionOptions | ConstantsConvertionOptions,
+  conversionOptions: FileConversionOptions | ConstantsConversionOptions,
   svgDefinitions: SvgDefinition[]
 ): string => {
   let typesDefinition = `

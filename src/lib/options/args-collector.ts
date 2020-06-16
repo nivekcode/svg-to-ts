@@ -5,11 +5,11 @@ import { Delimiter } from '../generators/code-snippet-generators';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
 import {
-  ConstantsConvertionOptions,
-  ConvertionType,
-  FileConvertionOptions,
-  ObjectConvertionOptions
-} from './convertion-options';
+  ConstantsConversionOptions,
+  ConversionType,
+  FileConversionOptions,
+  ObjectConversionOptions
+} from './conversion-options';
 import { DEFAULT_OPTIONS } from './default-options';
 import { error } from '../helpers/log-helper';
 
@@ -17,7 +17,7 @@ export const setupCommander = () => {
   const collect = (value, previous) => previous.concat([value]);
   commander
     .version(packgeJSON.version)
-    .option('-c --convertionType <ConvertionType>', 'convertion type (object, constants, files)')
+    .option('-c --conversionType <ConversionType>', 'conversion type (object, constants, files)')
     .option('--objectName <string>', 'name of the exported object')
     .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
@@ -38,22 +38,22 @@ export const setupCommander = () => {
     )
     .option(
       '--modelFileName <string>',
-      'FileName of the model file (only necessary when convertionoption is set to files)',
+      'FileName of the model file (only necessary when conversion type is set to files)',
       DEFAULT_OPTIONS.modelFileName
     )
     .option(
       '--iconsFolderName <string>',
-      'Name of the folder the icons will be generated to (only necessary when convertionOption option is set to files)',
+      'Name of the folder the icons will be generated to (only necessary when conversion type is set to files)',
       DEFAULT_OPTIONS.iconsFolderName
     )
     .option(
       '--additionalModelOutputPath <string>',
-      'Additional outputpath for the models file (only helpful when convertionOption is set to files)',
+      'Additional outputpath for the models file (only helpful when conversion type is set to files)',
       DEFAULT_OPTIONS.additionalModelOutputPath
     )
     .option(
       '--compileSources <boolean>',
-      'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when convertionOption is set to files)',
+      'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when conversion type is set to files)',
       DEFAULT_OPTIONS.compileSources
     )
     .parse(process.argv);
@@ -74,16 +74,16 @@ const toBoolean = (str: string, defaultValue: boolean): boolean => {
 };
 
 export const collectArgumentOptions = async (): Promise<
-  ConstantsConvertionOptions | FileConvertionOptions | ObjectConvertionOptions
+  ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions
 > => {
-  if (!commander.convertionType) {
-    error(`A convertionType is required, please specify one by passing it via --convertionType. 
-    Valid convertiontypes are (object, constants or files)`);
+  if (!commander.conversionType) {
+    error(`A conversion type is required, please specify one by passing it via --conversionType. 
+    Valid conversion types are (object, constants or files)`);
     process.exit();
   }
 
   let {
-    convertionType,
+    conversionType,
     objectName,
     delimiter,
     fileName,
@@ -106,7 +106,7 @@ export const collectArgumentOptions = async (): Promise<
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
 
   if (!delimiter) {
-    delimiter = convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+    delimiter = conversionType === ConversionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
   }
 
   // Because of commander adding default value to params
@@ -120,9 +120,9 @@ export const collectArgumentOptions = async (): Promise<
     svgoConfig = await getSvgoConfig(svgoConfig);
   }
 
-  if (convertionType === ConvertionType.OBJECT) {
+  if (conversionType === ConversionType.OBJECT) {
     return {
-      convertionType,
+      conversionType,
       delimiter,
       srcFiles,
       outputDirectory,
@@ -132,9 +132,9 @@ export const collectArgumentOptions = async (): Promise<
     };
   }
 
-  if (convertionType === ConvertionType.CONSTANTS) {
+  if (conversionType === ConversionType.CONSTANTS) {
     return {
-      convertionType,
+      conversionType,
       delimiter,
       fileName,
       interfaceName,
@@ -149,7 +149,7 @@ export const collectArgumentOptions = async (): Promise<
   }
 
   return {
-    convertionType,
+    conversionType,
     delimiter,
     interfaceName,
     srcFiles,

@@ -4,27 +4,27 @@ import { collectArgumentOptions } from './args-collector';
 import { info } from '../helpers/log-helper';
 import { Delimiter } from '../generators/code-snippet-generators';
 
-export enum ConvertionType {
+export enum ConversionType {
   OBJECT = 'object',
   CONSTANTS = 'constants',
   FILES = 'files'
 }
 
-export interface CommonConvertionOptions {
+export interface CommonConversionOptions {
   srcFiles: string[];
   outputDirectory: string;
   svgoConfig: any;
   delimiter: Delimiter;
 }
 
-export interface ObjectConvertionOptions extends CommonConvertionOptions {
-  convertionType: ConvertionType.OBJECT;
+export interface ObjectConversionOptions extends CommonConversionOptions {
+  conversionType: ConversionType.OBJECT;
   fileName: string;
   objectName: string;
 }
 
-export interface ConstantsConvertionOptions extends CommonConvertionOptions {
-  convertionType: ConvertionType.CONSTANTS;
+export interface ConstantsConversionOptions extends CommonConversionOptions {
+  conversionType: ConversionType.CONSTANTS;
   fileName: string;
   typeName: string;
   generateType: boolean;
@@ -33,8 +33,8 @@ export interface ConstantsConvertionOptions extends CommonConvertionOptions {
   interfaceName: string;
 }
 
-export interface FileConvertionOptions extends CommonConvertionOptions {
-  convertionType: ConvertionType.FILES;
+export interface FileConversionOptions extends CommonConversionOptions {
+  conversionType: ConversionType.FILES;
   typeName: string;
   generateType: boolean;
   generateTypeObject: boolean;
@@ -47,7 +47,7 @@ export interface FileConvertionOptions extends CommonConvertionOptions {
 }
 
 export const getOptions = async (): Promise<
-  FileConvertionOptions | ConstantsConvertionOptions | ObjectConvertionOptions
+  FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions
 > => {
   const configOptions = await collectConfigurationOptions();
 

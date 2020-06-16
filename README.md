@@ -12,16 +12,16 @@
     - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
       - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
       - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
-  - [ConvertionTypes](#convertiontypes)
-    - [1. Converting to a single object (`convertionType==='object'`)](#1-converting-to-a-single-object-convertiontypeobject)
+  - [ConversionTypes](#conversiontypes)
+    - [1. Converting to a single object (`conversionType==='object'`)](#1-converting-to-a-single-object-conversiontypeobject)
       - [Available options:](#available-options)
       - [Example usage](#example-usage)
       - [Sample output](#sample-output)
-    - [2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='constants'`)](#2-multiple-constants---treeshakable-and-typesafe-with-one-file-convertiontypeconstants)
+    - [2. Multiple constants - Treeshakable and typesafe with one file (`conversionType==='constants'`)](#2-multiple-constants---treeshakable-and-typesafe-with-one-file-conversiontypeconstants)
       - [Available options:](#available-options-1)
       - [Example usage](#example-usage-1)
       - [Sample ouput](#sample-ouput)
-    - [3. Fully tree shakable and optimized for lazy loading (`convertionType==='files'`)](#3-fully-tree-shakable-and-optimized-for-lazy-loading-convertiontypefiles)
+    - [3. Fully tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-fully-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
       - [Available options:](#available-options-2)
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
@@ -54,7 +54,7 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - `svg-to-ts` optimizes your SVG icons under the hood
 - `svg-to-ts` automatically generates types and interfaces for your icons to improve typesafety
 - `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
-- offers three different convertion modes ('object', 'constants' and 'files')
+- offers three different conversion modes ('object', 'constants' and 'files')
 - each method is highly configurable to supports multiple use cases.
 
 # How to use svg-to-ts
@@ -88,7 +88,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "generate-icons": "svg-to-ts"
   },
   "svg-to-ts": {
-    "convertionType": "constants",
+    "conversionType": "constants",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -117,7 +117,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
 ```json
 {
   "svg-to-ts": {
-    "convertionType": "constants",
+    "conversionType": "constants",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -149,13 +149,13 @@ If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sen
 }
 ```
 
-## ConvertionTypes
+## ConversionTypes
 
-svg-to-ts offers three different kinds of convertion types; Converting your icons to a single object,
+svg-to-ts offers three different kinds of conversion types; Converting your icons to a single object,
 converting your icons to constants or converting your icons to single files. Each approach is designed
-to solve a specific kind of problem. You can switch between approaches by passing `convertionType` property (`object`, `constants` or `files`).
+to solve a specific kind of problem. You can switch between approaches by passing `conversionType` property (`object`, `constants` or `files`).
 
-### 1. Converting to a single object (`convertionType==='object'`)
+### 1. Converting to a single object (`conversionType==='object'`)
 
 In this scenario the SVG icons are converted to a single object. It's an approach that is suitable if your icon registry
 accepts an object with the filename as key and the svg data as key.
@@ -181,7 +181,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --convertionType object -s ./inputfiles -o ./dist`
+`svg-to-ts.ts --conversionType object -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample output
@@ -195,7 +195,7 @@ export default {
 };
 ```
 
-### 2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='constants'`)
+### 2. Multiple constants - Treeshakable and typesafe with one file (`conversionType==='constants'`)
 
 This approach converts your svg icons into multiple constants in the same file so that they can be used
 in combination with an icon registry. It furthermore also generates all necssary types. **We wrote a step to step guide that explains this approach further and helps you create an icon library with this approach.**
@@ -229,7 +229,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --convertionType constants -s ./inputfiles -o ./dist`
+`svg-to-ts.ts --conversionType constants -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample ouput
@@ -260,7 +260,7 @@ export interface MyIcon {
 }
 ```
 
-### 3. Fully tree shakable and optimized for lazy loading (`convertionType==='files'`)
+### 3. Fully tree shakable and optimized for lazy loading (`conversionType==='files'`)
 
 This is the most sophisticated approach and also the approach that doesn't only support tree shaking but also
 supports code splitting which is especially usefull in scenarios where you are using lazy loading.
@@ -272,7 +272,7 @@ Often, having the SVGs in a single file is enough. However if you are in a more 
 applications, you may want to make the icons even more tree shakable.
 
 In Angular, for example, having all icons in a single file shakes out the icons that are not used. However, icons always
-end up together in a chunk. The `convertionOption = files` allows you to configure `svg-to-ts` that icons are
+end up together in a chunk. The `conversionOption = files` allows you to configure `svg-to-ts` that icons are
 generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
 gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
@@ -305,7 +305,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --convertionType files -s ./inputfiles -o ./dist`
+`svg-to-ts.ts --conversionType files -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample output

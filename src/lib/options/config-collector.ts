@@ -1,11 +1,11 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
 import {
-  ConvertionType,
-  FileConvertionOptions,
-  ObjectConvertionOptions,
-  ConstantsConvertionOptions
-} from './convertion-options';
+  ConversionType,
+  FileConversionOptions,
+  ObjectConversionOptions,
+  ConstantsConversionOptions
+} from './conversion-options';
 import { DEFAULT_OPTIONS } from './default-options';
 
 import * as packgeJSON from '../../../package.json';
@@ -14,7 +14,7 @@ import { getSvgoConfig } from '../helpers/svg-optimization';
 import { Delimiter } from '../generators/code-snippet-generators';
 
 export const collectConfigurationOptions = async (): Promise<
-  ConstantsConvertionOptions | FileConvertionOptions | ObjectConvertionOptions | null
+  ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const cosmiConfigResult = explorerSync.search();
@@ -24,12 +24,12 @@ export const collectConfigurationOptions = async (): Promise<
 
 const mergeWithDefaults = async (
   options
-): Promise<FileConvertionOptions | ConstantsConvertionOptions | ObjectConvertionOptions> => {
+): Promise<FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions> => {
   const configOptions = { ...options };
 
-  if (!options.convertionType) {
-    error(`A convertionType is required, please specify one by passing it via --convertionType. 
-    Valid convertiontypes are (object, constants or files)`);
+  if (!options.conversionType) {
+    error(`A conversionType is required, please specify one by passing it via --conversionType. 
+    Valid conversion types are (object, constants or files)`);
     process.exit();
   }
 
@@ -51,18 +51,18 @@ const mergeWithDefaults = async (
   }
 
   if (!configOptions.delimiter) {
-    configOptions.delimiter = options.convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+    configOptions.delimiter = options.conversionType === ConversionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
     info(`No delimiter provided, "${configOptions.delimiter}" will be used`);
   }
 
-  if (options.convertionType === ConvertionType.CONSTANTS || options.convertionType === ConvertionType.OBJECT) {
-    if (!(configOptions as ConstantsConvertionOptions).fileName) {
-      (configOptions as ConstantsConvertionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
+  if (options.conversionType === ConversionType.CONSTANTS || options.conversionType === ConversionType.OBJECT) {
+    if (!(configOptions as ConstantsConversionOptions).fileName) {
+      (configOptions as ConstantsConversionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
       info(`No fileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
     }
   }
 
-  if (options.convertionType === ConvertionType.CONSTANTS || options.convertionType === ConvertionType.FILES) {
+  if (options.conversionType === ConversionType.CONSTANTS || options.conversionType === ConversionType.FILES) {
     if (!configOptions.typeName) {
       configOptions.typeName = DEFAULT_OPTIONS.typeName;
       info(`No typeName provided, "${DEFAULT_OPTIONS.typeName}" will be used`);
@@ -89,22 +89,22 @@ const mergeWithDefaults = async (
     }
   }
 
-  if (configOptions.convertionType === ConvertionType.FILES) {
-    if (!(configOptions as FileConvertionOptions).modelFileName) {
-      (configOptions as FileConvertionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
+  if (configOptions.conversionType === ConversionType.FILES) {
+    if (!(configOptions as FileConversionOptions).modelFileName) {
+      (configOptions as FileConversionOptions).modelFileName = DEFAULT_OPTIONS.modelFileName;
       info(`No modelFileName provided, "${DEFAULT_OPTIONS.modelFileName}" will be used`);
     }
 
-    if (!(configOptions as FileConvertionOptions).iconsFolderName) {
-      (configOptions as FileConvertionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
+    if (!(configOptions as FileConversionOptions).iconsFolderName) {
+      (configOptions as FileConversionOptions).iconsFolderName = DEFAULT_OPTIONS.iconsFolderName;
       info(`No iconsFolderName provided, "${DEFAULT_OPTIONS.iconsFolderName}" will be used`);
     }
 
-    if (!(configOptions as FileConvertionOptions).compileSources) {
-      (configOptions as FileConvertionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
+    if (!(configOptions as FileConversionOptions).compileSources) {
+      (configOptions as FileConversionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
       info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.compileSources}" will be used`);
     }
-    return configOptions as FileConvertionOptions;
+    return configOptions as FileConversionOptions;
   }
-  return configOptions as ConstantsConvertionOptions;
+  return configOptions as ConstantsConversionOptions;
 };
