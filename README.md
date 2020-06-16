@@ -260,7 +260,7 @@ export interface MyIcon {
 }
 ```
 
-### 3. Fully tree shakable and optimized for lazy loading (`conversionType==='files'`)
+### 3. Tree shakable and optimized for lazy loading (`conversionType==='files'`)
 
 This is the most sophisticated approach and also the approach that doesn't only support tree shaking but also
 supports code splitting which is especially usefull in scenarios where you are using lazy loading.
