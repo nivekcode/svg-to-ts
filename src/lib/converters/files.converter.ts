@@ -31,7 +31,7 @@ const writeFiles = async (outputDirectory, iconsFolderName, modelFileName, prefi
   return fileContent.join('');
 };
 
-export const convertToMultipleFiles = async (convertionOptions: FileConvertionOptions): Promise<void> => {
+export const convertToFiles = async (convertionOptions: FileConvertionOptions): Promise<void> => {
   const {
     prefix,
     outputDirectory,

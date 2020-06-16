@@ -20,7 +20,7 @@ const getSvgConstants = svgDefinitions => {
   return svgConstants.join('');
 };
 
-export const convertToSingleFile = async (convertionOptions: ConstantsConvertionOptions): Promise<void> => {
+export const convertToConstants = async (convertionOptions: ConstantsConvertionOptions): Promise<void> => {
   const { outputDirectory, fileName } = convertionOptions;
   try {
     const svgDefinitions = await filesProcessor(convertionOptions);
