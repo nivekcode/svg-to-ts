@@ -1,58 +1,141 @@
-# [4.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.3...v4.3.0) (2020-06-04)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [4.3.0 (2020-06-04)](#430-2020-06-04)
+  - [Features](#features)
+  - [4.2.3 (2020-06-04)](#423-2020-06-04)
+    - [Bug Fixes](#bug-fixes)
+  - [4.2.2 (2020-05-05)](#422-2020-05-05)
+    - [Bug Fixes](#bug-fixes-1)
+  - [4.2.1 (2020-04-12)](#421-2020-04-12)
+    - [Bug Fixes](#bug-fixes-2)
+- [4.2.0 (2020-04-12)](#420-2020-04-12)
+  - [Features](#features-1)
+  - [4.1.1 (2020-03-28)](#411-2020-03-28)
+    - [Bug Fixes](#bug-fixes-3)
+- [4.1.0 (2020-03-25)](#410-2020-03-25)
+  - [Bug Fixes](#bug-fixes-4)
+  - [Features](#features-2)
+  - [4.0.5 (2020-03-25)](#405-2020-03-25)
+    - [Bug Fixes](#bug-fixes-5)
+  - [4.0.4 (2020-03-25)](#404-2020-03-25)
+    - [Bug Fixes](#bug-fixes-6)
+  - [4.0.3 (2020-03-23)](#403-2020-03-23)
+    - [Bug Fixes](#bug-fixes-7)
+  - [4.0.2 (2020-03-23)](#402-2020-03-23)
+    - [Bug Fixes](#bug-fixes-8)
+  - [4.0.1 (2020-03-23)](#401-2020-03-23)
+    - [Bug Fixes](#bug-fixes-9)
+- [4.0.0 (2020-03-23)](#400-2020-03-23)
+  - [Features](#features-3)
+  - [BREAKING CHANGES](#breaking-changes)
+  - [3.5.1 (2020-03-18)](#351-2020-03-18)
+    - [Bug Fixes](#bug-fixes-10)
+- [3.5.0 (2020-03-15)](#350-2020-03-15)
+  - [Features](#features-4)
+- [3.4.0 (2020-03-15)](#340-2020-03-15)
+  - [Features](#features-5)
+  - [3.3.2 (2020-03-11)](#332-2020-03-11)
+    - [Bug Fixes](#bug-fixes-11)
+  - [3.3.1 (2020-03-10)](#331-2020-03-10)
+    - [Bug Fixes](#bug-fixes-12)
+- [3.3.0 (2020-03-08)](#330-2020-03-08)
+  - [Features](#features-6)
+  - [3.2.1 (2020-03-05)](#321-2020-03-05)
+    - [Bug Fixes](#bug-fixes-13)
+- [3.2.0 (2020-03-05)](#320-2020-03-05)
+  - [Features](#features-7)
+  - [3.1.4 (2020-03-04)](#314-2020-03-04)
+    - [Bug Fixes](#bug-fixes-14)
+  - [3.1.3 (2020-03-04)](#313-2020-03-04)
+    - [Bug Fixes](#bug-fixes-15)
+  - [3.1.2 (2020-03-04)](#312-2020-03-04)
+    - [Bug Fixes](#bug-fixes-16)
+  - [3.1.1 (2020-03-04)](#311-2020-03-04)
+    - [Bug Fixes](#bug-fixes-17)
+- [3.1.0 (2020-03-04)](#310-2020-03-04)
+  - [Features](#features-8)
+- [3.0.0 (2020-02-25)](#300-2020-02-25)
+  - [Features](#features-9)
+  - [BREAKING CHANGES](#breaking-changes-1)
+  - [2.2.1 (2020-02-10)](#221-2020-02-10)
+    - [Bug Fixes](#bug-fixes-18)
+- [2.2.0 (2019-12-31)](#220-2019-12-31)
+  - [Features](#features-10)
+- [2.1.0 (2019-12-13)](#210-2019-12-13)
+  - [Bug Fixes](#bug-fixes-19)
+  - [Features](#features-11)
+  - [2.0.3 (2019-12-10)](#203-2019-12-10)
+    - [Bug Fixes](#bug-fixes-20)
+  - [2.0.2 (2019-12-10)](#202-2019-12-10)
+    - [Bug Fixes](#bug-fixes-21)
+  - [2.0.1 (2019-12-10)](#201-2019-12-10)
+    - [Bug Fixes](#bug-fixes-22)
+- [2.0.0 (2019-12-10)](#200-2019-12-10)
+  - [Features](#features-12)
+  - [BREAKING CHANGES](#breaking-changes-2)
+  - [1.1.2 (2019-12-09)](#112-2019-12-09)
+    - [Bug Fixes](#bug-fixes-23)
+  - [1.1.1 (2019-12-09)](#111-2019-12-09)
+    - [Bug Fixes](#bug-fixes-24)
+- [1.1.0 (2019-12-09)](#110-2019-12-09)
+  - [Features](#features-13)
+  - [1.0.1 (2019-12-05)](#101-2019-12-05)
+    - [Bug Fixes](#bug-fixes-25)
+- [1.0.0 (2019-11-21)](#100-2019-11-21)
+  - [Features](#features-14)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# [4.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.3...v4.3.0) (2020-06-04)
 
 ### Features
 
-* **svgo:** automatically prefix svg ids with filename ([5bb989b](https://github.com/kreuzerk/svg-to-ts/commit/5bb989b5a8238e9d7c865d01a5b4a8852fbdba96))
+- **svgo:** automatically prefix svg ids with filename ([5bb989b](https://github.com/kreuzerk/svg-to-ts/commit/5bb989b5a8238e9d7c865d01a5b4a8852fbdba96))
 
 ## [4.2.3](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.2...v4.2.3) (2020-06-04)
 
-
 ### Bug Fixes
 
-* **svgo:** correctly pick up options from external config file ([9b8d138](https://github.com/kreuzerk/svg-to-ts/commit/9b8d138ddf080fe80cf29f83a2dca54c6c3b5eaa))
+- **svgo:** correctly pick up options from external config file ([9b8d138](https://github.com/kreuzerk/svg-to-ts/commit/9b8d138ddf080fe80cf29f83a2dca54c6c3b5eaa))
 
 ## [4.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.1...v4.2.2) (2020-05-05)
 
-
 ### Bug Fixes
 
-* **prefix:** allow empty prefixes ([6fa8f1f](https://github.com/kreuzerk/svg-to-ts/commit/6fa8f1f1f9ac61b71b75cef3ec2c48b4e1115242))
+- **prefix:** allow empty prefixes ([6fa8f1f](https://github.com/kreuzerk/svg-to-ts/commit/6fa8f1f1f9ac61b71b75cef3ec2c48b4e1115242))
 
 ## [4.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.0...v4.2.1) (2020-04-12)
 
-
 ### Bug Fixes
 
-* **docs:** add missing options for single file conversion ([0c6c3e1](https://github.com/kreuzerk/svg-to-ts/commit/0c6c3e1684b3532d436a6fef4d53b1998efe56a1))
+- **docs:** add missing options for single file conversion ([0c6c3e1](https://github.com/kreuzerk/svg-to-ts/commit/0c6c3e1684b3532d436a6fef4d53b1998efe56a1))
 
 # [4.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.1...v4.2.0) (2020-04-12)
 
-
 ### Features
 
-* **config:** add options to not generate type and to generate type object ([9e120b3](https://github.com/kreuzerk/svg-to-ts/commit/9e120b32342d470b2aef57563d775e7427b8913c))
-* **config:** add options to not generate type and to generate type object ([8bbec6f](https://github.com/kreuzerk/svg-to-ts/commit/8bbec6f1ee541027bb5bfc886122f58def6edac6))
+- **config:** add options to not generate type and to generate type object ([9e120b3](https://github.com/kreuzerk/svg-to-ts/commit/9e120b32342d470b2aef57563d775e7427b8913c))
+- **config:** add options to not generate type and to generate type object ([8bbec6f](https://github.com/kreuzerk/svg-to-ts/commit/8bbec6f1ee541027bb5bfc886122f58def6edac6))
 
 ## [4.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v4.1.0...v4.1.1) (2020-03-28)
 
-
 ### Bug Fixes
 
-* **escaping:** Use template literals instead of ' quotes to encapsulate svgs, as the quote character can occur in svgs. ([a5fd0a4](https://github.com/kreuzerk/svg-to-ts/commit/a5fd0a42fb7809bcdd5492df7d3d6625386e6b88))
+- **escaping:** Use template literals instead of ' quotes to encapsulate svgs, as the quote character can occur in svgs. ([a5fd0a4](https://github.com/kreuzerk/svg-to-ts/commit/a5fd0a42fb7809bcdd5492df7d3d6625386e6b88))
 
 # [4.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.5...v4.1.0) (2020-03-25)
 
-
 ### Bug Fixes
 
-* **args:** update args ([09fdd27](https://github.com/kreuzerk/svg-to-ts/commit/09fdd274722c8da13327889099b81180c8a012ce))
-
+- **args:** update args ([09fdd27](https://github.com/kreuzerk/svg-to-ts/commit/09fdd274722c8da13327889099b81180c8a012ce))
 
 ### Features
 
-* **svgo:** use configuration to config svgo ([de279ae](https://github.com/kreuzerk/svg-to-ts/commit/de279ae76fdcc664b9dc5634bda340145cef2787))
-* **svgoconfig:** accept svgo config as parameter ([b2466e2](https://github.com/kreuzerk/svg-to-ts/commit/b2466e2a8fdde0effc20768ca943d635071fa2f6))
+- **svgo:** use configuration to config svgo ([de279ae](https://github.com/kreuzerk/svg-to-ts/commit/de279ae76fdcc664b9dc5634bda340145cef2787))
+- **svgoconfig:** accept svgo config as parameter ([b2466e2](https://github.com/kreuzerk/svg-to-ts/commit/b2466e2a8fdde0effc20768ca943d635071fa2f6))
 
 ## [4.0.5](https://github.com/kreuzerk/svg-to-ts/compare/v4.0.4...v4.0.5) (2020-03-25)
 

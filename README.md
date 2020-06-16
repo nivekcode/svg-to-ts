@@ -12,13 +12,22 @@
     - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
       - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
       - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
-  - [Use-cases](#use-cases)
-    - [Use Case 1 - Treeshakable and typesafe with one file (simpler use cases)](#use-case-1---treeshakable-and-typesafe-with-one-file-simpler-use-cases)
+  - [ConvertionTypes](#convertiontypes)
+    - [1. Converting to a single object (`convertionType==='object'`)](#1-converting-to-a-single-object-convertiontypeobject)
+      - [Available options:](#available-options)
       - [Example usage](#example-usage)
-    - [Use Case 2 - Fully tree shakable and optimized for lazy loading (more sophisticated)](#use-case-2---fully-tree-shakable-and-optimized-for-lazy-loading-more-sophisticated)
+      - [Sample output](#sample-output)
+    - [2. Multiple constants - Treeshakable and typesafe with one file (`convertionType==='constants'`)](#2-multiple-constants---treeshakable-and-typesafe-with-one-file-convertiontypeconstants)
+      - [Available options:](#available-options-1)
+      - [Example usage](#example-usage-1)
+      - [Sample ouput](#sample-ouput)
+    - [3. Fully tree shakable and optimized for lazy loading (`convertionType==='files'`)](#3-fully-tree-shakable-and-optimized-for-lazy-loading-convertiontypefiles)
+      - [Available options:](#available-options-2)
+      - [Example usage](#example-usage-2)
+      - [Sample output](#sample-output-1)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
-  - [Standalone library](#standalone-library)
+  - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -45,7 +54,7 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - `svg-to-ts` optimizes your SVG icons under the hood
 - `svg-to-ts` automatically generates types and interfaces for your icons to improve typesafety
 - `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
-- offers three different convertion modes ('object', 'single-file' and 'multiple-files')
+- offers three different convertion modes ('object', 'constants' and 'files')
 - each method is highly configurable to supports multiple use cases.
 
 # How to use svg-to-ts
@@ -79,7 +88,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "generate-icons": "svg-to-ts"
   },
   "svg-to-ts": {
-    "convertionType": "single-file",
+    "convertionType": "constants",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -108,7 +117,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
 ```json
 {
   "svg-to-ts": {
-    "convertionType": "single-file",
+    "convertionType": "constants",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -151,7 +160,7 @@ to solve a specific kind of problem. You can switch between approaches by passin
 In this scenario the SVG icons are converted to a single object. It's an approach that is suitable if your icon registry
 accepts an object with the filename as key and the svg data as key.
 
-Available options:
+#### Available options:
 
 | --version       | type                    | default                                  | output the version number                                                    |
 | --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
@@ -161,6 +170,19 @@ Available options:
 | srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
 | outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
 | objectName      | string                  | default - export                         | name of the exported const - if nothing is set - default export will be used |
+
+#### Example usage
+
+Let's say we have the following four svg files in a `inputfiles` folder.
+
+- expressionless.svg
+- full.svg
+- laughing.svg
+- smiling-face.svg
+
+We can now run
+`svg-to-ts.ts --convertionType object -s ./inputfiles -o ./dist`
+and we end up with the following file in our `dist` folder.
 
 #### Sample output
 
@@ -182,7 +204,7 @@ in combination with an icon registry. It furthermore also generates all necssary
 ![Output scenario one](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/example-src1.png)
 Only the icons included in the consuming SPA also end up in the final bundle of the SPA.
 
-Available configurations:
+#### Available options:
 
 | --version          | type                    | default                                  | output the version number                                                    |
 | ------------------ | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
@@ -207,7 +229,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts -s ./inputfiles -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon`
+`svg-to-ts.ts --convertionType constants -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample ouput
@@ -254,9 +276,8 @@ end up together in a chunk. The `convertionOption = files` allows you to configu
 generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
 gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
-![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
 
-Available configurations:
+#### Available options:
 
 | --version                 | type                    | default                                  | output the version number                                                                                                                                                       |
 | ------------------------- | ----------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -273,6 +294,23 @@ Available configurations:
 | additionalModelOutputPath | string                  | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                  | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
 | compileSources            | boolean                 | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+
+#### Example usage
+
+Let's say we have the following four svg files in a `inputfiles` folder.
+
+- expressionless.svg
+- full.svg
+- laughing.svg
+- smiling-face.svg
+
+We can now run
+`svg-to-ts.ts --convertionType files -s ./inputfiles -o ./dist`
+and we end up with the following file in our `dist` folder.
+
+#### Sample output
+
+![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
 
 # FAQ
 
