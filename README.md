@@ -85,7 +85,6 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "interfaceName": "DinosaurIcon",
     "typeName": "dinosaurIcon",
     "prefix": "dinosaurIcon",
-    "optimizeForLazyLoading": true,
     "svgoConfig": {
       "plugins": [
         {
@@ -115,7 +114,6 @@ Once you run `svg-to-ts` those configurations will be picked up.
     "interfaceName": "DinosaurIcon",
     "typeName": "dinosaurIcon",
     "prefix": "dinosaurIcon",
-    "optimizeForLazyLoading": true,
     "modelFileName": "dinosaur-icon.model",
     "svgoConfig": {
       "plugins": [
@@ -217,7 +215,7 @@ Often, having the SVGs in a single file is enough. However if you are in a more 
 applications, you may want to make the icons even more tree shakable.
 
 In Angular, for example, having all icons in a single file shakes out the icons that are not used. However, icons always
-end up together in a chunk. The `optimizeForLazyLoading` flag allows you to configure `svg-to-ts` that icons are
+end up together in a chunk. The `convertionOption = files` allows you to configure `svg-to-ts` that icons are
 generated in a way that they can even be split to lazy loaded chunks. Means not only the amount of the icons in the chunk
 gets reduced, but also, where they end up. Means, an icon that is only used in a lazy loaded Angular feature module, will only
 end up there.
@@ -237,7 +235,6 @@ Available configurations:
 | srcFiles                  | string                  | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
 | svgoConfig                | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
 | outputDirectory           | string                  | "./dist"                                 | name of the output directory                                                                                                                                                    |
-| optimizeForLazyLoading    | boolean                 | false                                    | when set to true, multiple files will be generated                                                                                                                              |
 | additionalModelOutputPath | string                  | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                  | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
 | compileSources            | boolean                 | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |

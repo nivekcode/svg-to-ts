@@ -18,12 +18,12 @@ import { convertToSingleObject } from '../lib/converters/object.converter';
   const convertionOptions = await getOptions();
 
   if (convertionOptions.convertionType === ConvertionType.FILES) {
-    info('We are using the convertiontype "multiple-files"');
+    info('We are using the convertiontype "files"');
     await convertToMultipleFiles(convertionOptions as FileConvertionOptions);
   }
 
   if (convertionOptions.convertionType === ConvertionType.CONSTANTS) {
-    info('We are using the convertiontype "single-file"');
+    info('We are using the convertiontype "constants"');
     await convertToSingleFile(convertionOptions as ConstantsConvertionOptions);
   }
 

@@ -11,7 +11,6 @@ export const DEFAULT_OPTIONS = {
   typeName: 'myIcons',
   generateType: true,
   generateTypeObject: false,
-  optimizeForLazyLoading: false,
   additionalModelOutputPath: null,
   modelFileName: 'my-icons.model',
   iconsFolderName: 'build',

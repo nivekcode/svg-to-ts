@@ -19,7 +19,7 @@ export const setupCommander = () => {
     .version(packgeJSON.version)
     .option('--convertionType <ConvertionType>', 'convertion type (object, constants, files)')
     .option('--objectName <string>', 'name of the exported object', DEFAULT_OPTIONS.objectName)
-    .option('--typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
+    .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
     .option('--generateTypeObject <boolean>', 'generate type object', DEFAULT_OPTIONS.generateTypeObject)
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
@@ -38,28 +38,23 @@ export const setupCommander = () => {
       DEFAULT_OPTIONS.svgoConfig
     )
     .option(
-      '--optimizeForLazyLoading <boolean>',
-      'optimize the output for lazyloading',
-      DEFAULT_OPTIONS.optimizeForLazyLoading
-    )
-    .option(
       '--modelFileName <string>',
-      'FileName of the model file (only necessary when optimizeForLazyLoading option is enabled)',
+      'FileName of the model file (only necessary when convertionoption is set to files)',
       DEFAULT_OPTIONS.modelFileName
     )
     .option(
       '--iconsFolderName <string>',
-      'Name of the folder the icons will be generated to (only necessary when optimizeForLazyLoading option is enabled)',
+      'Name of the folder the icons will be generated to (only necessary when convertionOption option is set to files)',
       DEFAULT_OPTIONS.iconsFolderName
     )
     .option(
       '--additionalModelOutputPath <string>',
-      'Additional outputpath for the models file (only helpful when optimizeForLazyLoading option is enabled)',
+      'Additional outputpath for the models file (only helpful when convertionOption is set to files)',
       DEFAULT_OPTIONS.additionalModelOutputPath
     )
     .option(
       '--compileSources <boolean>',
-      'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when optimizeForLazyLoading option is enabled)',
+      'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when convertionOption is set to files)',
       DEFAULT_OPTIONS.compileSources
     )
     .parse(process.argv);
@@ -84,7 +79,7 @@ export const collectArgumentOptions = async (): Promise<
 > => {
   if (!commander.convertionType) {
     error(`A convertionType is required, please specify one by passing it via --convertionType. 
-    Valid convertiontypes are (object, single-file or multiple-files)`);
+    Valid convertiontypes are (object, constants or files)`);
     process.exit();
   }
 
@@ -101,7 +96,6 @@ export const collectArgumentOptions = async (): Promise<
     generateTypeObject,
     modelFileName,
     iconsFolderName,
-    optimizeForLazyLoading,
     additionalModelOutputPath,
     compileSources
   } = commander;
@@ -110,7 +104,6 @@ export const collectArgumentOptions = async (): Promise<
   // Parse boolean values
   generateType = toBoolean(generateType, DEFAULT_OPTIONS.generateType);
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
-  optimizeForLazyLoading = toBoolean(optimizeForLazyLoading, DEFAULT_OPTIONS.optimizeForLazyLoading);
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
 
   // Because of commander adding default value to params
@@ -148,8 +141,7 @@ export const collectArgumentOptions = async (): Promise<
       typeName,
       generateType,
       generateTypeObject,
-      svgoConfig,
-      optimizeForLazyLoading
+      svgoConfig
     };
   }
 
@@ -166,7 +158,6 @@ export const collectArgumentOptions = async (): Promise<
     modelFileName,
     iconsFolderName,
     svgoConfig,
-    optimizeForLazyLoading,
     additionalModelOutputPath,
     compileSources
   };

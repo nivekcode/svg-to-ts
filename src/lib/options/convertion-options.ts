@@ -40,7 +40,6 @@ export interface FileConvertionOptions extends CommonConvertionOptions {
   generateTypeObject: boolean;
   prefix: string;
   interfaceName: string;
-  optimizeForLazyLoading: string;
   modelFileName: string;
   additionalModelOutputPath: string | null;
   iconsFolderName: string;

@@ -28,7 +28,7 @@ const mergeWithDefaults = async (
 
   if (!options.convertionType) {
     error(`A convertionType is required, please specify one by passing it via --convertionType. 
-    Valid convertiontypes are (object, single-file or multiple-files)`);
+    Valid convertiontypes are (object, constants or files)`);
     process.exit();
   }
 
