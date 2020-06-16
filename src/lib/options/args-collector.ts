@@ -105,7 +105,9 @@ export const collectArgumentOptions = async (): Promise<
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
 
-  delimiter = convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+  if (!delimiter) {
+    delimiter = convertionType === ConvertionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
+  }
 
   // Because of commander adding default value to params
   // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
