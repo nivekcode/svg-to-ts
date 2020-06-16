@@ -18,7 +18,7 @@ export const setupCommander = () => {
   commander
     .version(packgeJSON.version)
     .option('-c --convertionType <ConvertionType>', 'convertion type (object, constants, files)')
-    .option('--objectName <string>', 'name of the exported object', DEFAULT_OPTIONS.objectName)
+    .option('--objectName <string>', 'name of the exported object')
     .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
     .option('--generateTypeObject <boolean>', 'generate type object', DEFAULT_OPTIONS.generateTypeObject)

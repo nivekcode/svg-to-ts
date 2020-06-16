@@ -55,15 +55,6 @@ const mergeWithDefaults = async (
     info(`No delimiter provided, "${configOptions.delimiter}" will be used`);
   }
 
-  if (options.convertionType === ConvertionType.OBJECT) {
-    info(`Convertiontype "Object" will be used`);
-
-    if (!(configOptions as ObjectConvertionOptions).objectName) {
-      configOptions.outputDirectory = DEFAULT_OPTIONS.objectName;
-      info(`No outputDirectory provided, "${DEFAULT_OPTIONS.objectName}" will be used`);
-    }
-  }
-
   if (options.convertionType === ConvertionType.CONSTANTS || options.convertionType === ConvertionType.OBJECT) {
     if (!(configOptions as ConstantsConvertionOptions).fileName) {
       (configOptions as ConstantsConvertionOptions).fileName = DEFAULT_OPTIONS.modelFileName;
