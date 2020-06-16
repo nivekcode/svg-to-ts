@@ -1,3 +1,20 @@
+# [4.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.3.0...v4.4.0) (2020-06-16)
+
+
+### Bug Fixes
+
+* **args:** use passed delimiter or default ([9d2a125](https://github.com/kreuzerk/svg-to-ts/commit/9d2a125cc090ce03f5997261d1ad2542ed79a964))
+* **objectconvertion:** respect delimiter ([b0b307a](https://github.com/kreuzerk/svg-to-ts/commit/b0b307aed6a4df53c1a9cd9aaef63470d3b540f0))
+
+
+### Features
+
+* **args:** add shortcut for convertionType ([f061efc](https://github.com/kreuzerk/svg-to-ts/commit/f061efc62af4373db1ad465a23e21e41da5efec1))
+* **converting:** add new convertion option to convert svg-icons to objects ([9459f36](https://github.com/kreuzerk/svg-to-ts/commit/9459f36b33075b3bef712dce2e4ca3833529a97d))
+* **convertionOptions:** add new convertion options ([4886eef](https://github.com/kreuzerk/svg-to-ts/commit/4886eef17f2df0995d2d0ddfd37b30b8bafea22b))
+* **defaultexport:** use default export if no objectname is specified ([d5c8635](https://github.com/kreuzerk/svg-to-ts/commit/d5c86354076a93c8e485154d6a4b60dc43071c13))
+* **export:** add possibility for default exports ([4246587](https://github.com/kreuzerk/svg-to-ts/commit/42465877ef9e1c68a27627c0d42c8ff59cae11e2))
+
 # [4.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.2.3...v4.3.0) (2020-06-04)
 
 ### Features
