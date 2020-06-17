@@ -165,7 +165,7 @@ accepts an object with the filename as key and the svg data as key.
 | --version       | type                    | default                                  | output the version number                                                    |
 | --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
 | fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter       | CAMEL, KEBAP, SNAKE     | CAMEL                                    | delimiter which is used to generate the types and name properties            |
+| delimiter       | CAMEL, KEBAB, SNAKE     | CAMEL                                    | delimiter which is used to generate the types and name properties            |
 | svgoConfig      | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
 | srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
 | outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
@@ -214,7 +214,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | prefix             | string                  | myIcon                                   | prefix for the generated svg constants                                       |
 | interfaceName      | string                  | MyIcon                                   | name for the generated interface                                             |
 | fileName           | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter          | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
+| delimiter          | CAMEL, KEBAB, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
 | svgoConfig         | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
 | srcFiles           | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
 | outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
@@ -287,7 +287,7 @@ end up there.
 | prefix                    | string                  | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
 | interfaceName             | string                  | MyIcon                                   | name for the generated interface                                                                                                                                                |
 | fileName                  | stirng                  | my-icons                                 | file name of the generated file                                                                                                                                                 |
-| delimiter                 | CAMEL, KEBAP, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
+| delimiter                 | CAMEL, KEBAB, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
 | srcFiles                  | string                  | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
 | svgoConfig                | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
 | outputDirectory           | string                  | "./dist"                                 | name of the output directory                                                                                                                                                    |
