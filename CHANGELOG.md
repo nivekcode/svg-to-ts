@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.0...v5.0.1) (2020-06-28)
+
+
+### Bug Fixes
+
+* **logo:** change logo ([18d60ed](https://github.com/kreuzerk/svg-to-ts/commit/18d60edfe25f0ea7cbf4f2427c40277e98623779))
+
 # [5.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v4.4.0...v5.0.0) (2020-06-16)
 
 ### Bug Fixes
