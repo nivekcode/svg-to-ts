@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.1...v5.0.2) (2020-08-25)
+
+
+### Bug Fixes
+
+* **exitcodes:** add propper exit codes on failure ([902d09c](https://github.com/kreuzerk/svg-to-ts/commit/902d09cfaec55d95700c72ae97a19ce2ac349fd9))
+
 ## [5.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.0...v5.0.1) (2020-06-28)
 
 
