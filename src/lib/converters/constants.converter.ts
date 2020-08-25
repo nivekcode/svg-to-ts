@@ -34,5 +34,6 @@ export const convertToConstants = async (conversionOptions: ConstantsConversionO
     }
   } catch (exception) {
     error(`Something went wrong: ${exception}`);
+    process.exit(1);
   }
 };

@@ -85,5 +85,6 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     success('========================================================');
   } catch (error) {
     error('Something went wrong', error);
+    process.exit(1);
   }
 };

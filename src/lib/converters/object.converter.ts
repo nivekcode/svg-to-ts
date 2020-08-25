@@ -17,5 +17,6 @@ export const convertToSingleObject = async (conversionOptions: ObjectConversionO
     success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
   } catch (exception) {
     error(`Something went wrong: ${exception}`);
+    process.exit(1);
   }
 };
