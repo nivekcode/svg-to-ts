@@ -1,0 +1,82 @@
+{
+  "projectName": "svg-to-ts",
+  "projectOwner": "Kevin Kreuzer",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 200,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "kreuzerk",
+      "name": "Kevin Kreuzer",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5468954?v=4",
+      "profile": "https://medium.com/@kevinkreuzer",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "ideas",
+        "infra",
+        "maintenance",
+        "test"
+      ]
+    },
+    {
+      "login": "shaharkazaz",
+      "name": "Shahar Kazaz",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17194830?v=4",
+      "profile": "https://github.com/shaharkazaz",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "test"
+      ]
+    },
+    {
+      "login": "felipeplets",
+      "name": "Felipe Plets",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/119980?s=400&u=92bcde3bbed2bf436317b301d1a9fca2445511cb&v=4",
+      "profile": "https://github.com/felipeplets",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "test"
+      ]
+    },
+    {
+      "login": "akehir",
+      "name": "Raphael Ochsenbein",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1078202?s=400&u=497e363bdad9525d99c8142900527d6334fd855c&v=4",
+      "profile": "https://github.com/akehir",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "test"
+      ]
+    },
+    {
+      "login": "Palapapaa",
+      "name": "Guillaume M",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2643459?s=400&v=4",
+      "profile": "https://github.com/Palapapaa",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
