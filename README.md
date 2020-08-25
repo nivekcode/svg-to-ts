@@ -27,13 +27,14 @@
       - [Available options:](#available-options-1)
       - [Example usage](#example-usage-1)
       - [Sample ouput](#sample-ouput)
-    - [3. Fully tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-fully-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
+    - [3. Tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
       - [Available options:](#available-options-2)
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
   - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
+- [Contributors ✨](#contributors-)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -335,7 +336,7 @@ advantages:
 - Icons can be released independent of the component library
 - No need to let `svg-to-ts` compile the icons - just set the `compile` flag to false.
 
-## Contributors ✨
+# Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
