@@ -1,5 +1,11 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -21,13 +27,14 @@
       - [Available options:](#available-options-1)
       - [Example usage](#example-usage-1)
       - [Sample ouput](#sample-ouput)
-    - [3. Fully tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-fully-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
+    - [3. Tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
       - [Available options:](#available-options-2)
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
   - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
+- [Contributors ✨](#contributors-)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -328,3 +335,27 @@ advantages:
 - Simplified build process
 - Icons can be released independent of the component library
 - No need to let `svg-to-ts` compile the icons - just set the `compile` flag to false.
+
+# Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://medium.com/@kevinkreuzer"><img src="https://avatars0.githubusercontent.com/u/5468954?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Kevin Kreuzer</b></sub></a><br /><a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=kreuzerk" title="Code">💻</a> <a href="#design-kreuzerk" title="Design">🎨</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=kreuzerk" title="Documentation">📖</a> <a href="#ideas-kreuzerk" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-kreuzerk" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-kreuzerk" title="Maintenance">🚧</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=kreuzerk" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/shaharkazaz"><img src="https://avatars2.githubusercontent.com/u/17194830?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Shahar Kazaz</b></sub></a><br /><a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=shaharkazaz" title="Code">💻</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=shaharkazaz" title="Documentation">📖</a> <a href="#ideas-shaharkazaz" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-shaharkazaz" title="Maintenance">🚧</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=shaharkazaz" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/felipeplets"><img src="https://avatars3.githubusercontent.com/u/119980?s=400&u=92bcde3bbed2bf436317b301d1a9fca2445511cb&v=4?s=200" width="200px;" alt=""/><br /><sub><b>Felipe Plets</b></sub></a><br /><a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=felipeplets" title="Code">💻</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=felipeplets" title="Documentation">📖</a> <a href="#ideas-felipeplets" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-felipeplets" title="Maintenance">🚧</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=felipeplets" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/akehir"><img src="https://avatars2.githubusercontent.com/u/1078202?s=400&u=497e363bdad9525d99c8142900527d6334fd855c&v=4?s=200" width="200px;" alt=""/><br /><sub><b>Raphael Ochsenbein</b></sub></a><br /><a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=akehir" title="Code">💻</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=akehir" title="Documentation">📖</a> <a href="#ideas-akehir" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-akehir" title="Maintenance">🚧</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=akehir" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/Palapapaa"><img src="https://avatars1.githubusercontent.com/u/2643459?s=400&v=4?s=200" width="200px;" alt=""/><br /><sub><b>Guillaume M</b></sub></a><br /><a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=Palapapaa" title="Code">💻</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=Palapapaa" title="Documentation">📖</a> <a href="#ideas-Palapapaa" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-Palapapaa" title="Maintenance">🚧</a> <a href="https://github.com/Kevin Kreuzer/svg-to-ts/commits?author=Palapapaa" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
