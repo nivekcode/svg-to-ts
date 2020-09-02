@@ -40,7 +40,7 @@ export const generateTypeDefinition = (
       ${svgDefinitions
         .map(
           ({ typeName }, index) =>
-            `${typeName}: '${typeName}'${conversionOptions.generateType ? ` as ${conversionOptions.typeName}` : ''}${
+            `'${typeName}': '${typeName}'${conversionOptions.generateType ? ` as ${conversionOptions.typeName}` : ''}${
               index === svgDefinitions.length - 1 ? '' : ','
             }`
         )
@@ -74,18 +74,6 @@ export const generateSvgConstantWithImport = (
     import {${interfaceName}} from './${modelFileName}';
   
     export const ${variableName}: ${interfaceName} = {
-                name: '${filenameWithoutEnding}',
-                data: \`${data}\`
-            };`;
-};
-
-export const generateSvgStandaloneFile = (
-  variableName: string,
-  interfaceName: string,
-  filenameWithoutEnding: string,
-  data: string
-): string => {
-  return `export const ${variableName}: ${interfaceName} = {
                 name: '${filenameWithoutEnding}',
                 data: \`${data}\`
             };`;
