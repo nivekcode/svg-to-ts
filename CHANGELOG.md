@@ -1,3 +1,15 @@
+# [5.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.4...v5.1.0) (2020-09-02)
+
+
+### Bug Fixes
+
+* **filecomment:** add new line after comment ([1deaa3f](https://github.com/kreuzerk/svg-to-ts/commit/1deaa3fd14c0268f2fea863084a4d137295f3827))
+
+
+### Features
+
+* **comments:** prepend generated files with file comment ([cc6f6dd](https://github.com/kreuzerk/svg-to-ts/commit/cc6f6dd19129c1f8d58ff794ce90b9733214a0bf))
+
 ## [5.0.4](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.3...v5.0.4) (2020-09-02)
 
 
