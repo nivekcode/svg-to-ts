@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "bump-version": "rjp package.json version $VERSION",
+    "contributors:add": "all-contributors add",
     "report:coverage": "echo 'not yet implemented'",
     "copy:readme": "copyfiles ./README.md ./dist",
     "format:check": "prettier --list-different 'src/**/*.ts'",
@@ -84,6 +85,7 @@
     "@semantic-release/git": "^7.0.6",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.8",
+    "all-contributors-cli": "^6.17.2",
     "copyfiles": "^2.1.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
