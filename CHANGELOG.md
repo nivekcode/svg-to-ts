@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.2...v5.0.3) (2020-09-02)
+
+
+### Bug Fixes
+
+* **log:** fix logging of error message ([040ea28](https://github.com/kreuzerk/svg-to-ts/commit/040ea2869fdc01e38872c319548db034e5592168))
+
 ## [5.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.1...v5.0.2) (2020-08-25)
 
 
