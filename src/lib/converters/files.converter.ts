@@ -6,7 +6,7 @@ import {
 } from '../generators/code-snippet-generators';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
-import { info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
+import { error, info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { FileConversionOptions } from '../options/conversion-options';
 import { compile } from '../compiler/typescript-compiler';
 import { filesProcessor } from './shared.converter';
@@ -83,8 +83,8 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
       `don't forget to copy this folder to your dist in a post build script - enjoy your tree-shakable icon library 😎`
     );
     success('========================================================');
-  } catch (error) {
-    error('Something went wrong', error);
+  } catch (exception) {
+    error(`Something went wrong: ${exception}`);
     process.exit(1);
   }
 };
