@@ -162,7 +162,7 @@ accepts an object with the filename as key and the svg data as key.
 
 #### Available options:
 
-| --version       | type                    | default                                  | output the version number                                                    |
+| --version       | type                    | default                                  | description                                                                  |
 | --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
 | fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
 | delimiter       | CAMEL, KEBAB, SNAKE     | CAMEL                                    | delimiter which is used to generate the types and name properties            |
@@ -206,7 +206,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 #### Available options:
 
-| --version          | type                    | default                                  | output the version number                                                    |
+| --version          | type                    | default                                  | description                                                                  |
 | ------------------ | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
 | typeName           | string                  | myIcons                                  | name of the generated type                                                   |
 | generateType       | boolean                 | false                                    | prevent generating enumeration type                                          |
@@ -279,7 +279,7 @@ end up there.
 
 #### Available options:
 
-| --version                 | type                    | default                                  | output the version number                                                                                                                                                       |
+| --version                 | type                    | default                                  | description                                                                                                                                                                     |
 | ------------------------- | ----------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | typeName                  | string                  | myIcons                                  | name of the generated type                                                                                                                                                      |
 | generateType              | boolean                 | false                                    | prevent generating enumeration type                                                                                                                                             |
