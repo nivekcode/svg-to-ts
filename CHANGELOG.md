@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.3...v5.0.4) (2020-09-02)
+
+
+### Bug Fixes
+
+* **typeobject:** generate type object for icons with special character ([f5d96b8](https://github.com/kreuzerk/svg-to-ts/commit/f5d96b896440386f4ac021ae51af0c1a7a98d14e))
+
 ## [5.0.3](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.2...v5.0.3) (2020-09-02)
 
 
