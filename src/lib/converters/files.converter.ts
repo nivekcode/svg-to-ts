@@ -11,26 +11,6 @@ import { FileConversionOptions } from '../options/conversion-options';
 import { compile } from '../compiler/typescript-compiler';
 import { filesProcessor } from './shared.converter';
 
-const writeFiles = async (outputDirectory, iconsFolderName, modelFileName, prefix, svgDefinitions) => {
-  // Using Promise.all we are making all files be processed in parallel as they have no dependency on each other
-  const fileContent = await Promise.all(
-    svgDefinitions.map(async svgDefinition => {
-      const svgConstant = generateSvgConstantWithImport(
-        svgDefinition.variableName,
-        svgDefinition.typeName,
-        svgDefinition.interfaceName,
-        modelFileName,
-        svgDefinition.data
-      );
-      const generatedFileName = `${prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
-      await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
-      info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
-      return generateExportStatement(generatedFileName, iconsFolderName);
-    })
-  );
-  return fileContent.join('');
-};
-
 export const convertToFiles = async (conversionOptions: FileConversionOptions): Promise<void> => {
   const {
     prefix,
@@ -38,7 +18,8 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     modelFileName,
     additionalModelOutputPath,
     iconsFolderName,
-    compileSources
+    compileSources,
+    generateCompleteIconSet
   } = conversionOptions;
 
   try {
@@ -47,8 +28,29 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
 
     separatorStart('File optimization');
     const svgDefinitions = await filesProcessor(conversionOptions);
-    let indexFileContent = await writeFiles(outputDirectory, iconsFolderName, modelFileName, prefix, svgDefinitions);
+    const generatedFileNames = [];
+
+    await Promise.all(
+      svgDefinitions.map(async svgDefinition => {
+        const svgConstant = generateSvgConstantWithImport(
+          svgDefinition.variableName,
+          svgDefinition.typeName,
+          svgDefinition.interfaceName,
+          modelFileName,
+          svgDefinition.data
+        );
+        const generatedFileName = `${prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
+        generatedFileNames.push(generatedFileName);
+        await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
+        info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
+      })
+    );
+    let indexFileContent = generatedFileNames
+      .map((generatedFileName: string) => generateExportStatement(generatedFileName, iconsFolderName))
+      .join('');
+
     separatorEnd();
+
     indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
     await writeFile(outputDirectory, 'index', indexFileContent);
     info(`write index.ts`);
@@ -75,6 +77,9 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
       info(`compile Typescript - generate JS and d.ts`);
       deleteFiles(generatedTypeScriptFilePaths);
       info(`delete Typescript files`);
+    }
+
+    if (generateCompleteIconSet) {
     }
 
     success('========================================================');
