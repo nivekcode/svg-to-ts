@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.1.0...v5.2.0) (2020-09-03)
+
+
+### Features
+
+* **completeIconSet:** add exportCompleteIconSet option ([43becd2](https://github.com/kreuzerk/svg-to-ts/commit/43becd27e3315eb29cb477f2fee64f7e1c7aa44b))
+
 # [5.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.0.4...v5.1.0) (2020-09-02)
 
 
