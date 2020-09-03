@@ -56,6 +56,11 @@ export const setupCommander = () => {
       'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when conversion type is set to files)',
       DEFAULT_OPTIONS.compileSources
     )
+    .option(
+      '--exportCompleteIconSet <boolean>',
+      'Specifies if the complete icon set should be exported or not',
+      DEFAULT_OPTIONS.exportCompleteIconSet
+    )
     .parse(process.argv);
 };
 
@@ -96,6 +101,7 @@ export const collectArgumentOptions = async (): Promise<
     modelFileName,
     iconsFolderName,
     additionalModelOutputPath,
+    exportCompleteIconSet,
     compileSources
   } = commander;
   let svgoConfig = commander.svgoConfig;
@@ -103,6 +109,7 @@ export const collectArgumentOptions = async (): Promise<
   // Parse boolean values
   generateType = toBoolean(generateType, DEFAULT_OPTIONS.generateType);
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
+  exportCompleteIconSet = toBoolean(exportCompleteIconSet, DEFAULT_OPTIONS.exportCompleteIconSet);
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
 
   if (!delimiter) {
@@ -160,6 +167,7 @@ export const collectArgumentOptions = async (): Promise<
     generateTypeObject,
     modelFileName,
     iconsFolderName,
+    exportCompleteIconSet,
     svgoConfig,
     additionalModelOutputPath,
     compileSources

@@ -10,6 +10,7 @@ export interface SvgDefinition {
   variableName: string;
   interfaceName: string;
   data: string;
+  prefix: string;
   filenameWithoutEnding: string;
 }
 
@@ -32,7 +33,14 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
           const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
           const typeName = generateTypeName(filenameWithoutEnding, delimiter);
-          svgDefinition = { typeName, variableName, interfaceName, data: optimizedSvg.data, filenameWithoutEnding };
+          svgDefinition = {
+            typeName,
+            prefix,
+            variableName,
+            interfaceName,
+            data: optimizedSvg.data,
+            filenameWithoutEnding
+          };
         }
         return svgDefinition;
       }
