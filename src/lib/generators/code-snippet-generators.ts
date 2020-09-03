@@ -10,8 +10,6 @@ export enum Delimiter {
   SNAKE = 'SNAKE'
 }
 
-export const generateCompleteIconSet = () => {};
-
 export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
   const iconNameType =
     conversionOptions.generateType || conversionOptions.generateTypeObject ? conversionOptions.typeName : 'string';

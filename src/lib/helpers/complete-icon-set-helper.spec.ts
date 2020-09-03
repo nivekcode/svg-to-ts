@@ -1,7 +1,7 @@
 import { generateCompleteIconSetContent } from './complete-icon-set.helper';
 import { unformatedString } from './test-helpers';
 
-describe('Complete icon set helper', () => {
+describe('Complete Iconset-helper', () => {
   it('should import all the values and export them as an array', () => {
     const fileNamesWithDefinitions = [
       { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
