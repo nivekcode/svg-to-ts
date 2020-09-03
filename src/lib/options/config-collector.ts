@@ -104,6 +104,12 @@ const mergeWithDefaults = async (
       (configOptions as FileConversionOptions).compileSources = DEFAULT_OPTIONS.compileSources;
       info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.compileSources}" will be used`);
     }
+
+    if (!(configOptions as FileConversionOptions).exportCompleteIconSet) {
+      (configOptions as FileConversionOptions).exportCompleteIconSet = DEFAULT_OPTIONS.exportCompleteIconSet;
+      info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.exportCompleteIconSet}" will be used`);
+    }
+
     return configOptions as FileConversionOptions;
   }
   return configOptions as ConstantsConversionOptions;

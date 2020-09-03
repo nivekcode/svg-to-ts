@@ -29,6 +29,7 @@ export interface ConstantsConversionOptions extends CommonConversionOptions {
   typeName: string;
   generateType: boolean;
   generateTypeObject: boolean;
+  generateCompleteIconSet?: boolean;
   prefix: string;
   interfaceName: string;
 }
@@ -38,6 +39,7 @@ export interface FileConversionOptions extends CommonConversionOptions {
   typeName: string;
   generateType: boolean;
   generateTypeObject: boolean;
+  exportCompleteIconSet?: boolean;
   prefix: string;
   interfaceName: string;
   modelFileName: string;

@@ -9,11 +9,8 @@ import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { error, info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
 import { FileConversionOptions } from '../options/conversion-options';
 import { compile } from '../compiler/typescript-compiler';
-import { filesProcessor, SvgDefinition } from './shared.converter';
-
-type FileNameWithDefinitions = {
-  [key: string]: SvgDefinition;
-};
+import { filesProcessor } from './shared.converter';
+import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 
 export const convertToFiles = async (conversionOptions: FileConversionOptions): Promise<void> => {
   const {
@@ -22,7 +19,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     additionalModelOutputPath,
     iconsFolderName,
     compileSources,
-    generateCompleteIconSet
+    exportCompleteIconSet
   } = conversionOptions;
 
   try {
@@ -31,7 +28,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
 
     separatorStart('File optimization');
     const svgDefinitions = await filesProcessor(conversionOptions);
-    const fileNamesAndDefinitions: FileNameWithDefinitions[] = [];
+    const generatedFileNames: string[] = [];
 
     await Promise.all(
       svgDefinitions.map(async svgDefinition => {
@@ -43,15 +40,21 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
           svgDefinition.data
         );
         const generatedFileName = `${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
-        fileNamesAndDefinitions.push({ [generatedFileName]: svgDefinition });
+        generatedFileNames.push(generatedFileName);
         await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
         info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
       })
     );
-    let indexFileContent = fileNamesAndDefinitions
-      .map((fileNameWithDefinitions: FileNameWithDefinitions) =>
-        generateExportStatement(Object.keys(fileNameWithDefinitions)[0], iconsFolderName)
-      )
+
+    if (exportCompleteIconSet) {
+      const completeIconSetContent = generateCompleteIconSetContent(svgDefinitions);
+      const completeIconSetFileName = 'completeIconSet';
+      await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetFileName, completeIconSetContent);
+      generatedFileNames.push(completeIconSetFileName);
+    }
+
+    let indexFileContent = generatedFileNames
+      .map((generatedFileName: string) => generateExportStatement(generatedFileName, iconsFolderName))
       .join('');
 
     separatorEnd();
@@ -82,10 +85,6 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
       info(`compile Typescript - generate JS and d.ts`);
       deleteFiles(generatedTypeScriptFilePaths);
       info(`delete Typescript files`);
-    }
-
-    if (generateCompleteIconSet) {
-      // const importStatements = generatedFileNames.map((filename: string) => generateExportStatement(filename)).join('');
     }
 
     success('========================================================');

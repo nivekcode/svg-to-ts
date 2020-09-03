@@ -12,6 +12,7 @@ export const DEFAULT_OPTIONS = {
   modelFileName: 'my-icons.model',
   iconsFolderName: 'build',
   compileSources: false,
+  exportCompleteIconSet: false,
   svgoConfig: {
     plugins: [
       {

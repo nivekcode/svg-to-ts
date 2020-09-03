@@ -1,5 +1,6 @@
 import {
   generateInterfaceDefinition,
+  generateNamedImportStatement,
   generateSvgConstant,
   generateTypeDefinition,
   generateVariableName
@@ -107,6 +108,17 @@ describe('Generators', () => {
       const fileName = 'alert';
       const expectedVariable = `myIconAlert`;
       expect(generateVariableName(prefix, fileName)).toEqual(expectedVariable);
+    });
+  });
+
+  describe('Import statements', () => {
+    it('should generate correct named import statements', () => {
+      const name = 'foo';
+      const module = './foo.module';
+      const expectedNamedImport = `import {foo} from './foo.module';\n`;
+
+      const generatedNamedImpoort = generateNamedImportStatement(name, module);
+      expect(generatedNamedImpoort).toEqual(expectedNamedImport);
     });
   });
 });

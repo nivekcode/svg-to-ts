@@ -10,6 +10,8 @@ export enum Delimiter {
   SNAKE = 'SNAKE'
 }
 
+export const generateCompleteIconSet = () => {};
+
 export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
   const iconNameType =
     conversionOptions.generateType || conversionOptions.generateTypeObject ? conversionOptions.typeName : 'string';
@@ -76,8 +78,15 @@ export const generateSvgConstantWithImport = (
             };`;
 };
 
-export const generateExportStatement = (fileName: string, generateIconsFolderName: string) =>
-  `export * from './${generateIconsFolderName}/${fileName}';`;
+export const generateExportStatement = (fileName: string, generatedIconsFolderName?: string): string => {
+  if (generatedIconsFolderName) {
+    return `export * from './${generatedIconsFolderName}/${fileName}';`;
+  }
+  return `export * from './${fileName}';`;
+};
+
+export const generateNamedImportStatement = (name: string, module: string): string =>
+  `import {${name}} from '${module}';\n`;
 
 export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
   if (delimiter === Delimiter.CAMEL) {
