@@ -23,6 +23,7 @@ export const setupCommander = () => {
     .option('--generateType <boolean>', 'prevent generating enumeration type', DEFAULT_OPTIONS.generateType)
     .option('--generateTypeObject <boolean>', 'generate type object', DEFAULT_OPTIONS.generateTypeObject)
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OPTIONS.fileName)
+    .option('--barrelFileName <string>', 'name to use for the barrel file', DEFAULT_OPTIONS.barrelFileName)
     .option(
       '-d --delimiter <Delimiter>',
       `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`
@@ -92,6 +93,7 @@ export const collectArgumentOptions = async (): Promise<
     objectName,
     delimiter,
     fileName,
+    barrelFileName,
     interfaceName,
     outputDirectory,
     prefix,
@@ -170,6 +172,7 @@ export const collectArgumentOptions = async (): Promise<
     exportCompleteIconSet,
     svgoConfig,
     additionalModelOutputPath,
-    compileSources
+    compileSources,
+    barrelFileName
   };
 };
