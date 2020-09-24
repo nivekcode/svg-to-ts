@@ -30,6 +30,7 @@
     "start-constants:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-constants:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "start-files": "ts-node ./src/bin/svg-to-ts.ts --conversionType files  -s './inputfiles/*.svg'",
+    "start-files:barrel": "ts-node ./src/bin/svg-to-ts.ts --conversionType files  -s './inputfiles/*.svg' --barrelFileName=public_api",
     "start-files:compile": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' --compileSources true",
     "start-files:compile-additionalPath": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' --compileSources true --additionalModelOutputPath ./additional",
     "start-files:regex": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfilesRegex/**/*.svg'",

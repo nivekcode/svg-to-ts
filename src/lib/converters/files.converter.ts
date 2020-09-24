@@ -19,7 +19,8 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     additionalModelOutputPath,
     iconsFolderName,
     compileSources,
-    exportCompleteIconSet
+    exportCompleteIconSet,
+    barrelFileName
   } = conversionOptions;
 
   try {
@@ -60,8 +61,8 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     separatorEnd();
 
     indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
-    await writeFile(outputDirectory, 'index', indexFileContent);
-    info(`write index.ts`);
+    await writeFile(outputDirectory, barrelFileName, indexFileContent);
+    info(`write ${barrelFileName}.ts`);
 
     if (modelFileName) {
       const typeDefinition = generateTypeDefinition(conversionOptions, svgDefinitions);
@@ -79,7 +80,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     if (compileSources) {
       const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
         `${outputDirectory}/${iconsFolderName}/*.ts`,
-        `${outputDirectory}/index.ts`
+        `${outputDirectory}/${barrelFileName}.ts`
       ]);
       compile(generatedTypeScriptFilePaths);
       info(`compile Typescript - generate JS and d.ts`);

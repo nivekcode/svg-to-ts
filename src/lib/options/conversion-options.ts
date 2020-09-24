@@ -46,6 +46,7 @@ export interface FileConversionOptions extends CommonConversionOptions {
   additionalModelOutputPath: string | null;
   iconsFolderName: string;
   compileSources: boolean;
+  barrelFileName: string;
 }
 
 export const getOptions = async (): Promise<
