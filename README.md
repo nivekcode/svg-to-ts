@@ -321,6 +321,10 @@ and we end up with the following file in our `dist` folder.
 
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
 
+# Starter project
+
+If you want to build a standalone icon library we recommend you to checkout the [svg-icon-lib-starter](https://github.com/kreuzerk/svg-icon-library-starter) project on GitHub. This project allows you to build an astonishing framework-agnostic SVG icon library with ease. Out of the box icon optimization, build process, and icon showcase. 🚀
+
 # FAQ
 
 ## Which approach should I use
