@@ -288,6 +288,7 @@ end up there.
 
 | --version                 | type                    | default                                  | description                                                                                                                                                                     |
 | ------------------------- | ----------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| barrelFileName            | string                  | index                                    | name of the generated type                                                                                                                                                      |
 | typeName                  | string                  | myIcons                                  | name of the generated type                                                                                                                                                      |
 | generateType              | boolean                 | false                                    | prevent generating enumeration type                                                                                                                                             |
 | generateTypeObject        | boolean                 | false                                    | generate type object                                                                                                                                                            |
@@ -319,6 +320,10 @@ and we end up with the following file in our `dist` folder.
 #### Sample output
 
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
+
+# Starter project
+
+If you want to build a standalone icon library we recommend you to checkout the [svg-icon-lib-starter](https://github.com/kreuzerk/svg-icon-library-starter) project on GitHub. This project allows you to build an astonishing framework-agnostic SVG icon library with ease. Out of the box icon optimization, build process, and icon showcase. 🚀
 
 # FAQ
 

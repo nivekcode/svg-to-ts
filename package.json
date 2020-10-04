@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "commit": "git-cz",
     "bump-version": "rjp package.json version $VERSION",
     "contributors:add": "all-contributors add",
     "report:coverage": "echo 'not yet implemented'",
