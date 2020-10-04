@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.2.0...v5.2.1) (2020-10-04)
+
+
+### Bug Fixes
+
+* 🐛 apply default barrel file name in conversion options ([f8d4e9e](https://github.com/kreuzerk/svg-to-ts/commit/f8d4e9ea24be230ab5563fd905aa791d121c025e))
+
 # [5.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.1.0...v5.2.0) (2020-09-03)
 
 
