@@ -110,6 +110,11 @@ const mergeWithDefaults = async (
       info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.exportCompleteIconSet}" will be used`);
     }
 
+    if (!(configOptions as FileConversionOptions).barrelFileName) {
+      (configOptions as FileConversionOptions).barrelFileName = DEFAULT_OPTIONS.barrelFileName;
+      info(`No preCompileSources flag provided, "${DEFAULT_OPTIONS.barrelFileName}" will be used`);
+    }
+
     return configOptions as FileConversionOptions;
   }
   return configOptions as ConstantsConversionOptions;
