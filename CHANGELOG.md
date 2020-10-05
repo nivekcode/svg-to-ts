@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.2.1...v5.2.2) (2020-10-05)
+
+
+### Bug Fixes
+
+* 🐛 default options ([ea65433](https://github.com/kreuzerk/svg-to-ts/commit/ea654338b3d49be5d88a14161c991d5394298b6d))
+
 ## [5.2.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.2.0...v5.2.1) (2020-10-04)
 
 
