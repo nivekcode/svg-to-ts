@@ -12,12 +12,14 @@ import * as packgeJSON from '../../../package.json';
 import { error, info } from '../helpers/log-helper';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 import { Delimiter } from '../generators/code-snippet-generators';
+import { getConfigPath } from './command-line-collector';
 
 export const collectConfigurationOptions = async (): Promise<
   ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
-  const cosmiConfigResult = explorerSync.search();
+  const configPath = getConfigPath();
+  const cosmiConfigResult = configPath ? explorerSync.load(configPath) : explorerSync.search();
   cosmiConfigResult ? info(`Configuration found under: ${cosmiConfigResult.filepath}`) : info('No config found');
   return cosmiConfigResult ? await mergeWithDefaults(cosmiConfigResult.config) : null;
 };

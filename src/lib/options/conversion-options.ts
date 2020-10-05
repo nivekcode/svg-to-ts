@@ -1,5 +1,5 @@
 import { collectConfigurationOptions } from './config-collector';
-import { collectArgumentOptions } from './args-collector';
+import { collectCommandLineOptions } from './command-line-collector';
 
 import { info } from '../helpers/log-helper';
 import { Delimiter } from '../generators/code-snippet-generators';
@@ -60,5 +60,5 @@ export const getOptions = async (): Promise<
   info(
     'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)'
   );
-  return collectArgumentOptions();
+  return collectCommandLineOptions();
 };
