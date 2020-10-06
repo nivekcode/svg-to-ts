@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.2.2...v5.3.0) (2020-10-06)
+
+
+### Features
+
+* 🎸 configuration path ([b44cc80](https://github.com/kreuzerk/svg-to-ts/commit/b44cc8031d1a7f96c9a43f9831e23a3bd2a374d6)), closes [#67](https://github.com/kreuzerk/svg-to-ts/issues/67)
+
 ## [5.2.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.2.1...v5.2.2) (2020-10-05)
 
 
