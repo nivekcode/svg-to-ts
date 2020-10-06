@@ -50,7 +50,10 @@ export interface FileConversionOptions extends CommonConversionOptions {
 }
 
 export const getOptions = async (): Promise<
-  FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions
+  | FileConversionOptions
+  | ConstantsConversionOptions
+  | ObjectConversionOptions
+  | Array<ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions>
 > => {
   const configOptions = await collectConfigurationOptions();
 
