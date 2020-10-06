@@ -17,6 +17,7 @@ export const setupCommander = () => {
   const collect = (value, previous) => previous.concat([value]);
   commander
     .version(packgeJSON.version)
+    .option('--config <string>', 'path to the configuration file')
     .option('-c --conversionType <ConversionType>', 'conversion type (object, constants, files)')
     .option('--objectName <string>', 'name of the exported object')
     .option('-t --typeName <string>', 'name of the generated enumeration type', DEFAULT_OPTIONS.typeName)
@@ -79,7 +80,9 @@ const toBoolean = (str: string, defaultValue: boolean): boolean => {
   return result;
 };
 
-export const collectArgumentOptions = async (): Promise<
+export const getConfigPath = (): string | undefined => commander.config;
+
+export const collectCommandLineOptions = async (): Promise<
   ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions
 > => {
   if (!commander.conversionType) {

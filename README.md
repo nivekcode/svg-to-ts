@@ -80,7 +80,12 @@ you want to convert all SVG file in your current folder to TypeScript constants.
 ### Configuration in package.json or .rc file
 
 When you start using `svg-to-ts` in bigger projects, configuration may get more sophisticated. At this point command line
-arguments are hard to read. Therefore `svg-to-ts` allows you to configure it either over package.json or over a `.svg-to-tsrc` file.
+arguments are hard to read. Therefore `svg-to-ts` allows you to configure it either over `package.json` or over a `.svg-to-tsrc` file.
+
+Those files can be written in `json`, `yaml`, `yml`, `js` (CommonJS module). By default `svg-to-ts` will search up
+the directory tree for a `svg-to-ts` propert in the `package.json`, a `.svg-to-tsrc` file. However, if you are working
+in a monorepo or want to have multiple configs, you can use the `--config` property to specify a path your configuration.
+For example `svg-to-ts --config ./myconfig.json`.
 
 #### Configure svg-to-ts over package.json
 
@@ -275,7 +280,7 @@ supports code splitting which is especially usefull in scenarios where you are u
 [Here's a step by step guide on how to create an icon library that is optimized for tree shaking](https://medium.com/angular-in-depth/how-to-create-a-fully-tree-shakable-icon-library-in-angular-c5488cf9cd76)
 
 ![fully tree shakable](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/fully-treeshakable.png)
-Often, having the SVGs in a single file is enough. However if you are in a more complex environment with bigger business
+Often, having the SVGs in a single file is enough. However, if you are in a more complex environment with bigger business
 applications, you may want to make the icons even more tree shakable.
 
 In Angular, for example, having all icons in a single file shakes out the icons that are not used. However, icons always
