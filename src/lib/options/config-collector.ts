@@ -15,13 +15,29 @@ import { Delimiter } from '../generators/code-snippet-generators';
 import { getConfigPath } from './command-line-collector';
 
 export const collectConfigurationOptions = async (): Promise<
-  ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions | null
+  | ConstantsConversionOptions
+  | FileConversionOptions
+  | ObjectConversionOptions
+  | Array<ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions>
+  | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const configPath = getConfigPath();
   const cosmiConfigResult = configPath ? explorerSync.load(configPath) : explorerSync.search();
   cosmiConfigResult ? info(`Configuration found under: ${cosmiConfigResult.filepath}`) : info('No config found');
-  return cosmiConfigResult ? await mergeWithDefaults(cosmiConfigResult.config) : null;
+
+  if (!cosmiConfigResult) {
+    return null;
+  }
+  if (Array.isArray(cosmiConfigResult.config)) {
+    return Promise.all(
+      cosmiConfigResult.config.map(
+        (config: Partial<FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions>) =>
+          mergeWithDefaults(config)
+      )
+    );
+  }
+  return await mergeWithDefaults(cosmiConfigResult.config);
 };
 
 const mergeWithDefaults = async (

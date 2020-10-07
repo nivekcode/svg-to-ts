@@ -90,7 +90,7 @@ For example `svg-to-ts --config ./myconfig.json`.
 #### Configure svg-to-ts over package.json
 
 To configure svg-to-ts over package.json you can simply add a `svg-to-ts` key in your package.json and use the config options.
-Once you run `svg-to-ts` those configurations will be picked up.
+Once you run `svg-to-ts` those configurations will be picked up. The config object can eiter be an object or an array containing multiple configurations.
 
 ```json
 {
@@ -123,7 +123,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
 #### Configure svg-to-ts over .rc file
 
 To configure svg-to-ts over a .rc file you can add a `.svg-to-tsrc` file in the root of your project and use the config options.
-The configuration can either be written in JSON or YAML.
+The configuration can either be written in JSON or YAML. It can eiter be an object for a single configuration or an array containing multiple configurations.
 Once you run `svg-to-ts` those configurations will be picked up.
 
 ```json
