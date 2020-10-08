@@ -19,6 +19,7 @@
     "start-object:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d KEBAB",
     "start-object:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d SNAKE",
     "start-object:camel": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d CAMEL",
+    "start-object:upper": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d UPPER",
     "start-object:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-object:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg' -o ./dist --objectName awesomeIcons -f icons",
     "start-object:export-const": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg' -o ./dist --objectName myIcons",
@@ -28,6 +29,7 @@
     "start-constants:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d KEBAB",
     "start-constants:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d SNAKE",
     "start-constants:camel": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d CAMEL",
+    "start-constants:upper": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d UPPER",
     "start-constants:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-constants:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "start-files": "ts-node ./src/bin/svg-to-ts.ts --conversionType files  -s './inputfiles/*.svg'",
@@ -38,12 +40,14 @@
     "start-files:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -d KEBAB",
     "start-files:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -d SNAKE",
     "start-files:camel": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -d CAMEL",
+    "start-files:upper": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -d UPPER",
     "start-files:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-files:customModel": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfilesRegex/**/*.svg' --modelFileName test-model -t sampleIcon -i SampleIcon",
     "start-files:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
     "start-files:custom-complete-icon-set": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons --exportCompleteIconSet true",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "test": "jest --config=./jest.config.js --coverage"
   },
   "repository": {
     "type": "git",
@@ -78,6 +82,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.snakecase": "^4.1.1",
+    "lodash.toupper": "^4.1.2",
     "svgo": "^1.3.2",
     "typescript": "^3.7.2"
   },

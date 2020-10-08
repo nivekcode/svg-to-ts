@@ -9,9 +9,9 @@ describe('Complete Iconset-helper', () => {
       { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' }
     ] as any;
     const expectedContent = `
-    import {foo} from './foo.icon';
-    import {bar} from './bar.icon';
-    import {baz} from './baz.icon';
+    import {foo} from './sampleIcon-foo.icon';
+    import {bar} from './sampleIcon-bar.icon';
+    import {baz} from './sampleIcon-baz.icon';
             
     export const completeIconSet = [foo, bar, baz];`;
 

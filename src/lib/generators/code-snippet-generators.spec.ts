@@ -1,8 +1,10 @@
 import {
+  Delimiter,
   generateInterfaceDefinition,
   generateNamedImportStatement,
   generateSvgConstant,
   generateTypeDefinition,
+  generateTypeName,
   generateVariableName
 } from './code-snippet-generators';
 import { ConstantsConversionOptions } from '../options/conversion-options';
@@ -93,6 +95,28 @@ describe('Generators', () => {
                 data: \`${data}\`
             };`;
     expect(generateSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
+  });
+
+  describe('generateTypeName', () => {
+    it('should return the correct type name with delimiter SNAKE', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.SNAKE)).toEqual('chevron_top');
+    });
+
+    it('should return the correct type name with delimiter CAMEL', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.CAMEL)).toEqual('chevronTop');
+    });
+
+    it('should return the correct type name with delimiter KEBAB', () => {
+      const fileName = 'chevron_top';
+      expect(generateTypeName(fileName, Delimiter.KEBAB)).toEqual('chevron-top');
+    });
+
+    it('should return the correct type name with delimiter UPPER', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.UPPER)).toEqual('CHEVRON_TOP');
+    });
   });
 
   describe('generateVariableName', () => {

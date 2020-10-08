@@ -174,14 +174,14 @@ accepts an object with the filename as key and the svg data as key.
 
 #### Available options:
 
-| --version       | type                    | default                                  | description                                                                  |
-| --------------- | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| fileName        | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter       | CAMEL, KEBAB, SNAKE     | CAMEL                                    | delimiter which is used to generate the types and name properties            |
-| svgoConfig      | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
-| srcFiles        | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory | string                  | "./dist"                                 | name of the output directory                                                 |
-| objectName      | string                  | default - export                         | name of the exported const - if nothing is set - default export will be used |
+| --version       | type                       | default                                  | description                                                                  |
+| --------------- | -------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| fileName        | stirng                     | my-icons                                 | file name of the generated file                                              |
+| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties            |
+| svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
+| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                              |
+| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                 |
+| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used |
 
 #### Example usage
 
@@ -218,18 +218,18 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 #### Available options:
 
-| --version          | type                    | default                                  | description                                                                  |
-| ------------------ | ----------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| typeName           | string                  | myIcons                                  | name of the generated type                                                   |
-| generateType       | boolean                 | false                                    | prevent generating enumeration type                                          |
-| generateTypeObject | boolean                 | false                                    | generate type object                                                         |
-| prefix             | string                  | myIcon                                   | prefix for the generated svg constants                                       |
-| interfaceName      | string                  | MyIcon                                   | name for the generated interface                                             |
-| fileName           | stirng                  | my-icons                                 | file name of the generated file                                              |
-| delimiter          | CAMEL, KEBAB, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties            |
-| svgoConfig         | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
-| srcFiles           | string                  | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory    | string                  | "./dist"                                 | name of the output directory                                                 |
+| --version          | type                       | default                                  | description                                                                  |
+| ------------------ | -------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| typeName           | string                     | myIcons                                  | name of the generated type                                                   |
+| generateType       | boolean                    | false                                    | prevent generating enumeration type                                          |
+| generateTypeObject | boolean                    | false                                    | generate type object                                                         |
+| prefix             | string                     | myIcon                                   | prefix for the generated svg constants                                       |
+| interfaceName      | string                     | MyIcon                                   | name for the generated interface                                             |
+| fileName           | stirng                     | my-icons                                 | file name of the generated file                                              |
+| delimiter          | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties            |
+| svgoConfig         | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
+| srcFiles           | string                     | "/\*.svg"                                | input files matching the given filename pattern                              |
+| outputDirectory    | string                     | "./dist"                                 | name of the output directory                                                 |
 
 #### Example usage
 
@@ -291,23 +291,23 @@ end up there.
 
 #### Available options:
 
-| --version                 | type                    | default                                  | description                                                                                                                                                                     |
-| ------------------------- | ----------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| barrelFileName            | string                  | index                                    | name of the generated type                                                                                                                                                      |
-| typeName                  | string                  | myIcons                                  | name of the generated type                                                                                                                                                      |
-| generateType              | boolean                 | false                                    | prevent generating enumeration type                                                                                                                                             |
-| generateTypeObject        | boolean                 | false                                    | generate type object                                                                                                                                                            |
-| exportCompleteIconSet     | boolean                 | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
-| prefix                    | string                  | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
-| interfaceName             | string                  | MyIcon                                   | name for the generated interface                                                                                                                                                |
-| fileName                  | stirng                  | my-icons                                 | file name of the generated file                                                                                                                                                 |
-| delimiter                 | CAMEL, KEBAB, SNAKE     | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
-| srcFiles                  | string                  | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
-| svgoConfig                | string or config object | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
-| outputDirectory           | string                  | "./dist"                                 | name of the output directory                                                                                                                                                    |
-| additionalModelOutputPath | string                  | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
-| iconsFolderName           | string                  | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
-| compileSources            | boolean                 | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+| --version                 | type                       | default                                  | description                                                                                                                                                                     |
+| ------------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| barrelFileName            | string                     | index                                    | name of the generated type                                                                                                                                                      |
+| typeName                  | string                     | myIcons                                  | name of the generated type                                                                                                                                                      |
+| generateType              | boolean                    | false                                    | prevent generating enumeration type                                                                                                                                             |
+| generateTypeObject        | boolean                    | false                                    | generate type object                                                                                                                                                            |
+| exportCompleteIconSet     | boolean                    | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
+| prefix                    | string                     | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
+| interfaceName             | string                     | MyIcon                                   | name for the generated interface                                                                                                                                                |
+| fileName                  | stirng                     | my-icons                                 | file name of the generated file                                                                                                                                                 |
+| delimiter                 | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
+| srcFiles                  | string                     | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
+| svgoConfig                | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
+| outputDirectory           | string                     | "./dist"                                 | name of the output directory                                                                                                                                                    |
+| additionalModelOutputPath | string                     | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
+| iconsFolderName           | string                     | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
+| compileSources            | boolean                    | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
 
 #### Example usage
 
