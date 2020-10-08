@@ -1,13 +1,15 @@
 import snakeCase from 'lodash.snakecase';
 import camelCase from 'lodash.camelcase';
-import kebapCase from 'lodash.kebabcase';
+import kebabCase from 'lodash.kebabcase';
+import toUpper from 'lodash.toupper';
 import { SvgDefinition } from '../converters/shared.converter';
 import { FileConversionOptions, ConstantsConversionOptions } from '../options/conversion-options';
 
 export enum Delimiter {
   CAMEL = 'CAMEL',
   KEBAB = 'KEBAB',
-  SNAKE = 'SNAKE'
+  SNAKE = 'SNAKE',
+  UPPER = 'UPPER'
 }
 
 export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
@@ -91,7 +93,10 @@ export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): s
     return `${camelCase(filenameWithoutEnding)}`;
   }
   if (delimiter === Delimiter.KEBAB) {
-    return `${kebapCase(filenameWithoutEnding)}`;
+    return `${kebabCase(filenameWithoutEnding)}`;
+  }
+  if (delimiter === Delimiter.UPPER) {
+    return `${toUpper(snakeCase(filenameWithoutEnding))}`;
   }
   return `${snakeCase(filenameWithoutEnding)}`;
 };
