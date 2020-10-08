@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.4.0...v5.5.0) (2020-10-08)
+
+
+### Features
+
+* **type-name:** add new delimiter UPPER ([8bbd77f](https://github.com/kreuzerk/svg-to-ts/commit/8bbd77f48602a95459fc2d42cda6da828deafe24))
+
 # [5.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.3.0...v5.4.0) (2020-10-07)
 
 
