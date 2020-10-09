@@ -1,7 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -360,6 +360,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/akehir"><img src="https://avatars2.githubusercontent.com/u/1078202?s=400&u=497e363bdad9525d99c8142900527d6334fd855c&v=4" width="200px;" alt=""/><br /><sub><b>Raphael Ochsenbein</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=akehir" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=akehir" title="Documentation">📖</a> <a href="#ideas-akehir" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-akehir" title="Maintenance">🚧</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=akehir" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/Palapapaa"><img src="https://avatars1.githubusercontent.com/u/2643459?s=400&v=4" width="200px;" alt=""/><br /><sub><b>Guillaume M</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=Palapapaa" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=Palapapaa" title="Documentation">📖</a> <a href="#ideas-Palapapaa" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-Palapapaa" title="Maintenance">🚧</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=Palapapaa" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/jvelay"><img src="https://avatars2.githubusercontent.com/u/4629727?v=4" width="200px;" alt=""/><br /><sub><b>Jaime Velay Valor</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=jvelay" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/glenngr"><img src="https://avatars0.githubusercontent.com/u/8955488?v=4" width="200px;" alt=""/><br /><sub><b>Glenn Greibesland</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=glenngr" title="Code">💻</a></td>
   </tr>
 </table>
 
