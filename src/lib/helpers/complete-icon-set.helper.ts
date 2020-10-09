@@ -1,5 +1,5 @@
-import { generateNamedImportStatement } from '../generators/code-snippet-generators';
 import { SvgDefinition } from '../converters/shared.converter';
+import { generateNamedImportStatement } from '../generators/code-snippet-generators';
 
 export const generateCompleteIconSetContent = (svgDefinitions: SvgDefinition[]): string => {
   const importSection = generateImportSection(svgDefinitions);

@@ -1,9 +1,10 @@
-import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import * as path from 'path';
-import { extractSvgContent } from '../helpers/file-helpers';
+
 import { generateTypeName, generateVariableName } from '../generators/code-snippet-generators';
-import { generateSvgOptimizer } from '../helpers/svg-optimization';
+import { extractSvgContent } from '../helpers/file-helpers';
 import { info } from '../helpers/log-helper';
+import { getFilePathsFromRegex } from '../helpers/regex-helpers';
+import { generateSvgOptimizer } from '../helpers/svg-optimization';
 
 export interface SvgDefinition {
   typeName: string;

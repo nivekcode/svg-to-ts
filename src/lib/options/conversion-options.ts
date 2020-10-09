@@ -1,8 +1,8 @@
-import { collectConfigurationOptions } from './config-collector';
-import { collectCommandLineOptions } from './command-line-collector';
-
-import { info } from '../helpers/log-helper';
 import { Delimiter } from '../generators/code-snippet-generators';
+import { info } from '../helpers/log-helper';
+
+import { collectCommandLineOptions } from './command-line-collector';
+import { collectConfigurationOptions } from './config-collector';
 
 export enum ConversionType {
   OBJECT = 'object',

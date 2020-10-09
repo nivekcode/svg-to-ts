@@ -6,6 +6,7 @@ import {
 import { writeFile } from '../helpers/file-helpers';
 import { error, success, underlineSuccess } from '../helpers/log-helper';
 import { ConstantsConversionOptions } from '../options/conversion-options';
+
 import { filesProcessor } from './shared.converter';
 
 const getSvgConstants = svgDefinitions => {

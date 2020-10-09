@@ -1,3 +1,6 @@
+import { SvgDefinition } from '../converters/shared.converter';
+import { ConstantsConversionOptions } from '../options/conversion-options';
+
 import {
   Delimiter,
   generateInterfaceDefinition,
@@ -7,8 +10,6 @@ import {
   generateTypeName,
   generateVariableName
 } from './code-snippet-generators';
-import { ConstantsConversionOptions } from '../options/conversion-options';
-import { SvgDefinition } from '../converters/shared.converter';
 
 describe('Generators', () => {
   describe('generateInterfaceDefinition', () => {
