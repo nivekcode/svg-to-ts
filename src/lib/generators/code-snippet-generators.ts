@@ -96,7 +96,7 @@ export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): s
     return `${kebabCase(filenameWithoutEnding)}`;
   }
   if (delimiter === Delimiter.UPPER) {
-    return `${toUpper(snakeCase(filenameWithoutEnding))}`;
+    return `${snakeCase(filenameWithoutEnding).toUpperCase()}`;
   }
   return `${snakeCase(filenameWithoutEnding)}`;
 };
