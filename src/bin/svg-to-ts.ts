@@ -1,3 +1,8 @@
+import { convertToConstants } from '../lib/converters/constants.converter';
+import { convertToFiles } from '../lib/converters/files.converter';
+import { convertToSingleObject } from '../lib/converters/object.converter';
+import { info, printLogo } from '../lib/helpers/log-helper';
+import { setupCommander } from '../lib/options/command-line-collector';
 #!/usr/bin/env node
 import {
   ConversionType,
@@ -6,11 +11,6 @@ import {
   ObjectConversionOptions,
   ConstantsConversionOptions
 } from '../lib/options/conversion-options';
-import { info, printLogo } from '../lib/helpers/log-helper';
-import { setupCommander } from '../lib/options/command-line-collector';
-import { convertToSingleObject } from '../lib/converters/object.converter';
-import { convertToConstants } from '../lib/converters/constants.converter';
-import { convertToFiles } from '../lib/converters/files.converter';
 
 const convert = async (
   conversionOptions: FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions
@@ -34,6 +34,7 @@ const convert = async (
 (async () => {
   setupCommander();
   printLogo();
+
   const conversionOptions = await getOptions();
 
   if (Array.isArray(conversionOptions)) {
