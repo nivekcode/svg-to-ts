@@ -1,3 +1,10 @@
+## [5.5.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.0...v5.5.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* 🐛 fix wrong import of svgo ([d0e38e2](https://github.com/kreuzerk/svg-to-ts/commit/d0e38e29ceefde845b4a996cb9552f74cd2d1c7d))
+
 # [5.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.4.0...v5.5.0) (2020-10-08)
 
 
