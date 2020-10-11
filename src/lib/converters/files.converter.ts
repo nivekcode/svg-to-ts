@@ -1,16 +1,17 @@
+import { compile } from '../compiler/typescript-compiler';
 import {
   generateExportStatement,
   generateInterfaceDefinition,
   generateSvgConstantWithImport,
   generateTypeDefinition
 } from '../generators/code-snippet-generators';
-import { getFilePathsFromRegex } from '../helpers/regex-helpers';
+import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { error, info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
+import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { FileConversionOptions } from '../options/conversion-options';
-import { compile } from '../compiler/typescript-compiler';
+
 import { filesProcessor } from './shared.converter';
-import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 
 export const convertToFiles = async (conversionOptions: FileConversionOptions): Promise<void> => {
   const {

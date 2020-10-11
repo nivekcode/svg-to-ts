@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// import-conductor-skip
 import {
   ConversionType,
   getOptions,
@@ -34,6 +35,7 @@ const convert = async (
 (async () => {
   setupCommander();
   printLogo();
+
   const conversionOptions = await getOptions();
 
   if (Array.isArray(conversionOptions)) {

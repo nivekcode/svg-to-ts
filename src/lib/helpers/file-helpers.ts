@@ -1,8 +1,8 @@
-import * as util from 'util';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as prettier from 'prettier/standalone';
 import typescriptParser from 'prettier/parser-typescript';
+import * as prettier from 'prettier/standalone';
+import * as util from 'util';
 
 const readfileFromFS = util.promisify(fs.readFile);
 const writeFileToFS = util.promisify(fs.writeFile);

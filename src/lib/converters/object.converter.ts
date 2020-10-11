@@ -1,6 +1,6 @@
-import { ObjectConversionOptions } from '../options/conversion-options';
 import { writeFile } from '../helpers/file-helpers';
 import { error, success, underlineSuccess } from '../helpers/log-helper';
+import { ObjectConversionOptions } from '../options/conversion-options';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 

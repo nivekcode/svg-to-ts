@@ -1,5 +1,11 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
+import * as packgeJSON from '../../../package.json';
+import { Delimiter } from '../generators/code-snippet-generators';
+import { error, info } from '../helpers/log-helper';
+import { getSvgoConfig } from '../helpers/svg-optimization';
+
+import { getConfigPath } from './command-line-collector';
 import {
   ConversionType,
   FileConversionOptions,
@@ -7,12 +13,6 @@ import {
   ConstantsConversionOptions
 } from './conversion-options';
 import { DEFAULT_OPTIONS } from './default-options';
-
-import * as packgeJSON from '../../../package.json';
-import { error, info } from '../helpers/log-helper';
-import { getSvgoConfig } from '../helpers/svg-optimization';
-import { Delimiter } from '../generators/code-snippet-generators';
-import { getConfigPath } from './command-line-collector';
 
 export const collectConfigurationOptions = async (): Promise<
   | ConstantsConversionOptions

@@ -1,5 +1,6 @@
-import * as util from 'util';
 import { Glob } from 'glob';
+import * as util from 'util';
+
 import { info } from './log-helper';
 
 const getFilesFromRegex = util.promisify(Glob);

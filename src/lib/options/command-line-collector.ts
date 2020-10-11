@@ -2,6 +2,7 @@ import commander from 'commander';
 
 import * as packgeJSON from '../../../package.json';
 import { Delimiter } from '../generators/code-snippet-generators';
+import { error } from '../helpers/log-helper';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
 import {
@@ -11,7 +12,6 @@ import {
   ObjectConversionOptions
 } from './conversion-options';
 import { DEFAULT_OPTIONS } from './default-options';
-import { error } from '../helpers/log-helper';
 
 export const setupCommander = () => {
   const collect = (value, previous) => previous.concat([value]);

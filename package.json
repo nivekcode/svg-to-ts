@@ -11,7 +11,7 @@
     "report:coverage": "echo 'not yet implemented'",
     "copy:readme": "copyfiles ./README.md ./dist",
     "format:check": "prettier --list-different 'src/**/*.ts'",
-    "format:write": "prettier --write 'src/**/*.ts'",
+    "format:write": "prettier --write 'src/**/*.ts' && import-conductor -s 'src/**/*.ts' -i './src/bin/*.ts'",
     "prebuild": "npm run copy:readme",
     "start-object": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg'",
     "start-object:svgconfig": "ts-node ./src/bin/svg-to-ts.ts --conversionType object  -s './inputfiles/*.svg' --svgoConfig ./svgo-test.config.json",
@@ -55,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged && import-conductor --staged"
     }
   },
   "bin": {
@@ -94,6 +94,7 @@
     "all-contributors-cli": "^6.17.2",
     "copyfiles": "^2.1.1",
     "husky": "^3.1.0",
+    "import-conductor": "^2.0.3",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
