@@ -55,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && import-conductor --staged -i './src/bin/svg-to-ts.ts'"
+      "pre-commit": "pretty-quick --staged && import-conductor --staged"
     }
   },
   "bin": {
