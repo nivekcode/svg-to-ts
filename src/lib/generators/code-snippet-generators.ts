@@ -1,7 +1,6 @@
 import camelCase from 'lodash.camelcase';
 import kebabCase from 'lodash.kebabcase';
 import snakeCase from 'lodash.snakecase';
-import toUpper from 'lodash.toupper';
 
 import { SvgDefinition } from '../converters/shared.converter';
 import { FileConversionOptions, ConstantsConversionOptions } from '../options/conversion-options';

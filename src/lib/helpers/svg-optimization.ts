@@ -1,4 +1,5 @@
-import * as Svgo from 'svgo';
+// import-conductor-skip
+import Svgo = require('svgo');
 
 import { readFile } from './file-helpers';
 
