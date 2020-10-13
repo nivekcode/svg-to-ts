@@ -50,29 +50,11 @@ export const generateTypeDefinition = (
   return typesDefinition;
 };
 
-export const generateSvgConstant = (
-  variableName: string,
-  interfaceName: string,
-  filenameWithoutEnding: string,
-  data: string
-): string => {
-  return `export const ${variableName}: ${interfaceName} = {
-                name: '${filenameWithoutEnding}',
-                data: \`${data}\`
-            };`;
-};
-
-export const generateSvgConstantWithImport = (
-  variableName: string,
-  filenameWithoutEnding: string,
-  interfaceName: string,
-  modelFileName: string,
-  data: string
-): string => {
-  return `
-    import {${interfaceName}} from './${modelFileName}';
-  
-    export const ${variableName}: ${interfaceName} = {
+export const generateSvgConstant = (variableName: string, filenameWithoutEnding: string, data: string): string => {
+  return `export const ${variableName}: {
+            name: '${filenameWithoutEnding}',
+            data: string
+          } = {
                 name: '${filenameWithoutEnding}',
                 data: \`${data}\`
             };`;

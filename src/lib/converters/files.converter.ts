@@ -2,7 +2,7 @@ import { compile } from '../compiler/typescript-compiler';
 import {
   generateExportStatement,
   generateInterfaceDefinition,
-  generateSvgConstantWithImport,
+  generateSvgConstant,
   generateTypeDefinition
 } from '../generators/code-snippet-generators';
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
@@ -34,13 +34,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
 
     await Promise.all(
       svgDefinitions.map(async svgDefinition => {
-        const svgConstant = generateSvgConstantWithImport(
-          svgDefinition.variableName,
-          svgDefinition.typeName,
-          svgDefinition.interfaceName,
-          modelFileName,
-          svgDefinition.data
-        );
+        const svgConstant = generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data);
         const generatedFileName = `${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
         generatedFileNames.push(generatedFileName);
         await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);

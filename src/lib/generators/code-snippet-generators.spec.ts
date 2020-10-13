@@ -89,13 +89,15 @@ describe('Generators', () => {
     const variableName = 'smile';
     const filenameWithoutEnding = 'smileFile';
     const data = 'some data';
-    const interfaceName = 'AwesomeIcon';
 
-    const expectedSVGConstant = `export const ${variableName}: ${interfaceName} = {
+    const expectedSVGConstant = `export const ${variableName}: {
+            name: '${filenameWithoutEnding}',
+            data: string
+          } = {
                 name: '${filenameWithoutEnding}',
                 data: \`${data}\`
             };`;
-    expect(generateSvgConstant(variableName, interfaceName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
+    expect(generateSvgConstant(variableName, filenameWithoutEnding, data)).toEqual(expectedSVGConstant);
   });
 
   describe('generateTypeName', () => {
