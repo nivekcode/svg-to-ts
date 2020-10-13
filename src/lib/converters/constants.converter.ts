@@ -11,12 +11,7 @@ import { filesProcessor } from './shared.converter';
 
 const getSvgConstants = svgDefinitions => {
   const svgConstants = svgDefinitions.map(svgDefinition =>
-    generateSvgConstant(
-      svgDefinition.variableName,
-      svgDefinition.interfaceName,
-      svgDefinition.typeName,
-      svgDefinition.data
-    )
+    generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data)
   );
   return svgConstants.join('');
 };
