@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.2...v5.6.0) (2020-10-13)
+
+
+### Features
+
+* 🎸 add IconNameSubset helper type ([d56e890](https://github.com/kreuzerk/svg-to-ts/commit/d56e890f03fa5c96d2a19c918e19d7c2211a7b3e))
+
 ## [5.5.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.1...v5.5.2) (2020-10-13)
 
 
