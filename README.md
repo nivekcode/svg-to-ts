@@ -31,9 +31,11 @@
       - [Available options:](#available-options-2)
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
+- [Starter project](#starter-project)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
   - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
+  - [Can I use the icons to generate a type?](#can-i-use-the-icons-to-generate-a-type)
 - [Contributors ✨](#contributors-)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
