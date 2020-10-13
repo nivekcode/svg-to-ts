@@ -88,6 +88,19 @@ export const generateVariableName = (prefix: string, filenameWithoutEnding): str
   return prefix ? `${prefix}${capitalize(camelCased)}` : camelCased;
 };
 
+export const generateTypeHelper = (interfaceName: string): string => `
+    export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+    `;
+
+export const generateTypeHelperWithImport = (
+  interfaceName: string,
+  iconsFolderName: string,
+  modelFileName: string
+): string => `
+    import {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
+    ${generateTypeHelper(interfaceName)}
+    `;
+
 const capitalize = (value: string): string => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };

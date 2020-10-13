@@ -3,7 +3,8 @@ import {
   generateExportStatement,
   generateInterfaceDefinition,
   generateSvgConstant,
-  generateTypeDefinition
+  generateTypeDefinition,
+  generateTypeHelperWithImport
 } from '../generators/code-snippet-generators';
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
@@ -19,6 +20,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     modelFileName,
     additionalModelOutputPath,
     iconsFolderName,
+    interfaceName,
     compileSources,
     exportCompleteIconSet,
     barrelFileName
@@ -49,10 +51,10 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
       generatedFileNames.push(completeIconSetFileName);
     }
 
-    let indexFileContent = generatedFileNames
+    let indexFileContent = generateTypeHelperWithImport(interfaceName, iconsFolderName, modelFileName);
+    indexFileContent += generatedFileNames
       .map((generatedFileName: string) => generateExportStatement(generatedFileName, iconsFolderName))
       .join('');
-
     separatorEnd();
 
     indexFileContent += generateExportStatement(modelFileName, iconsFolderName);

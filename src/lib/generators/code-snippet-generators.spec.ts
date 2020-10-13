@@ -1,4 +1,5 @@
 import { SvgDefinition } from '../converters/shared.converter';
+import { unformatedString } from '../helpers/test-helpers';
 import { ConstantsConversionOptions } from '../options/conversion-options';
 
 import {
@@ -7,6 +8,8 @@ import {
   generateNamedImportStatement,
   generateSvgConstant,
   generateTypeDefinition,
+  generateTypeHelper,
+  generateTypeHelperWithImport,
   generateTypeName,
   generateVariableName
 } from './code-snippet-generators';
@@ -146,6 +149,32 @@ describe('Generators', () => {
 
       const generatedNamedImpoort = generateNamedImportStatement(name, module);
       expect(generatedNamedImpoort).toEqual(expectedNamedImport);
+    });
+  });
+
+  describe('Type helper', () => {
+    it('should generate the correct type helper statement', () => {
+      const interfaceName = 'MyIcons';
+      const expectedStatement = `
+        export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+       `;
+
+      const generatedStatement = generateTypeHelper(interfaceName);
+      expect(unformatedString(generatedStatement)).toEqual(unformatedString(expectedStatement));
+    });
+
+    it('should generate the correct type helper and import statement', () => {
+      const interfaceName = 'MyIcon';
+      const modelFileName = 'my-icons';
+      const iconsFolderName = 'build';
+
+      const expectedStatement = `
+        import {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
+        export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+       `;
+
+      const generatedStatement = generateTypeHelperWithImport(interfaceName, iconsFolderName, modelFileName);
+      expect(unformatedString(generatedStatement)).toEqual(unformatedString(expectedStatement));
     });
   });
 });
