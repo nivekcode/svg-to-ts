@@ -1,3 +1,10 @@
+## [5.5.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.1...v5.5.2) (2020-10-13)
+
+
+### Bug Fixes
+
+* 🐛 generate correct interface for SVG contants ([d21138f](https://github.com/kreuzerk/svg-to-ts/commit/d21138fbbdc4a17e9352f226ccd1a981ca2e7f56)), closes [#79](https://github.com/kreuzerk/svg-to-ts/issues/79)
+
 ## [5.5.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.0...v5.5.1) (2020-10-11)
 
 
