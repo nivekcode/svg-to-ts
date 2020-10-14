@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.0...v5.6.1) (2020-10-14)
+
+
+### Bug Fixes
+
+* 🐛 add prettier as dependency instead of dev dependency ([dcfff2e](https://github.com/kreuzerk/svg-to-ts/commit/dcfff2e449a42d819ffa42fc9aa46657b17667c0))
+
 # [5.6.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.5.2...v5.6.0) (2020-10-13)
 
 
