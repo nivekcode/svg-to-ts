@@ -94,6 +94,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "VincentPuget",
+      "name": "MrP",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9607309?v=4",
+      "profile": "http://kasmao.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

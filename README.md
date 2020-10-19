@@ -1,9 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -381,11 +379,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jvelay"><img src="https://avatars2.githubusercontent.com/u/4629727?v=4" width="200px;" alt=""/><br /><sub><b>Jaime Velay Valor</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=jvelay" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/glenngr"><img src="https://avatars0.githubusercontent.com/u/8955488?v=4" width="200px;" alt=""/><br /><sub><b>Glenn Greibesland</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=glenngr" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://kasmao.com/"><img src="https://avatars0.githubusercontent.com/u/9607309?v=4" width="200px;" alt=""/><br /><sub><b>MrP</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=VincentPuget" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
