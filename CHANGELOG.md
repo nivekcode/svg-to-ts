@@ -1,3 +1,11 @@
+## [5.6.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.1...v5.6.2) (2020-10-19)
+
+
+### Bug Fixes
+
+* remove svg-to-ts attribute from .svg-to-tsrc example ([f1f575a](https://github.com/kreuzerk/svg-to-ts/commit/f1f575ad34ba3dfc202ce87741062a8f7bba31ad))
+* replace 'modelFileName' by 'fileName' in exemple ([7d0c43a](https://github.com/kreuzerk/svg-to-ts/commit/7d0c43a65f2289a39e764dc0c0e0a5b5ddfef0de))
+
 ## [5.6.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.0...v5.6.1) (2020-10-14)
 
 
