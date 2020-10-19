@@ -115,7 +115,7 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
         }
       ]
     },
-    "modelFileName": "dinosaur-icon.model",
+    "fileName": "dinosaur-icon.model",
     "additionalModelFile": "./projects/dinosaur-icons/src/lib",
     "compileSources": true
   }
@@ -130,24 +130,22 @@ Once you run `svg-to-ts` those configurations will be picked up.
 
 ```json
 {
-  "svg-to-ts": {
-    "conversionType": "constants",
-    "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
-    "outputDirectory": "./projects/dinosaur-icons/icons",
-    "interfaceName": "DinosaurIcon",
-    "typeName": "dinosaurIcon",
-    "prefix": "dinosaurIcon",
-    "modelFileName": "dinosaur-icon.model",
-    "svgoConfig": {
-      "plugins": [
-        {
-          "cleanupAttrs": true
-        }
-      ]
-    },
-    "additionalModelFile": "./projects/dinosaur-icons/src/lib",
-    "compileSources": true
-  }
+  "conversionType": "constants",
+  "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
+  "outputDirectory": "./projects/dinosaur-icons/icons",
+  "interfaceName": "DinosaurIcon",
+  "typeName": "dinosaurIcon",
+  "prefix": "dinosaurIcon",
+  "fileName": "dinosaur-icon.model",
+  "svgoConfig": {
+    "plugins": [
+      {
+        "cleanupAttrs": true
+      }
+    ]
+  },
+  "additionalModelFile": "./projects/dinosaur-icons/src/lib",
+  "compileSources": true
 }
 ```
 
