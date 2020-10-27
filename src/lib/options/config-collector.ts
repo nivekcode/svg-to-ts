@@ -40,7 +40,7 @@ export const collectConfigurationOptions = async (): Promise<
   return await mergeWithDefaults(cosmiConfigResult.config);
 };
 
-const mergeWithDefaults = async (
+export const mergeWithDefaults = async (
   options
 ): Promise<FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions> => {
   const configOptions = { ...options };
