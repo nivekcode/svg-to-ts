@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.2...v5.7.0) (2020-10-27)
+
+
+### Features
+
+* 🎸 export helpers and converters for usage in JS/TS ([66182e8](https://github.com/kreuzerk/svg-to-ts/commit/66182e858563a280c59e1fbee453aaa3c92e584a))
+
 ## [5.6.2](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.1...v5.6.2) (2020-10-19)
 
 
