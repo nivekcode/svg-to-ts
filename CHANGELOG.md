@@ -1,3 +1,10 @@
+## [5.7.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.7.0...v5.7.1) (2020-10-31)
+
+
+### Bug Fixes
+
+* 🐛 handle file names with special characters ([475c333](https://github.com/kreuzerk/svg-to-ts/commit/475c333088b8959c95163b8ec1e3a4d2a55383bf))
+
 # [5.7.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.6.2...v5.7.0) (2020-10-27)
 
 
