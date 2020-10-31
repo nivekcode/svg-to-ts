@@ -25,7 +25,7 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
     filePaths.map(
       async (filePath): Promise<SvgDefinition | null> => {
         let svgDefinition: SvgDefinition = null;
-        const fileNameWithEnding = path.basename(filePath);
+        const fileNameWithEnding = path.basename(filePath).replace(`'`, '');
         const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
         if (extension === 'svg') {
           const rawSvg = await extractSvgContent(filePath);
