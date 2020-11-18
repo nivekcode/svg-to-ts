@@ -83,9 +83,44 @@ When you start using `svg-to-ts` in bigger projects, configuration may get more 
 arguments are hard to read. Therefore `svg-to-ts` allows you to configure it either over `package.json` or over a `.svg-to-tsrc` file.
 
 Those files can be written in `json`, `yaml`, `yml`, `js` (CommonJS module). By default `svg-to-ts` will search up
-the directory tree for a `svg-to-ts` propert in the `package.json`, a `.svg-to-tsrc` file. However, if you are working
+the directory tree for a `svg-to-ts` property in the `package.json`, a `.svg-to-tsrc` file. However, if you are working
 in a monorepo or want to have multiple configs, you can use the `--config` property to specify a path your configuration.
 For example `svg-to-ts --config ./myconfig.json`.
+
+### Configuration in a .js file
+
+An alternative for bigger projects is to use a JavaScript-based configuration file. The main advantage here is there you can create dynamic configurations, but also use plain-old JavaScript objects, allowing you to add comments, etc. This is useful for more complex configurations where comments can clarify why options are defined in a certain way.
+
+As stated in the previous section, JS configurations must be defined as a CommonJS module.
+
+Here's an example:
+
+```
+const svgToTsConfig = {
+  srcFiles: ["./libs/web-icons/icons/**/*.svg"],
+  conversionType: "files",
+  outputDirectory: "./libs/web-icons/src/lib",
+  interfaceName: "MyIcon",
+  typeName: "MyIconName",
+  generateType: true,
+  modelFileName: "whatever-icon.model",
+  additionalModelFile: "./libs/web-icons/src/lib",
+  iconsFolderName: "generated",
+  delimiter: "SNAKE",
+  barrelFileName: "generated-icons-barrel",
+  svgoConfig: {
+    plugins: [
+      {
+        cleanupAttrs: true,
+      },
+    ],
+  },
+  compileSources: false,
+};
+
+module.exports = svgToTsConfig;
+
+```
 
 #### Configure svg-to-ts over package.json
 
