@@ -1,7 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -416,6 +416,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://kasmao.com/"><img src="https://avatars0.githubusercontent.com/u/9607309?v=4" width="200px;" alt=""/><br /><sub><b>MrP</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=VincentPuget" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://medium.com/@dSebastien"><img src="https://avatars3.githubusercontent.com/u/89887?v=4" width="200px;" alt=""/><br /><sub><b>Sebastien Dubois</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=dsebastien" title="Documentation">📖</a></td>
   </tr>
 </table>
 
