@@ -103,6 +103,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dsebastien",
+      "name": "Sebastien Dubois",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/89887?v=4",
+      "profile": "https://medium.com/@dSebastien",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
