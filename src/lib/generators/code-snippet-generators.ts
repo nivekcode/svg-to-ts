@@ -89,7 +89,7 @@ export const generateVariableName = (prefix: string, filenameWithoutEnding): str
 };
 
 export const generateTypeHelper = (interfaceName: string): string => `
-    export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+    export type ${interfaceName}NameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
     `;
 
 export const generateTypeHelperWithImport = (
