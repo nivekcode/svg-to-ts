@@ -112,6 +112,18 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "thatguynamedandy",
+      "name": "Andrew Polhill",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2196085?v=4",
+      "profile": "http://thatguynamedandy.com",
+      "contributions": [
+        "code",
+        "bug",
+        "doc",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
