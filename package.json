@@ -78,6 +78,7 @@
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "cosmiconfig": "^6.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "glob": "^7.1.6",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
