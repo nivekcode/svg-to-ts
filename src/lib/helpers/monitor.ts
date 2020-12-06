@@ -7,7 +7,7 @@ export const generateSpinner = (text?: string) =>
   ora({ text, spinner: 'christmas', prefixText: chalk.blue(messagePrefix) });
 
 export const callAndMonitorAsync = async <T>(fn: (...args: any) => Promise<T>, spinnerMessage: string): Promise<T> => {
-  const spinner = generateSpinner(spinnerMessage);
+  const spinner = generateSpinner(spinnerMessage).start();
   try {
     const result = await fn();
     spinner.succeed();
@@ -20,7 +20,7 @@ export const callAndMonitorAsync = async <T>(fn: (...args: any) => Promise<T>, s
 };
 
 export const callAndMonitor = <T>(fn: (...args: any) => T, spinnerMessage: string): T => {
-  const spinner = generateSpinner(spinnerMessage);
+  const spinner = generateSpinner(spinnerMessage).start();
   try {
     const result = fn();
     spinner.succeed();
