@@ -34,7 +34,7 @@ const convert = async (
 
 (async () => {
   setupCommander();
-  Logger.printLogo();
+  Logger.printWelcomeMessage();
 
   const conversionOptions = await getOptions();
 

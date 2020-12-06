@@ -11,7 +11,7 @@ export class Logger {
     Logger.verbose = verbose;
   }
 
-  static printLogo() {
+  static printWelcomeMessage() {
     console.log(chalk.blue(`==========================================================`));
     console.log(chalk.blue(`👷 Hi I am svg-to-ts - let's build an awesome icon library`));
     console.log(chalk.blue(`==========================================================`));
