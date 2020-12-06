@@ -156,7 +156,7 @@ describe('Generators', () => {
     it('should generate the correct type helper statement', () => {
       const interfaceName = 'MyIcons';
       const expectedStatement = `
-        export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+        export type ${interfaceName}NameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
        `;
 
       const generatedStatement = generateTypeHelper(interfaceName);
@@ -170,7 +170,7 @@ describe('Generators', () => {
 
       const expectedStatement = `
         import {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
-        export type IconNameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
+        export type ${interfaceName}NameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
        `;
 
       const generatedStatement = generateTypeHelperWithImport(interfaceName, iconsFolderName, modelFileName);

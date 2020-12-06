@@ -1,5 +1,5 @@
 import { Delimiter } from '../generators/code-snippet-generators';
-import { info } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 
 import { collectCommandLineOptions } from './command-line-collector';
 import { collectConfigurationOptions } from './config-collector';
@@ -15,6 +15,7 @@ export interface CommonConversionOptions {
   outputDirectory: string;
   svgoConfig: any;
   delimiter: Delimiter;
+  verbose: boolean;
 }
 
 export interface ObjectConversionOptions extends CommonConversionOptions {
@@ -29,7 +30,7 @@ export interface ConstantsConversionOptions extends CommonConversionOptions {
   typeName: string;
   generateType: boolean;
   generateTypeObject: boolean;
-  generateCompleteIconSet?: boolean;
+  exportCompleteIconSet?: boolean;
   prefix: string;
   interfaceName: string;
 }
@@ -60,7 +61,7 @@ export const getOptions = async (): Promise<
   if (configOptions) {
     return configOptions;
   }
-  info(
+  Logger.verboseInfo(
     'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)'
   );
   return collectCommandLineOptions();

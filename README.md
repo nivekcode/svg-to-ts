@@ -1,7 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -14,6 +16,7 @@
   - [Usage](#usage)
     - [Command line](#command-line)
     - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
+    - [Configuration in a .js file](#configuration-in-a-js-file)
       - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
       - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
   - [ConversionTypes](#conversiontypes)
@@ -30,6 +33,7 @@
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
 - [Starter project](#starter-project)
+- [Angular builder](#angular-builder)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
   - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
@@ -207,14 +211,15 @@ accepts an object with the filename as key and the svg data as key.
 
 #### Available options:
 
-| --version       | type                       | default                                  | description                                                                  |
-| --------------- | -------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| fileName        | stirng                     | my-icons                                 | file name of the generated file                                              |
-| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties            |
-| svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
-| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                 |
-| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used |
+| --version       | type                       | default                                  | description                                                                           |
+| --------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| fileName        | stirng                     | my-icons                                 | file name of the generated file                                                       |
+| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                     |
+| svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
+| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
+| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                          |
+| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used          |
+| verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
 
 #### Example usage
 
@@ -251,18 +256,19 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 #### Available options:
 
-| --version          | type                       | default                                  | description                                                                  |
-| ------------------ | -------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| typeName           | string                     | myIcons                                  | name of the generated type                                                   |
-| generateType       | boolean                    | false                                    | prevent generating enumeration type                                          |
-| generateTypeObject | boolean                    | false                                    | generate type object                                                         |
-| prefix             | string                     | myIcon                                   | prefix for the generated svg constants                                       |
-| interfaceName      | string                     | MyIcon                                   | name for the generated interface                                             |
-| fileName           | stirng                     | my-icons                                 | file name of the generated file                                              |
-| delimiter          | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties            |
-| svgoConfig         | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object |
-| srcFiles           | string                     | "/\*.svg"                                | input files matching the given filename pattern                              |
-| outputDirectory    | string                     | "./dist"                                 | name of the output directory                                                 |
+| --version          | type                       | default                                  | description                                                                           |
+| ------------------ | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| typeName           | string                     | myIcons                                  | name of the generated type                                                            |
+| generateType       | boolean                    | false                                    | prevent generating enumeration type                                                   |
+| generateTypeObject | boolean                    | false                                    | generate type object                                                                  |
+| prefix             | string                     | myIcon                                   | prefix for the generated svg constants                                                |
+| interfaceName      | string                     | MyIcon                                   | name for the generated interface                                                      |
+| fileName           | stirng                     | my-icons                                 | file name of the generated file                                                       |
+| delimiter          | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
+| svgoConfig         | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
+| srcFiles           | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
+| outputDirectory    | string                     | "./dist"                                 | name of the output directory                                                          |
+| verbose            | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
 
 #### Example usage
 
@@ -341,6 +347,7 @@ end up there.
 | additionalModelOutputPath | string                     | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                     | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
 | compileSources            | boolean                    | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+| verbose                   | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging                                                                                           |
 
 #### Example usage
 
@@ -363,6 +370,11 @@ and we end up with the following file in our `dist` folder.
 
 If you want to build a standalone icon library we recommend you to checkout the [svg-icon-lib-starter](https://github.com/kreuzerk/svg-icon-library-starter) project on GitHub. This project allows you to build an astonishing framework-agnostic SVG icon library with ease. Out of the box icon optimization, build process, and icon showcase. 🚀
 
+# Angular builder
+
+In case you are working with Angular and prefer the usage of a builder we recommend you to check out our
+[offical Angular builder](https://github.com/angular-extensions/svg-icons-builder).
+
 # FAQ
 
 ## Which approach should I use
@@ -382,12 +394,12 @@ advantages:
 
 ## Can I use the icons to generate a type?
 
-If you have a method that decides which icon should be returned its useful to add a return type. To do so you can take advantage of the `IconNameSubset` helper generated by `svg-to-ts`.
+If you have a method that decides which icon should be returned its useful to add a return type. To do so you can take advantage of the name subset helper generated by `svg-to-ts`. The name of the helper will be dynamically generated depending upon the value provided for the `interfaceName` property. An `interfaceName` of `MyIcon` will generate a helper called `MyIconNameSubset` as shown in the following example.
 
 ```typescript
 import {IconNameSubset, myIconSmile, myIconLaugh} from 'my-icon-lib';
 
-type emojiIcons = IconNameSubset<[typeof myIconSmile, typeof myIconLaugh]>;
+type emojiIcons = MyIconNameSubset<[typeof myIconSmile, typeof myIconLaugh]>;
 
 // resulting type is equal to type = 'smile' | 'laugh';
 
@@ -423,6 +435,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

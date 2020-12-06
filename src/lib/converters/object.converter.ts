@@ -1,22 +1,28 @@
 import { writeFile } from '../helpers/file-helpers';
-import { error, success, underlineSuccess } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
+import { callAndMonitorAsync } from '../helpers/monitor';
 import { ObjectConversionOptions } from '../options/conversion-options';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
+const generateSVGObject = async (svgDefinitions: SvgDefinition[], objectName: string): Promise<string> => {
+  const svgObject = {};
+  svgDefinitions.forEach((svgDefinition: SvgDefinition) => (svgObject[svgDefinition.typeName] = svgDefinition.data));
+  return !objectName
+    ? `export default ${JSON.stringify(svgObject)}`
+    : `export const ${objectName} = ${JSON.stringify(svgObject)}`;
+};
+
 export const convertToSingleObject = async (conversionOptions: ObjectConversionOptions): Promise<void> => {
   const { outputDirectory, fileName, objectName } = conversionOptions;
-  try {
-    const svgObject = {};
-    const svgDefinitions = await filesProcessor(conversionOptions);
-    svgDefinitions.forEach((svgDefinition: SvgDefinition) => (svgObject[svgDefinition.typeName] = svgDefinition.data));
-    const fileContent = !objectName
-      ? `export default ${JSON.stringify(svgObject)}`
-      : `export const ${objectName} = ${JSON.stringify(svgObject)}`;
-    await writeFile(outputDirectory, fileName, fileContent);
-    success(`Icons file successfully generated under ${underlineSuccess(outputDirectory)}`);
-  } catch (exception) {
-    error(`Something went wrong: ${exception}`);
-    process.exit(1);
-  }
+  const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
+    filesProcessor.bind({}, conversionOptions),
+    'Processing SVG files'
+  );
+  const fileContent = await callAndMonitorAsync<string>(
+    generateSVGObject.bind({}, svgDefinitions, objectName),
+    'Generate SVG Object'
+  );
+  await callAndMonitorAsync<void>(writeFile.bind({}, outputDirectory, fileName, fileContent), 'Write content to file');
+  Logger.generationSuccess(outputDirectory);
 };

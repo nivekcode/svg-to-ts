@@ -1,7 +1,7 @@
 import { Glob } from 'glob';
 import * as util from 'util';
 
-import { info } from './log-helper';
+import { Logger } from './logger';
 
 const getFilesFromRegex = util.promisify(Glob);
 
@@ -14,7 +14,7 @@ export const getFilePathsFromRegex = async (srcFiles: string[]) => {
       nodir: true
     });
     if (directoryFiles.length === 0) {
-      info(`No matching files for regex: "${regex}"`);
+      Logger.verboseInfo(`No matching files for regex: "${regex}"`);
     } else {
       filePaths.push(...directoryFiles);
     }
