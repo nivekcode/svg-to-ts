@@ -55,7 +55,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && import-conductor --staged"
+      "pre-commit": "pretty-quick --staged && import-conductor --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "bin": {
@@ -88,6 +89,8 @@
     "typescript": "^3.7.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@semantic-release/changelog": "^3.0.1",
     "@semantic-release/exec": "^3.3.2",
     "@semantic-release/git": "^7.0.6",
@@ -95,6 +98,7 @@
     "@types/node": "^12.12.8",
     "all-contributors-cli": "^6.17.2",
     "copyfiles": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^3.1.0",
     "import-conductor": "^2.0.3",
     "jest": "^24.9.0",
@@ -103,5 +107,10 @@
     "semantic-release": "^15.13.31",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
