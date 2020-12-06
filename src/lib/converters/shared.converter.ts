@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import { generateTypeName, generateVariableName } from '../generators/code-snippet-generators';
 import { extractSvgContent } from '../helpers/file-helpers';
-import { info } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { generateSvgOptimizer } from '../helpers/svg-optimization';
 
@@ -29,7 +29,7 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
         const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
         if (extension === 'svg') {
           const rawSvg = await extractSvgContent(filePath);
-          info(`optimize svg: ${fileNameWithEnding}`);
+          Logger.verboseInfo(`optimize svg: ${fileNameWithEnding}`);
           const optimizedSvg = await svgOptimizer.optimize(rawSvg, { path: filePath });
           const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
@@ -47,7 +47,5 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
       }
     )
   );
-
-  // This will filter out null values
   return svgDefinitions.filter(svgDefinition => svgDefinition);
 };
