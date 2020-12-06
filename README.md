@@ -16,6 +16,7 @@
   - [Usage](#usage)
     - [Command line](#command-line)
     - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
+    - [Configuration in a .js file](#configuration-in-a-js-file)
       - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
       - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
   - [ConversionTypes](#conversiontypes)
@@ -32,6 +33,7 @@
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
 - [Starter project](#starter-project)
+- [Angular builder](#angular-builder)
 - [FAQ](#faq)
   - [Which approach should I use](#which-approach-should-i-use)
   - [Is it possilbe to create a standalone library?](#is-it-possilbe-to-create-a-standalone-library)
@@ -367,6 +369,11 @@ and we end up with the following file in our `dist` folder.
 # Starter project
 
 If you want to build a standalone icon library we recommend you to checkout the [svg-icon-lib-starter](https://github.com/kreuzerk/svg-icon-library-starter) project on GitHub. This project allows you to build an astonishing framework-agnostic SVG icon library with ease. Out of the box icon optimization, build process, and icon showcase. 🚀
+
+# Angular builder
+
+In case you are working with Angular and prefer the usage of a builder we recommend you to check out our
+[offical Angular builder](https://github.com/angular-extensions/svg-icons-builder).
 
 # FAQ
 
