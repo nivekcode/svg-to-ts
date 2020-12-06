@@ -1,3 +1,24 @@
+# [6.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.7.1...v6.0.0) (2020-12-06)
+
+
+### Bug Fixes
+
+* 🐛 ensures name subset helper always has a unique name ([d1a5d69](https://github.com/kreuzerk/svg-to-ts/commit/d1a5d69226c58d4ba44d1649e0faeba944c7961f)), closes [#91](https://github.com/kreuzerk/svg-to-ts/issues/91)
+* 🐛 start spinner on generation start ([6f34ab0](https://github.com/kreuzerk/svg-to-ts/commit/6f34ab03fc4722464583f84e74cc32fdae97bb15))
+
+
+### Features
+
+* 🎸 add verbose logging feature ([068eb1f](https://github.com/kreuzerk/svg-to-ts/commit/068eb1fae22918c42ec08d6b261ef878c49f0a68))
+* 🎸 logging steps with spinners ([55d7685](https://github.com/kreuzerk/svg-to-ts/commit/55d76856116d14d3ad271d78b6103178101556bb))
+
+
+### BREAKING CHANGES
+
+* The `IconNameSubset` helper is now dynamically
+generated based off of the `interfaceName` property. Any references to
+this will need updating.
+
 ## [5.7.1](https://github.com/kreuzerk/svg-to-ts/compare/v5.7.0...v5.7.1) (2020-10-31)
 
 
