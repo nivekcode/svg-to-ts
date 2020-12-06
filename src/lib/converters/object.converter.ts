@@ -1,5 +1,5 @@
 import { writeFile } from '../helpers/file-helpers';
-import { generationSuccess } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 import { callAndMonitorAsync } from '../helpers/monitor';
 import { ObjectConversionOptions } from '../options/conversion-options';
 
@@ -24,5 +24,5 @@ export const convertToSingleObject = async (conversionOptions: ObjectConversionO
     'Generate SVG Object'
   );
   await callAndMonitorAsync<void>(writeFile.bind({}, outputDirectory, fileName, fileContent), 'Write content to file');
-  generationSuccess(outputDirectory);
+  Logger.generationSuccess(outputDirectory);
 };

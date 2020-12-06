@@ -2,7 +2,7 @@ import commander from 'commander';
 
 import * as packgeJSON from '../../../package.json';
 import { Delimiter } from '../generators/code-snippet-generators';
-import { error } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 import { getSvgoConfig } from '../helpers/svg-optimization';
 
 import {
@@ -91,7 +91,7 @@ export const collectCommandLineOptions = async (): Promise<
   ConstantsConversionOptions | FileConversionOptions | ObjectConversionOptions
 > => {
   if (!commander.conversionType) {
-    error(`A conversion type is required, please specify one by passing it via --conversionType. 
+    Logger.error(`A conversion type is required, please specify one by passing it via --conversionType. 
     Valid conversion types are (object, constants or files)`);
     process.exit();
   }

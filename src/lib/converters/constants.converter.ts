@@ -5,7 +5,7 @@ import {
   generateTypeHelper
 } from '../generators/code-snippet-generators';
 import { writeFile } from '../helpers/file-helpers';
-import { generationSuccess } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { ConstantsConversionOptions } from '../options/conversion-options';
 
@@ -40,6 +40,6 @@ export const convertToConstants = async (conversionOptions: ConstantsConversionO
       writeFile.bind({}, outputDirectory, fileName, fileContent),
       `Writing files to ${outputDirectory}`
     );
-    generationSuccess(outputDirectory);
+    Logger.generationSuccess(outputDirectory);
   }
 };

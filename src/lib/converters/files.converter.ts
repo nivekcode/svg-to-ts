@@ -8,7 +8,7 @@ import {
 } from '../generators/code-snippet-generators';
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
-import { generationSuccess, info } from '../helpers/log-helper';
+import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { FileConversionOptions } from '../options/conversion-options';
@@ -29,7 +29,7 @@ const generateSVGConstants = async (
       const generatedFileName = `${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
       generatedFileNames.push(generatedFileName);
       await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
-      info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
+      Logger.verboseInfo(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
     })
   );
   return generatedFileNames;
@@ -54,11 +54,15 @@ const generateModelFile = async (
   const interfaceDefinition = generateInterfaceDefinition(conversionOptions);
   const modelFile = `${typeDefinition}${interfaceDefinition}`;
   await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
-  info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
+  Logger.verboseInfo(
+    `model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`
+  );
 
   if (additionalModelOutputPath) {
     await writeFile(`${additionalModelOutputPath}`, modelFileName, modelFile);
-    info(`additional model-file successfully generated under ${additionalModelOutputPath}/${modelFileName}.ts`);
+    Logger.verboseInfo(
+      `additional model-file successfully generated under ${additionalModelOutputPath}/${modelFileName}.ts`
+    );
   }
   return modelFile;
 };
@@ -144,5 +148,5 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
       'Compile TypeScript to JavaScript'
     );
   }
-  generationSuccess(outputDirectory);
+  Logger.generationSuccess(outputDirectory);
 };
