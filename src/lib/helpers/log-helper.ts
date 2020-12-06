@@ -1,6 +1,10 @@
 import chalk from 'chalk';
+import ora from 'ora';
 
-const messagePrefix = 'svg-to-ts: ';
+export const messagePrefix = 'svg-to-ts:';
+
+export const generateSpinner = (text?: string) =>
+  ora({ text, spinner: 'christmas', prefixText: chalk.blue(messagePrefix) });
 
 export const printLogo = () =>
   console.log(
@@ -14,8 +18,13 @@ export const printLogo = () =>
 `)
   );
 
+export const generationSuccess = (path: string) =>
+  logWithPrefix(
+    chalk.underline.green(`🏁 Everything is perfect: Icons succesfully generated under ${chalk.blue.underline(path)}`)
+  );
+
 export const success = (message: string) => logWithPrefix(chalk.green(message));
-export const info = (message: string) => logWithPrefix(`ℹ️ ${chalk.yellow(message)}`);
+export const info = (message: string) => logWithPrefix(`ℹ️ ${chalk.blueBright(message)}`);
 export const error = (message: string) => logWithPrefix(chalk.red(message));
 export const underlineSuccess = (message: string) => chalk.green.underline(message);
 export const separatorStart = (title: string) =>

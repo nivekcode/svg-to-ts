@@ -13,6 +13,7 @@ export const DEFAULT_OPTIONS = {
   iconsFolderName: 'build',
   compileSources: false,
   exportCompleteIconSet: false,
+  verbose: false,
   barrelFileName: 'index',
   svgoConfig: {
     plugins: [

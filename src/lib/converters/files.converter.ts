@@ -8,11 +8,73 @@ import {
 } from '../generators/code-snippet-generators';
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
-import { error, info, separatorEnd, separatorStart, success } from '../helpers/log-helper';
+import { generationSuccess, info } from '../helpers/log-helper';
+import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { FileConversionOptions } from '../options/conversion-options';
 
-import { filesProcessor } from './shared.converter';
+import { filesProcessor, SvgDefinition } from './shared.converter';
+
+const completeIconSetFileName = 'completeIconSet';
+
+const generateSVGConstants = async (
+  svgDefinitions: SvgDefinition[],
+  outputDirectory: string,
+  iconsFolderName: string
+): Promise<string[]> => {
+  const generatedFileNames: string[] = [];
+  await Promise.all(
+    svgDefinitions.map(async svgDefinition => {
+      const svgConstant = generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data);
+      const generatedFileName = `${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
+      generatedFileNames.push(generatedFileName);
+      await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
+      info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
+    })
+  );
+  return generatedFileNames;
+};
+
+const generateCompleteIconSet = async (
+  svgDefinitions: SvgDefinition[],
+  outputDirectory: string,
+  iconsFolderName: string
+): Promise<void> => {
+  const completeIconSetContent = generateCompleteIconSetContent(svgDefinitions);
+  await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetFileName, completeIconSetContent);
+};
+
+const generateModelFile = async (
+  conversionOptions: FileConversionOptions,
+  svgDefinitions: SvgDefinition[]
+): Promise<string> => {
+  const { outputDirectory, modelFileName, additionalModelOutputPath, iconsFolderName } = conversionOptions;
+
+  const typeDefinition = generateTypeDefinition(conversionOptions, svgDefinitions);
+  const interfaceDefinition = generateInterfaceDefinition(conversionOptions);
+  const modelFile = `${typeDefinition}${interfaceDefinition}`;
+  await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
+  info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
+
+  if (additionalModelOutputPath) {
+    await writeFile(`${additionalModelOutputPath}`, modelFileName, modelFile);
+    info(`additional model-file successfully generated under ${additionalModelOutputPath}/${modelFileName}.ts`);
+  }
+  return modelFile;
+};
+
+const compileTypeScriptToJS = async (
+  outputDirectory: string,
+  iconsFolderName: string,
+  barrelFileName: string
+): Promise<void> => {
+  const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
+    `${outputDirectory}/${iconsFolderName}/*.ts`,
+    `${outputDirectory}/${barrelFileName}.ts`
+  ]);
+  compile(generatedTypeScriptFilePaths);
+  deleteFiles(generatedTypeScriptFilePaths);
+};
 
 export const convertToFiles = async (conversionOptions: FileConversionOptions): Promise<void> => {
   const {
@@ -25,74 +87,62 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
     exportCompleteIconSet,
     barrelFileName
   } = conversionOptions;
+  await callAndMonitorAsync<void>(
+    deleteFolder.bind({}, `${outputDirectory}/${iconsFolderName}`),
+    'Deleting the output folder'
+  );
+  const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
+    filesProcessor.bind({}, conversionOptions),
+    'Processing SVG files'
+  );
 
-  try {
-    await deleteFolder(`${outputDirectory}/${iconsFolderName}`);
-    info(`deleting output directory: ${outputDirectory}/${iconsFolderName}`);
+  const generatedFileNames = await callAndMonitorAsync<string[]>(
+    generateSVGConstants.bind({}, svgDefinitions, outputDirectory, iconsFolderName),
+    'Generate SVG constants'
+  );
 
-    separatorStart('File optimization');
-    const svgDefinitions = await filesProcessor(conversionOptions);
-    const generatedFileNames: string[] = [];
-
-    await Promise.all(
-      svgDefinitions.map(async svgDefinition => {
-        const svgConstant = generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data);
-        const generatedFileName = `${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`;
-        generatedFileNames.push(generatedFileName);
-        await writeFile(`${outputDirectory}/${iconsFolderName}`, generatedFileName, svgConstant);
-        info(`write file svg: ${outputDirectory}/${iconsFolderName}/${generatedFileName}.ts`);
-      })
+  if (exportCompleteIconSet) {
+    await callAndMonitorAsync<void>(
+      generateCompleteIconSet.bind({}, svgDefinitions, outputDirectory, iconsFolderName),
+      'Export complete icon set'
     );
-
-    if (exportCompleteIconSet) {
-      const completeIconSetContent = generateCompleteIconSetContent(svgDefinitions);
-      const completeIconSetFileName = 'completeIconSet';
-      await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetFileName, completeIconSetContent);
-      generatedFileNames.push(completeIconSetFileName);
-    }
-
-    let indexFileContent = generateTypeHelperWithImport(interfaceName, iconsFolderName, modelFileName);
-    indexFileContent += generatedFileNames
-      .map((generatedFileName: string) => generateExportStatement(generatedFileName, iconsFolderName))
-      .join('');
-    separatorEnd();
-
-    indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
-    await writeFile(outputDirectory, barrelFileName, indexFileContent);
-    info(`write ${barrelFileName}.ts`);
-
-    if (modelFileName) {
-      const typeDefinition = generateTypeDefinition(conversionOptions, svgDefinitions);
-      const interfaceDefinition = generateInterfaceDefinition(conversionOptions);
-      const modelFile = `${typeDefinition}${interfaceDefinition}`;
-      await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
-      info(`model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`);
-
-      if (additionalModelOutputPath) {
-        await writeFile(`${additionalModelOutputPath}`, modelFileName, modelFile);
-        info(`additional model-file successfully generated under ${additionalModelOutputPath}/${modelFileName}.ts`);
-      }
-    }
-
-    if (compileSources) {
-      const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
-        `${outputDirectory}/${iconsFolderName}/*.ts`,
-        `${outputDirectory}/${barrelFileName}.ts`
-      ]);
-      compile(generatedTypeScriptFilePaths);
-      info(`compile Typescript - generate JS and d.ts`);
-      deleteFiles(generatedTypeScriptFilePaths);
-      info(`delete Typescript files`);
-    }
-
-    success('========================================================');
-    success(`your files were successfully created under: ${outputDirectory}`);
-    success(
-      `don't forget to copy this folder to your dist in a post build script - enjoy your tree-shakable icon library 😎`
-    );
-    success('========================================================');
-  } catch (exception) {
-    error(`Something went wrong: ${exception}`);
-    process.exit(1);
+    generatedFileNames.push(completeIconSetFileName);
   }
+
+  let indexFileContent = callAndMonitor<string>(
+    generateTypeHelperWithImport.bind({}, interfaceName, iconsFolderName, modelFileName),
+    'Generate Type Helper'
+  );
+
+  indexFileContent += generatedFileNames
+    .map((generatedFileName: string) => generateExportStatement(generatedFileName, iconsFolderName))
+    .join('');
+
+  indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
+  await callAndMonitorAsync<void>(
+    writeFile.bind({}, outputDirectory, barrelFileName, indexFileContent),
+    'Genrate barrel file'
+  );
+
+  if (modelFileName) {
+    const modelFile = await callAndMonitorAsync<void>(
+      generateModelFile.bind({}, conversionOptions, svgDefinitions),
+      'Generate model file'
+    );
+
+    if (additionalModelOutputPath) {
+      await callAndMonitorAsync<void>(
+        writeFile.bind({}, `${additionalModelOutputPath}`, modelFileName, modelFile),
+        'Write model file to additional output path'
+      );
+    }
+  }
+
+  if (compileSources) {
+    await callAndMonitorAsync<void>(
+      compileTypeScriptToJS.bind({}, outputDirectory, iconsFolderName, barrelFileName),
+      'Compile TypeScript to JavaScript'
+    );
+  }
+  generationSuccess(outputDirectory);
 };

@@ -51,6 +51,11 @@ export const mergeWithDefaults = async (
     process.exit();
   }
 
+  if (!configOptions.verbose) {
+    configOptions.verbose = DEFAULT_OPTIONS.verbose;
+    info(`No "verbose" property provided, "${DEFAULT_OPTIONS.verbose}" will be used`);
+  }
+
   if (!configOptions.outputDirectory) {
     configOptions.outputDirectory = DEFAULT_OPTIONS.outputDirectory;
     info(`No outputDirectory provided, "${DEFAULT_OPTIONS.outputDirectory}" will be used`);

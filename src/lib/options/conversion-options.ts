@@ -15,6 +15,7 @@ export interface CommonConversionOptions {
   outputDirectory: string;
   svgoConfig: any;
   delimiter: Delimiter;
+  verbose: boolean;
 }
 
 export interface ObjectConversionOptions extends CommonConversionOptions {
@@ -29,7 +30,7 @@ export interface ConstantsConversionOptions extends CommonConversionOptions {
   typeName: string;
   generateType: boolean;
   generateTypeObject: boolean;
-  generateCompleteIconSet?: boolean;
+  exportCompleteIconSet?: boolean;
   prefix: string;
   interfaceName: string;
 }

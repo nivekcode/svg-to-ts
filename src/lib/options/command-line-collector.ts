@@ -63,6 +63,11 @@ export const setupCommander = () => {
       'Specifies if the complete icon set should be exported or not',
       DEFAULT_OPTIONS.exportCompleteIconSet
     )
+    .option(
+      '--verbose <boolean>',
+      'Specifies if a verbose log message should be printed or not',
+      DEFAULT_OPTIONS.verbose
+    )
     .parse(process.argv);
 };
 
@@ -107,7 +112,8 @@ export const collectCommandLineOptions = async (): Promise<
     iconsFolderName,
     additionalModelOutputPath,
     exportCompleteIconSet,
-    compileSources
+    compileSources,
+    verbose
   } = commander;
   let svgoConfig = commander.svgoConfig;
 
@@ -116,6 +122,7 @@ export const collectCommandLineOptions = async (): Promise<
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_OPTIONS.generateTypeObject);
   exportCompleteIconSet = toBoolean(exportCompleteIconSet, DEFAULT_OPTIONS.exportCompleteIconSet);
   compileSources = toBoolean(compileSources, DEFAULT_OPTIONS.compileSources);
+  verbose = toBoolean(verbose, DEFAULT_OPTIONS.verbose);
 
   if (!delimiter) {
     delimiter = conversionType === ConversionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
@@ -140,7 +147,8 @@ export const collectCommandLineOptions = async (): Promise<
       outputDirectory,
       svgoConfig,
       fileName,
-      objectName
+      objectName,
+      verbose
     };
   }
 
@@ -156,7 +164,8 @@ export const collectCommandLineOptions = async (): Promise<
       typeName,
       generateType,
       generateTypeObject,
-      svgoConfig
+      svgoConfig,
+      verbose
     };
   }
 
@@ -176,6 +185,7 @@ export const collectCommandLineOptions = async (): Promise<
     svgoConfig,
     additionalModelOutputPath,
     compileSources,
-    barrelFileName
+    barrelFileName,
+    verbose
   };
 };
