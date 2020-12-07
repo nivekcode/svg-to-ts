@@ -213,7 +213,7 @@ accepts an object with the filename as key and the svg data as key.
 
 | --version       | type                       | default                                  | description                                                                           |
 | --------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| fileName        | stirng                     | my-icons                                 | file name of the generated file                                                       |
+| fileName        | string                     | my-icons                                 | file name of the generated file                                                       |
 | delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                     |
 | svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
 | srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
