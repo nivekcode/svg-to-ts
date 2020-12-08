@@ -1,9 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -430,12 +428,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://kasmao.com/"><img src="https://avatars0.githubusercontent.com/u/9607309?v=4" width="200px;" alt=""/><br /><sub><b>MrP</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=VincentPuget" title="Documentation">📖</a></td>
     <td align="center"><a href="https://medium.com/@dSebastien"><img src="https://avatars3.githubusercontent.com/u/89887?v=4" width="200px;" alt=""/><br /><sub><b>Sebastien Dubois</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=dsebastien" title="Documentation">📖</a></td>
     <td align="center"><a href="http://thatguynamedandy.com"><img src="https://avatars1.githubusercontent.com/u/2196085?v=4" width="200px;" alt=""/><br /><sub><b>Andrew Polhill</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=thatguynamedandy" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/issues?q=author%3Athatguynamedandy" title="Bug reports">🐛</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=thatguynamedandy" title="Documentation">📖</a> <a href="#ideas-thatguynamedandy" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/jvinters"><img src="https://avatars0.githubusercontent.com/u/44930772?v=4" width="200px;" alt=""/><br /><sub><b>Joshua Vinters</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=jvinters" title="Documentation">📖</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

@@ -124,6 +124,15 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "jvinters",
+      "name": "Joshua Vinters",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/44930772?v=4",
+      "profile": "https://github.com/jvinters",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
