@@ -150,7 +150,7 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
         }
       ]
     },
-    "modelFileName": "dinosaur-icon.model",
+    "fileName": "dinosaur-icon.model",
     "additionalModelFile": "./projects/dinosaur-icons/src/lib",
     "compileSources": true
   }
@@ -171,7 +171,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
   "interfaceName": "DinosaurIcon",
   "typeName": "dinosaurIcon",
   "prefix": "dinosaurIcon",
-  "modelFileName": "dinosaur-icon.model",
+  "fileName": "dinosaur-icon.model",
   "svgoConfig": {
     "plugins": [
       {
@@ -211,7 +211,7 @@ accepts an object with the filename as key and the svg data as key.
 
 | --version       | type                       | default                                  | description                                                                           |
 | --------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| modelFileName   | string                     | my-icons                                 | file name of the generated file                                                       |
+| fileName        | string                     | my-icons                                 | file name of the generated file                                                       |
 | delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                     |
 | svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
 | srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
@@ -261,7 +261,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | generateTypeObject | boolean                    | false                                    | generate type object                                                                  |
 | prefix             | string                     | myIcon                                   | prefix for the generated svg constants                                                |
 | interfaceName      | string                     | MyIcon                                   | name for the generated interface                                                      |
-| modelFileName      | string                     | my-icons                                 | file name of the generated file                                                       |
+| fileName           | string                     | my-icons                                 | file name of the generated file                                                       |
 | delimiter          | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
 | svgoConfig         | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
 | srcFiles           | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
