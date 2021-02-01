@@ -6,8 +6,8 @@ export const compile = (filePaths: string[]): void => {
     noImplicitAny: true,
     declaration: true,
     moduleResolution: ts.ModuleResolutionKind.NodeJs,
-    target: ts.ScriptTarget.ESNext,
-    module: ts.ModuleKind.ESNext
+    target: ts.ScriptTarget.ES5,
+    module: ts.ModuleKind.UMD
   };
   ts.createProgram(filePaths, compilerOptions).emit();
 };
