@@ -1,7 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -10,6 +12,7 @@
 - [What is svg-to-ts?](#what-is-svg-to-ts)
 - [Who is this for?](#who-is-this-for)
 - [Why you should use svg-to-ts](#why-you-should-use-svg-to-ts)
+- [Step by step guide on how to create your icon library](#step-by-step-guide-on-how-to-create-your-icon-library)
 - [How to use svg-to-ts](#how-to-use-svg-to-ts)
   - [Usage](#usage)
     - [Command line](#command-line)
@@ -65,6 +68,11 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
 - offers three different conversion modes ('object', 'constants' and 'files')
 - each method is highly configurable to supports multiple use cases.
+
+# Step by step guide on how to create your icon library
+
+[This blog post](https://kevinkreuzer.medium.com/how-to-build-your-own-tree-shakable-svg-icons-library-in-less-than-30-minutes-9f7a4a324d29) guides you through the process of building your own icon library with svg-to-ts.
+![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/blogimage.png)
 
 # How to use svg-to-ts
 
