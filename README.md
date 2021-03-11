@@ -13,6 +13,8 @@
 - [Who is this for?](#who-is-this-for)
 - [Why you should use svg-to-ts](#why-you-should-use-svg-to-ts)
 - [Step by step guide on how to create your icon library](#step-by-step-guide-on-how-to-create-your-icon-library)
+  - [Video tutorials](#video-tutorials)
+  - [Writtern tutorial](#writtern-tutorial)
 - [How to use svg-to-ts](#how-to-use-svg-to-ts)
   - [Usage](#usage)
     - [Command line](#command-line)
@@ -70,6 +72,15 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - each method is highly configurable to supports multiple use cases.
 
 # Step by step guide on how to create your icon library
+
+We created multiple tutorials to show you how you can use svg-to-ts in the best way. We have two step by step guides.
+A video course and a blog post. Both cover the same content. Feel free to choose the format you prefer.
+
+## Video tutorials
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GWD3GWU7NvE/0.jpg)](https://www.youtube.com/watch?v=GWD3GWU7NvE)
+
+## Writtern tutorial
 
 [This blog post](https://kevinkreuzer.medium.com/how-to-build-your-own-tree-shakable-svg-icons-library-in-less-than-30-minutes-9f7a4a324d29) guides you through the process of building your own icon library with svg-to-ts.
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/blogimage.png)
