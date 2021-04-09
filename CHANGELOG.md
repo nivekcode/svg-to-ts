@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.0...v6.0.1) (2021-04-09)
+
+
+### Bug Fixes
+
+* 🐛 handle large icon sets > 10k. Closes: 115 ([133e16b](https://github.com/kreuzerk/svg-to-ts/commit/133e16beaebe9c3f5bbf4d249cb40566b15c7378))
+
 # [6.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v5.7.1...v6.0.0) (2020-12-06)
 
 
