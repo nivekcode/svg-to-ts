@@ -15,7 +15,7 @@ import { FileConversionOptions } from '../options/conversion-options';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
-const completeIconSetFileName = 'completeIconSet';
+const completeIconSetFileName = 'complete-icon-set';
 
 const generateSVGConstants = async (
   svgDefinitions: SvgDefinition[],
