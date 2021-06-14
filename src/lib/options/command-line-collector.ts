@@ -1,10 +1,8 @@
 import commander from 'commander';
-
 import * as packgeJSON from '../../../package.json';
 import { Delimiter } from '../generators/code-snippet-generators';
 import { Logger } from '../helpers/logger';
 import { getSvgoConfig } from '../helpers/svg-optimization';
-
 import {
   ConstantsConversionOptions,
   ConversionType,
@@ -103,11 +101,13 @@ export const collectCommandLineOptions = async (): Promise<
     fileName,
     barrelFileName,
     interfaceName,
+    enumName,
     outputDirectory,
     prefix,
     typeName,
     generateType,
     generateTypeObject,
+    generateEnum,
     modelFileName,
     iconsFolderName,
     additionalModelOutputPath,
@@ -157,6 +157,7 @@ export const collectCommandLineOptions = async (): Promise<
       conversionType,
       delimiter,
       fileName,
+      enumName,
       interfaceName,
       srcFiles,
       outputDirectory,
@@ -164,6 +165,7 @@ export const collectCommandLineOptions = async (): Promise<
       typeName,
       generateType,
       generateTypeObject,
+      generateEnum,
       svgoConfig,
       verbose
     };
@@ -177,8 +179,10 @@ export const collectCommandLineOptions = async (): Promise<
     outputDirectory,
     prefix,
     typeName,
+    enumName,
     generateType,
     generateTypeObject,
+    generateEnum,
     modelFileName,
     iconsFolderName,
     exportCompleteIconSet,

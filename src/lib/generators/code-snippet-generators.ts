@@ -1,7 +1,6 @@
 import camelCase from 'lodash.camelcase';
 import kebabCase from 'lodash.kebabcase';
 import snakeCase from 'lodash.snakecase';
-
 import { SvgDefinition } from '../converters/shared.converter';
 import { FileConversionOptions, ConstantsConversionOptions } from '../options/conversion-options';
 
@@ -15,8 +14,10 @@ export enum Delimiter {
 export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
   const iconNameType =
     conversionOptions.generateType || conversionOptions.generateTypeObject ? conversionOptions.typeName : 'string';
+  const enumVariant = conversionOptions.generateEnum ? ` | ${conversionOptions.enumName}` : '';
+
   return `export interface ${conversionOptions.interfaceName}{
-        name: ${conversionOptions.generateType ? iconNameType : 'string'};
+        name: ${conversionOptions.generateType ? iconNameType + enumVariant : 'string'};
         data: string;}`;
 };
 
@@ -48,6 +49,24 @@ export const generateTypeDefinition = (
   }
 
   return typesDefinition;
+};
+
+export const generateEnumDefinition = (
+  conversionOptions: FileConversionOptions | ConstantsConversionOptions,
+  svgDefinitions: SvgDefinition[]
+): string => {
+  let enumDefinition = '';
+
+  if (conversionOptions.generateEnum) {
+    enumDefinition += `
+    export enum ${conversionOptions.enumName} {${svgDefinitions
+      .map(
+        ({ typeName }, index) =>
+          `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`
+      )
+      .join('')};`;
+  }
+  return enumDefinition;
 };
 
 export const generateSvgConstant = (variableName: string, filenameWithoutEnding: string, data: string): string => {

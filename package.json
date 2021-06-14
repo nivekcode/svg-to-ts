@@ -44,6 +44,7 @@
     "start-files:multiple-source": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-files:customModel": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfilesRegex/**/*.svg' --modelFileName test-model -t sampleIcon -i SampleIcon",
     "start-files:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
+    "start:config": "ts-node ./src/bin/svg-to-ts.ts",
     "start-files:custom-complete-icon-set": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons --exportCompleteIconSet true",
     "start:help": "ts-node ./src/bin/svg-to-ts.ts -h",
     "semantic-release": "semantic-release",

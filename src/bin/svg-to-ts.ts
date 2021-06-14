@@ -17,7 +17,7 @@ const convert = async (
   conversionOptions: FileConversionOptions | ConstantsConversionOptions | ObjectConversionOptions
 ) => {
   if (conversionOptions.conversionType === ConversionType.FILES) {
-    Logger.info('We are using the conversiontype "files"');
+    Logger.info('We are using the conversion type "files"');
     await convertToFiles(conversionOptions as FileConversionOptions);
   }
 
