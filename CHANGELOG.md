@@ -1,3 +1,10 @@
+## [6.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.1...v6.0.2) (2021-09-06)
+
+
+### Bug Fixes
+
+* **typo:** Generate barrel file ([03f58e1](https://github.com/kreuzerk/svg-to-ts/commit/03f58e18b72e05c586cfd57c74aff97d43b666d9))
+
 ## [6.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.0...v6.0.1) (2021-04-09)
 
 
