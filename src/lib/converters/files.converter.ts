@@ -125,7 +125,7 @@ export const convertToFiles = async (conversionOptions: FileConversionOptions): 
   indexFileContent += generateExportStatement(modelFileName, iconsFolderName);
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, barrelFileName, indexFileContent),
-    'Genrate barrel file'
+    'Generate barrel file'
   );
 
   if (modelFileName) {
