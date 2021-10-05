@@ -14,7 +14,6 @@
     "format:write": "prettier --write 'src/**/*.ts' && import-conductor -s 'src/**/*.ts' -i './src/bin/*.ts'",
     "prebuild": "npm run copy:readme",
     "start-object": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg'",
-    "start-object:svgconfig": "ts-node ./src/bin/svg-to-ts.ts --conversionType object  -s './inputfiles/*.svg' --svgoConfig ./svgo-test.config.json",
     "start-object:regex": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg'",
     "start-object:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d KEBAB",
     "start-object:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d SNAKE",
@@ -24,7 +23,6 @@
     "start-object:custom": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg' -o ./dist --objectName awesomeIcons -f icons",
     "start-object:export-const": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg' -o ./dist --objectName myIcons",
     "start-constants": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg'",
-    "start-constants:svgconfig": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants  -s './inputfiles/*.svg' --svgoConfig ./svgo-test.config.json",
     "start-constants:regex": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfilesRegex/**/*.svg'",
     "start-constants:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d KEBAB",
     "start-constants:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType constants -s './inputfiles/*.svg' -d SNAKE",
@@ -86,7 +84,7 @@
     "lodash.snakecase": "^4.1.1",
     "ora": "^5.1.0",
     "prettier": "^1.19.1",
-    "svgo": "^1.3.2",
+    "svgo": "^2.7.0",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
