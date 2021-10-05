@@ -1,4 +1,5 @@
 import * as path from 'path';
+import { optimize } from 'svgo';
 
 import { generateTypeName, generateVariableName } from '../generators/code-snippet-generators';
 import { extractSvgContent } from '../helpers/file-helpers';
