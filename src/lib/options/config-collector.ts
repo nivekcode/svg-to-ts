@@ -69,11 +69,9 @@ export const mergeWithDefaults = async (
   }
 
   if (!configOptions.svgoConfig) {
-    configOptions.svgoConfig = DEFAULT_OPTIONS.svgoConfig;
-    Logger.verboseInfo(`No svgoConfig provided, default configuration will be used`);
-  } else {
-    configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
+    Logger.verboseInfo(`No svgoConfig provided, default configuration of SVGO will be used`);
   }
+  configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
 
   if (!configOptions.delimiter) {
     configOptions.delimiter = options.conversionType === ConversionType.OBJECT ? Delimiter.CAMEL : Delimiter.SNAKE;
