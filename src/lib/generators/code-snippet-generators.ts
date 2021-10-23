@@ -12,12 +12,27 @@ export enum Delimiter {
 }
 
 export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
-  const iconNameType =
-    conversionOptions.generateType || conversionOptions.generateTypeObject ? conversionOptions.typeName : 'string';
-  const enumVariant = conversionOptions.generateEnum ? ` | ${conversionOptions.enumName}` : '';
+  let {
+    interfaceName,
+    enumName = '',
+    typeName = '',
+    generateType,
+    generateTypeObject,
+    generateEnum
+  } = conversionOptions;
 
-  return `export interface ${conversionOptions.interfaceName}{
-        name: ${conversionOptions.generateType ? iconNameType + enumVariant : 'string'};
+  let nameType = 'string';
+
+  if (generateType || generateTypeObject) {
+    nameType = typeName;
+  }
+  // Will rewrite nameType with enumName
+  if (generateEnum) {
+    nameType = enumName;
+  }
+
+  return `export interface ${interfaceName}{
+        name: ${nameType};
         data: string;}`;
 };
 
@@ -56,10 +71,11 @@ export const generateEnumDefinition = (
   svgDefinitions: SvgDefinition[]
 ): string => {
   let enumDefinition = '';
+  const { generateEnum, enumName } = conversionOptions;
 
-  if (conversionOptions.generateEnum) {
+  if (generateEnum) {
     enumDefinition += `
-    export enum ${conversionOptions.enumName} {${svgDefinitions
+    export enum ${enumName} {${svgDefinitions
       .map(
         ({ typeName }, index) =>
           `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`
