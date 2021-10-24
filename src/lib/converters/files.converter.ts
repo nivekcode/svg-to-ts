@@ -1,18 +1,20 @@
 import { compile } from '../compiler/typescript-compiler';
+
 import {
+  generateEnumDefinition,
   generateExportStatement,
   generateInterfaceDefinition,
   generateSvgConstant,
   generateTypeDefinition,
   generateTypeHelperWithImport
 } from '../generators/code-snippet-generators';
+
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
 import { FileConversionOptions } from '../options/conversion-options';
-
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
 const completeIconSetFileName = 'complete-icon-set';
@@ -51,8 +53,9 @@ const generateModelFile = async (
   const { outputDirectory, modelFileName, additionalModelOutputPath, iconsFolderName } = conversionOptions;
 
   const typeDefinition = generateTypeDefinition(conversionOptions, svgDefinitions);
+  const enumDefinition = generateEnumDefinition(conversionOptions, svgDefinitions);
   const interfaceDefinition = generateInterfaceDefinition(conversionOptions);
-  const modelFile = `${typeDefinition}${interfaceDefinition}`;
+  const modelFile = `${typeDefinition}${interfaceDefinition}${enumDefinition}`;
   await writeFile(`${outputDirectory}/${iconsFolderName}`, modelFileName, modelFile);
   Logger.verboseInfo(
     `model-file successfully generated under ${outputDirectory}/${iconsFolderName}/${modelFileName}.ts`

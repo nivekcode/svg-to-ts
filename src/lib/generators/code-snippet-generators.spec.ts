@@ -1,9 +1,10 @@
+import snakeCase from 'lodash.snakecase';
 import { SvgDefinition } from '../converters/shared.converter';
 import { unformatedString } from '../helpers/test-helpers';
 import { ConstantsConversionOptions } from '../options/conversion-options';
-
 import {
   Delimiter,
+  generateEnumDefinition,
   generateInterfaceDefinition,
   generateNamedImportStatement,
   generateSvgConstant,
@@ -47,6 +48,20 @@ describe('Generators', () => {
         data: string;}`;
       expect(generateInterfaceDefinition(options)).toEqual(expected);
     });
+
+    it('should add Enum value as type for name if generateEnum === true', () => {
+      const options = {
+        generateType: true,
+        generateEnum: true,
+        typeName: 'AppIcons',
+        enumName: 'AppIconsEnum',
+        interfaceName: 'IconInterface'
+      } as ConstantsConversionOptions;
+      const expected = `export interface ${options.interfaceName}{
+        name: ${options.typeName} | ${options.enumName};
+        data: string;}`;
+      expect(generateInterfaceDefinition(options)).toEqual(expected);
+    });
   });
 
   describe('generateTypeDefinition', () => {
@@ -85,6 +100,22 @@ describe('Generators', () => {
       ${types.map(v => `'${v}': '${v}' as ${options.typeName}`).join(',')}
     };`;
       expect(generateTypeDefinition(options, svgDefinitions)).toEqual(expected);
+    });
+  });
+
+  describe('generateEnumDefinition', () => {
+    it('should create enum definition', () => {
+      const options = { generateEnum: true, enumName: 'AppIconsEnum' } as ConstantsConversionOptions;
+      const types = ['alert', 'noResults'];
+      const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
+      const expected = `
+    export enum ${options.enumName} {${svgDefinitions
+        .map(
+          ({ typeName }, index) =>
+            `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`
+        )
+        .join('')};`;
+      expect(generateEnumDefinition(options, svgDefinitions)).toEqual(expected);
     });
   });
 
@@ -147,8 +178,8 @@ describe('Generators', () => {
       const module = './foo.module';
       const expectedNamedImport = `import {foo} from './foo.module';\n`;
 
-      const generatedNamedImpoort = generateNamedImportStatement(name, module);
-      expect(generatedNamedImpoort).toEqual(expectedNamedImport);
+      const generatedNamedImport = generateNamedImportStatement(name, module);
+      expect(generatedNamedImport).toEqual(expectedNamedImport);
     });
   });
 

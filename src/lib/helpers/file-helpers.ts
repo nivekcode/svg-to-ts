@@ -18,11 +18,11 @@ export const extractSvgContent = async (filePath: string): Promise<string> => {
 };
 
 export const writeFile = async (outputDirectory: string, fileName: string, fileContent: string): Promise<void> => {
-  const formatedFileContent = formatContent(`${fileComment}${fileContent}`);
+  const formattedFileContent = formatContent(`${fileComment}${fileContent}`);
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
-  await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formatedFileContent);
+  await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formattedFileContent);
 };
 
 export const readFile = async (filePath: string): Promise<string> => {
