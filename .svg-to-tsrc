@@ -13,12 +13,5 @@
   "exportCompleteIconSet": false,
   "optimizeForLazyLoading": true,
   "modelFileName": "icons.model",
-  "compileSources": false,
-  "svgoConfig": {
-    "plugins": [
-      {
-        "cleanupAttrs": true
-      }
-    ]
-  }
+  "compileSources": false
 }
