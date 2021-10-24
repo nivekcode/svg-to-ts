@@ -1,9 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -454,6 +452,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://amd.com"><img src="https://avatars1.githubusercontent.com/u/1633576?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Matthäus G. Chajdas</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=Anteru" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.atbo.studio"><img src="https://avatars.githubusercontent.com/u/21083372?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Julian Kimmig</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=atbostudio" title="Code">💻</a></td>
     <td align="center"><a href="https://montogeek.com"><img src="https://avatars.githubusercontent.com/u/1002461?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Fernando Montoya</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=montogeek" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/DartWelder"><img src="https://avatars.githubusercontent.com/u/25117312?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Alexey Evenkov</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=DartWelder" title="Code">💻</a></td>
   </tr>
 </table>
 
