@@ -4,7 +4,7 @@ import ora from 'ora';
 import { Logger, messagePrefix } from './logger';
 
 export const generateSpinner = (text?: string) =>
-  ora({ text, spinner: 'christmas', prefixText: chalk.blue(messagePrefix) });
+  ora({ text, spinner: 'runner', prefixText: chalk.blue(messagePrefix) });
 
 export const callAndMonitorAsync = async <T>(fn: (...args: any) => Promise<T>, spinnerMessage: string): Promise<T> => {
   const spinner = generateSpinner(spinnerMessage).start();

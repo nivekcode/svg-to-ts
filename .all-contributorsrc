@@ -151,6 +151,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "montogeek",
+      "name": "Fernando Montoya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1002461?v=4",
+      "profile": "https://montogeek.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

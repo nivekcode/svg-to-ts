@@ -1,3 +1,24 @@
+# [7.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.2...v7.0.0) (2021-10-05)
+
+
+### chore
+
+* **(svgo) update svgo to v2:** update svgo to v2 - config object change ([688223e](https://github.com/kreuzerk/svg-to-ts/commit/688223e960e7aa76e50b6094f8fe16bfea984234)), closes [#127](https://github.com/kreuzerk/svg-to-ts/issues/127)
+
+
+### BREAKING CHANGES
+
+* **(svgo) update svgo to v2:** svg-to-ts now ships with svgo 2. SVGO 2 has different syntax of passing
+configuration. Furthermore we use the SVGO default object and dont introduce a custom fallback
+anymore
+
+## [6.0.2](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.1...v6.0.2) (2021-09-06)
+
+
+### Bug Fixes
+
+* **typo:** Generate barrel file ([03f58e1](https://github.com/kreuzerk/svg-to-ts/commit/03f58e18b72e05c586cfd57c74aff97d43b666d9))
+
 ## [6.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.0...v6.0.1) (2021-04-09)
 
 

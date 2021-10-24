@@ -31,11 +31,7 @@ export const setupCommander = () => {
     .option('-i --interfaceName <string>', 'name for the generated interface', DEFAULT_OPTIONS.interfaceName)
     .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
     .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULT_OPTIONS.outputDirectory)
-    .option(
-      '--svgoConfig <any>',
-      'Path to svgo configuration JSON or inline svgo configuration object',
-      DEFAULT_OPTIONS.svgoConfig
-    )
+    .option('--svgoConfig <any>', 'Path to svgo configuration JSON or inline svgo configuration object')
     .option(
       '--modelFileName <string>',
       'FileName of the model file (only necessary when conversion type is set to files)',
@@ -135,9 +131,7 @@ export const collectCommandLineOptions = async (): Promise<
     srcFiles = DEFAULT_OPTIONS.srcFiles;
   }
 
-  if (svgoConfig) {
-    svgoConfig = await getSvgoConfig(svgoConfig);
-  }
+  svgoConfig = await getSvgoConfig(svgoConfig);
 
   if (conversionType === ConversionType.OBJECT) {
     return {

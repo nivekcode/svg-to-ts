@@ -1,10 +1,10 @@
 import * as path from 'path';
+import { optimize } from 'svgo';
 
 import { generateTypeName, generateVariableName } from '../generators/code-snippet-generators';
 import { extractSvgContent } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { generateSvgOptimizer } from '../helpers/svg-optimization';
 
 export interface SvgDefinition {
   typeName: string;
@@ -17,7 +17,6 @@ export interface SvgDefinition {
 
 export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]> => {
   const { prefix, delimiter, interfaceName, srcFiles, svgoConfig } = conversionOptions;
-  const svgOptimizer = generateSvgOptimizer(svgoConfig);
   const filePaths = await getFilePathsFromRegex(srcFiles);
 
   // Using Promise.all we are making all files be processed in parallel as they have no dependency on each other
@@ -30,7 +29,7 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
         if (extension === 'svg') {
           const rawSvg = await extractSvgContent(filePath);
           Logger.verboseInfo(`optimize svg: ${fileNameWithEnding}`);
-          const optimizedSvg = await svgOptimizer.optimize(rawSvg, { path: filePath });
+          const optimizedSvg = await optimize(rawSvg, { path: filePath, ...svgoConfig });
           const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
           const typeName = generateTypeName(filenameWithoutEnding, delimiter);

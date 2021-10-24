@@ -1,7 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -33,6 +35,7 @@
       - [Available options:](#available-options-2)
       - [Example usage](#example-usage-2)
       - [Sample output](#sample-output-1)
+- [SVGO - SVG optimization](#svgo---svg-optimization)
 - [Starter project](#starter-project)
 - [Angular builder](#angular-builder)
 - [FAQ](#faq)
@@ -129,9 +132,7 @@ const svgToTsConfig = {
   barrelFileName: "generated-icons-barrel",
   svgoConfig: {
     plugins: [
-      {
-        cleanupAttrs: true,
-      },
+      'cleanupAttrs'
     ],
   },
   compileSources: false,
@@ -161,11 +162,7 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
     "typeName": "dinosaurIcon",
     "prefix": "dinosaurIcon",
     "svgoConfig": {
-      "plugins": [
-        {
-          "cleanupAttrs": true
-        }
-      ]
+      "plugins": ["cleanupAttrs"]
     },
     "fileName": "dinosaur-icon.model",
     "additionalModelFile": "./projects/dinosaur-icons/src/lib",
@@ -190,11 +187,7 @@ Once you run `svg-to-ts` those configurations will be picked up.
   "prefix": "dinosaurIcon",
   "fileName": "dinosaur-icon.model",
   "svgoConfig": {
-    "plugins": [
-      {
-        "cleanupAttrs": true
-      }
-    ]
+    "plugins": ["cleanupAttrs"]
   },
   "additionalModelFile": "./projects/dinosaur-icons/src/lib",
   "compileSources": true
@@ -226,15 +219,15 @@ accepts an object with the filename as key and the svg data as key.
 
 #### Available options:
 
-| --version       | type                       | default                                  | description                                                                           |
-| --------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| fileName        | string                     | my-icons                                 | file name of the generated file                                                       |
-| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                     |
-| svgoConfig      | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
-| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
-| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                          |
-| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used          |
-| verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
+| --version       | type                       | default                                  | description                                                                                  |
+| --------------- | -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| fileName        | string                     | my-icons                                 | file name of the generated file                                                              |
+| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                            |
+| svgoConfig      | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object |
+| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                              |
+| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                                 |
+| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used                 |
+| verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
 
 #### Example usage
 
@@ -361,7 +354,7 @@ end up there.
 | enumName                  | string                     | MyIcons                                  | name for the generated enum                                                                                                                                                     |
 | delimiter                 | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
 | srcFiles                  | string                     | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
-| svgoConfig                | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object                                                                                                    |
+| svgoConfig                | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object                                                                                    |
 | outputDirectory           | string                     | "./dist"                                 | name of the output directory                                                                                                                                                    |
 | additionalModelOutputPath | string                     | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                     | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
@@ -384,6 +377,14 @@ and we end up with the following file in our `dist` folder.
 #### Sample output
 
 ![Output scenario two](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/generated-files-src2.png)
+
+# SVGO - SVG optimization
+
+Under the hood we use the [svgo](https://github.com/svg/svgo) project to optimize the svg icons. To configure SVGO
+you can add a `svgo.config.js` file to your root. Check out the official [svgo](https://github.com/svg/svgo) page
+for further docs about the configuration.
+
+**Note: If you dont pass any options, svgo will apply some default options ([more](https://github.com/svg/svgo))**
 
 # Starter project
 
@@ -452,6 +453,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/jvinters"><img src="https://avatars0.githubusercontent.com/u/44930772?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Joshua Vinters</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=jvinters" title="Documentation">📖</a></td>
     <td align="center"><a href="http://amd.com"><img src="https://avatars1.githubusercontent.com/u/1633576?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Matthäus G. Chajdas</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=Anteru" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.atbo.studio"><img src="https://avatars.githubusercontent.com/u/21083372?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Julian Kimmig</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=atbostudio" title="Code">💻</a></td>
+    <td align="center"><a href="https://montogeek.com"><img src="https://avatars.githubusercontent.com/u/1002461?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Fernando Montoya</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=montogeek" title="Documentation">📖</a></td>
   </tr>
 </table>
 
