@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v7.0.0...v7.1.0) (2021-10-24)
+
+
+### Features
+
+* **enum:** add enum type option ([630f8f4](https://github.com/kreuzerk/svg-to-ts/commit/630f8f498ccffc69406da159ce628de141ff2d42))
+
 # [7.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v6.0.2...v7.0.0) (2021-10-05)
 
 
