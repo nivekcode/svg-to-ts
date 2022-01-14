@@ -1,7 +1,7 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -455,6 +455,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/DartWelder"><img src="https://avatars.githubusercontent.com/u/25117312?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Alexey Evenkov</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=DartWelder" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/nmastereal"><img src="https://avatars.githubusercontent.com/u/9787382?v=4?s=200" width="200px;" alt=""/><br /><sub><b>nmastereal</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=nmastereal" title="Code">💻</a></td>
   </tr>
 </table>
 
