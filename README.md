@@ -1,7 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -48,7 +50,7 @@
 
 `svg-to-ts` is a helper tool that converts your SVG icons to TypeScript. `svg-to-ts` can convert
 SVGs to either one TypeScript file with exported constants, multiple TypeScript files or
-compiled JavaScript files with according declaration files. Furthermore it generates all
+compiled JavaScript files with according declaration files. Furthermore, it generates all
 typings in form of interfaces and types.
 
 The generated output can then be used in combination with a iconregistry to create a tree shakable icon library.
