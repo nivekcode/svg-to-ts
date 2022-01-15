@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v7.1.0...v7.1.1) (2022-01-15)
+
+
+### Bug Fixes
+
+* **file-helper:** add missing comma and release latest file helper fix ([ea0c1ab](https://github.com/kreuzerk/svg-to-ts/commit/ea0c1ab2db13a0a13e8ced2220b56ce40627794a))
+
 # [7.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v7.0.0...v7.1.0) (2021-10-24)
 
 
