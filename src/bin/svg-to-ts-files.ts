@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // import-conductor-skip
 import { Logger } from '../lib/helpers/logger';
-import { setupConstantOptionsCommander } from '../lib/options/commander/constant-options.commander';
 import { convertToFiles } from '../lib/converters/files.converter';
 import { getFilesConversionOptions } from '../lib/options/options-collector/files-options.collector';
+import { setupFilesOptionsCommander } from '../lib/options/commander/file-options.commander';
 
 (async () => {
-  setupConstantOptionsCommander();
+  setupFilesOptionsCommander();
   Logger.printWelcomeMessage();
 
   const conversionOptions = await getFilesConversionOptions();

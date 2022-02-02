@@ -21,12 +21,18 @@ export const setupObjectOptionsCommander = () => {
       collect,
       DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles
     )
-    .option('-o --outputDirectory <string>', 'name of the output directory', DEFAULT_OPTIONS.outputDirectory)
+    .option(
+      '-o --outputDirectory <string>',
+      'name of the output directory',
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory
+    )
+    .option('--objectName <string>', 'name of the exported object', DEFAULT_OBJECT_CONVERSION_OPTIONS.objectName)
+    .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName)
     .option('--svgoConfig <any>', 'Path to svgo configuration JSON or inline svgo configuration object')
     .option(
       '--verbose <boolean>',
       'Specifies if a verbose log message should be printed or not',
-      DEFAULT_OPTIONS.verbose
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose
     )
     .parse(process.argv);
 };
