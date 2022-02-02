@@ -1,8 +1,10 @@
 import camelCase from 'lodash.camelcase';
 import kebabCase from 'lodash.kebabcase';
 import snakeCase from 'lodash.snakecase';
+
 import { SvgDefinition } from '../converters/shared.converter';
-import { FileConversionOptions, ConstantsConversionOptions } from '../options/conversion-options';
+import { ConstantsConversionOptions } from '../options/conversion-options/constant-conversion-options';
+import { FilesConversionOptions } from '../options/conversion-options/files-conversion-options';
 
 export enum Delimiter {
   CAMEL = 'CAMEL',
@@ -11,7 +13,7 @@ export enum Delimiter {
   UPPER = 'UPPER'
 }
 
-export const generateInterfaceDefinition = (conversionOptions: FileConversionOptions | ConstantsConversionOptions) => {
+export const generateInterfaceDefinition = (conversionOptions: FilesConversionOptions | ConstantsConversionOptions) => {
   let {
     interfaceName,
     enumName = '',
@@ -37,7 +39,7 @@ export const generateInterfaceDefinition = (conversionOptions: FileConversionOpt
 };
 
 export const generateTypeDefinition = (
-  conversionOptions: FileConversionOptions | ConstantsConversionOptions,
+  conversionOptions: FilesConversionOptions | ConstantsConversionOptions,
   svgDefinitions: SvgDefinition[]
 ): string => {
   let typesDefinition = '';
@@ -67,7 +69,7 @@ export const generateTypeDefinition = (
 };
 
 export const generateEnumDefinition = (
-  conversionOptions: FileConversionOptions | ConstantsConversionOptions,
+  conversionOptions: FilesConversionOptions | ConstantsConversionOptions,
   svgDefinitions: SvgDefinition[]
 ): string => {
   let enumDefinition = '';
