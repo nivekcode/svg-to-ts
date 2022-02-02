@@ -78,3 +78,5 @@ export const setupFilesOptionsCommander = () => {
     )
     .parse(process.argv);
 };
+
+export const getConfigPath = (): string | undefined => commander.config;

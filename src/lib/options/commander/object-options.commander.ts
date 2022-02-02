@@ -2,7 +2,6 @@ import commander from 'commander';
 
 import * as packgeJSON from '../../../../package.json';
 import { Delimiter } from '../../generators/code-snippet-generators';
-import { DEFAULT_OPTIONS } from '../default-options';
 import { DEFAULT_OBJECT_CONVERSION_OPTIONS } from '../default-options/default-object-conversion-options';
 
 export const setupObjectOptionsCommander = () => {
@@ -36,3 +35,5 @@ export const setupObjectOptionsCommander = () => {
     )
     .parse(process.argv);
 };
+
+export const getConfigPath = (): string | undefined => commander.config;

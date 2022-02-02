@@ -60,9 +60,9 @@
     }
   },
   "bin": {
-    "svg-to-ts-files": "./src/bin/svg-to-ts.js",
-    "svg-to-ts-consts": "./src/bin/svg-to-ts.js",
-    "svg-to-ts-object": "./src/bin/svg-to-ts.js"
+    "svg-to-ts-files": "./src/bin/svg-to-ts-files.js",
+    "svg-to-ts-constants": "./src/bin/svg-to-ts-constants.js",
+    "svg-to-ts-object": "./src/bin/svg-to-ts-object.js"
   },
   "keywords": [
     "SVG",

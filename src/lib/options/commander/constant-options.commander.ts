@@ -62,3 +62,5 @@ export const setupConstantOptionsCommander = () => {
     )
     .parse(process.argv);
 };
+
+export const getConfigPath = (): string | undefined => commander.config;
