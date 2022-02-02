@@ -1,7 +1,7 @@
 import { writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitorAsync } from '../helpers/monitor';
-import { ObjectConversionOptions } from '../options/conversion-options';
+import { ObjectConversionOptions } from '../options/conversion-options/object-conversion-options';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 

@@ -13,7 +13,7 @@
     "format:check": "prettier --list-different 'src/**/*.ts'",
     "format:write": "prettier --write 'src/**/*.ts' && import-conductor -s 'src/**/*.ts' -i './src/bin/*.ts'",
     "prebuild": "npm run copy:readme",
-    "start-object": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s './inputfiles/*.svg'",
+    "start-object": "ts-node ./src/bin/svg-to-ts-object.ts -s './inputfiles/*.svg'",
     "start-object:regex": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg'",
     "start-object:kebab": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d KEBAB",
     "start-object:snake": "ts-node ./src/bin/svg-to-ts.ts --conversionType object -s 'inputfiles-hyphen/*.svg' -d SNAKE",
@@ -59,8 +59,9 @@
     }
   },
   "bin": {
-    "svgtots": "./src/bin/svg-to-ts.js",
-    "svg-to-ts": "./src/bin/svg-to-ts.js"
+    "svg-to-ts-files": "./src/bin/svg-to-ts.js",
+    "svg-to-ts-consts": "./src/bin/svg-to-ts.js",
+    "svg-to-ts-object": "./src/bin/svg-to-ts.js"
   },
   "keywords": [
     "SVG",

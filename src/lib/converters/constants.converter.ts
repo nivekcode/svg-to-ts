@@ -7,7 +7,7 @@ import {
 import { writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
-import { ConstantsConversionOptions } from '../options/conversion-options';
+import { ConstantsConversionOptions } from '../options/conversion-options/constant-conversion-options';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
