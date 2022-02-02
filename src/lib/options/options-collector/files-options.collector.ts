@@ -1,5 +1,5 @@
-import {FilesConversionOptions} from "../conversion-options/files-conversion-options";
 import { Logger } from '../../helpers/logger';
+import { FilesConversionOptions } from '../conversion-options/files-conversion-options';
 
 import { collectCommandLineFileOptions } from './command-line-options-collectors/commandline-files-options.collector';
 import { collectConfigFileFileOptions } from './config-file-options-collector/config-file-files-options.collector';

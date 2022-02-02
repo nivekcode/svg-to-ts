@@ -1,7 +1,7 @@
 import commander from 'commander';
 
-import {FilesConversionOptions} from "../../conversion-options/files-conversion-options";
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
+import { FilesConversionOptions } from '../../conversion-options/files-conversion-options';
 import { DEFAULT_FILES_CONVERSION_OPTIONS } from '../../default-options/default-files-conversion-options';
 
 import { toBoolean } from './command-line-collector.helpers';

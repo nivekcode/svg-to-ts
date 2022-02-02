@@ -1,7 +1,9 @@
 import snakeCase from 'lodash.snakecase';
+
 import { SvgDefinition } from '../converters/shared.converter';
 import { unformatedString } from '../helpers/test-helpers';
 import { ConstantsConversionOptions } from '../options/conversion-options';
+
 import {
   Delimiter,
   generateEnumDefinition,
