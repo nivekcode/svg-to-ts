@@ -1,15 +1,13 @@
 import commander from 'commander';
 
+import {FilesConversionOptions} from "../../conversion-options/files-conversion-options";
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
-import { FileConversionOptions } from '../../conversion-options';
-import { DEFAULT_OPTIONS } from '../../default-options';
 import { DEFAULT_FILES_CONVERSION_OPTIONS } from '../../default-options/default-files-conversion-options';
 
 import { toBoolean } from './command-line-collector.helpers';
 
-export const collectCommandLineFileOptions = async (): Promise<FileConversionOptions> => {
+export const collectCommandLineFileOptions = async (): Promise<FilesConversionOptions> => {
   let {
-    conversionType,
     delimiter,
     barrelFileName,
     interfaceName,
@@ -45,7 +43,6 @@ export const collectCommandLineFileOptions = async (): Promise<FileConversionOpt
   svgoConfig = await getSvgoConfig(svgoConfig);
 
   return {
-    conversionType,
     delimiter,
     interfaceName,
     srcFiles,

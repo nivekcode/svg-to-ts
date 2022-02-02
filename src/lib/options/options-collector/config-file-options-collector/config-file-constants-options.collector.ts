@@ -3,9 +3,8 @@ import { cosmiconfigSync } from 'cosmiconfig';
 import * as packgeJSON from '../../../../../package.json';
 import { Logger } from '../../../helpers/logger';
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
-import { getConfigPath } from '../../command-line-collector';
-import { ConstantsConversionOptions } from '../../conversion-options';
-import { DEFAULT_OPTIONS } from '../../default-options';
+import { getConfigPath } from '../../commander/constant-options.commander';
+import { ConstantsConversionOptions } from '../../conversion-options/constant-conversion-options';
 import { DEFAULT_CONST_CONVERSION_OPTIONS } from '../../default-options/default-constants-conversion-options';
 
 export const collectConfigFileConstantOptions = async (): Promise<
@@ -36,7 +35,7 @@ export const mergeWithDefaultConstantOptions = async (
 
   if (!configOptions.verbose) {
     configOptions.verbose = DEFAULT_CONST_CONVERSION_OPTIONS.verbose;
-    Logger.verboseInfo(`No "verbose" property provided, "${DEFAULT_OPTIONS.verbose}" will be used`);
+    Logger.verboseInfo(`No "verbose" property provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.verbose}" will be used`);
   }
 
   if (!configOptions.outputDirectory) {

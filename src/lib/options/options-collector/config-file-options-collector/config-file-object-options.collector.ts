@@ -1,10 +1,10 @@
 import { cosmiconfigSync } from 'cosmiconfig';
 
+import {getConfigPath} from "../../commander/object-options.commander";
+import {ObjectConversionOptions} from "../../conversion-options/object-conversion-options";
 import * as packgeJSON from '../../../../../package.json';
 import { Logger } from '../../../helpers/logger';
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
-import { getConfigPath } from '../../command-line-collector';
-import { ObjectConversionOptions } from '../../conversion-options';
 import { DEFAULT_OBJECT_CONVERSION_OPTIONS } from '../../default-options/default-object-conversion-options';
 
 export const collectConfigFileObjectOptions = async (): Promise<

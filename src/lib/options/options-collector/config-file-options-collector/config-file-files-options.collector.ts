@@ -3,12 +3,12 @@ import { cosmiconfigSync } from 'cosmiconfig';
 import * as packgeJSON from '../../../../../package.json';
 import { Logger } from '../../../helpers/logger';
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
-import { getConfigPath } from '../../command-line-collector';
-import { FileConversionOptions } from '../../conversion-options';
+import { getConfigPath } from '../../commander/file-options.commander';
+import { FilesConversionOptions } from '../../conversion-options/files-conversion-options';
 import { DEFAULT_FILES_CONVERSION_OPTIONS } from '../../default-options/default-files-conversion-options';
 
 export const collectConfigFileFileOptions = async (): Promise<
-  FileConversionOptions | Array<FileConversionOptions> | null
+  FilesConversionOptions | Array<FilesConversionOptions> | null
 > => {
   const explorerSync = cosmiconfigSync(packgeJSON.name);
   const configPath = getConfigPath();
@@ -21,12 +21,12 @@ export const collectConfigFileFileOptions = async (): Promise<
     return null;
   }
   if (Array.isArray(cosmiConfigResult.config)) {
-    return Promise.all(cosmiConfigResult.config.map((config: FileConversionOptions) => mergeWithDefaults(config)));
+    return Promise.all(cosmiConfigResult.config.map((config: FilesConversionOptions) => mergeWithDefaults(config)));
   }
   return await mergeWithDefaults(cosmiConfigResult.config);
 };
 
-export const mergeWithDefaults = async (options): Promise<FileConversionOptions> => {
+export const mergeWithDefaults = async (options): Promise<FilesConversionOptions> => {
   const configOptions = { ...options };
 
   if (!configOptions.verbose) {
@@ -85,34 +85,33 @@ export const mergeWithDefaults = async (options): Promise<FileConversionOptions>
   }
 
   if (!configOptions.modelFileName) {
-    (configOptions as FileConversionOptions).modelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName;
+    configOptions.modelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName;
     Logger.verboseInfo(`No modelFileName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName}" will be used`);
   }
 
   if (!configOptions.iconsFolderName) {
-    (configOptions as FileConversionOptions).iconsFolderName = DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName;
+    configOptions.iconsFolderName = DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName;
     Logger.verboseInfo(
       `No iconsFolderName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName}" will be used`
     );
   }
 
   if (!configOptions.compileSources) {
-    (configOptions as FileConversionOptions).compileSources = DEFAULT_FILES_CONVERSION_OPTIONS.compileSources;
+    configOptions.compileSources = DEFAULT_FILES_CONVERSION_OPTIONS.compileSources;
     Logger.verboseInfo(
       `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`
     );
   }
 
   if (!configOptions.exportCompleteIconSet) {
-    (configOptions as FileConversionOptions).exportCompleteIconSet =
-      DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet;
+    configOptions.exportCompleteIconSet = DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
       `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
     );
   }
 
   if (!configOptions.barrelFileName) {
-    (configOptions as FileConversionOptions).barrelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName;
+    configOptions.barrelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName;
     Logger.verboseInfo(
       `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName}" will be used`
     );

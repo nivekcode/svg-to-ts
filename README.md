@@ -17,11 +17,12 @@
   - [Writtern tutorial](#writtern-tutorial)
 - [How to use svg-to-ts](#how-to-use-svg-to-ts)
   - [Usage](#usage)
-    - [Command line](#command-line)
-    - [Configuration in package.json or .rc file](#configuration-in-packagejson-or-rc-file)
-    - [Configuration in a .js file](#configuration-in-a-js-file)
-      - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
-      - [Configure svg-to-ts over .rc file](#configure-svg-to-ts-over-rc-file)
+    - [Binaries](#binaries)
+    - [Configuration](#configuration)
+    - [Passing arguments to the binary](#passing-arguments-to-the-binary)
+    - [Configure svg-to-ts over package.json](#configure-svg-to-ts-over-packagejson)
+    - [Configuration file](#configuration-file)
+      - [Using a custom path](#using-a-custom-path)
   - [ConversionTypes](#conversiontypes)
     - [1. Converting to a single object (`conversionType==='object'`)](#1-converting-to-a-single-object-conversiontypeobject)
       - [Available options:](#available-options)
@@ -93,58 +94,55 @@ via npm script.
 
 ## Usage
 
-### Command line
+### Binaries
 
-To execute `svg-to-ts` on the commmand line simply run `npx svg-to-ts --help` to see a list of available parameters.
-Once you know which parameters to use, you can use npx to execute svg-to-ts and pass some parameters to it. For example, if
-you want to convert all SVG file in your current folder to TypeScript constants. `npx svg-to-ts -s './*.svg'`.
+`svg-to-ts` provides three different binaries.
 
-### Configuration in package.json or .rc file
+- `svg-to-ts-object`
+- `svg-to-ts-constants`
+- `svg-to-ts-files`
 
-When you start using `svg-to-ts` in bigger projects, configuration may get more sophisticated. At this point command line
-arguments are hard to read. Therefore `svg-to-ts` allows you to configure it either over `package.json` or over a `.svg-to-tsrc` file.
+You can either run those binaries with `npx`
 
-Those files can be written in `json`, `yaml`, `yml`, `js` (CommonJS module). By default `svg-to-ts` will search up
-the directory tree for a `svg-to-ts` property in the `package.json`, a `.svg-to-tsrc` file. However, if you are working
-in a monorepo or want to have multiple configs, you can use the `--config` property to specify a path your configuration.
-For example `svg-to-ts --config ./myconfig.json`.
+`npx svg-to-ts svg-to-ts-object`
 
-### Configuration in a .js file
+````json
+"name": "my-icon-library",
+"version": "3.4.0",
+"scripts": {
+  "generate-icons": "svg-to-ts"
+}```
+````
 
-An alternative for bigger projects is to use a JavaScript-based configuration file. The main advantage here is there you can create dynamic configurations, but also use plain-old JavaScript objects, allowing you to add comments, etc. This is useful for more complex configurations where comments can clarify why options are defined in a certain way.
+### Configuration
 
-As stated in the previous section, JS configurations must be defined as a CommonJS module.
+When executing a binary `svg-to-ts` automatically applies some defaults. However, you have multiple ways to configure `svg-to-ts`. To get a list of available options you can either execute the binary of your choice with the `--help` argument or you can find all the available options for your conversion type here in the docs:
 
-Here's an example:
+- [1. Converting to a single object (`conversionType==='object'`)](#1-converting-to-a-single-object-conversiontypeobject)
+- [2. Multiple constants - Treeshakable and typesafe with one file (`conversionType==='constants'`)](#2-multiple-constants---treeshakable-and-typesafe-with-one-file-conversiontypeconstants)
+- [3. Tree shakable and optimized for lazy loading (`conversionType==='files'`)](#3-tree-shakable-and-optimized-for-lazy-loading-conversiontypefiles)
 
-```
-const svgToTsConfig = {
-  srcFiles: ["./libs/web-icons/icons/**/*.svg"],
-  conversionType: "files",
-  outputDirectory: "./libs/web-icons/src/lib",
-  interfaceName: "MyIcon",
-  typeName: "MyIconName",
-  generateType: true,
-  modelFileName: "whatever-icon.model",
-  additionalModelFile: "./libs/web-icons/src/lib",
-  iconsFolderName: "generated",
-  delimiter: "SNAKE",
-  barrelFileName: "generated-icons-barrel",
-  svgoConfig: {
-    plugins: [
-      'cleanupAttrs'
-    ],
-  },
-  compileSources: false,
-};
+Once you found your configurations you have the following possibilities to configure `svg-to-ts`:
 
-module.exports = svgToTsConfig;
+- Passing arguments to the binary
+- Adding a configuration object in the `package.json`
+- Adding a `.svg-to-tsrc` file (`javascript`, `json` , `yaml` or `yml`) in the root of your project or a path of you choice.
 
-```
+### Passing arguments to the binary
 
-#### Configure svg-to-ts over package.json
+When choosing this option you directly pass the arguments to your binary.
 
-To configure svg-to-ts over package.json you can simply add a `svg-to-ts` key in your package.json and use the config options.
+`svg-to-ts-files -s './inputfiles/*.svg' --compileSources true --additionalModelOutputPath ./additional`
+
+A complete list of the available arguments can be found by using the `--help` argument.
+
+`svg-to-ts-files --help`
+
+When you start using `svg-to-ts` in bigger projects, configuration may get more sophisticated. At this point command line arguments are hard to read.
+
+### Configure svg-to-ts over package.json
+
+To configure svg-to-ts over package.json you can add a `svg-to-ts` key in your `package.json` and use the config options.
 Once you run `svg-to-ts` those configurations will be picked up. The config object can eiter be an object or an array containing multiple configurations.
 
 ```json
@@ -155,7 +153,6 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
     "generate-icons": "svg-to-ts"
   },
   "svg-to-ts": {
-    "conversionType": "constants",
     "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
     "outputDirectory": "./projects/dinosaur-icons/icons",
     "interfaceName": "DinosaurIcon",
@@ -171,15 +168,14 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
 }
 ```
 
-#### Configure svg-to-ts over .rc file
+####
 
-To configure svg-to-ts over a .rc file you can add a `.svg-to-tsrc` file in the root of your project and use the config options.
-The configuration can either be written in JSON or YAML. It can eiter be an object for a single configuration or an array containing multiple configurations.
-Once you run `svg-to-ts` those configurations will be picked up.
+### Configuration file
+
+To configure svg-to-ts over a .rc file you can add a `.svg-to-tsrc` file in the root of your project and use the config options. Once you run `svg-to-ts` those configurations will be picked up.
 
 ```json
 {
-  "conversionType": "constants",
   "srcFiles": ["./projects/dinosaur-icons/icons/**/*.svg"],
   "outputDirectory": "./projects/dinosaur-icons/icons",
   "interfaceName": "DinosaurIcon",
@@ -194,17 +190,36 @@ Once you run `svg-to-ts` those configurations will be picked up.
 }
 ```
 
-If you decide to configure `svg-to-ts` by using a `.rc` file, it still makes sense to add the `generate-icons` script to your `package.json`
+An alternative for bigger projects is to use a JavaScript-based configuration file. The main advantage here is there you can create dynamic configurations, but also use plain-old JavaScript objects, allowing you to add comments, etc. This is useful for more complex configurations where comments can clarify why options are defined in a certain way.
 
-```json
-{
-  "name": "my-icon-library",
-  "version": "3.4.0",
-  "scripts": {
-    "generate-icons": "svg-to-ts"
-  }
-}
+JS configurations must be defined as a CommonJS module.
+
+Here's an example:
+
+```typescript
+const svgToTsConfig = {
+  srcFiles: ['./libs/web-icons/icons/**/*.svg'],
+  outputDirectory: './libs/web-icons/src/lib',
+  interfaceName: 'MyIcon',
+  typeName: 'MyIconName',
+  generateType: true,
+  modelFileName: 'whatever-icon.model',
+  additionalModelFile: './libs/web-icons/src/lib',
+  iconsFolderName: 'generated',
+  delimiter: 'SNAKE',
+  barrelFileName: 'generated-icons-barrel',
+  svgoConfig: {
+    plugins: ['cleanupAttrs']
+  },
+  compileSources: false
+};
+
+module.exports = svgToTsConfig;
 ```
+
+#### Using a custom path
+
+In case you want to put your configuration under a custom path, you can use the `--config` property to specify a path your configuration. For example `svg-to-ts --config ./myconfig.json`.
 
 ## ConversionTypes
 
@@ -239,7 +254,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --conversionType object -s ./inputfiles -o ./dist`
+`svg-to-ts-object -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample output
@@ -290,7 +305,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --conversionType constants -s ./inputfiles -o ./dist`
+`svg-to-ts-constants -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample ouput
@@ -371,7 +386,7 @@ Let's say we have the following four svg files in a `inputfiles` folder.
 - smiling-face.svg
 
 We can now run
-`svg-to-ts.ts --conversionType files -s ./inputfiles -o ./dist`
+`svg-to-ts-files -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
 #### Sample output
@@ -392,15 +407,13 @@ If you want to build a standalone icon library we recommend you to checkout the 
 
 # Angular builder
 
-In case you are working with Angular and prefer the usage of a builder we recommend you to check out our
-[offical Angular builder](https://github.com/angular-extensions/svg-icons-builder).
+In case you are working with Angular and prefer the usage of a builder we recommend you to check out our [offical Angular builder](https://github.com/angular-extensions/svg-icons-builder).
 
 # FAQ
 
 ## Which approach should I use
 
-This depends on your use case. If you have a simple application, it's probably enought to go with the single file or even a object.
-If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
+This depends on your use case. If you have a simple application, it's probably enought to go with the single file or even a object. If you build a framework that is used by multiple teams, then you should probably go with the fully tree shakable scenario (generating multiple files).
 
 ## Is it possilbe to create a standalone library?
 
