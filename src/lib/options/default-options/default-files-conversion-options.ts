@@ -1,7 +1,8 @@
-export const DEFAULT_OPTIONS = {
-  fileName: 'my-icons',
+import { Delimiter } from '../../generators/code-snippet-generators';
+import { FilesConversionOptions } from '../conversion-options/files-conversion-options';
+
+export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
   interfaceName: 'MyIcon',
-  objectName: 'icons',
   outputDirectory: './dist',
   prefix: 'myIcon',
   srcFiles: ['*.svg'],
@@ -16,5 +17,6 @@ export const DEFAULT_OPTIONS = {
   compileSources: false,
   exportCompleteIconSet: false,
   verbose: false,
-  barrelFileName: 'index'
+  barrelFileName: 'index',
+  delimiter: Delimiter.SNAKE
 };

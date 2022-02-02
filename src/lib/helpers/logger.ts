@@ -1,11 +1,9 @@
 import chalk from 'chalk';
 
-import { DEFAULT_OPTIONS } from '../options/default-options';
-
 export const messagePrefix = 'svg-to-ts:';
 
 export class Logger {
-  private static verbose = DEFAULT_OPTIONS.verbose;
+  private static verbose = false;
 
   public static changeVisibility(verbose: boolean) {
     Logger.verbose = verbose;

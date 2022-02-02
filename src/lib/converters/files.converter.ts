@@ -1,5 +1,4 @@
 import { compile } from '../compiler/typescript-compiler';
-
 import {
   generateEnumDefinition,
   generateExportStatement,
@@ -8,13 +7,13 @@ import {
   generateTypeDefinition,
   generateTypeHelperWithImport
 } from '../generators/code-snippet-generators';
-
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { FileConversionOptions } from '../options/conversion-options';
+import { FilesConversionOptions } from '../options/conversion-options/files-conversion-options';
+
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
 const completeIconSetFileName = 'complete-icon-set';
@@ -47,7 +46,7 @@ const generateCompleteIconSet = async (
 };
 
 const generateModelFile = async (
-  conversionOptions: FileConversionOptions,
+  conversionOptions: FilesConversionOptions,
   svgDefinitions: SvgDefinition[]
 ): Promise<string> => {
   const { outputDirectory, modelFileName, additionalModelOutputPath, iconsFolderName } = conversionOptions;
@@ -83,7 +82,7 @@ const compileTypeScriptToJS = async (
   deleteFiles(generatedTypeScriptFilePaths);
 };
 
-export const convertToFiles = async (conversionOptions: FileConversionOptions): Promise<void> => {
+export const convertToFiles = async (conversionOptions: FilesConversionOptions): Promise<void> => {
   const {
     outputDirectory,
     modelFileName,

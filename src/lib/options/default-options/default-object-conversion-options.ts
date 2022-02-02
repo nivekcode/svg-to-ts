@@ -1,0 +1,11 @@
+import { Delimiter } from '../../generators/code-snippet-generators';
+import { ObjectConversionOptions } from '../conversion-options/object-conversion-options';
+
+export const DEFAULT_OBJECT_CONVERSION_OPTIONS: ObjectConversionOptions = {
+  srcFiles: ['*.svg'],
+  outputDirectory: './dist',
+  delimiter: Delimiter.CAMEL,
+  verbose: false,
+  fileName: 'my-icons',
+  objectName: 'icons'
+};

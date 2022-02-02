@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as gfs from 'graceful-fs';
-import * as path from 'path';
+import fs from 'fs';
+import gfs from 'graceful-fs';
+import path from 'path';
 import typescriptParser from 'prettier/parser-typescript';
-import * as prettier from 'prettier/standalone';
-import * as util from 'util';
+import prettier from 'prettier/standalone';
+import util from 'util';
 
 gfs.gracefulify(fs);
 
