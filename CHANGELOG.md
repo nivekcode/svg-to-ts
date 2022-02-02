@@ -1,3 +1,25 @@
+# [8.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v7.1.1...v8.0.0) (2022-02-02)
+
+
+### Bug Fixes
+
+* **imports:** remove leftover imports ([6d26dec](https://github.com/kreuzerk/svg-to-ts/commit/6d26dec83c9dceba77cf5a2625ed56a449bc7124))
+* **options:** adjust scripts and add missing options ([9efd1c9](https://github.com/kreuzerk/svg-to-ts/commit/9efd1c921b40cdf870caee597680bb8ce2069adc))
+
+
+### Features
+
+* **binaries:** export 3 new binaries ([0c389eb](https://github.com/kreuzerk/svg-to-ts/commit/0c389eb56bce1995162c6166eafa322d05b134d2))
+* **binaries:** provide new binaries ([cd8ddc0](https://github.com/kreuzerk/svg-to-ts/commit/cd8ddc08632f0d827e65982b60afe8395d5d49b4))
+
+
+### BREAKING CHANGES
+
+* **binaries:** Instead of providing one binary, svg-to-ts we now provide 3 binaries, one for file,
+object and one for constants
+
+143
+
 ## [7.1.1](https://github.com/kreuzerk/svg-to-ts/compare/v7.1.0...v7.1.1) (2022-01-15)
 
 
