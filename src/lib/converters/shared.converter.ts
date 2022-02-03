@@ -19,6 +19,10 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
   const { prefix, delimiter, interfaceName, srcFiles, svgoConfig } = conversionOptions;
   const filePaths = await getFilePathsFromRegex(srcFiles);
 
+  if (!filePaths.length) {
+    throw `No SVG files found for ${srcFiles}`;
+  }
+
   // Using Promise.all we are making all files be processed in parallel as they have no dependency on each other
   let svgDefinitions = await Promise.all(
     filePaths.map(
