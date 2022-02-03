@@ -72,6 +72,11 @@ export const setupFilesOptionsCommander = () => {
       DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet
     )
     .option(
+      '--completeIconSetName <string>',
+      'The name of the generated complete icon set file',
+      DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName
+    )
+    .option(
       '--verbose <boolean>',
       'Specifies if a verbose log message should be printed or not',
       DEFAULT_FILES_CONVERSION_OPTIONS.verbose

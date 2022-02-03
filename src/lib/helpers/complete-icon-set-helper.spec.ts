@@ -3,6 +3,7 @@ import { unformatedString } from './test-helpers';
 
 describe('Complete Iconset-helper', () => {
   it('should import all the values and export them as an array', () => {
+    let completeIconSetName = 'all-icons';
     const fileNamesWithDefinitions = [
       { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
       { variableName: 'bar', prefix: 'sampleIcon', filenameWithoutEnding: 'bar' },
@@ -13,9 +14,9 @@ describe('Complete Iconset-helper', () => {
     import {bar} from './sampleIcon-bar.icon';
     import {baz} from './sampleIcon-baz.icon';
             
-    export const completeIconSet = [foo, bar, baz];`;
+    export const allIcons = [foo, bar, baz];`;
 
-    const generatedContent = generateCompleteIconSetContent(fileNamesWithDefinitions);
+    const generatedContent = generateCompleteIconSetContent(fileNamesWithDefinitions, completeIconSetName);
     expect(unformatedString(expectedContent)).toEqual(unformatedString(generatedContent));
   });
 });

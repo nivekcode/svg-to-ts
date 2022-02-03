@@ -45,7 +45,8 @@
     "start-files:multiple-source": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-files:customModel": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfilesRegex/**/*.svg' --modelFileName test-model -t sampleIcon -i SampleIcon",
     "start-files:custom": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon --modelFileName icons",
-    "start-files:custom-complete-icon-set": "ts-node ./src/bin/svg-to-ts.ts --conversionType files -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons --exportCompleteIconSet true",
+    "start-files:custom-complete-icon-set": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon --modelFileName icons --exportCompleteIconSet true",
+    "start-files:custom-complete-icon-set-name": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' -o ./dist -t sampleIcon --exportCompleteIconSet true --completeIconSetName 'all-icons'",
     "semantic-release": "semantic-release",
     "test": "jest --config=./jest.config.js --coverage"
   },

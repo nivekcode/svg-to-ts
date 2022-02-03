@@ -16,6 +16,7 @@ export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
   iconsFolderName: 'build',
   compileSources: false,
   exportCompleteIconSet: false,
+  completeIconSetName: 'complete-icon-set',
   verbose: false,
   barrelFileName: 'index',
   delimiter: Delimiter.SNAKE
