@@ -18,7 +18,7 @@ import { setupFilesOptionsCommander } from '../lib/options/commander/file-option
     }
   } else {
     Logger.changeVisibility(conversionOptions.verbose);
-    Logger.info('We are using the conversion type "constants"');
+    Logger.info('Converting to files');
     await convertToFiles(conversionOptions);
   }
 })();
