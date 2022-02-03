@@ -1,3 +1,10 @@
+# [8.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.1.0...v8.2.0) (2022-02-03)
+
+
+### Features
+
+* **read:** fail early if no srcFiles are found ([c8a1a31](https://github.com/kreuzerk/svg-to-ts/commit/c8a1a3187a5d0dd2605a6a29d1cd254c4ca605a4)), closes [#150](https://github.com/kreuzerk/svg-to-ts/issues/150)
+
 # [8.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.0.1...v8.1.0) (2022-02-03)
 
 
