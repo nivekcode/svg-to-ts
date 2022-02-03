@@ -18,7 +18,7 @@ import { getConstantConversionOptions } from '../lib/options/options-collector/c
     }
   } else {
     Logger.changeVisibility(conversionOptions.verbose);
-    Logger.info('We are using the conversion type "constants"');
+    Logger.info('Converting to constants');
     await convertToConstants(conversionOptions);
   }
 })();
