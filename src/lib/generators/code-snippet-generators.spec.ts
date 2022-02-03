@@ -2,7 +2,7 @@ import snakeCase from 'lodash.snakecase';
 
 import { SvgDefinition } from '../converters/shared.converter';
 import { unformatedString } from '../helpers/test-helpers';
-import { ConstantsConversionOptions } from '../options/conversion-options';
+import { ConstantsConversionOptions } from '../options/conversion-options/constant-conversion-options';
 
 import {
   Delimiter,
@@ -38,7 +38,7 @@ describe('Generators', () => {
         interfaceName: 'IconInterface'
       } as ConstantsConversionOptions;
       const expected = `export interface ${options.interfaceName}{
-        name: string;
+        name: AppIcons;
         data: string;}`;
       expect(generateInterfaceDefinition(options)).toEqual(expected);
     });
@@ -60,7 +60,7 @@ describe('Generators', () => {
         interfaceName: 'IconInterface'
       } as ConstantsConversionOptions;
       const expected = `export interface ${options.interfaceName}{
-        name: ${options.typeName} | ${options.enumName};
+        name: ${options.enumName};
         data: string;}`;
       expect(generateInterfaceDefinition(options)).toEqual(expected);
     });
