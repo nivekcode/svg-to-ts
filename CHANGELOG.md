@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.0.1...v8.1.0) (2022-02-03)
+
+
+### Features
+
+* **completeiconset:** add option to configure the name of the complete icon set ([4cd5c53](https://github.com/kreuzerk/svg-to-ts/commit/4cd5c532a63af22b056d150355b8c98fa2344c06)), closes [#148](https://github.com/kreuzerk/svg-to-ts/issues/148)
+
 ## [8.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.0.0...v8.0.1) (2022-02-03)
 
 
