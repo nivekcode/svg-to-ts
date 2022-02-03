@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.0.0...v8.0.1) (2022-02-03)
+
+
+### Bug Fixes
+
+* **infomessage:** log correct conversion type ([bb50299](https://github.com/kreuzerk/svg-to-ts/commit/bb50299a549ee02ea7c3d3bffd9966f8d4f9b925)), closes [#146](https://github.com/kreuzerk/svg-to-ts/issues/146)
+
 # [8.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v7.1.1...v8.0.0) (2022-02-02)
 
 
