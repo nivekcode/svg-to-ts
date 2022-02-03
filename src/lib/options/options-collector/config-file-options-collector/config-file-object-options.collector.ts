@@ -31,34 +31,34 @@ export const mergeWithDefaults = async (options: ObjectConversionOptions): Promi
 
   if (!configOptions.verbose) {
     configOptions.verbose = DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose;
-    Logger.verboseInfo(`No "verbose" property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose}" will be used`);
+    Logger.verboseInfo(`No 'verbose' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose}" will be used`);
   }
 
   if (!configOptions.outputDirectory) {
     configOptions.outputDirectory = DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory;
     Logger.verboseInfo(
-      `No outputDirectory provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory}" will be used`
+      `No 'outputDirectory' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory}" will be used`
     );
   }
 
   if (!configOptions.srcFiles) {
     configOptions.srcFiles = DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles;
-    Logger.verboseInfo(`No srcFiles provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles}" will be used`);
+    Logger.verboseInfo(`No 'srcFiles' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles}" will be used`);
   }
 
   if (!configOptions.svgoConfig) {
-    Logger.verboseInfo(`No svgoConfig provided, default configuration of SVGO will be used`);
     configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
+    Logger.verboseInfo(`No 'svgoConfig' provided, default configuration of SVGO will be used`);
   }
 
   if (!configOptions.delimiter) {
     configOptions.delimiter = DEFAULT_OBJECT_CONVERSION_OPTIONS.delimiter;
-    Logger.verboseInfo(`No delimiter provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.delimiter}" will be used`);
+    Logger.verboseInfo(`No 'delimiter' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.delimiter}" will be used`);
   }
 
   if (!configOptions.fileName) {
     configOptions.fileName = DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName;
-    Logger.verboseInfo(`No fileName provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName}" will be used`);
+    Logger.verboseInfo(`No 'fileName' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName}" will be used`);
   }
   return configOptions;
 };

@@ -47,73 +47,79 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
   }
 
   if (!configOptions.svgoConfig) {
-    // TODO check helpers in all options collectors
     configOptions.svgoConfig = await getSvgoConfig(configOptions.svgoConfig);
     Logger.verboseInfo(`No svgoConfig provided, default configuration of SVGO will be used`);
   }
 
   if (!configOptions.delimiter) {
-    Logger.verboseInfo(`No delimiter provided, "${configOptions.delimiter}" will be used`);
     configOptions.delimiter = DEFAULT_FILES_CONVERSION_OPTIONS.delimiter;
+    Logger.verboseInfo(`No delimiter provided, "${configOptions.delimiter}" will be used`);
   }
 
   if (!configOptions.typeName) {
     configOptions.typeName = DEFAULT_FILES_CONVERSION_OPTIONS.typeName;
-    Logger.verboseInfo(`No typeName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.typeName}" will be used`);
+    Logger.verboseInfo(`No 'typeName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.typeName}" will be used`);
   }
 
   if (configOptions.generateType === undefined) {
     configOptions.generateType = DEFAULT_FILES_CONVERSION_OPTIONS.generateType;
-    Logger.verboseInfo(`No generateType provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateType}" will be used`);
+    Logger.verboseInfo(`No 'generateType' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateType}" will be used`);
   }
 
   if (configOptions.generateTypeObject === undefined) {
     configOptions.generateTypeObject = DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject;
     Logger.verboseInfo(
-      `No generateTypeObject provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject}" will be used`
+      `No 'generateTypeObject' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject}" will be used`
     );
   }
 
   if (!configOptions.interfaceName) {
     configOptions.interfaceName = DEFAULT_FILES_CONVERSION_OPTIONS.interfaceName;
-    Logger.verboseInfo(`No interfaceName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.interfaceName}" will be used`);
+    Logger.verboseInfo(`No 'interfaceName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.interfaceName}" will be used`);
   }
 
   if (typeof configOptions.prefix !== 'string') {
     configOptions.prefix = DEFAULT_FILES_CONVERSION_OPTIONS.prefix;
-    Logger.verboseInfo(`No prefix provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.prefix}" will be used`);
+    Logger.verboseInfo(`No 'prefix' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.prefix}" will be used`);
   }
 
   if (!configOptions.modelFileName) {
     configOptions.modelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName;
-    Logger.verboseInfo(`No modelFileName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName}" will be used`);
+    Logger.verboseInfo(`No 'modelFileName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName}" will be used`);
   }
 
   if (!configOptions.iconsFolderName) {
     configOptions.iconsFolderName = DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName;
     Logger.verboseInfo(
-      `No iconsFolderName provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName}" will be used`
+      `No 'iconsFolderName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName}" will be used`
     );
   }
 
   if (!configOptions.compileSources) {
     configOptions.compileSources = DEFAULT_FILES_CONVERSION_OPTIONS.compileSources;
     Logger.verboseInfo(
-      `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`
+      `No 'preCompileSources' flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`
     );
   }
 
   if (!configOptions.exportCompleteIconSet) {
     configOptions.exportCompleteIconSet = DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
-      `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
+      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
+    );
+  }
+
+  if (!configOptions.completeIconSetName) {
+    configOptions.completeIconSetName = DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName;
+    Logger.verboseInfo(
+      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName}" will be used`
     );
   }
 
   if (!configOptions.barrelFileName) {
     configOptions.barrelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName;
     Logger.verboseInfo(
-      `No preCompileSources flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName}" will be used`
+      `No 'barrelFileName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName}" will be used`
     );
   }
   return configOptions;

@@ -1,9 +1,14 @@
+import camelCase from 'lodash.camelcase';
+
 import { SvgDefinition } from '../converters/shared.converter';
 import { generateNamedImportStatement } from '../generators/code-snippet-generators';
 
-export const generateCompleteIconSetContent = (svgDefinitions: SvgDefinition[]): string => {
+export const generateCompleteIconSetContent = (
+  svgDefinitions: SvgDefinition[],
+  completeIconSetName: string
+): string => {
   const importSection = generateImportSection(svgDefinitions);
-  const exportSection = generateExportSection(svgDefinitions);
+  const exportSection = generateExportSection(svgDefinitions, completeIconSetName);
   return `${importSection}${exportSection}`;
 };
 
@@ -16,7 +21,7 @@ const generateImportSection = (svgDefinitions: SvgDefinition[]): string =>
     return acc;
   }, '');
 
-const generateExportSection = (svgDefinitions: SvgDefinition[]): string =>
+const generateExportSection = (svgDefinitions: SvgDefinition[], completeIconSetName: string): string =>
   svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition, index: number) => {
     if (index === svgDefinitions.length - 1) {
       acc += `${svgDefinition.variableName}];`;
@@ -24,4 +29,4 @@ const generateExportSection = (svgDefinitions: SvgDefinition[]): string =>
       acc += `${svgDefinition.variableName},`;
     }
     return acc;
-  }, `export const completeIconSet = [`);
+  }, `export const ${camelCase(completeIconSetName)} = [`);

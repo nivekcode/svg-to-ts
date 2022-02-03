@@ -16,8 +16,6 @@ import { FilesConversionOptions } from '../options/conversion-options/files-conv
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
-const completeIconSetFileName = 'complete-icon-set';
-
 const generateSVGConstants = async (
   svgDefinitions: SvgDefinition[],
   outputDirectory: string,
@@ -39,10 +37,11 @@ const generateSVGConstants = async (
 const generateCompleteIconSet = async (
   svgDefinitions: SvgDefinition[],
   outputDirectory: string,
-  iconsFolderName: string
+  iconsFolderName: string,
+  completeIconSetName: string
 ): Promise<void> => {
-  const completeIconSetContent = generateCompleteIconSetContent(svgDefinitions);
-  await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetFileName, completeIconSetContent);
+  const completeIconSetContent = generateCompleteIconSetContent(svgDefinitions, completeIconSetName);
+  await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetName, completeIconSetContent);
 };
 
 const generateModelFile = async (
@@ -91,6 +90,7 @@ export const convertToFiles = async (conversionOptions: FilesConversionOptions):
     interfaceName,
     compileSources,
     exportCompleteIconSet,
+    completeIconSetName,
     barrelFileName
   } = conversionOptions;
   await callAndMonitorAsync<void>(
@@ -109,10 +109,10 @@ export const convertToFiles = async (conversionOptions: FilesConversionOptions):
 
   if (exportCompleteIconSet) {
     await callAndMonitorAsync<void>(
-      generateCompleteIconSet.bind({}, svgDefinitions, outputDirectory, iconsFolderName),
+      generateCompleteIconSet.bind({}, svgDefinitions, outputDirectory, iconsFolderName, completeIconSetName),
       'Export complete icon set'
     );
-    generatedFileNames.push(completeIconSetFileName);
+    generatedFileNames.push(completeIconSetName);
   }
 
   let indexFileContent = callAndMonitor<string>(
