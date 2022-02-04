@@ -87,6 +87,20 @@ export const mergeWithDefaultConstantOptions = async (
     Logger.verboseInfo(`No 'interfaceName' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.interfaceName}" will be used`);
   }
 
+  if (!configOptions.exportCompleteIconSet) {
+    configOptions.exportCompleteIconSet = DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet;
+    Logger.verboseInfo(
+      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
+    );
+  }
+
+  if (!configOptions.completeIconSetName) {
+    configOptions.completeIconSetName = DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName;
+    Logger.verboseInfo(
+      `No 'completeIconSetName' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName}" will be used`
+    );
+  }
+
   if (typeof configOptions.prefix !== 'string') {
     configOptions.prefix = DEFAULT_CONST_CONVERSION_OPTIONS.prefix;
     Logger.verboseInfo(`No 'prefix' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.prefix}" will be used`);
