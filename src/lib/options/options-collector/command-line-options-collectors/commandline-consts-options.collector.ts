@@ -18,6 +18,8 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
     generateType,
     generateTypeObject,
     generateEnum,
+    exportCompleteIconSet,
+    completeIconSetName,
     verbose
   } = commander;
   let svgoConfig = commander.svgoConfig;
@@ -25,6 +27,7 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject);
   generateEnum = toBoolean(generateEnum, DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject);
   verbose = toBoolean(verbose, DEFAULT_CONST_CONVERSION_OPTIONS.verbose);
+  exportCompleteIconSet = toBoolean(exportCompleteIconSet, DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet);
 
   // Because of commander adding default value to params
   // See: https://stackoverflow.com/questions/30238654/commander-js-collect-multiple-options-always-include-default
@@ -46,6 +49,8 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
     generateType,
     generateTypeObject,
     generateEnum,
+    exportCompleteIconSet,
+    completeIconSetName,
     svgoConfig,
     verbose
   };

@@ -281,21 +281,23 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 #### Available options:
 
-| --version          | type                       | default                                  | description                                                                           |
-| ------------------ | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| typeName           | string                     | myIcons                                  | name of the generated type                                                            |
-| generateType       | boolean                    | false                                    | prevent generating enumeration type                                                   |
-| generateTypeObject | boolean                    | false                                    | generate type object                                                                  |
-| generateEnum       | boolean                    | false                                    | generate enum object                                                                  |
-| prefix             | string                     | myIcon                                   | prefix for the generated svg constants                                                |
-| interfaceName      | string                     | MyIcon                                   | name for the generated interface                                                      |
-| fileName           | string                     | my-icons                                 | file name of the generated file                                                       |
-| enumName           | string                     | MyIcons                                  | name for the generated enum                                                           |
-| delimiter          | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
-| svgoConfig         | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
-| srcFiles           | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
-| outputDirectory    | string                     | "./dist"                                 | name of the output directory                                                          |
-| verbose            | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
+| --version             | type                       | default                                  | description                                                                           |
+| --------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| typeName              | string                     | myIcons                                  | name of the generated type                                                            |
+| generateType          | boolean                    | false                                    | prevent generating enumeration type                                                   |
+| generateTypeObject    | boolean                    | false                                    | generate type object                                                                  |
+| generateEnum          | boolean                    | false                                    | generate enum object                                                                  |
+| prefix                | string                     | myIcon                                   | prefix for the generated svg constants                                                |
+| interfaceName         | string                     | MyIcon                                   | name for the generated interface                                                      |
+| fileName              | string                     | my-icons                                 | file name of the generated file                                                       |
+| enumName              | string                     | MyIcons                                  | name for the generated enum                                                           |
+| delimiter             | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
+| svgoConfig            | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
+| srcFiles              | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
+| outputDirectory       | string                     | "./dist"                                 | name of the output directory                                                          |
+| exportCompleteIconSet | boolean                    | true                                     | exports a complete icon set                                                           |
+| complteIconSetName    | string                     | completeIconSet                          | Default name of the exported variable                                                 |
+| verbose               | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
 
 #### Example usage
 

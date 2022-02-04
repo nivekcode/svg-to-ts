@@ -21,7 +21,7 @@ const generateImportSection = (svgDefinitions: SvgDefinition[]): string =>
     return acc;
   }, '');
 
-const generateExportSection = (svgDefinitions: SvgDefinition[], completeIconSetName: string): string =>
+export const generateExportSection = (svgDefinitions: SvgDefinition[], completeIconSetName: string): string =>
   svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition, index: number) => {
     if (index === svgDefinitions.length - 1) {
       acc += `${svgDefinition.variableName}];`;

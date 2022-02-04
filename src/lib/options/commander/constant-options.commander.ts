@@ -56,6 +56,11 @@ export const setupConstantOptionsCommander = () => {
       DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet
     )
     .option(
+      '--completeIconSetName <string>',
+      'The name of the complete icon set (only effective if exportCompleteIconSet is set to true)',
+      DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName
+    )
+    .option(
       '--verbose <boolean>',
       'Specifies if a verbose log message should be printed or not',
       DEFAULT_CONST_CONVERSION_OPTIONS.verbose
