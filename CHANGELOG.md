@@ -1,3 +1,15 @@
+# [8.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.2.0...v8.3.0) (2022-02-04)
+
+
+### Bug Fixes
+
+* **configoptions:** add export complete icon set as config options ([6df1b7e](https://github.com/kreuzerk/svg-to-ts/commit/6df1b7ef5a7cbf2aada6052a8ddd4d90f173b333))
+
+
+### Features
+
+* **constants:** export all generated constants by default and add configuration option ([cd43dcb](https://github.com/kreuzerk/svg-to-ts/commit/cd43dcbef43a16625b7f6a63db6ad1dd0cb4eb50)), closes [#132](https://github.com/kreuzerk/svg-to-ts/issues/132)
+
 # [8.2.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.1.0...v8.2.0) (2022-02-03)
 
 
