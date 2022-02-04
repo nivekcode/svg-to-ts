@@ -296,7 +296,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | srcFiles              | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
 | outputDirectory       | string                     | "./dist"                                 | name of the output directory                                                          |
 | exportCompleteIconSet | boolean                    | true                                     | exports a complete icon set                                                           |
-| complteIconSetName    | string                     | completeIconSet                          | Default name of the exported variable                                                 |
+| completeIconSetName   | string                     | completeIconSet                          | Default name of the exported variable                                                 |
 | verbose               | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
 
 #### Example usage
