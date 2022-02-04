@@ -12,7 +12,8 @@ export const DEFAULT_CONST_CONVERSION_OPTIONS: ConstantsConversionOptions = {
   generateTypeObject: false,
   generateEnum: false,
   interfaceName: 'MyIcon',
-  exportCompleteIconSet: false,
+  exportCompleteIconSet: true,
+  completeIconSetName: 'completeIconSet',
   verbose: false,
   delimiter: Delimiter.SNAKE
 };

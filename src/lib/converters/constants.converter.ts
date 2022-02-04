@@ -4,6 +4,7 @@ import {
   generateTypeDefinition,
   generateTypeHelper
 } from '../generators/code-snippet-generators';
+import { generateExportSection } from '../helpers/complete-icon-set.helper';
 import { writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
@@ -19,11 +20,14 @@ const getSvgConstants = (svgDefinitions): string => {
 };
 
 export const convertToConstants = async (conversionOptions: ConstantsConversionOptions): Promise<void> => {
-  const { outputDirectory, fileName, interfaceName } = conversionOptions;
+  const { outputDirectory, fileName, interfaceName, exportCompleteIconSet, completeIconSetName } = conversionOptions;
+  let exportAllStatement = '';
+
   const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
     filesProcessor.bind({}, conversionOptions),
     'Processing SVG files'
   );
+
   if (svgDefinitions.length) {
     const svgContants = callAndMonitor<string>(getSvgConstants.bind({}, svgDefinitions), 'Generate SVG constants');
     const typeDefinition = callAndMonitor<string>(
@@ -34,8 +38,16 @@ export const convertToConstants = async (conversionOptions: ConstantsConversionO
       generateInterfaceDefinition.bind({}, conversionOptions),
       'Generate Interface Definition'
     );
+
+    if (exportCompleteIconSet) {
+      exportAllStatement = callAndMonitor<string>(
+        generateExportSection.bind({}, svgDefinitions, completeIconSetName),
+        'Exporting all constants'
+      );
+    }
+
     const typeHelper = callAndMonitor<string>(generateTypeHelper.bind({}, interfaceName), 'Generate Type Helper');
-    const fileContent = `${svgContants}${typeDefinition}${interfaceDefinition}${typeHelper}`;
+    const fileContent = `${svgContants}${typeDefinition}${interfaceDefinition}${typeHelper}${exportAllStatement}`;
     await callAndMonitorAsync<void>(
       writeFile.bind({}, outputDirectory, fileName, fileContent),
       `Writing files to ${outputDirectory}`

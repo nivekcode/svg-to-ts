@@ -14,6 +14,7 @@ export interface ConstantsConversionOptions {
   generateTypeObject?: boolean;
   generateEnum?: boolean;
   exportCompleteIconSet?: boolean;
+  completeIconSetName: string;
   prefix?: string;
   interfaceName?: string;
 }

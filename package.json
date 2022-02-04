@@ -32,6 +32,8 @@
     "start-constants:upper": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' -d UPPER",
     "start-constants:multiple-source": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' -s 'inputfiles-hyphen/*.svg'",
     "start-constants:custom": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' -o ./dist -t sampleIcon -i SampleIcon -p sampleIcon -f icons",
+    "start-constants:completeIconSet": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' --exportCompleteIconSet true",
+    "start-constants:completeIconSetName": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' --exportCompleteIconSet true --completeIconSetName myCompleteSet",
     "start-files": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg'",
     "start-files:help": "ts-node ./src/bin/svg-to-ts-files.ts --help",
     "start-files:invalid-path": "ts-node ./src/bin/svg-to-ts-files.ts -s './doesntExist/*.svg'",
