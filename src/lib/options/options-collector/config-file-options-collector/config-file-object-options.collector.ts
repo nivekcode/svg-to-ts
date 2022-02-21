@@ -29,7 +29,7 @@ export const collectConfigFileObjectOptions = async (): Promise<
 export const mergeWithDefaults = async (options: ObjectConversionOptions): Promise<ObjectConversionOptions> => {
   const configOptions = { ...options };
 
-  if (!configOptions.verbose) {
+  if (configOptions.verbose === undefined) {
     configOptions.verbose = DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose;
     Logger.verboseInfo(`No 'verbose' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose}" will be used`);
   }

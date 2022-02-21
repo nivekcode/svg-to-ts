@@ -20,6 +20,9 @@ export const collectConfigFileConstantOptions = async (): Promise<
   if (!cosmiConfigResult) {
     return null;
   }
+
+  console.log('Config result', cosmiConfigResult.config);
+
   if (Array.isArray(cosmiConfigResult.config)) {
     return Promise.all(
       cosmiConfigResult.config.map((config: ConstantsConversionOptions) => mergeWithDefaultConstantOptions(config))
@@ -33,7 +36,7 @@ export const mergeWithDefaultConstantOptions = async (
 ): Promise<ConstantsConversionOptions> => {
   const configOptions = { ...options };
 
-  if (!configOptions.verbose) {
+  if (configOptions.verbose === undefined) {
     configOptions.verbose = DEFAULT_CONST_CONVERSION_OPTIONS.verbose;
     Logger.verboseInfo(`No 'verbose' property provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.verbose}" will be used`);
   }
@@ -87,7 +90,7 @@ export const mergeWithDefaultConstantOptions = async (
     Logger.verboseInfo(`No 'interfaceName' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.interfaceName}" will be used`);
   }
 
-  if (!configOptions.exportCompleteIconSet) {
+  if (configOptions.exportCompleteIconSet === undefined) {
     configOptions.exportCompleteIconSet = DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
       `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
