@@ -1,3 +1,10 @@
+## [8.3.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.3.0...v8.3.1) (2022-02-21)
+
+
+### Bug Fixes
+
+* **flag handling:** only apply default for non provided flags ([e2b42f1](https://github.com/kreuzerk/svg-to-ts/commit/e2b42f169a22eac8f18c293e31f82e128478f891)), closes [#156](https://github.com/kreuzerk/svg-to-ts/issues/156)
+
 # [8.3.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.2.0...v8.3.0) (2022-02-04)
 
 
