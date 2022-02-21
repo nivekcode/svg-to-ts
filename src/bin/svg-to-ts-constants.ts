@@ -8,6 +8,7 @@ import { getConstantConversionOptions } from '../lib/options/options-collector/c
 (async () => {
   setupConstantOptionsCommander();
   Logger.printWelcomeMessage();
+  Logger.info('Converting to constants');
 
   const conversionOptions = await getConstantConversionOptions();
 
@@ -18,7 +19,6 @@ import { getConstantConversionOptions } from '../lib/options/options-collector/c
     }
   } else {
     Logger.changeVisibility(conversionOptions.verbose);
-    Logger.info('Converting to constants');
     await convertToConstants(conversionOptions);
   }
 })();

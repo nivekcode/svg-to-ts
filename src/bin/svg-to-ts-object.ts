@@ -8,6 +8,8 @@ import { setupObjectOptionsCommander } from '../lib/options/commander/object-opt
 (async () => {
   setupObjectOptionsCommander();
   Logger.printWelcomeMessage();
+  Logger.info('Converting to an object');
+
   const conversionOptions = await getObjectConversionOptions();
 
   if (Array.isArray(conversionOptions)) {
@@ -17,7 +19,6 @@ import { setupObjectOptionsCommander } from '../lib/options/commander/object-opt
     }
   } else {
     Logger.changeVisibility(conversionOptions.verbose);
-    Logger.info('Converting to an object');
     await convertToSingleObject(conversionOptions);
   }
 })();

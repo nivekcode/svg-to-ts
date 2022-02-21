@@ -29,7 +29,7 @@ export const collectConfigFileFileOptions = async (): Promise<
 export const mergeWithDefaults = async (options): Promise<FilesConversionOptions> => {
   const configOptions = { ...options };
 
-  if (!configOptions.verbose) {
+  if (configOptions.verbose === undefined) {
     configOptions.verbose = DEFAULT_FILES_CONVERSION_OPTIONS.verbose;
     Logger.verboseInfo(`No "verbose" property provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.verbose}" will be used`);
   }
@@ -95,14 +95,14 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
     );
   }
 
-  if (!configOptions.compileSources) {
+  if (configOptions.compileSources === undefined) {
     configOptions.compileSources = DEFAULT_FILES_CONVERSION_OPTIONS.compileSources;
     Logger.verboseInfo(
       `No 'preCompileSources' flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`
     );
   }
 
-  if (!configOptions.exportCompleteIconSet) {
+  if (configOptions.exportCompleteIconSet === undefined) {
     configOptions.exportCompleteIconSet = DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
       `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`

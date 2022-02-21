@@ -8,6 +8,7 @@ import { setupFilesOptionsCommander } from '../lib/options/commander/file-option
 (async () => {
   setupFilesOptionsCommander();
   Logger.printWelcomeMessage();
+  Logger.info('Converting to files');
 
   const conversionOptions = await getFilesConversionOptions();
 
@@ -18,7 +19,6 @@ import { setupFilesOptionsCommander } from '../lib/options/commander/file-option
     }
   } else {
     Logger.changeVisibility(conversionOptions.verbose);
-    Logger.info('Converting to files');
     await convertToFiles(conversionOptions);
   }
 })();
