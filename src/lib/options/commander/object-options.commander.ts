@@ -26,6 +26,7 @@ export const setupObjectOptionsCommander = () => {
       DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory
     )
     .option('--objectName <string>', 'name of the exported object', DEFAULT_OBJECT_CONVERSION_OPTIONS.objectName)
+    .option('--typeName <string>', 'name of type object to generate', DEFAULT_OBJECT_CONVERSION_OPTIONS.typeName)
     .option('-f --fileName <string>', 'name of the generated file', DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName)
     .option('--svgoConfig <any>', 'Path to svgo configuration JSON or inline svgo configuration object')
     .option(

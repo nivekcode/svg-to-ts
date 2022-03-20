@@ -7,5 +7,7 @@ export const DEFAULT_OBJECT_CONVERSION_OPTIONS: ObjectConversionOptions = {
   delimiter: Delimiter.CAMEL,
   verbose: false,
   fileName: 'my-icons',
-  objectName: 'icons'
+  objectName: 'icons',
+  generateType: true,
+  typeName: 'MyType'
 };
