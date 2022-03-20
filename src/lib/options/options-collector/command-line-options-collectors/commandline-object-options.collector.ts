@@ -2,7 +2,6 @@ import commander from 'commander';
 
 import { getSvgoConfig } from '../../../helpers/svg-optimization';
 import { ObjectConversionOptions } from '../../conversion-options/object-conversion-options';
-import { DEFAULT_CONST_CONVERSION_OPTIONS } from '../../default-options/default-constants-conversion-options';
 import { DEFAULT_OBJECT_CONVERSION_OPTIONS } from '../../default-options/default-object-conversion-options';
 
 import { toBoolean } from './command-line-collector.helpers';
@@ -11,7 +10,7 @@ export const collectCommandLineObjectOptions = async (): Promise<ObjectConversio
   let { objectName, delimiter, fileName, outputDirectory, verbose, generateType, typeName } = commander;
   let svgoConfig = commander.svgoConfig;
 
-  generateType = toBoolean(generateType, DEFAULT_CONST_CONVERSION_OPTIONS.generateType);
+  generateType = toBoolean(generateType, DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType);
 
   // Parse boolean values
   verbose = toBoolean(verbose, DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose);
