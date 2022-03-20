@@ -315,19 +315,31 @@ and we end up with the following file in our `dist` folder.
 #### Sample ouput
 
 ```javascript
-export const myIconExpressionLess: MyIcon = {
+export const myIconExpressionLess: {
+  name: 'expression_less',
+  data: string
+} = {
   name: 'expression_less',
   data: `<svg xmlns="http://...`
 };
-export const myIconFull: MyIcon = {
+export const myIconFull: {
+  name: 'full',
+  data: string
+} = {
   name: 'full',
   data: `<svg xmlns="http://www...`
 };
-export const myIconLaughing: MyIcon = {
+export const myIconLaughing: {
+  name: 'laughing',
+  data: string
+} = {
   name: 'laughing',
   data: `<svg xmlns="http://www.w...`
 };
-export const myIconSmilingFace: MyIcon = {
+export const myIconSmilingFace: {
+  name: 'smiling_face',
+  data: string
+} = {
   name: 'smiling_face',
   data: `<svg xmlns="http://www.w3...`
 };
