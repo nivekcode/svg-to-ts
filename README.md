@@ -245,6 +245,8 @@ accepts an object with the filename as key and the svg data as key.
 | outputDirectory | string                     | "./dist"                                 | name of the output directory                                                                 |
 | objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used                 |
 | verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
+| generateType    | boolean                    | true                                     | defines if it's needed to generate type                                                      |
+| typeName        | string                     | MyIconType                               | name of the type to be used when `generateType` is set to `true`                             |
 
 #### Example usage
 
@@ -261,13 +263,15 @@ and we end up with the following file in our `dist` folder.
 
 #### Sample output
 
-```javascript
+```typescript
 export default {
   expressionLess: '<svg xmlns="http://ww...',
   full: '<svg xmlns="http://...',
   laughing: '<svg xmlns="http://ww...',
   smilingFace: '<svg xmlns="http://www....'
-};
+} as { [key in MyIconType]: string };
+
+export type MyIconType = 'expressionLess' | 'full' | 'laughing' | 'smilingFace';
 ```
 
 ### 2. Multiple constants - Treeshakable and typesafe with one file (`conversionType==='constants'`)
@@ -312,7 +316,7 @@ We can now run
 `svg-to-ts-constants -s ./inputfiles -o ./dist`
 and we end up with the following file in our `dist` folder.
 
-#### Sample ouput
+#### Sample output
 
 ```javascript
 export const myIconExpressionLess: {

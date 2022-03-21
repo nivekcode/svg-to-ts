@@ -60,5 +60,18 @@ export const mergeWithDefaults = async (options: ObjectConversionOptions): Promi
     configOptions.fileName = DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName;
     Logger.verboseInfo(`No 'fileName' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.fileName}" will be used`);
   }
+
+  if (configOptions.generateType === undefined) {
+    configOptions.generateType = DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType;
+    Logger.verboseInfo(
+      `No 'generateType' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType}" will be used`
+    );
+  }
+
+  if (configOptions.generateType && !configOptions.typeName) {
+    configOptions.typeName = DEFAULT_OBJECT_CONVERSION_OPTIONS.typeName;
+    Logger.verboseInfo(`No 'typeName' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.typeName}" will be used`);
+  }
+
   return configOptions;
 };

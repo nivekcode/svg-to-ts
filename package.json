@@ -22,6 +22,7 @@
     "start-object:upper": "ts-node ./src/bin/svg-to-ts.ts-object -s 'inputfiles-hyphen/*.svg' -d UPPER",
     "start-object:multiple-source": "ts-node ./src/bin/svg-to-ts-object -s './inputfilesRegex/laughing/laughing.svg' -s 'inputfilesRegex/expressionLess/expressionLess.svg'",
     "start-object:custom": "ts-node ./src/bin/svg-to-ts-object -s './inputfiles/*.svg' -o ./dist --objectName awesomeIcons -f icons",
+    "start-object:generateType": "ts-node ./src/bin/svg-to-ts-object -s './inputfiles/*.svg' -o ./dist --objectName awesomeIcons --typeName MyIconType",
     "start-object:export-const": "ts-node ./src/bin/svg-to-ts-object.ts -s './inputfiles/*.svg' -o ./dist --objectName myIcons",
     "start-constants": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg'",
     "start-constants:help": "ts-node ./src/bin/svg-to-ts-constants.ts --help'",

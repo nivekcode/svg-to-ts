@@ -9,6 +9,7 @@ import {
   generateEnumDefinition,
   generateInterfaceDefinition,
   generateNamedImportStatement,
+  generateObjectInterface,
   generateSvgConstant,
   generateTypeDefinition,
   generateTypeHelper,
@@ -182,6 +183,23 @@ describe('Generators', () => {
 
       const generatedNamedImport = generateNamedImportStatement(name, module);
       expect(generatedNamedImport).toEqual(expectedNamedImport);
+    });
+  });
+
+  describe('Object interface generator', () => {
+    it('should generate correct object type if needed', () => {
+      const typeName = 'MockType';
+      const forDefaultExport = generateObjectInterface(true, { typeName, generateType: true });
+      const forConstExport = generateObjectInterface(false, { typeName, generateType: true });
+      expect(forDefaultExport).toEqual(`as { [key in ${typeName}]: string }`);
+      expect(forConstExport).toEqual(`:{ [key in ${typeName}]: string }`);
+    });
+
+    it('should generate empty stirng if not needed', () => {
+      const noTypeName = generateObjectInterface(true, { generateType: true });
+      const noGenerateType = generateObjectInterface(false, { typeName: 'MyType', generateType: false });
+      expect(unformatedString(noTypeName)).toEqual(``);
+      expect(unformatedString(noGenerateType)).toEqual(``);
     });
   });
 

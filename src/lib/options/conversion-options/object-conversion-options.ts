@@ -9,4 +9,6 @@ export interface ObjectConversionOptions {
   verbose?: boolean;
   fileName?: string;
   objectName?: string;
+  typeName?: string;
+  generateType?: boolean;
 }
