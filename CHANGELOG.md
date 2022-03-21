@@ -1,3 +1,12 @@
+# [8.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.3.1...v8.4.0) (2022-03-21)
+
+
+### Features
+
+* **converter:** add notification about using default values ([493865a](https://github.com/kreuzerk/svg-to-ts/commit/493865ab048bb972208b0f50fc86e7695891c9a4))
+* **converter:** add typeName for object generation ([e9c6194](https://github.com/kreuzerk/svg-to-ts/commit/e9c6194cbf3f834adc89cd4cb1f9ca1ec67f341f))
+* **converter:** fix default typeName + use it in options collector ([9052b44](https://github.com/kreuzerk/svg-to-ts/commit/9052b440fe9fc9b19d0be172620f8c83fe9a668d))
+
 ## [8.3.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.3.0...v8.3.1) (2022-02-21)
 
 
