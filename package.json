@@ -14,6 +14,7 @@
     "format:write": "prettier --write 'src/**/*.ts' && import-conductor -s 'src/**/*.ts' -i './src/bin/*.ts'",
     "prebuild": "npm run copy:readme",
     "start-object": "ts-node ./src/bin/svg-to-ts-object.ts -s './inputfiles/*.svg'",
+    "start-object:tsx": "ts-node ./src/bin/svg-to-ts-object.ts -s './inputfiles/*.svg' --tsx true",
     "start-object:help": "ts-node ./src/bin/svg-to-ts-object.ts --help",
     "start-object:regex": "ts-node ./src/bin/svg-to-ts-object.ts -s 'inputfiles/*.svg'",
     "start-object:kebab": "ts-node ./src/bin/svg-to-ts-object.ts -s 'inputfiles/*.svg' -d KEBAB",

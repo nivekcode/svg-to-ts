@@ -2,6 +2,7 @@ import { Delimiter } from '../../generators/code-snippet-generators';
 import { FilesConversionOptions } from '../conversion-options/files-conversion-options';
 
 export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
+  tsx: false,
   interfaceName: 'MyIcon',
   outputDirectory: './dist',
   prefix: 'myIcon',

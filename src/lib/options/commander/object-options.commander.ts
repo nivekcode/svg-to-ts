@@ -9,6 +9,7 @@ export const setupObjectOptionsCommander = () => {
   commander
     .version(packgeJSON.version)
     .option('--config <string>', 'path to the configuration file')
+    .option('--tsx <boolean>', 'generate tsx files', false)
     .option(
       '-d --delimiter <Delimiter>',
       `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,

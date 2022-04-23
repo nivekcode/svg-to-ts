@@ -62,5 +62,6 @@ typings/
 # next.js build output
 .next
 .idea
+.vscode
 dist
 additional

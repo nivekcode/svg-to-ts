@@ -8,6 +8,7 @@ import { toBoolean } from './command-line-collector.helpers';
 
 export const collectCommandLineConstantOptions = async (): Promise<ConstantsConversionOptions> => {
   let {
+    tsx,
     delimiter,
     fileName,
     interfaceName,
@@ -23,6 +24,7 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
     verbose
   } = commander;
   let svgoConfig = commander.svgoConfig;
+  tsx = toBoolean(tsx, DEFAULT_CONST_CONVERSION_OPTIONS.tsx);
   generateType = toBoolean(generateType, DEFAULT_CONST_CONVERSION_OPTIONS.generateType);
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject);
   generateEnum = toBoolean(generateEnum, DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject);
@@ -38,6 +40,7 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
   svgoConfig = await getSvgoConfig(svgoConfig);
 
   return {
+    tsx,
     delimiter,
     fileName,
     enumName,
