@@ -9,6 +9,7 @@ export const setupConstantOptionsCommander = () => {
   commander
     .version(packgeJSON.version)
     .option('--config <string>', 'path to the configuration file')
+    .option('--tsx <boolean>', 'generate tsx files', false)
     .option(
       '-t --typeName <string>',
       'name of the generated enumeration type',

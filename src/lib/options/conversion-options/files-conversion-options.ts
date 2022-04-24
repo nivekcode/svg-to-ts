@@ -1,6 +1,7 @@
 import { Delimiter } from '../../generators/code-snippet-generators';
 
 export interface FilesConversionOptions {
+  tsx: boolean;
   config?: string;
   srcFiles?: string[];
   outputDirectory?: string;

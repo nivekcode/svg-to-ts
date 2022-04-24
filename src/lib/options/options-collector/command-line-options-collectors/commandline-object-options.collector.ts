@@ -7,7 +7,7 @@ import { DEFAULT_OBJECT_CONVERSION_OPTIONS } from '../../default-options/default
 import { toBoolean } from './command-line-collector.helpers';
 
 export const collectCommandLineObjectOptions = async (): Promise<ObjectConversionOptions> => {
-  let { objectName, delimiter, fileName, outputDirectory, verbose, generateType, typeName } = commander;
+  let { tsx, objectName, delimiter, fileName, outputDirectory, verbose, generateType, typeName } = commander;
   let svgoConfig = commander.svgoConfig;
 
   generateType = toBoolean(generateType, DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType);
@@ -22,6 +22,7 @@ export const collectCommandLineObjectOptions = async (): Promise<ObjectConversio
   svgoConfig = await getSvgoConfig(svgoConfig);
 
   return {
+    tsx,
     delimiter,
     srcFiles,
     outputDirectory,

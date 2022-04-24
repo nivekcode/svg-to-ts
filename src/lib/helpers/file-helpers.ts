@@ -5,6 +5,8 @@ import typescriptParser from 'prettier/parser-typescript';
 import prettier from 'prettier/standalone';
 import util from 'util';
 
+import { FILE_TYPE } from '../shared/file-type.model';
+
 gfs.gracefulify(fs);
 
 const readfileFromFS = util.promisify(fs.readFile);
@@ -17,13 +19,19 @@ export const extractSvgContent = async (filePath: string): Promise<string> => {
   return fileContentRaw.replace(/\r?\n|\r/g, ' ');
 };
 
-export const writeFile = async (outputDirectory: string, fileName: string, fileContent: string): Promise<void> => {
-  const formattedFileContent = formatContent(`${fileComment}${fileContent}`);
+export async function writeFile(
+  outputDirectory: string,
+  fileName: string,
+  fileContent: string,
+  fileType = FILE_TYPE.TS
+): Promise<void> {
+  const formattedFileContent =
+    fileType === FILE_TYPE.TS ? formatContent(`${fileComment}${fileContent}`) : `${fileComment}${fileContent}`;
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
-  await writeFileToFS(path.join(outputDirectory, `${fileName}.ts`), formattedFileContent);
-};
+  await writeFileToFS(path.join(outputDirectory, `${fileName}.${fileType}`), formattedFileContent);
+}
 
 export const readFile = async (filePath: string): Promise<string> => {
   return readfileFromFS(filePath, 'utf-8');

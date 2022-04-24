@@ -8,6 +8,7 @@ import { toBoolean } from './command-line-collector.helpers';
 
 export const collectCommandLineFileOptions = async (): Promise<FilesConversionOptions> => {
   let {
+    tsx,
     delimiter,
     barrelFileName,
     interfaceName,
@@ -29,6 +30,7 @@ export const collectCommandLineFileOptions = async (): Promise<FilesConversionOp
   let svgoConfig = commander.svgoConfig;
 
   // Parse boolean values
+  tsx = toBoolean(tsx, DEFAULT_FILES_CONVERSION_OPTIONS.tsx);
   generateType = toBoolean(generateType, DEFAULT_FILES_CONVERSION_OPTIONS.generateType);
   generateTypeObject = toBoolean(generateTypeObject, DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject);
   exportCompleteIconSet = toBoolean(exportCompleteIconSet, DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet);
@@ -44,6 +46,7 @@ export const collectCommandLineFileOptions = async (): Promise<FilesConversionOp
   svgoConfig = await getSvgoConfig(svgoConfig);
 
   return {
+    tsx,
     delimiter,
     interfaceName,
     srcFiles,
