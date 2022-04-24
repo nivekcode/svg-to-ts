@@ -1,3 +1,12 @@
+# [8.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.4.0...v8.5.0) (2022-04-24)
+
+
+### Features
+
+* **(tsx):** add tsx constants conversion ([5baac39](https://github.com/kreuzerk/svg-to-ts/commit/5baac3956e3629f0f19414ee72a81eea61487eba)), closes [#159](https://github.com/kreuzerk/svg-to-ts/issues/159)
+* **(tsx):** generate SVG constants into multiple TSX files ([f482cdd](https://github.com/kreuzerk/svg-to-ts/commit/f482cdd88b1af8913f50bce7a65a0d2cf834d891)), closes [#159](https://github.com/kreuzerk/svg-to-ts/issues/159)
+* **(tsx) add tsx option and add object converter:** accepts a TSX flag for object conversion ([76729aa](https://github.com/kreuzerk/svg-to-ts/commit/76729aa5a66c594df773e582b8adbc57a0ce5858)), closes [#159](https://github.com/kreuzerk/svg-to-ts/issues/159)
+
 # [8.4.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.3.1...v8.4.0) (2022-03-21)
 
 
