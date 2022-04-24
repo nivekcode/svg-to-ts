@@ -115,13 +115,13 @@ You can either run those binaries with `npx`
 
 or you can add a new script in your `package.json`.
 
-````json
+```json
 "name": "my-icon-library",
 "version": "3.4.0",
 "scripts": {
   "generate-icons": "svg-to-ts"
-}```
-````
+}
+```
 
 ### Configuration
 
