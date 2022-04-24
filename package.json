@@ -38,6 +38,7 @@
     "start-constants:completeIconSet": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' --exportCompleteIconSet true",
     "start-constants:completeIconSetName": "ts-node ./src/bin/svg-to-ts-constants.ts -s './inputfiles/*.svg' --exportCompleteIconSet true --completeIconSetName myCompleteSet",
     "start-files": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg'",
+    "start-files:tsx": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' --tsx true",
     "start-files:help": "ts-node ./src/bin/svg-to-ts-files.ts --help",
     "start-files:invalid-path": "ts-node ./src/bin/svg-to-ts-files.ts -s './doesntExist/*.svg'",
     "start-files:barrel": "ts-node ./src/bin/svg-to-ts-files.ts -s './inputfiles/*.svg' --barrelFileName public_api",
