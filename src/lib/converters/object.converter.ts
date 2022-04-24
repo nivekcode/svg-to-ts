@@ -3,6 +3,7 @@ import { writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { ObjectConversionOptions } from '../options/conversion-options/object-conversion-options';
+import { FILE_TYPE } from '../shared/file-type.model';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
 
@@ -29,7 +30,7 @@ async function generateTSXFile(svgDefinitions: SvgDefinition[], conversionOption
   );
 
   await callAndMonitorAsync<void>(
-    writeFile.bind({}, outputDirectory, fileName, `${fileContent}`, 'tsx'),
+    writeFile.bind({}, outputDirectory, fileName, `${fileContent}`, FILE_TYPE.TSX),
     'Write content to file'
   );
   Logger.generationSuccess(outputDirectory);
