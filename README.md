@@ -1,7 +1,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -47,9 +49,9 @@
 
 # What is svg-to-ts?
 
-`svg-to-ts` is a helper tool that converts your SVG icons to TypeScript. `svg-to-ts` can convert
-SVGs to either one TypeScript file with exported constants, multiple TypeScript files or
-compiled JavaScript files with according declaration files. Furthermore, it generates all
+`svg-to-ts` is a helper tool that converts your SVG icons to TypeScript or TSX. `svg-to-ts` can convert
+SVGs to either one TypeScript / TSX file with exported constants, multiple TypeScript files or
+even compiled JavaScript files with according declaration files. Furthermore, it generates all
 typings in form of interfaces and types.
 
 The generated output can then be used in combination with a iconregistry to create a tree shakable icon library.
@@ -57,8 +59,8 @@ The generated output can then be used in combination with a iconregistry to crea
 
 # Who is this for?
 
-`svg-to-ts` is designed for autors of component libraries or icon libraries. Our examples and tutorials
-are made with Angular, however `svg-to-ts` can also be used with other frameworks or vanilla TypeScript / JavaScript.
+`svg-to-ts` is designed for autors of component libraries, icon libraries and SPA authors. Our examples and tutorials
+are made with Angular, however `svg-to-ts` can also be used with other frameworks such as React or vanilla TypeScript / JavaScript.
 
 # Why you should use svg-to-ts
 
@@ -68,6 +70,7 @@ are made with Angular, however `svg-to-ts` can also be used with other framework
 - `svg-to-ts` optimizes your SVG icons under the hood
 - `svg-to-ts` automatically generates types and interfaces for your icons to improve typesafety
 - `svg-to-ts` was developed based on the experiences of providin an icon library for a large enterprise.
+- `svg-to-ts` offers the possibility to generate TSX files (react components).
 - offers three different conversion modes ('object', 'constants' and 'files')
 - each method is highly configurable to supports multiple use cases.
 
@@ -237,6 +240,7 @@ accepts an object with the filename as key and the svg data as key.
 | --version       | type                       | default                                  | description                                                                                  |
 | --------------- | -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
 | fileName        | string                     | my-icons                                 | file name of the generated file                                                              |
+| tsx             | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                       |
 | delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                            |
 | svgoConfig      | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object |
 | srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                              |
@@ -286,6 +290,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | --version             | type                       | default                                  | description                                                                           |
 | --------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
 | typeName              | string                     | myIcons                                  | name of the generated type                                                            |
+| tsx                   | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                |
 | generateType          | boolean                    | false                                    | prevent generating enumeration type                                                   |
 | generateTypeObject    | boolean                    | false                                    | generate type object                                                                  |
 | generateEnum          | boolean                    | false                                    | generate enum object                                                                  |
@@ -376,6 +381,7 @@ end up there.
 | --version                 | type                       | default                                  | description                                                                                                                                                                     |
 | ------------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | barrelFileName            | string                     | index                                    | name of the generated type                                                                                                                                                      |
+| tsx                       | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                                                                                                          |
 | typeName                  | string                     | myIcons                                  | name of the generated type                                                                                                                                                      |
 | generateType              | boolean                    | false                                    | prevent generating enumeration type                                                                                                                                             |
 | generateTypeObject        | boolean                    | false                                    | generate type object                                                                                                                                                            |
