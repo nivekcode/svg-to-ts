@@ -21,8 +21,6 @@ export const collectConfigFileConstantOptions = async (): Promise<
     return null;
   }
 
-  console.log('Config result', cosmiConfigResult.config);
-
   if (Array.isArray(cosmiConfigResult.config)) {
     return Promise.all(
       cosmiConfigResult.config.map((config: ConstantsConversionOptions) => mergeWithDefaultConstantOptions(config))

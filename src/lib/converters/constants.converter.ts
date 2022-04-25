@@ -1,4 +1,5 @@
 import {
+  generateEnumDefinition,
   generateInterfaceDefinition,
   generateSvgConstant,
   generateTSXConstant,
@@ -35,19 +36,34 @@ export async function convertToConstants(conversionOptions: ConstantsConversionO
 }
 
 async function convertToTSConstants(conversionOptions: ConstantsConversionOptions, svgDefinitions: SvgDefinition[]) {
-  const { outputDirectory, fileName, interfaceName, exportCompleteIconSet, completeIconSetName } = conversionOptions;
+  const {
+    outputDirectory,
+    fileName,
+    interfaceName,
+    exportCompleteIconSet,
+    completeIconSetName,
+    generateType,
+    generateEnum
+  } = conversionOptions;
   let exportAllStatement = '';
 
   const svgContants = callAndMonitor<string>(getTSConstants.bind({}, svgDefinitions), 'Generate SVG constants');
 
-  const typeDefinition = callAndMonitor<string>(
-    generateTypeDefinition.bind({}, conversionOptions, svgDefinitions),
-    'Generate type definitions'
-  );
+  const typeDefinition = generateType
+    ? callAndMonitor<string>(
+        generateTypeDefinition.bind({}, conversionOptions, svgDefinitions),
+        'Generate type definitions'
+      )
+    : '';
+
   const interfaceDefinition = callAndMonitor<string>(
     generateInterfaceDefinition.bind({}, conversionOptions),
     'Generate Interface Definition'
   );
+
+  const enumDefinition = generateEnum
+    ? callAndMonitor<string>(generateEnumDefinition.bind({}, conversionOptions, svgDefinitions), 'Generate enum')
+    : '';
 
   if (exportCompleteIconSet) {
     exportAllStatement = callAndMonitor<string>(
@@ -57,7 +73,7 @@ async function convertToTSConstants(conversionOptions: ConstantsConversionOption
   }
 
   const typeHelper = callAndMonitor<string>(generateTypeHelper.bind({}, interfaceName), 'Generate Type Helper');
-  const fileContent = `${svgContants}${typeDefinition}${interfaceDefinition}${typeHelper}${exportAllStatement}`;
+  const fileContent = `${svgContants}${typeDefinition}${enumDefinition}${interfaceDefinition}${typeHelper}${exportAllStatement}`;
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, fileName, fileContent),
     `Writing files to ${outputDirectory}`
