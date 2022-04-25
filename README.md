@@ -1,13 +1,15 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/logo.png)
 
-![Supports Angular](https://img.shields.io/badge/Supports-Angular-green)![Supports React](https://img.shields.io/badge/Supports-React-green)![Supports Vanilla JS / TS](https://img.shields.io/badge/Supports-Vanilla%20JS%20%2F%20TS-green)
+![Supports Angular](https://img.shields.io/badge/Supports-Angular-green) ![Supports React](https://img.shields.io/badge/Supports-React-green) ![Supports Vanilla JS / TS](https://img.shields.io/badge/Supports-Vanilla%20JS%20%2F%20TS-green)
 
-![npm](https://img.shields.io/npm/dt/svg-to-ts)![GitHub Repo stars](https://img.shields.io/github/stars/kreuzerk/svg-to-ts)
+![npm](https://img.shields.io/npm/dt/svg-to-ts) ![GitHub Repo stars](https://img.shields.io/github/stars/kreuzerk/svg-to-ts)
 
-![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts)![Travis (.org) branch](https://img.shields.io/travis/kreuzerk/svg-to-ts/master)![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts)![npm](https://img.shields.io/npm/v/svg-to-ts)
+![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![Travis (.org) branch](https://img.shields.io/travis/kreuzerk/svg-to-ts/master) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
