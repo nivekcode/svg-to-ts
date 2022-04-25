@@ -189,6 +189,15 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "lirantal",
+      "name": "Liran Tal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/316371?v=4",
+      "profile": "https://twitter.com/liran_tal",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
