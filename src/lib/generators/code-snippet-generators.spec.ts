@@ -195,7 +195,7 @@ describe('Generators', () => {
       expect(forConstExport).toEqual(`:{ [key in ${typeName}]: string }`);
     });
 
-    it('should generate empty stirng if not needed', () => {
+    it('should generate empty string if not needed', () => {
       const noTypeName = generateObjectInterface(true, { generateType: true });
       const noGenerateType = generateObjectInterface(false, { typeName: 'MyType', generateType: false });
       expect(unformatedString(noTypeName)).toEqual(``);
