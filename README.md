@@ -7,9 +7,7 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![Travis (.org) branch](https://img.shields.io/travis/kreuzerk/svg-to-ts/master) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -504,6 +502,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/nmastereal"><img src="https://avatars.githubusercontent.com/u/9787382?v=4?s=200" width="200px;" alt=""/><br /><sub><b>nmastereal</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=nmastereal" title="Code">💻</a></td>
     <td align="center"><a href="https://medium.com/@cakeinpanic/latest"><img src="https://avatars.githubusercontent.com/u/588916?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Katya Pavlenko</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=cakeinpanic" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=cakeinpanic" title="Documentation">📖</a> <a href="#ideas-cakeinpanic" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://twitter.com/liran_tal"><img src="https://avatars.githubusercontent.com/u/316371?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Liran Tal</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=lirantal" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=200" width="200px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=eltociear" title="Documentation">📖</a></td>
   </tr>
 </table>
 
