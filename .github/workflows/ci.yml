@@ -9,8 +9,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install
+      - name: Install Node & NPM
         uses: actions/setup-node@v3
+      - name: Install node modules
         run: npm run install
       - name: Test
         run: npm run test
