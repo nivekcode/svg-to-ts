@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false
       - name: Install Node & NPM
         uses: actions/setup-node@v3
       - name: Install node modules

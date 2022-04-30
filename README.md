@@ -4,10 +4,12 @@
 
 ![npm](https://img.shields.io/npm/dt/svg-to-ts) ![GitHub Repo stars](https://img.shields.io/github/stars/kreuzerk/svg-to-ts)
 
-![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![Travis (.org) branch](https://img.shields.io/travis/kreuzerk/svg-to-ts/master) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
+![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
