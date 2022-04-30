@@ -1,3 +1,10 @@
+## [8.6.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.6.0...v8.6.1) (2022-04-30)
+
+
+### Bug Fixes
+
+* **badges:** reference correct badge in README ([e5b273f](https://github.com/kreuzerk/svg-to-ts/commit/e5b273fa135d9e129981838e512f90ed8180f2a3))
+
 # [8.6.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.5.0...v8.6.0) (2022-04-30)
 
 
