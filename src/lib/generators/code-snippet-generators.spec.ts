@@ -189,15 +189,15 @@ describe('Generators', () => {
   describe('Object interface generator', () => {
     it('should generate correct object type if needed', () => {
       const typeName = 'MockType';
-      const forDefaultExport = generateObjectInterface(true, { typeName, generateType: true });
-      const forConstExport = generateObjectInterface(false, { typeName, generateType: true });
+      const forDefaultExport = generateObjectInterface(true, { typeName, generateType: true, tsx: false });
+      const forConstExport = generateObjectInterface(false, { typeName, generateType: true, tsx: false });
       expect(forDefaultExport).toEqual(`as { [key in ${typeName}]: string }`);
       expect(forConstExport).toEqual(`:{ [key in ${typeName}]: string }`);
     });
 
     it('should generate empty string if not needed', () => {
-      const noTypeName = generateObjectInterface(true, { generateType: true });
-      const noGenerateType = generateObjectInterface(false, { typeName: 'MyType', generateType: false });
+      const noTypeName = generateObjectInterface(true, { generateType: true, tsx: false });
+      const noGenerateType = generateObjectInterface(false, { typeName: 'MyType', generateType: false, tsx: false });
       expect(unformatedString(noTypeName)).toEqual(``);
       expect(unformatedString(noGenerateType)).toEqual(``);
     });
