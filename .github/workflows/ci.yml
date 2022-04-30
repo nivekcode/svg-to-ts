@@ -2,6 +2,9 @@ name: feature-branch
 on:
   push:
     branches:
+      - '*'
+      - '*/*'
+      - '**'
       - '!master'
 jobs:
   check-bats-version:
