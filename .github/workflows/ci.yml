@@ -7,7 +7,7 @@ on:
       - '**'
       - '!master'
 jobs:
-  check-bats-version:
+  CI:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
