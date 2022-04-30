@@ -1,3 +1,10 @@
+# [8.6.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.5.0...v8.6.0) (2022-04-30)
+
+
+### Features
+
+* **enum:** generate enums for constants ([dc20ced](https://github.com/kreuzerk/svg-to-ts/commit/dc20ced7de2ce29267b270f2b659267a897814f3)), closes [#165](https://github.com/kreuzerk/svg-to-ts/issues/165)
+
 # [8.5.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.4.0...v8.5.0) (2022-04-24)
 
 
