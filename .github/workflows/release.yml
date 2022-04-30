@@ -4,21 +4,20 @@ on:
     branches:
       - 'master'
 jobs:
-  test:
-    uses: ./.github/workflows/test.yml
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      checkout:
+      - name: Checkout
         uses: actions/checkout@v3
-      install:
+      - name: Install Node & NPM
         uses: actions/setup-node@v3
+      - name: Install node_modules
         run: npm install
-      test:
+      - name: Test
         run: npm run test
-      build:
+      - name: Build
         run: npm run build
-      release:
+      - name: Release
         uses: cycjimmy/semantic-release-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
