@@ -1,0 +1,20 @@
+name: feature-branch
+on:
+  push:
+    branches:
+      - '*'
+      - '*/*'
+      - '**'
+      - '!master'
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node & NPM
+        uses: actions/setup-node@v3
+      - name: Install node modules
+        run: npm install
+      - name: Test
+        run: npm run test
