@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: test
 on: [push]
 jobs:
   check-bats-version:
@@ -9,4 +9,4 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm run report:coverage
+      - run: npm run test
