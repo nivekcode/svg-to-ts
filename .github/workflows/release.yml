@@ -1,0 +1,22 @@
+name: release
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  call-workflow-2-in-local-repo:
+    uses: ./.github/workflows/test.yml
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run report:coverage
+      - run: npm run build
+      - uses: cycjimmy/semantic-release-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
