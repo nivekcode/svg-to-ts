@@ -85,7 +85,7 @@
   },
   "homepage": "https://github.com/kreuzerk/svg-to-ts#readme",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "commander": "^4.0.1",
     "cosmiconfig": "^6.0.0",
     "glob": "^7.1.6",
