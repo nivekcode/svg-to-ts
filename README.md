@@ -201,7 +201,8 @@ To configure svg-to-ts over a .rc file you can add a `.svg-to-tsrc` file in the 
 
 An alternative for bigger projects is to use a JavaScript-based configuration file. The main advantage here is there you can create dynamic configurations, but also use plain-old JavaScript objects, allowing you to add comments, etc. This is useful for more complex configurations where comments can clarify why options are defined in a certain way.
 
-JS configurations must be defined as a CommonJS module.
+JS configurations must be defined as a CommonJS module. Whenever you want to use a JS configuration file your rc file
+has to end with `.js`.
 
 Here's an example:
 
