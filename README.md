@@ -406,7 +406,24 @@ end up there.
 | additionalModelOutputPath | string                     | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
 | iconsFolderName           | string                     | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
 | compileSources            | boolean                    | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+| compilationOutput         | ESM, UMD, ESM_AND_UMD      | ESM                                      | Sets the compilation output. This depends on your target audience. Some consumers require, ESM some UMD. You can choose the correct one or even compile to both.                |
 | verbose                   | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging                                                                                           |
+
+#### Generating UMD and ESM bundles
+
+When you choose to generate UMD and ESM bundles the generated output will end up in a folder named `cjs` and `esm`. In order to correctly access those folders you have to add a exports map to the `package.json` of your library.
+
+```json
+"main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
+    }
+  }
+}
+```
 
 #### Example usage
 

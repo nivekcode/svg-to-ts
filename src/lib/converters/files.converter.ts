@@ -1,18 +1,22 @@
-import { compile } from '../compiler/typescript-compiler';
+import { compileToEsNext, compileToUMD } from '../compiler/typescript-compiler';
 import {
   generateEnumDefinition,
   generateExportStatement,
   generateInterfaceDefinition,
   generateSvgConstant,
   generateTypeDefinition,
-  generateTypeHelperWithImport
-, generateTSXConstant } from '../generators/code-snippet-generators';
+  generateTypeHelperWithImport,
+  generateTSXConstant
+} from '../generators/code-snippet-generators';
 import { generateCompleteIconSetContent } from '../helpers/complete-icon-set.helper';
 import { deleteFiles, deleteFolder, writeFile } from '../helpers/file-helpers';
 import { Logger } from '../helpers/logger';
 import { callAndMonitor, callAndMonitorAsync } from '../helpers/monitor';
 import { getFilePathsFromRegex } from '../helpers/regex-helpers';
-import { FilesConversionOptions } from '../options/conversion-options/files-conversion-options';
+import {
+  FilesConversionOptions,
+  SVG_TO_TS_COMPILATION_OUTPUT
+} from '../options/conversion-options/files-conversion-options';
 import { FILE_TYPE } from '../shared/file-type.model';
 
 import { filesProcessor, SvgDefinition } from './shared.converter';
@@ -75,6 +79,7 @@ async function generateTSFiles(conversionOptions: FilesConversionOptions) {
     compileSources,
     exportCompleteIconSet,
     completeIconSetName,
+    compilationOutput,
     barrelFileName
   } = conversionOptions;
   await callAndMonitorAsync<void>(
@@ -130,7 +135,7 @@ async function generateTSFiles(conversionOptions: FilesConversionOptions) {
 
   if (compileSources) {
     await callAndMonitorAsync<void>(
-      compileTypeScriptToJS.bind({}, outputDirectory, iconsFolderName, barrelFileName),
+      compileTypeScriptToJS.bind({}, outputDirectory, iconsFolderName, barrelFileName, compilationOutput),
       'Compile TypeScript to JavaScript'
     );
   }
@@ -210,12 +215,31 @@ const generateModelFile = async (
 const compileTypeScriptToJS = async (
   outputDirectory: string,
   iconsFolderName: string,
-  barrelFileName: string
+  barrelFileName: string,
+  compilationOutput: SVG_TO_TS_COMPILATION_OUTPUT
 ): Promise<void> => {
   const generatedTypeScriptFilePaths = await getFilePathsFromRegex([
     `${outputDirectory}/${iconsFolderName}/*.ts`,
     `${outputDirectory}/${barrelFileName}.ts`
   ]);
-  compile(generatedTypeScriptFilePaths);
-  deleteFiles(generatedTypeScriptFilePaths);
+  switch (compilationOutput) {
+    case SVG_TO_TS_COMPILATION_OUTPUT.ESM:
+      compileToEsNext(generatedTypeScriptFilePaths, outputDirectory);
+      deleteFiles(generatedTypeScriptFilePaths);
+      break;
+    case SVG_TO_TS_COMPILATION_OUTPUT.UMD:
+      compileToUMD(generatedTypeScriptFilePaths, outputDirectory);
+      deleteFiles(generatedTypeScriptFilePaths);
+      break;
+    case SVG_TO_TS_COMPILATION_OUTPUT.ESM_AND_UMD:
+      compileToEsNext(generatedTypeScriptFilePaths, `${outputDirectory}/esm`);
+      compileToUMD(generatedTypeScriptFilePaths, `${outputDirectory}/cjs`);
+      deleteFiles(generatedTypeScriptFilePaths);
+      await deleteFolder(`${outputDirectory}/build`);
+      break;
+    default:
+      Logger.error(`Please provide a valid Compilation output. You provided ${compilationOutput} but 
+            valid values are (ESM, UMD, ESM_AND_UMD).`);
+      break;
+  }
 };

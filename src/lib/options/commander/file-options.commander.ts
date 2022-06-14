@@ -68,6 +68,11 @@ export const setupFilesOptionsCommander = () => {
       DEFAULT_FILES_CONVERSION_OPTIONS.compileSources
     )
     .option(
+      '--compilationOutput <string>',
+      'Which module svg-to-ts should compile the source to (possible values are, ESM, UMD, ESM_AND_UMD)',
+      DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput
+    )
+    .option(
       '--exportCompleteIconSet <boolean>',
       'Specifies if the complete icon set should be exported or not',
       DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet

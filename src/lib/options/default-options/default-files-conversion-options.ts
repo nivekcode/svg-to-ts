@@ -1,5 +1,5 @@
 import { Delimiter } from '../../generators/code-snippet-generators';
-import { FilesConversionOptions } from '../conversion-options/files-conversion-options';
+import { FilesConversionOptions, SVG_TO_TS_COMPILATION_OUTPUT } from '../conversion-options/files-conversion-options';
 
 export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
   tsx: false,
@@ -18,6 +18,7 @@ export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
   compileSources: false,
   exportCompleteIconSet: false,
   completeIconSetName: 'complete-icon-set',
+  compilationOutput: SVG_TO_TS_COMPILATION_OUTPUT.ESM,
   verbose: false,
   barrelFileName: 'index',
   delimiter: Delimiter.SNAKE
