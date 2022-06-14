@@ -1,3 +1,10 @@
+## [8.7.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.7.0...v8.7.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **compilation:** adjust generated UMD output directory ([4b9d12a](https://github.com/kreuzerk/svg-to-ts/commit/4b9d12a13bbb56fa6c5f9da37bef4172512e47ec))
+
 # [8.7.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.6.1...v8.7.0) (2022-06-14)
 
 
