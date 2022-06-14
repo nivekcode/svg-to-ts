@@ -233,7 +233,7 @@ const compileTypeScriptToJS = async (
       break;
     case SVG_TO_TS_COMPILATION_OUTPUT.ESM_AND_UMD:
       compileToEsNext(generatedTypeScriptFilePaths, `${outputDirectory}/esm`);
-      compileToUMD(generatedTypeScriptFilePaths, `${outputDirectory}/cjs`);
+      compileToUMD(generatedTypeScriptFilePaths, `${outputDirectory}/umd`);
       deleteFiles(generatedTypeScriptFilePaths);
       await deleteFolder(`${outputDirectory}/build`);
       break;
