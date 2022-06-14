@@ -1,3 +1,10 @@
+# [8.7.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.6.1...v8.7.0) (2022-06-14)
+
+
+### Features
+
+* **compilation:** add new compilation outputs ([257edf8](https://github.com/kreuzerk/svg-to-ts/commit/257edf8aedcb9ca64b32e550ed4fa7e72723c5c9))
+
 ## [8.6.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.6.0...v8.6.1) (2022-04-30)
 
 
