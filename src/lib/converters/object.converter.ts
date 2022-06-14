@@ -9,6 +9,7 @@ import { filesProcessor, SvgDefinition } from './shared.converter';
 
 export async function convertToSingleObject(conversionOptions: ObjectConversionOptions): Promise<void> {
   const { tsx } = conversionOptions;
+  console.log('conversionOptions', conversionOptions);
   const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
     filesProcessor.bind({}, conversionOptions),
     'Processing SVG files'

@@ -121,6 +121,13 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
     );
   }
 
+  if (!configOptions.compilationOutput) {
+    configOptions.compilationOutput = DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput;
+    Logger.verboseInfo(
+      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput}" will be used`
+    );
+  }
+
   if (!configOptions.barrelFileName) {
     configOptions.barrelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName;
     Logger.verboseInfo(

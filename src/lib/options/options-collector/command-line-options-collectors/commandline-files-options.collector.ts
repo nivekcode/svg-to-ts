@@ -24,6 +24,7 @@ export const collectCommandLineFileOptions = async (): Promise<FilesConversionOp
     additionalModelOutputPath,
     exportCompleteIconSet,
     completeIconSetName,
+    compilationOutput,
     compileSources,
     verbose
   } = commander;
@@ -64,6 +65,7 @@ export const collectCommandLineFileOptions = async (): Promise<FilesConversionOp
     svgoConfig,
     additionalModelOutputPath,
     compileSources,
+    compilationOutput,
     barrelFileName,
     verbose
   };
