@@ -159,6 +159,28 @@ describe('Generators', () => {
     });
   });
 
+  describe('generateTypeName with prefix', () => {
+    it('should return the correct type name with delimiter SNAKE', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.SNAKE, 'example-')).toEqual('example-chevron_top');
+    });
+
+    it('should return the correct type name with delimiter CAMEL', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.CAMEL, 'example-')).toEqual('example-chevronTop');
+    });
+
+    it('should return the correct type name with delimiter KEBAB', () => {
+      const fileName = 'chevron_top';
+      expect(generateTypeName(fileName, Delimiter.KEBAB, 'example-')).toEqual('example-chevron-top');
+    });
+
+    it('should return the correct type name with delimiter UPPER', () => {
+      const fileName = 'chevron-top';
+      expect(generateTypeName(fileName, Delimiter.UPPER, 'example-')).toEqual('example-CHEVRON_TOP');
+    });
+  });
+
   describe('generateVariableName', () => {
     it('should return the correct variable name', () => {
       const prefix = '';

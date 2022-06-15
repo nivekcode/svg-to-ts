@@ -21,6 +21,7 @@ export interface FilesConversionOptions {
   exportCompleteIconSet?: boolean;
   completeIconSetName?: string;
   prefix?: string;
+  namePrefix?: string;
   interfaceName?: string;
   enumName?: string;
   modelFileName?: string;

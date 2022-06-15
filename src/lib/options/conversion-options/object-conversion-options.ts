@@ -12,4 +12,5 @@ export interface ObjectConversionOptions {
   objectName?: string;
   typeName?: string;
   generateType?: boolean;
+  namePrefix?: string;
 }
