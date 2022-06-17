@@ -207,6 +207,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "theotonge",
+      "name": "Theo Tonge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/793679?v=4",
+      "profile": "https://github.com/theotonge",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
