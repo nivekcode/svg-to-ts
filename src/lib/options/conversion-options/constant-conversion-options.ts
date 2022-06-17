@@ -17,5 +17,6 @@ export interface ConstantsConversionOptions {
   exportCompleteIconSet?: boolean;
   completeIconSetName: string;
   prefix?: string;
+  namePrefix?: string;
   interfaceName?: string;
 }

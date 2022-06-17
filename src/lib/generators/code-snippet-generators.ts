@@ -124,17 +124,17 @@ export const generateExportStatement = (fileName: string, generatedIconsFolderNa
 export const generateNamedImportStatement = (name: string, module: string): string =>
   `import {${name}} from '${module}';\n`;
 
-export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter): string => {
+export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter, namePrefix?: string): string => {
   if (delimiter === Delimiter.CAMEL) {
-    return `${camelCase(filenameWithoutEnding)}`;
+    return `${namePrefix || ''}${camelCase(filenameWithoutEnding)}`;
   }
   if (delimiter === Delimiter.KEBAB) {
-    return `${kebabCase(filenameWithoutEnding)}`;
+    return `${namePrefix || ''}${kebabCase(filenameWithoutEnding)}`;
   }
   if (delimiter === Delimiter.UPPER) {
-    return `${snakeCase(filenameWithoutEnding).toUpperCase()}`;
+    return `${namePrefix || ''}${snakeCase(filenameWithoutEnding).toUpperCase()}`;
   }
-  return `${snakeCase(filenameWithoutEnding)}`;
+  return `${namePrefix || ''}${snakeCase(filenameWithoutEnding)}`;
 };
 
 export const generateVariableName = (prefix: string, filenameWithoutEnding): string => {

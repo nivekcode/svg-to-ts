@@ -16,7 +16,7 @@ export interface SvgDefinition {
 }
 
 export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]> => {
-  const { prefix, delimiter, interfaceName, srcFiles, svgoConfig } = conversionOptions;
+  const { prefix, delimiter, interfaceName, srcFiles, svgoConfig, namePrefix } = conversionOptions;
   const filePaths = await getFilePathsFromRegex(srcFiles);
 
   if (!filePaths.length) {
@@ -36,7 +36,7 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
           const optimizedSvg = await optimize(rawSvg, { path: filePath, ...svgoConfig });
           const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
-          const typeName = generateTypeName(filenameWithoutEnding, delimiter);
+          const typeName = generateTypeName(filenameWithoutEnding, delimiter, namePrefix);
 
           svgDefinition = {
             typeName,

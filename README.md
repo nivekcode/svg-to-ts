@@ -256,6 +256,7 @@ accepts an object with the filename as key and the svg data as key.
 | verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
 | generateType    | boolean                    | true                                     | defines if it's needed to generate type                                                      |
 | typeName        | string                     | MyIconType                               | name of the type to be used when `generateType` is set to `true`                             |
+| namePrefix      | string                     |                                          | prefix to be used for the name property included in the generated constant                   |
 
 #### Example usage
 
@@ -302,6 +303,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | generateTypeObject    | boolean                    | false                                    | generate type object                                                                  |
 | generateEnum          | boolean                    | false                                    | generate enum object                                                                  |
 | prefix                | string                     | myIcon                                   | prefix for the generated svg constants                                                |
+| namePrefix            | string                     |                                          | prefix to be used for the name property included in the generated constant            |
 | interfaceName         | string                     | MyIcon                                   | name for the generated interface                                                      |
 | fileName              | string                     | my-icons                                 | file name of the generated file                                                       |
 | enumName              | string                     | MyIcons                                  | name for the generated enum                                                           |
@@ -396,6 +398,7 @@ end up there.
 | exportCompleteIconSet     | boolean                    | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
 | completeIconSetName       | string                     | completeIconSet                          | Name of the generated complete icon set (only effective if exportCompleteIconSet is set to true)                                                                                |
 | prefix                    | string                     | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
+| namePrefix                | string                     |                                          | prefix to be used for the name property included in the generated constant                                                                                                      |
 | interfaceName             | string                     | MyIcon                                   | name for the generated interface                                                                                                                                                |
 | modelFileName             | string                     | my-icons                                 | file name of the generated file                                                                                                                                                 |
 | enumName                  | string                     | MyIcons                                  | name for the generated enum                                                                                                                                                     |
