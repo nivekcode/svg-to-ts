@@ -1,3 +1,10 @@
+# [8.8.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.7.1...v8.8.0) (2022-06-17)
+
+
+### Features
+
+* support namePrefix ([6f1511c](https://github.com/kreuzerk/svg-to-ts/commit/6f1511cca35478c6a7f0d741e5ed13a752f9d71d))
+
 ## [8.7.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.7.0...v8.7.1) (2022-06-14)
 
 
