@@ -6,37 +6,61 @@ import { FILE_TYPE } from '../shared/file-type.model';
 
 export const generateCompleteIconSetContent = (
   svgDefinitions: SvgDefinition[],
-  completeIconSetName: string
+  completeIconSetName: string,
+  interfaceName?: string,
+  modelFileName?: string,
+  generateType?: boolean
 ): string => {
-  const importSection = generateImportSection(svgDefinitions);
-  const exportSection = generateExportSection(svgDefinitions, completeIconSetName);
+  const importSection = generateImportSection(
+    svgDefinitions,
+    generateType ? interfaceName : undefined,
+    generateType ? modelFileName : undefined
+  );
+  const exportSection = generateExportSection(
+    svgDefinitions,
+    completeIconSetName,
+    FILE_TYPE.TS,
+    generateType ? interfaceName : undefined
+  );
   return `${importSection}${exportSection}`;
 };
 
-const generateImportSection = (svgDefinitions: SvgDefinition[]): string =>
-  svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition) => {
+const generateImportSection = (
+  svgDefinitions: SvgDefinition[],
+  interfaceName?: string,
+  modelFileName?: string
+): string => {
+  const imports =
+    interfaceName && modelFileName ? generateNamedImportStatement(interfaceName, `./${modelFileName}`) : '';
+  return svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition) => {
     acc += generateNamedImportStatement(
       svgDefinition.variableName,
       `./${svgDefinition.prefix}-${svgDefinition.filenameWithoutEnding}.icon`
     );
     return acc;
-  }, '');
+  }, imports);
+};
 
 export const generateExportSection = (
   svgDefinitions: SvgDefinition[],
   completeIconSetName: string,
-  fileType = FILE_TYPE.TS
-): string =>
-  svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition, index: number) => {
+  fileType = FILE_TYPE.TS,
+  interfaceName?: string
+): string => {
+  const interfaceSuffix = interfaceName ? `:${interfaceName}[]` : '';
+  return svgDefinitions.reduce((acc: string, svgDefinition: SvgDefinition, index: number) => {
     const variableName =
       fileType === FILE_TYPE.TSX
         ? svgDefinition.variableName.charAt(0).toUpperCase() + svgDefinition.variableName.slice(1)
         : svgDefinition.variableName;
 
+    const interfaceSuffix = interfaceName ? ` as ${interfaceName}` : '';
+
     if (index === svgDefinitions.length - 1) {
-      acc += `${variableName}];`;
+      acc += `${variableName}${interfaceSuffix}];`;
     } else {
-      acc += `${variableName},`;
+      acc += `${variableName}${interfaceSuffix},`;
     }
     return acc;
-  }, `export const ${camelCase(completeIconSetName)} = [`);
+  }, `export const ${camelCase(completeIconSetName)}${interfaceSuffix} = [`);
+};
