@@ -38,7 +38,8 @@ async function generateTSXFiles(conversionOptions: FilesConversionOptions) {
     completeIconSetName,
     barrelFileName,
     interfaceName,
-    generateType
+    generateType,
+    modelFileName
   } = conversionOptions;
 
   const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
@@ -59,7 +60,8 @@ async function generateTSXFiles(conversionOptions: FilesConversionOptions) {
         outputDirectory,
         iconsFolderName,
         completeIconSetName,
-        generateType && interfaceName
+        generateType && interfaceName,
+        modelFileName
       ),
       'Export complete icon set'
     );
@@ -114,7 +116,8 @@ async function generateTSFiles(conversionOptions: FilesConversionOptions) {
         outputDirectory,
         iconsFolderName,
         completeIconSetName,
-        generateType && interfaceName
+        generateType && interfaceName,
+        modelFileName
       ),
       'Export complete icon set'
     );
@@ -201,13 +204,15 @@ const generateCompleteIconSet = async (
   iconsFolderName: string,
   completeIconSetName: string,
   interfaceName?: string,
-  modelFileName?: string
+  modelFileName?: string,
+  generateType?: boolean
 ): Promise<void> => {
   const completeIconSetContent = generateCompleteIconSetContent(
     svgDefinitions,
     completeIconSetName,
     interfaceName,
-    modelFileName
+    modelFileName,
+    generateType
   );
   await writeFile(`${outputDirectory}/${iconsFolderName}`, completeIconSetName, completeIconSetContent);
 };
