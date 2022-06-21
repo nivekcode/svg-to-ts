@@ -1,3 +1,11 @@
+## [8.8.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.8.0...v8.8.1) (2022-06-21)
+
+
+### Bug Fixes
+
+* error for too many icons in completeIconSet ([664beba](https://github.com/kreuzerk/svg-to-ts/commit/664beba9e25ee5f30dcb8e8accb0532a3491f966))
+* missing argument for generateCompleteIconSet ([1f1a4b5](https://github.com/kreuzerk/svg-to-ts/commit/1f1a4b59bd4595ad44fea27474b5b769484cb27b))
+
 # [8.8.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.7.1...v8.8.0) (2022-06-17)
 
 
