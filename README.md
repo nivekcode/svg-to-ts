@@ -7,7 +7,9 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -252,7 +254,7 @@ accepts an object with the filename as key and the svg data as key.
 | outputDirectory | string                     | "./dist"                                 | name of the output directory                                                                 |
 | objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used                 |
 | verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
-| generateType    | boolean                    | true                                     | defines if it's needed to generate type                                                      |
+| generateType    | boolean                    | true                                     | defines if a type should be generated                                                        |
 | typeName        | string                     | MyIconType                               | name of the type to be used when `generateType` is set to `true`                             |
 | namePrefix      | string                     |                                          | prefix to be used for the name property included in the generated constant                   |
 
@@ -295,9 +297,9 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 | --version             | type                       | default                                  | description                                                                           |
 | --------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| typeName              | string                     | myIcons                                  | name of the generated type                                                            |
 | tsx                   | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                |
-| generateType          | boolean                    | false                                    | prevent generating enumeration type                                                   |
+| generateType          | boolean                    | false                                    | defines if a type should be generated                                                 |
+| typeName              | string                     | myIcons                                  | name of the type to be used when `generateType` is set to `true`                      |
 | generateTypeObject    | boolean                    | false                                    | generate type object                                                                  |
 | generateEnum          | boolean                    | false                                    | generate enum object                                                                  |
 | prefix                | string                     | myIcon                                   | prefix for the generated svg constants                                                |
@@ -389,8 +391,8 @@ end up there.
 | ------------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | barrelFileName            | string                     | index                                    | name of the generated type                                                                                                                                                      |
 | tsx                       | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                                                                                                          |
-| typeName                  | string                     | myIcons                                  | name of the generated type                                                                                                                                                      |
-| generateType              | boolean                    | false                                    | prevent generating enumeration type                                                                                                                                             |
+| generateType              | boolean                    | false                                    | defines if a type should be generated                                                                                                                                           |
+| typeName                  | string                     | myIcons                                  | name of the type to be used when `generateType` is set to `true`                                                                                                                |
 | generateTypeObject        | boolean                    | false                                    | generate type object                                                                                                                                                            |
 | generateEnum              | boolean                    | false                                    | generate enum object                                                                                                                                                            |
 | exportCompleteIconSet     | boolean                    | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
