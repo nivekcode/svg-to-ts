@@ -38,7 +38,31 @@ describe('Complete Iconset-helper', () => {
       fileNamesWithDefinitions,
       completeIconSetName,
       'MyIcon',
-      'my-icons'
+      'my-icons',
+      true
+    );
+    expect(unformatedString(expectedContent)).toEqual(unformatedString(generatedContent));
+  });
+  it('should not add interface when generateType is false', () => {
+    let completeIconSetName = 'all-icons';
+    const fileNamesWithDefinitions = [
+      { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
+      { variableName: 'bar', prefix: 'sampleIcon', filenameWithoutEnding: 'bar' },
+      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' }
+    ] as any;
+    const expectedContent = `
+    import {foo} from './sampleIcon-foo.icon';
+    import {bar} from './sampleIcon-bar.icon';
+    import {baz} from './sampleIcon-baz.icon';
+            
+    export const allIcons = [foo, bar, baz];`;
+
+    const generatedContent = generateCompleteIconSetContent(
+      fileNamesWithDefinitions,
+      completeIconSetName,
+      'MyIcon',
+      'my-icons',
+      false
     );
     expect(unformatedString(expectedContent)).toEqual(unformatedString(generatedContent));
   });

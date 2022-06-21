@@ -8,10 +8,20 @@ export const generateCompleteIconSetContent = (
   svgDefinitions: SvgDefinition[],
   completeIconSetName: string,
   interfaceName?: string,
-  modelFileName?: string
+  modelFileName?: string,
+  generateType?: boolean
 ): string => {
-  const importSection = generateImportSection(svgDefinitions, interfaceName, modelFileName);
-  const exportSection = generateExportSection(svgDefinitions, completeIconSetName, FILE_TYPE.TS, interfaceName);
+  const importSection = generateImportSection(
+    svgDefinitions,
+    generateType ? interfaceName : undefined,
+    generateType ? modelFileName : undefined
+  );
+  const exportSection = generateExportSection(
+    svgDefinitions,
+    completeIconSetName,
+    FILE_TYPE.TS,
+    generateType ? interfaceName : undefined
+  );
   return `${importSection}${exportSection}`;
 };
 

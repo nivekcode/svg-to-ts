@@ -60,7 +60,8 @@ async function generateTSXFiles(conversionOptions: FilesConversionOptions) {
         outputDirectory,
         iconsFolderName,
         completeIconSetName,
-        generateType && interfaceName,
+        interfaceName,
+        generateType,
         modelFileName
       ),
       'Export complete icon set'
@@ -116,8 +117,9 @@ async function generateTSFiles(conversionOptions: FilesConversionOptions) {
         outputDirectory,
         iconsFolderName,
         completeIconSetName,
-        generateType && interfaceName,
-        modelFileName
+        interfaceName,
+        modelFileName,
+        generateType
       ),
       'Export complete icon set'
     );
