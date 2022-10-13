@@ -118,7 +118,7 @@
     "jest": "^24.9.0",
     "pretty-quick": "^2.0.1",
     "replace-json-property": "^1.4.1",
-    "semantic-release": "^15.13.31",
+    "semantic-release": "^19.0.5",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.2"
   },
