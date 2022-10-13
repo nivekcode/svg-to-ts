@@ -1,3 +1,10 @@
+# [8.9.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.8.1...v8.9.0) (2022-10-13)
+
+
+### Features
+
+* adds-pops-to-tsx-const-svg-components ([3180fac](https://github.com/kreuzerk/svg-to-ts/commit/3180fac2902e994d329785fcf0121476e1c05549))
+
 ## [8.8.1](https://github.com/kreuzerk/svg-to-ts/compare/v8.8.0...v8.8.1) (2022-06-21)
 
 

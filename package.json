@@ -1,6 +1,6 @@
 {
   "name": "svg-to-ts",
-  "version": "8.8.1",
+  "version": "8.9.0",
   "description": "Build amazing svg icon libraries",
   "main": "index.js",
   "scripts": {
