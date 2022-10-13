@@ -115,11 +115,11 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^3.1.0",
     "import-conductor": "^2.0.3",
-    "jest": "^24.9.0",
+    "jest": "^29.1.2",
     "pretty-quick": "^2.0.1",
     "replace-json-property": "^1.4.1",
     "semantic-release": "^15.13.31",
-    "ts-jest": "^24.2.0",
+    "ts-jest": "^29.0.3",
     "ts-node": "^8.5.2"
   },
   "config": {
