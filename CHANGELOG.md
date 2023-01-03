@@ -1,3 +1,16 @@
+# [9.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.9.0...v9.0.0) (2023-01-03)
+
+
+### Bug Fixes
+
+* **esm:** deliver correct esm files ([a16137d](https://github.com/kreuzerk/svg-to-ts/commit/a16137d6d9b8da837fb3726f3ea941a39319c336)), closes [#201](https://github.com/kreuzerk/svg-to-ts/issues/201)
+
+
+### BREAKING CHANGES
+
+* **esm:** Previously esm files were delivered with a .js ending. Now they will be delivered
+with a .mjs ending
+
 # [8.9.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.8.1...v8.9.0) (2022-10-13)
 
 
