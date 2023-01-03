@@ -111,7 +111,7 @@ via npm script.
 
 You can either run those binaries with `npx`
 
-`npx svg-to-ts svg-to-ts-object`
+`npx -p svg-to-ts svg-to-ts-object`
 
 or you can add a new script in your `package.json`.
 
