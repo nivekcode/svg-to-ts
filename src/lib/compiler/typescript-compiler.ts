@@ -1,3 +1,4 @@
+import { lstatSync, readdirSync, renameSync } from 'fs';
 import * as ts from 'typescript';
 
 export const compileToEsNext = (filePaths: string[], outputDir: string): void => {
@@ -11,6 +12,26 @@ export const compileToEsNext = (filePaths: string[], outputDir: string): void =>
   };
 
   ts.createProgram(filePaths, compilerOptionsNext).emit();
+  renameJsFilesToMJs(outputDir);
+};
+
+export const renameJsFilesToMJs = (outputDir: string) => {
+  const children = readdirSync(outputDir);
+
+  if (children.length === 0) {
+    return;
+  }
+
+  children.forEach(file => {
+    const path = `${outputDir}/${file}`;
+    if (lstatSync(path).isDirectory()) {
+      renameJsFilesToMJs(path);
+    } else {
+      if (file.endsWith('.js')) {
+        renameSync(path, path.replace('.js', '.mjs'));
+      }
+    }
+  });
 };
 
 export const compileToUMD = (filePaths: string[], outputDir: string): void => {
