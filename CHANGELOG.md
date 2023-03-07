@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v9.0.0...v10.0.0) (2023-03-07)
+
+
+### Features
+
+* **svgo:** bump svgo to the latest version ([06f2fad](https://github.com/kreuzerk/svg-to-ts/commit/06f2fad13443ed936453bdeaf51f1c8634ea7e3c)), closes [#207](https://github.com/kreuzerk/svg-to-ts/issues/207)
+
+
+### BREAKING CHANGES
+
+* **svgo:** SVGO 3 - See config changes on the official svgo side
+
 # [9.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v8.9.0...v9.0.0) (2023-01-03)
 
 
