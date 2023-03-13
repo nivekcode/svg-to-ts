@@ -169,7 +169,7 @@ Once you run `svg-to-ts` those configurations will be picked up. The config obje
       "plugins": ["cleanupAttrs"]
     },
     "fileName": "dinosaur-icon.model",
-    "additionalModelFile": "./projects/dinosaur-icons/src/lib",
+    "additionalModelOutputPath": "./projects/dinosaur-icons/src/lib",
     "compileSources": true
   }
 }
@@ -192,7 +192,7 @@ To configure svg-to-ts over a .rc file you can add a `.svg-to-tsrc` file in the 
   "svgoConfig": {
     "plugins": ["cleanupAttrs"]
   },
-  "additionalModelFile": "./projects/dinosaur-icons/src/lib",
+  "additionalModelOutputPath": "./projects/dinosaur-icons/src/lib",
   "compileSources": true
 }
 ```
@@ -212,7 +212,7 @@ const svgToTsConfig = {
   typeName: 'MyIconName',
   generateType: true,
   modelFileName: 'whatever-icon.model',
-  additionalModelFile: './libs/web-icons/src/lib',
+  additionalModelOutputPath: './libs/web-icons/src/lib',
   iconsFolderName: 'generated',
   delimiter: 'SNAKE',
   barrelFileName: 'generated-icons-barrel',
