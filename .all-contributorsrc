@@ -218,6 +218,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "fALKENdk",
+      "name": "Kasper Christensen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/81513?v=4",
+      "profile": "http://kasperchristensen.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
