@@ -11,7 +11,8 @@ export enum Delimiter {
   CAMEL = 'CAMEL',
   KEBAB = 'KEBAB',
   SNAKE = 'SNAKE',
-  UPPER = 'UPPER'
+  UPPER = 'UPPER',
+  NONE = 'NONE'
 }
 
 export const generateInterfaceDefinition = (conversionOptions: FilesConversionOptions | ConstantsConversionOptions) => {
@@ -134,6 +135,9 @@ export const generateTypeName = (filenameWithoutEnding, delimiter: Delimiter, na
   }
   if (delimiter === Delimiter.UPPER) {
     return `${namePrefix || ''}${snakeCase(filenameWithoutEnding).toUpperCase()}`;
+  }
+  if (delimiter === Delimiter.NONE) {
+    return `${namePrefix || ''}${filenameWithoutEnding}`;
   }
   return `${namePrefix || ''}${snakeCase(filenameWithoutEnding)}`;
 };
