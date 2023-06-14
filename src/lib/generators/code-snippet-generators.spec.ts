@@ -139,23 +139,28 @@ describe('Generators', () => {
 
   describe('generateTypeName', () => {
     it('should return the correct type name with delimiter SNAKE', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.SNAKE)).toEqual('chevron_top');
+      const fileName = 'a12-a12-chevron-top';
+      expect(generateTypeName(fileName, Delimiter.SNAKE)).toEqual('a_12_a_12chevron_top');
     });
 
     it('should return the correct type name with delimiter CAMEL', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.CAMEL)).toEqual('chevronTop');
+      const fileName = 'a3-a3-chevron-top';
+      expect(generateTypeName(fileName, Delimiter.CAMEL)).toEqual('a3A3ChevronTop');
     });
 
     it('should return the correct type name with delimiter KEBAB', () => {
-      const fileName = 'chevron_top';
-      expect(generateTypeName(fileName, Delimiter.KEBAB)).toEqual('chevron-top');
+      const fileName = 'a12-a12-chevron_top';
+      expect(generateTypeName(fileName, Delimiter.KEBAB)).toEqual('a-12-a-12-chevron-top');
     });
 
     it('should return the correct type name with delimiter UPPER', () => {
       const fileName = 'chevron-top';
       expect(generateTypeName(fileName, Delimiter.UPPER)).toEqual('CHEVRON_TOP');
+    });
+
+    it('should return the initial type name delimiter NONE', () => {
+      const fileName = 'a12-a12-a3-chevron-top123';
+      expect(generateTypeName(fileName, Delimiter.NONE)).toEqual('a12-a12-a3-chevron-top123');
     });
   });
 
@@ -178,6 +183,11 @@ describe('Generators', () => {
     it('should return the correct type name with delimiter UPPER', () => {
       const fileName = 'chevron-top';
       expect(generateTypeName(fileName, Delimiter.UPPER, 'example-')).toEqual('example-CHEVRON_TOP');
+    });
+
+    it('should return the correct type name with delimiter NONE', () => {
+      const fileName = 'a3-chevron-top';
+      expect(generateTypeName(fileName, Delimiter.NONE, 'example-')).toEqual('example-a3-chevron-top');
     });
   });
 
