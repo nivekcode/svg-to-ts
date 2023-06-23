@@ -18,7 +18,7 @@
 - [Why you should use svg-to-ts](#why-you-should-use-svg-to-ts)
 - [Step by step guide on how to create your icon library](#step-by-step-guide-on-how-to-create-your-icon-library)
   - [Video tutorials](#video-tutorials)
-  - [Writtern tutorial](#writtern-tutorial)
+  - [Written tutorial](#written-tutorial)
 - [How to use svg-to-ts](#how-to-use-svg-to-ts)
   - [Usage](#usage)
     - [Binaries](#binaries)
@@ -87,7 +87,7 @@ A video course and a blog post. Both cover the same content. Feel free to choose
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GWD3GWU7NvE/0.jpg)](https://www.youtube.com/watch?v=GWD3GWU7NvE)
 
-## Writtern tutorial
+## Written tutorial
 
 [This blog post](https://kevinkreuzer.medium.com/how-to-build-your-own-tree-shakable-svg-icons-library-in-less-than-30-minutes-9f7a4a324d29) guides you through the process of building your own icon library with svg-to-ts.
 ![Logo](https://raw.githubusercontent.com/kreuzerk/svg-to-ts/master/assets/blogimage.png)
@@ -370,6 +370,8 @@ export interface MyIcon {
 
 This is the most sophisticated approach and also the approach that doesn't only support tree shaking but also
 supports code splitting which is especially usefull in scenarios where you are using lazy loading.
+
+(Previously, this was the `optimizeForLazyLoading` option but it has been removed in version 4.3.0.)
 
 [Here's a step by step guide on how to create an icon library that is optimized for tree shaking](https://medium.com/angular-in-depth/how-to-create-a-fully-tree-shakable-icon-library-in-angular-c5488cf9cd76)
 
