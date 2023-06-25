@@ -227,8 +227,18 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ToneyPK",
+      "name": "Antonio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2219701?v=4",
+      "profile": "https://antoniopk.com/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs"
 }
