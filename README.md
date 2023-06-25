@@ -7,7 +7,7 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -529,6 +529,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=200" width="200px;" alt="Ikko Ashimine"/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=eltociear" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/theotonge"><img src="https://avatars.githubusercontent.com/u/793679?v=4?s=200" width="200px;" alt="Theo Tonge"/><br /><sub><b>Theo Tonge</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=theotonge" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=theotonge" title="Documentation">📖</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=theotonge" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://kasperchristensen.com"><img src="https://avatars.githubusercontent.com/u/81513?v=4?s=200" width="200px;" alt="Kasper Christensen"/><br /><sub><b>Kasper Christensen</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=fALKENdk" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://antoniopk.com/"><img src="https://avatars.githubusercontent.com/u/2219701?v=4?s=200" width="200px;" alt="Antonio"/><br /><sub><b>Antonio</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=ToneyPK" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
