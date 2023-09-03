@@ -7,7 +7,9 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -55,7 +57,7 @@
 
 `svg-to-ts` is a helper tool that converts your SVG icons to TypeScript or TSX. `svg-to-ts` can convert
 SVGs to either one TypeScript / TSX file with exported constants, multiple TypeScript files or
-even compiled JavaScript files with according declaration files. Furthermore, it generates all
+even compiled JavaScript files with according TS declaration files. Furthermore, it generates all
 typings in form of interfaces and types.
 
 The generated output can then be used in combination with a iconregistry to create a tree shakable icon library.
@@ -243,7 +245,7 @@ accepts an object with the filename as key and the svg data as key.
 #### Available options:
 
 | --version       | type                             | default                                  | description                                                                                  |
-| --------------- |----------------------------------| ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| --------------- | -------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
 | fileName        | string                           | my-icons                                 | file name of the generated file                                                              |
 | tsx             | boolean                          | false                                    | Generate TSX file which can be used as React components out of the box                       |
 | delimiter       | CAMEL, KEBAB, SNAKE, UPPER, NONE | CAMEL                                    | delimiter which is used to generate the types and name properties                            |
@@ -293,25 +295,25 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 
 #### Available options:
 
-| --version             | type                       | default                                  | description                                                                           |
-| --------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| tsx                   | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                |
-| generateType          | boolean                    | false                                    | defines if a type should be generated                                                 |
-| typeName              | string                     | myIcons                                  | name of the type to be used when `generateType` is set to `true`                      |
-| generateTypeObject    | boolean                    | false                                    | generate type object                                                                  |
-| generateEnum          | boolean                    | false                                    | generate enum object                                                                  |
-| prefix                | string                     | myIcon                                   | prefix for the generated svg constants                                                |
-| namePrefix            | string                     |                                          | prefix to be used for the name property included in the generated constant            |
-| interfaceName         | string                     | MyIcon                                   | name for the generated interface                                                      |
-| fileName              | string                     | my-icons                                 | file name of the generated file                                                       |
-| enumName              | string                     | MyIcons                                  | name for the generated enum                                                           |
+| --version             | type                             | default                                  | description                                                                           |
+| --------------------- | -------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| tsx                   | boolean                          | false                                    | Generate TSX file which can be used as React components out of the box                |
+| generateType          | boolean                          | false                                    | defines if a type should be generated                                                 |
+| typeName              | string                           | myIcons                                  | name of the type to be used when `generateType` is set to `true`                      |
+| generateTypeObject    | boolean                          | false                                    | generate type object                                                                  |
+| generateEnum          | boolean                          | false                                    | generate enum object                                                                  |
+| prefix                | string                           | myIcon                                   | prefix for the generated svg constants                                                |
+| namePrefix            | string                           |                                          | prefix to be used for the name property included in the generated constant            |
+| interfaceName         | string                           | MyIcon                                   | name for the generated interface                                                      |
+| fileName              | string                           | my-icons                                 | file name of the generated file                                                       |
+| enumName              | string                           | MyIcons                                  | name for the generated enum                                                           |
 | delimiter             | CAMEL, KEBAB, SNAKE, UPPER, NONE | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
-| svgoConfig            | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
-| srcFiles              | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
-| outputDirectory       | string                     | "./dist"                                 | name of the output directory                                                          |
-| exportCompleteIconSet | boolean                    | true                                     | exports a complete icon set                                                           |
-| completeIconSetName   | string                     | completeIconSet                          | Default name of the exported variable                                                 |
-| verbose               | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging |
+| svgoConfig            | string or config object          | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
+| srcFiles              | string                           | "/\*.svg"                                | input files matching the given filename pattern                                       |
+| outputDirectory       | string                           | "./dist"                                 | name of the output directory                                                          |
+| exportCompleteIconSet | boolean                          | true                                     | exports a complete icon set                                                           |
+| completeIconSetName   | string                           | completeIconSet                          | Default name of the exported variable                                                 |
+| verbose               | boolean                          | false                                    | defines if the log should contain additional information. Can be useful for debugging |
 
 #### Example usage
 
@@ -387,30 +389,30 @@ end up there.
 
 #### Available options:
 
-| --version                 | type                       | default                                  | description                                                                                                                                                                     |
-| ------------------------- | -------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| barrelFileName            | string                     | index                                    | name of the generated type                                                                                                                                                      |
-| tsx                       | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                                                                                                          |
-| generateType              | boolean                    | false                                    | defines if a type should be generated                                                                                                                                           |
-| typeName                  | string                     | myIcons                                  | name of the type to be used when `generateType` is set to `true`                                                                                                                |
-| generateTypeObject        | boolean                    | false                                    | generate type object                                                                                                                                                            |
-| generateEnum              | boolean                    | false                                    | generate enum object                                                                                                                                                            |
-| exportCompleteIconSet     | boolean                    | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
-| completeIconSetName       | string                     | completeIconSet                          | Name of the generated complete icon set (only effective if exportCompleteIconSet is set to true)                                                                                |
-| prefix                    | string                     | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
-| namePrefix                | string                     |                                          | prefix to be used for the name property included in the generated constant                                                                                                      |
-| interfaceName             | string                     | MyIcon                                   | name for the generated interface                                                                                                                                                |
-| modelFileName             | string                     | my-icons                                 | file name of the generated file                                                                                                                                                 |
-| enumName                  | string                     | MyIcons                                  | name for the generated enum                                                                                                                                                     |
+| --version                 | type                             | default                                  | description                                                                                                                                                                     |
+| ------------------------- | -------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| barrelFileName            | string                           | index                                    | name of the generated type                                                                                                                                                      |
+| tsx                       | boolean                          | false                                    | Generate TSX file which can be used as React components out of the box                                                                                                          |
+| generateType              | boolean                          | false                                    | defines if a type should be generated                                                                                                                                           |
+| typeName                  | string                           | myIcons                                  | name of the type to be used when `generateType` is set to `true`                                                                                                                |
+| generateTypeObject        | boolean                          | false                                    | generate type object                                                                                                                                                            |
+| generateEnum              | boolean                          | false                                    | generate enum object                                                                                                                                                            |
+| exportCompleteIconSet     | boolean                          | false                                    | Specifies if the complete icon set should be exported or not (can be very handy for showcases)                                                                                  |
+| completeIconSetName       | string                           | completeIconSet                          | Name of the generated complete icon set (only effective if exportCompleteIconSet is set to true)                                                                                |
+| prefix                    | string                           | myIcon                                   | prefix for the generated svg constants                                                                                                                                          |
+| namePrefix                | string                           |                                          | prefix to be used for the name property included in the generated constant                                                                                                      |
+| interfaceName             | string                           | MyIcon                                   | name for the generated interface                                                                                                                                                |
+| modelFileName             | string                           | my-icons                                 | file name of the generated file                                                                                                                                                 |
+| enumName                  | string                           | MyIcons                                  | name for the generated enum                                                                                                                                                     |
 | delimiter                 | CAMEL, KEBAB, SNAKE, UPPER, NONE | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
-| srcFiles                  | string                     | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
-| svgoConfig                | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object                                                                                    |
-| outputDirectory           | string                     | "./dist"                                 | name of the output directory                                                                                                                                                    |
-| additionalModelOutputPath | string                     | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
-| iconsFolderName           | string                     | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
-| compileSources            | boolean                    | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
-| compilationOutput         | ESM, UMD, ESM_AND_UMD      | ESM                                      | Sets the compilation output. This depends on your target audience. Some consumers require, ESM some UMD. You can choose the correct one or even compile to both.                |
-| verbose                   | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging                                                                                           |
+| srcFiles                  | string                           | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
+| svgoConfig                | null or config object            | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object                                                                                    |
+| outputDirectory           | string                           | "./dist"                                 | name of the output directory                                                                                                                                                    |
+| additionalModelOutputPath | string                           | null                                     | if a path is specified we will generate an additional file containing interface and type to this path - can be useful to improve type safety                                    |
+| iconsFolderName           | string                           | "build"                                  | name of the folder we will build the TypeScript files to                                                                                                                        |
+| compileSources            | boolean                          | false                                    | If set to false, we generate a TypeScript file for each SVG. If set to true we will allready compile those TypeScript files and generate JavaScript files and declaration files |
+| compilationOutput         | ESM, UMD, ESM_AND_UMD            | ESM                                      | Sets the compilation output. This depends on your target audience. Some consumers require, ESM some UMD. You can choose the correct one or even compile to both.                |
+| verbose                   | boolean                          | false                                    | defines if the log should contain additional information. Can be useful for debugging                                                                                           |
 
 #### Generating UMD and ESM bundles
 
