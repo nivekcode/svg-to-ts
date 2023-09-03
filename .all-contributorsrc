@@ -236,6 +236,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "weihsma",
+      "name": "weihsma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42008461?v=4",
+      "profile": "https://github.com/weihsma",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
