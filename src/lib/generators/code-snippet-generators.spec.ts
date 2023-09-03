@@ -139,45 +139,55 @@ describe('Generators', () => {
 
   describe('generateTypeName', () => {
     it('should return the correct type name with delimiter SNAKE', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.SNAKE)).toEqual('chevron_top');
+      const fileName = 'a12-chevron-top-22';
+      expect(generateTypeName(fileName, Delimiter.SNAKE)).toEqual('a_12_chevron_top_22');
     });
 
     it('should return the correct type name with delimiter CAMEL', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.CAMEL)).toEqual('chevronTop');
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.CAMEL)).toEqual('a12ChevronTop22');
     });
 
     it('should return the correct type name with delimiter KEBAB', () => {
-      const fileName = 'chevron_top';
-      expect(generateTypeName(fileName, Delimiter.KEBAB)).toEqual('chevron-top');
+      const fileName = 'a12_chevron_top22';
+      expect(generateTypeName(fileName, Delimiter.KEBAB)).toEqual('a-12-chevron-top-22');
     });
 
     it('should return the correct type name with delimiter UPPER', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.UPPER)).toEqual('CHEVRON_TOP');
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.UPPER)).toEqual('A_12_CHEVRON_TOP_22');
+    });
+
+    it('should return the initial type name delimiter NONE', () => {
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.NONE)).toEqual('a12-chevron-top22');
     });
   });
 
   describe('generateTypeName with prefix', () => {
     it('should return the correct type name with delimiter SNAKE', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.SNAKE, 'example-')).toEqual('example-chevron_top');
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.SNAKE, 'example-')).toEqual('example-a_12_chevron_top_22');
     });
 
     it('should return the correct type name with delimiter CAMEL', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.CAMEL, 'example-')).toEqual('example-chevronTop');
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.CAMEL, 'example-')).toEqual('example-a12ChevronTop22');
     });
 
     it('should return the correct type name with delimiter KEBAB', () => {
-      const fileName = 'chevron_top';
-      expect(generateTypeName(fileName, Delimiter.KEBAB, 'example-')).toEqual('example-chevron-top');
+      const fileName = 'a12-chevron_top22';
+      expect(generateTypeName(fileName, Delimiter.KEBAB, 'example-')).toEqual('example-a-12-chevron-top-22');
     });
 
     it('should return the correct type name with delimiter UPPER', () => {
-      const fileName = 'chevron-top';
-      expect(generateTypeName(fileName, Delimiter.UPPER, 'example-')).toEqual('example-CHEVRON_TOP');
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.UPPER, 'example-')).toEqual('example-A_12_CHEVRON_TOP_22');
+    });
+
+    it('should return the correct type name with delimiter NONE', () => {
+      const fileName = 'a12-chevron-top22';
+      expect(generateTypeName(fileName, Delimiter.NONE, 'example-')).toEqual('example-a12-chevron-top22');
     });
   });
 

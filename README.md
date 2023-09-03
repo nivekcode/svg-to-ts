@@ -242,19 +242,19 @@ accepts an object with the filename as key and the svg data as key.
 
 #### Available options:
 
-| --version       | type                       | default                                  | description                                                                                  |
-| --------------- | -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
-| fileName        | string                     | my-icons                                 | file name of the generated file                                                              |
-| tsx             | boolean                    | false                                    | Generate TSX file which can be used as React components out of the box                       |
-| delimiter       | CAMEL, KEBAB, SNAKE, UPPER | CAMEL                                    | delimiter which is used to generate the types and name properties                            |
-| svgoConfig      | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object |
-| srcFiles        | string                     | "/\*.svg"                                | input files matching the given filename pattern                                              |
-| outputDirectory | string                     | "./dist"                                 | name of the output directory                                                                 |
-| objectName      | string                     | default - export                         | name of the exported const - if nothing is set - default export will be used                 |
-| verbose         | boolean                    | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
-| generateType    | boolean                    | true                                     | defines if a type should be generated                                                        |
-| typeName        | string                     | MyIconType                               | name of the type to be used when `generateType` is set to `true`                             |
-| namePrefix      | string                     |                                          | prefix to be used for the name property included in the generated constant                   |
+| --version       | type                             | default                                  | description                                                                                  |
+| --------------- |----------------------------------| ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| fileName        | string                           | my-icons                                 | file name of the generated file                                                              |
+| tsx             | boolean                          | false                                    | Generate TSX file which can be used as React components out of the box                       |
+| delimiter       | CAMEL, KEBAB, SNAKE, UPPER, NONE | CAMEL                                    | delimiter which is used to generate the types and name properties                            |
+| svgoConfig      | null or config object            | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object |
+| srcFiles        | string                           | "/\*.svg"                                | input files matching the given filename pattern                                              |
+| outputDirectory | string                           | "./dist"                                 | name of the output directory                                                                 |
+| objectName      | string                           | default - export                         | name of the exported const - if nothing is set - default export will be used                 |
+| verbose         | boolean                          | false                                    | defines if the log should contain additional information. Can be useful for debugging        |
+| generateType    | boolean                          | true                                     | defines if a type should be generated                                                        |
+| typeName        | string                           | MyIconType                               | name of the type to be used when `generateType` is set to `true`                             |
+| namePrefix      | string                           |                                          | prefix to be used for the name property included in the generated constant                   |
 
 #### Example usage
 
@@ -305,7 +305,7 @@ Only the icons included in the consuming SPA also end up in the final bundle of 
 | interfaceName         | string                     | MyIcon                                   | name for the generated interface                                                      |
 | fileName              | string                     | my-icons                                 | file name of the generated file                                                       |
 | enumName              | string                     | MyIcons                                  | name for the generated enum                                                           |
-| delimiter             | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
+| delimiter             | CAMEL, KEBAB, SNAKE, UPPER, NONE | SNAKE                                    | delimiter which is used to generate the types and name properties                     |
 | svgoConfig            | string or config object    | check help command - to large to display | a path to your svgoConfiguration JSON file or an inline configuration object          |
 | srcFiles              | string                     | "/\*.svg"                                | input files matching the given filename pattern                                       |
 | outputDirectory       | string                     | "./dist"                                 | name of the output directory                                                          |
@@ -402,7 +402,7 @@ end up there.
 | interfaceName             | string                     | MyIcon                                   | name for the generated interface                                                                                                                                                |
 | modelFileName             | string                     | my-icons                                 | file name of the generated file                                                                                                                                                 |
 | enumName                  | string                     | MyIcons                                  | name for the generated enum                                                                                                                                                     |
-| delimiter                 | CAMEL, KEBAB, SNAKE, UPPER | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
+| delimiter                 | CAMEL, KEBAB, SNAKE, UPPER, NONE | SNAKE                                    | delimiter which is used to generate the types and name properties                                                                                                               |
 | srcFiles                  | string                     | "/\*.svg"                                | input files matching the given filename pattern                                                                                                                                 |
 | svgoConfig                | null or config object      | check help command - to large to display | by default we search for a svgo.config.js file in the root or an inline configuration object                                                                                    |
 | outputDirectory           | string                     | "./dist"                                 | name of the output directory                                                                                                                                                    |
