@@ -1,3 +1,10 @@
+# [10.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v10.0.0...v10.1.0) (2023-09-03)
+
+
+### Features
+
+* **delimiter:** introduce new delimiter type NONE ([70e47e3](https://github.com/kreuzerk/svg-to-ts/commit/70e47e3e3722b1fe0ad96b5fbafe25f99b61cabd))
+
 # [10.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v9.0.0...v10.0.0) (2023-03-07)
 
 
