@@ -1,3 +1,17 @@
+# [11.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v10.1.0...v11.0.0) (2023-10-31)
+
+
+### Features
+
+* **esm:** use .mjs ext in import / export statements of compiled files ([67de319](https://github.com/kreuzerk/svg-to-ts/commit/67de3195ca757147c8f13dd6e0c631fcf127aa49))
+
+
+### BREAKING CHANGES
+
+* **esm:** add .mjs extenstion in import / export statements
+
+- support for esbuild
+
 # [10.1.0](https://github.com/kreuzerk/svg-to-ts/compare/v10.0.0...v10.1.0) (2023-09-03)
 
 
