@@ -7,7 +7,7 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -534,6 +534,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://antoniopk.com/"><img src="https://avatars.githubusercontent.com/u/2219701?v=4?s=200" width="200px;" alt="Antonio"/><br /><sub><b>Antonio</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=ToneyPK" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/weihsma"><img src="https://avatars.githubusercontent.com/u/42008461?v=4?s=200" width="200px;" alt="weihsma"/><br /><sub><b>weihsma</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=weihsma" title="Code">💻</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=weihsma" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://angularexperts.io"><img src="https://avatars.githubusercontent.com/u/3764868?v=4?s=200" width="200px;" alt="Tomas Trajan"/><br /><sub><b>Tomas Trajan</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=tomastrajan" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/coryjlewis/"><img src="https://avatars.githubusercontent.com/u/12702175?v=4?s=200" width="200px;" alt="Cory Lewis"/><br /><sub><b>Cory Lewis</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=mecharmor" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
