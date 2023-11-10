@@ -255,6 +255,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mecharmor",
+      "name": "Cory Lewis",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12702175?v=4",
+      "profile": "https://www.linkedin.com/in/coryjlewis/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
