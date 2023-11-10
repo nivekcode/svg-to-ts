@@ -417,15 +417,14 @@ end up there.
 When you choose to generate UMD and ESM bundles the generated output will end up in a folder named `cjs` and `esm`. In order to correctly access those folders you have to add a exports map to the `package.json` of your library.
 
 ```json
-"main": "./cjs/index.js",
-  "module": "./esm/index.js",
+  "main": "./umd/index.js",
+  "module": "./esm/index.mjs",
   "exports": {
     ".": {
-      "import": "./esm/index.js",
-      "require": "./cjs/index.js"
+      "import": "./esm/index.mjs",
+      "require": "./umd/index.js"
     }
   }
-}
 ```
 
 #### Example usage
