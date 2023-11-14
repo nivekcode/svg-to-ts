@@ -1,3 +1,10 @@
+## [11.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v11.0.0...v11.0.1) (2023-11-14)
+
+
+### Bug Fixes
+
+* **tsx:** use the correct type for tsx props ([00348a9](https://github.com/kreuzerk/svg-to-ts/commit/00348a99074730f2c597af11ace0e4bf794031f6)), closes [#226](https://github.com/kreuzerk/svg-to-ts/issues/226)
+
 # [11.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v10.1.0...v11.0.0) (2023-10-31)
 
 
