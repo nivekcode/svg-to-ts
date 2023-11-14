@@ -11,6 +11,7 @@ import {
   generateNamedImportStatement,
   generateObjectInterface,
   generateSvgConstant,
+  generateTSXConstant,
   generateTypeDefinition,
   generateTypeHelper,
   generateTypeHelperWithImport,
@@ -258,6 +259,15 @@ describe('Generators', () => {
 
       const generatedStatement = generateTypeHelperWithImport(interfaceName, iconsFolderName, modelFileName);
       expect(unformatedString(generatedStatement)).toEqual(unformatedString(expectedStatement));
+    });
+  });
+
+  describe('TSX', () => {
+    it('should convert a svg to a React component', () => {
+      const expected = `export const Smile = (props: {[key: string]: any}) => (<svg class="my-awesome-svg" {...props}></svg>);`;
+
+      const actual = generateTSXConstant('smile', '<svg class="my-awesome-svg"></svg>');
+      expect(actual).toEqual(expected);
     });
   });
 });

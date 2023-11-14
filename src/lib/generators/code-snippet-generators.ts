@@ -113,7 +113,7 @@ export const generateSvgConstant = (variableName: string, filenameWithoutEnding:
 export function generateTSXConstant(variableName: string, svg: string) {
   const variableNameCapitalized = variableName.charAt(0).toUpperCase() + variableName.slice(1);
   const svgStringWithProps = svg.replace('>', ' {...props}>');
-  return `export const ${variableNameCapitalized} = (props) => (${svgStringWithProps});`;
+  return `export const ${variableNameCapitalized} = (props: {[key: string]: any}) => (${svgStringWithProps});`;
 }
 
 export const generateExportStatement = (fileName: string, generatedIconsFolderName?: string): string => {
