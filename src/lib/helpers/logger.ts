@@ -17,7 +17,9 @@ export class Logger {
 
   static generationSuccess(path: string) {
     Logger.logWithPrefix(
-      chalk.underline.green(`🏁 Everything is perfect: Icons succesfully generated under ${chalk.blue.underline(path)}`)
+      chalk.underline.green(
+        `🏁 Everything is perfect: Icons succesfully generated under ${chalk.blue.underline(path)}`,
+      ),
     );
   }
 

@@ -31,6 +31,6 @@ export const collectCommandLineObjectOptions = async (): Promise<ObjectConversio
     objectName,
     verbose,
     generateType,
-    typeName
+    typeName,
   };
 };

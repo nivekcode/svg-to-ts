@@ -11,7 +11,7 @@ export const getFilesConversionOptions = async (): Promise<FilesConversionOption
     return configOptions;
   }
   Logger.verboseInfo(
-    'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)'
+    'No configuration found in package.json nor rc file - checking for arguments and applying defaults (see --help)',
   );
   return collectCommandLineFileOptions();
 };

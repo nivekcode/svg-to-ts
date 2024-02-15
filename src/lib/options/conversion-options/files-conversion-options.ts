@@ -3,7 +3,7 @@ import { Delimiter } from '../../generators/code-snippet-generators';
 export enum SVG_TO_TS_COMPILATION_OUTPUT {
   ESM = 'ESM',
   UMD = 'UMD',
-  ESM_AND_UMD = 'ESM_AND_UMD'
+  ESM_AND_UMD = 'ESM_AND_UMD',
 }
 
 export interface FilesConversionOptions {

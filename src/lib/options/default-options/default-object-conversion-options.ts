@@ -10,5 +10,5 @@ export const DEFAULT_OBJECT_CONVERSION_OPTIONS: ObjectConversionOptions = {
   fileName: 'my-icons',
   objectName: 'icons',
   generateType: true,
-  typeName: 'MyIconType'
+  typeName: 'MyIconType',
 };

@@ -13,18 +13,18 @@ export const setupObjectOptionsCommander = () => {
     .option(
       '-d --delimiter <Delimiter>',
       `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,
-      DEFAULT_OBJECT_CONVERSION_OPTIONS.delimiter
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.delimiter,
     )
     .option(
       '-s --srcFiles <value>',
       'name of the source directory',
       collect,
-      DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.srcFiles,
     )
     .option(
       '-o --outputDirectory <string>',
       'name of the output directory',
-      DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory,
     )
     .option('--objectName <string>', 'name of the exported object', DEFAULT_OBJECT_CONVERSION_OPTIONS.objectName)
     .option('--typeName <string>', 'name of type object to generate', DEFAULT_OBJECT_CONVERSION_OPTIONS.typeName)
@@ -33,7 +33,7 @@ export const setupObjectOptionsCommander = () => {
     .option(
       '--verbose <boolean>',
       'Specifies if a verbose log message should be printed or not',
-      DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose
+      DEFAULT_OBJECT_CONVERSION_OPTIONS.verbose,
     )
     .parse(process.argv);
 };

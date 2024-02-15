@@ -42,7 +42,7 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
   if (!configOptions.outputDirectory) {
     configOptions.outputDirectory = DEFAULT_FILES_CONVERSION_OPTIONS.outputDirectory;
     Logger.verboseInfo(
-      `No outputDirectory provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.outputDirectory}" will be used`
+      `No outputDirectory provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.outputDirectory}" will be used`,
     );
   }
 
@@ -74,7 +74,7 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
   if (configOptions.generateTypeObject === undefined) {
     configOptions.generateTypeObject = DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject;
     Logger.verboseInfo(
-      `No 'generateTypeObject' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject}" will be used`
+      `No 'generateTypeObject' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject}" will be used`,
     );
   }
 
@@ -96,42 +96,42 @@ export const mergeWithDefaults = async (options): Promise<FilesConversionOptions
   if (!configOptions.iconsFolderName) {
     configOptions.iconsFolderName = DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName;
     Logger.verboseInfo(
-      `No 'iconsFolderName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName}" will be used`
+      `No 'iconsFolderName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName}" will be used`,
     );
   }
 
   if (configOptions.compileSources === undefined) {
     configOptions.compileSources = DEFAULT_FILES_CONVERSION_OPTIONS.compileSources;
     Logger.verboseInfo(
-      `No 'preCompileSources' flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`
+      `No 'preCompileSources' flag provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compileSources}" will be used`,
     );
   }
 
   if (configOptions.exportCompleteIconSet === undefined) {
     configOptions.exportCompleteIconSet = DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
-      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
+      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`,
     );
   }
 
   if (!configOptions.completeIconSetName) {
     configOptions.completeIconSetName = DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName;
     Logger.verboseInfo(
-      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName}" will be used`
+      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName}" will be used`,
     );
   }
 
   if (!configOptions.compilationOutput) {
     configOptions.compilationOutput = DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput;
     Logger.verboseInfo(
-      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput}" will be used`
+      `No 'completeIconSetName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput}" will be used`,
     );
   }
 
   if (!configOptions.barrelFileName) {
     configOptions.barrelFileName = DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName;
     Logger.verboseInfo(
-      `No 'barrelFileName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName}" will be used`
+      `No 'barrelFileName' provided, "${DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName}" will be used`,
     );
   }
   return configOptions;

@@ -12,7 +12,7 @@ export enum Delimiter {
   KEBAB = 'KEBAB',
   SNAKE = 'SNAKE',
   UPPER = 'UPPER',
-  NONE = 'NONE'
+  NONE = 'NONE',
 }
 
 export const generateInterfaceDefinition = (conversionOptions: FilesConversionOptions | ConstantsConversionOptions) => {
@@ -22,7 +22,7 @@ export const generateInterfaceDefinition = (conversionOptions: FilesConversionOp
     typeName = '',
     generateType,
     generateTypeObject,
-    generateEnum
+    generateEnum,
   } = conversionOptions;
 
   let nameType = 'string';
@@ -53,7 +53,7 @@ export const generateObjectInterface = (exportAsDefaultObject: boolean, conversi
 
 export const generateTypeDefinition = (
   conversionOptions: FilesConversionOptions | ConstantsConversionOptions,
-  svgDefinitions: SvgDefinition[]
+  svgDefinitions: SvgDefinition[],
 ): string => {
   let typesDefinition = '';
 
@@ -72,7 +72,7 @@ export const generateTypeDefinition = (
           ({ typeName }, index) =>
             `'${typeName}': '${typeName}'${conversionOptions.generateType ? ` as ${conversionOptions.typeName}` : ''}${
               index === svgDefinitions.length - 1 ? '' : ','
-            }`
+            }`,
         )
         .join('')}
     };`;
@@ -83,7 +83,7 @@ export const generateTypeDefinition = (
 
 export const generateEnumDefinition = (
   conversionOptions: FilesConversionOptions | ConstantsConversionOptions,
-  svgDefinitions: SvgDefinition[]
+  svgDefinitions: SvgDefinition[],
 ): string => {
   let enumDefinition = '';
   const { generateEnum, enumName } = conversionOptions;
@@ -93,7 +93,7 @@ export const generateEnumDefinition = (
     export enum ${enumName} {${svgDefinitions
       .map(
         ({ typeName }, index) =>
-          `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`
+          `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`,
       )
       .join('')};`;
   }
@@ -154,9 +154,9 @@ export const generateTypeHelper = (interfaceName: string): string => `
 export const generateTypeHelperWithImport = (
   interfaceName: string,
   iconsFolderName: string,
-  modelFileName: string
+  modelFileName: string,
 ): string => `
-    import {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
+    import type {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
     ${generateTypeHelper(interfaceName)}
     `;
 

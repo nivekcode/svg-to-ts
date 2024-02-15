@@ -16,5 +16,5 @@ export const DEFAULT_CONST_CONVERSION_OPTIONS: ConstantsConversionOptions = {
   exportCompleteIconSet: true,
   completeIconSetName: 'completeIconSet',
   verbose: false,
-  delimiter: Delimiter.SNAKE
+  delimiter: Delimiter.SNAKE,
 };

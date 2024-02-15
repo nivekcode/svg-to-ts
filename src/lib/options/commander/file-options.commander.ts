@@ -13,79 +13,79 @@ export const setupFilesOptionsCommander = () => {
     .option(
       '-t --typeName <string>',
       'name of the generated enumeration type',
-      DEFAULT_FILES_CONVERSION_OPTIONS.typeName
+      DEFAULT_FILES_CONVERSION_OPTIONS.typeName,
     )
     .option(
       '--generateType <boolean>',
       'prevent generating enumeration type',
-      DEFAULT_FILES_CONVERSION_OPTIONS.generateType
+      DEFAULT_FILES_CONVERSION_OPTIONS.generateType,
     )
     .option(
       '--generateTypeObject <boolean>',
       'generate type object',
-      DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject
+      DEFAULT_FILES_CONVERSION_OPTIONS.generateTypeObject,
     )
     .option(
       '--barrelFileName <string>',
       'name to use for the barrel file',
-      DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName
+      DEFAULT_FILES_CONVERSION_OPTIONS.barrelFileName,
     )
     .option(
       '-d --delimiter <Delimiter>',
-      `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`
+      `delimiter which is used to generate the types and name properties (${Object.values(Delimiter).join(',')})`,
     )
     .option('-p --prefix <string>', 'prefix for the generated svg constants', DEFAULT_FILES_CONVERSION_OPTIONS.prefix)
     .option(
       '-i --interfaceName <string>',
       'name for the generated interface',
-      DEFAULT_FILES_CONVERSION_OPTIONS.interfaceName
+      DEFAULT_FILES_CONVERSION_OPTIONS.interfaceName,
     )
     .option('-s --srcFiles <value>', 'name of the source directory', collect, [])
     .option(
       '-o --outputDirectory <string>',
       'name of the output directory',
-      DEFAULT_FILES_CONVERSION_OPTIONS.outputDirectory
+      DEFAULT_FILES_CONVERSION_OPTIONS.outputDirectory,
     )
     .option('--svgoConfig <any>', 'Path to svgo configuration JSON or inline svgo configuration object')
     .option(
       '--modelFileName <string>',
       'FileName of the model file (only necessary when conversion type is set to files)',
-      DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName
+      DEFAULT_FILES_CONVERSION_OPTIONS.modelFileName,
     )
     .option(
       '--iconsFolderName <string>',
       'Name of the folder the icons will be generated to (only necessary when conversion type is set to files)',
-      DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName
+      DEFAULT_FILES_CONVERSION_OPTIONS.iconsFolderName,
     )
     .option(
       '--additionalModelOutputPath <string>',
       'Additional outputpath for the models file (only helpful when conversion type is set to files)',
-      DEFAULT_FILES_CONVERSION_OPTIONS.additionalModelOutputPath
+      DEFAULT_FILES_CONVERSION_OPTIONS.additionalModelOutputPath,
     )
     .option(
       '--compileSources <boolean>',
       'Tells if the sources should be precompiled with the TypeScript compiler. If true, you will only end up with d.ts and js files (only necessary when conversion type is set to files)',
-      DEFAULT_FILES_CONVERSION_OPTIONS.compileSources
+      DEFAULT_FILES_CONVERSION_OPTIONS.compileSources,
     )
     .option(
       '--compilationOutput <string>',
       'Which module svg-to-ts should compile the source to (possible values are, ESM, UMD, ESM_AND_UMD)',
-      DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput
+      DEFAULT_FILES_CONVERSION_OPTIONS.compilationOutput,
     )
     .option(
       '--exportCompleteIconSet <boolean>',
       'Specifies if the complete icon set should be exported or not',
-      DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet
+      DEFAULT_FILES_CONVERSION_OPTIONS.exportCompleteIconSet,
     )
     .option(
       '--completeIconSetName <string>',
       'The name of the generated complete icon set file',
-      DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName
+      DEFAULT_FILES_CONVERSION_OPTIONS.completeIconSetName,
     )
     .option(
       '--verbose <boolean>',
       'Specifies if a verbose log message should be printed or not',
-      DEFAULT_FILES_CONVERSION_OPTIONS.verbose
+      DEFAULT_FILES_CONVERSION_OPTIONS.verbose,
     )
     .parse(process.argv);
 };

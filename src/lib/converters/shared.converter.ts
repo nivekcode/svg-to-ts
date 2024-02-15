@@ -25,31 +25,29 @@ export const filesProcessor = async (conversionOptions): Promise<SvgDefinition[]
 
   // Using Promise.all we are making all files be processed in parallel as they have no dependency on each other
   let svgDefinitions = await Promise.all(
-    filePaths.map(
-      async (filePath): Promise<SvgDefinition | null> => {
-        let svgDefinition: SvgDefinition = null;
-        const fileNameWithEnding = path.basename(filePath).replace(`'`, '');
-        const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
-        if (extension === 'svg') {
-          const rawSvg = await extractSvgContent(filePath);
-          Logger.verboseInfo(`optimize svg: ${fileNameWithEnding}`);
-          const optimizedSvg = await optimize(rawSvg, { path: filePath, ...svgoConfig });
-          const variableName = generateVariableName(prefix, filenameWithoutEnding);
+    filePaths.map(async (filePath): Promise<SvgDefinition | null> => {
+      let svgDefinition: SvgDefinition = null;
+      const fileNameWithEnding = path.basename(filePath).replace(`'`, '');
+      const [filenameWithoutEnding, extension] = fileNameWithEnding.split('.');
+      if (extension === 'svg') {
+        const rawSvg = await extractSvgContent(filePath);
+        Logger.verboseInfo(`optimize svg: ${fileNameWithEnding}`);
+        const optimizedSvg = await optimize(rawSvg, { path: filePath, ...svgoConfig });
+        const variableName = generateVariableName(prefix, filenameWithoutEnding);
 
-          const typeName = generateTypeName(filenameWithoutEnding, delimiter, namePrefix);
+        const typeName = generateTypeName(filenameWithoutEnding, delimiter, namePrefix);
 
-          svgDefinition = {
-            typeName,
-            prefix,
-            variableName,
-            interfaceName,
-            data: optimizedSvg.data,
-            filenameWithoutEnding
-          };
-        }
-        return svgDefinition;
+        svgDefinition = {
+          typeName,
+          prefix,
+          variableName,
+          interfaceName,
+          data: optimizedSvg.data,
+          filenameWithoutEnding,
+        };
       }
-    )
+      return svgDefinition;
+    }),
   );
-  return svgDefinitions.filter(svgDefinition => svgDefinition);
+  return svgDefinitions.filter((svgDefinition) => svgDefinition);
 };
