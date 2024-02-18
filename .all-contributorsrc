@@ -273,6 +273,18 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "JoA-MoS",
+      "name": "Justin Dietz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5566979?v=4",
+      "profile": "http://justindietz.com",
+      "contributions": [
+        "bug",
+        "code",
+        "ideas",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
