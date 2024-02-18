@@ -4,7 +4,7 @@ import {
   generateSvgConstant,
   generateTSXConstant,
   generateTypeDefinition,
-  generateTypeHelper
+  generateTypeHelper,
 } from '../generators/code-snippet-generators';
 import { generateExportSection } from '../helpers/complete-icon-set.helper';
 import { writeFile } from '../helpers/file-helpers';
@@ -20,7 +20,7 @@ export async function convertToConstants(conversionOptions: ConstantsConversionO
 
   const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
     filesProcessor.bind({}, conversionOptions),
-    'Processing SVG files'
+    'Processing SVG files',
   );
 
   if (!svgDefinitions.length) {
@@ -43,7 +43,7 @@ async function convertToTSConstants(conversionOptions: ConstantsConversionOption
     exportCompleteIconSet,
     completeIconSetName,
     generateType,
-    generateEnum
+    generateEnum,
   } = conversionOptions;
   let exportAllStatement = '';
 
@@ -52,13 +52,13 @@ async function convertToTSConstants(conversionOptions: ConstantsConversionOption
   const typeDefinition = generateType
     ? callAndMonitor<string>(
         generateTypeDefinition.bind({}, conversionOptions, svgDefinitions),
-        'Generate type definitions'
+        'Generate type definitions',
       )
     : '';
 
   const interfaceDefinition = callAndMonitor<string>(
     generateInterfaceDefinition.bind({}, conversionOptions),
-    'Generate Interface Definition'
+    'Generate Interface Definition',
   );
 
   const enumDefinition = generateEnum
@@ -68,7 +68,7 @@ async function convertToTSConstants(conversionOptions: ConstantsConversionOption
   if (exportCompleteIconSet) {
     exportAllStatement = callAndMonitor<string>(
       generateExportSection.bind({}, svgDefinitions, completeIconSetName),
-      'Exporting all constants'
+      'Exporting all constants',
     );
   }
 
@@ -76,7 +76,7 @@ async function convertToTSConstants(conversionOptions: ConstantsConversionOption
   const fileContent = `${svgContants}${typeDefinition}${enumDefinition}${interfaceDefinition}${typeHelper}${exportAllStatement}`;
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, fileName, fileContent),
-    `Writing files to ${outputDirectory}`
+    `Writing files to ${outputDirectory}`,
   );
   Logger.generationSuccess(outputDirectory);
 }
@@ -90,7 +90,7 @@ async function convertToTSXConstants(conversionOptions: ConstantsConversionOptio
   if (exportCompleteIconSet) {
     exportAllStatement = callAndMonitor<string>(
       generateExportSection.bind({}, svgDefinitions, completeIconSetName, FILE_TYPE.TSX),
-      'Exporting all TSX constants as ${completeIconSetName}'
+      'Exporting all TSX constants as ${completeIconSetName}',
     );
   }
 
@@ -98,21 +98,21 @@ async function convertToTSXConstants(conversionOptions: ConstantsConversionOptio
 
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, fileName, fileContent, FILE_TYPE.TSX),
-    `Writing files to ${outputDirectory}`
+    `Writing files to ${outputDirectory}`,
   );
   Logger.generationSuccess(outputDirectory);
 }
 
 function getTSConstants(svgDefinitions): string {
-  const svgConstants = svgDefinitions.map(svgDefinition =>
-    generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data)
+  const svgConstants = svgDefinitions.map((svgDefinition) =>
+    generateSvgConstant(svgDefinition.variableName, svgDefinition.typeName, svgDefinition.data),
   );
   return svgConstants.join('');
 }
 
 function getTSXConstants(svgDefinitions): string {
-  const tsxConstants = svgDefinitions.map(svgDefinition =>
-    generateTSXConstant(svgDefinition.variableName, svgDefinition.data)
+  const tsxConstants = svgDefinitions.map((svgDefinition) =>
+    generateTSXConstant(svgDefinition.variableName, svgDefinition.data),
   );
   return tsxConstants.join('');
 }

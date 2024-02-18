@@ -21,7 +21,7 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
     generateEnum,
     exportCompleteIconSet,
     completeIconSetName,
-    verbose
+    verbose,
   } = commander;
   let svgoConfig = commander.svgoConfig;
   tsx = toBoolean(tsx, DEFAULT_CONST_CONVERSION_OPTIONS.tsx);
@@ -55,6 +55,6 @@ export const collectCommandLineConstantOptions = async (): Promise<ConstantsConv
     exportCompleteIconSet,
     completeIconSetName,
     svgoConfig,
-    verbose
+    verbose,
   };
 };

@@ -11,7 +11,7 @@ export async function convertToSingleObject(conversionOptions: ObjectConversionO
   const { tsx } = conversionOptions;
   const svgDefinitions = await callAndMonitorAsync<SvgDefinition[]>(
     filesProcessor.bind({}, conversionOptions),
-    'Processing SVG files'
+    'Processing SVG files',
   );
 
   if (tsx) {
@@ -26,12 +26,12 @@ async function generateTSXFile(svgDefinitions: SvgDefinition[], conversionOption
 
   const fileContent = await callAndMonitorAsync<string>(
     generateTSXObject.bind({}, svgDefinitions, objectName, conversionOptions),
-    'Generate TSX Object'
+    'Generate TSX Object',
   );
 
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, fileName, `${fileContent}`, FILE_TYPE.TSX),
-    'Write content to file'
+    'Write content to file',
   );
   Logger.generationSuccess(outputDirectory);
 }
@@ -41,17 +41,17 @@ async function generateTSFile(svgDefinitions: SvgDefinition[], conversionOptions
 
   const fileContent = await callAndMonitorAsync<string>(
     generateTSObject.bind({}, svgDefinitions, objectName, conversionOptions),
-    'Generate SVG Object'
+    'Generate SVG Object',
   );
 
   const typeDefinition = callAndMonitor<string>(
     generateTypeDefinition.bind({}, conversionOptions, svgDefinitions),
-    'Generate type definitions'
+    'Generate type definitions',
   );
 
   await callAndMonitorAsync<void>(
     writeFile.bind({}, outputDirectory, fileName, `${fileContent}${typeDefinition}`),
-    'Write content to file'
+    'Write content to file',
   );
   Logger.generationSuccess(outputDirectory);
 }
@@ -59,7 +59,7 @@ async function generateTSFile(svgDefinitions: SvgDefinition[], conversionOptions
 async function generateTSObject(
   svgDefinitions: SvgDefinition[],
   objectName: string,
-  conversionOptions: ObjectConversionOptions
+  conversionOptions: ObjectConversionOptions,
 ): Promise<string> {
   const svgObject = {};
   svgDefinitions.forEach((svgDefinition: SvgDefinition) => (svgObject[svgDefinition.typeName] = svgDefinition.data));

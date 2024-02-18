@@ -23,14 +23,14 @@ export const collectConfigFileConstantOptions = async (): Promise<
 
   if (Array.isArray(cosmiConfigResult.config)) {
     return Promise.all(
-      cosmiConfigResult.config.map((config: ConstantsConversionOptions) => mergeWithDefaultConstantOptions(config))
+      cosmiConfigResult.config.map((config: ConstantsConversionOptions) => mergeWithDefaultConstantOptions(config)),
     );
   }
   return await mergeWithDefaultConstantOptions(cosmiConfigResult.config);
 };
 
 export const mergeWithDefaultConstantOptions = async (
-  options: ConstantsConversionOptions
+  options: ConstantsConversionOptions,
 ): Promise<ConstantsConversionOptions> => {
   const configOptions = { ...options };
 
@@ -47,7 +47,7 @@ export const mergeWithDefaultConstantOptions = async (
   if (!configOptions.outputDirectory) {
     configOptions.outputDirectory = DEFAULT_CONST_CONVERSION_OPTIONS.outputDirectory;
     Logger.verboseInfo(
-      `No 'outputDirectory' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.outputDirectory}" will be used`
+      `No 'outputDirectory' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.outputDirectory}" will be used`,
     );
   }
 
@@ -84,7 +84,7 @@ export const mergeWithDefaultConstantOptions = async (
   if (configOptions.generateTypeObject === undefined) {
     configOptions.generateTypeObject = DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject;
     Logger.verboseInfo(
-      `No 'generateTypeObject' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject}" will be used`
+      `No 'generateTypeObject' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.generateTypeObject}" will be used`,
     );
   }
 
@@ -96,14 +96,14 @@ export const mergeWithDefaultConstantOptions = async (
   if (configOptions.exportCompleteIconSet === undefined) {
     configOptions.exportCompleteIconSet = DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet;
     Logger.verboseInfo(
-      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`
+      `No flag for 'exportCompleteIconSet' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.exportCompleteIconSet}" will be used`,
     );
   }
 
   if (!configOptions.completeIconSetName) {
     configOptions.completeIconSetName = DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName;
     Logger.verboseInfo(
-      `No 'completeIconSetName' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName}" will be used`
+      `No 'completeIconSetName' provided, "${DEFAULT_CONST_CONVERSION_OPTIONS.completeIconSetName}" will be used`,
     );
   }
 

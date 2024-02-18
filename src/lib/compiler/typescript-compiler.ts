@@ -8,7 +8,7 @@ export const compileToEsNext = (filePaths: string[], outputDir: string): void =>
     outDir: outputDir,
     moduleResolution: ts.ModuleResolutionKind.NodeJs,
     target: ts.ScriptTarget.ES2020,
-    module: ts.ModuleKind.ESNext
+    module: ts.ModuleKind.ESNext,
   };
 
   ts.createProgram(filePaths, compilerOptionsNext).emit();
@@ -23,7 +23,7 @@ export const addMJsExtensionToImportStatements = (outputDir: string): void => {
     return;
   }
 
-  children.forEach(file => {
+  children.forEach((file) => {
     const path = `${outputDir}/${file}`;
     if (lstatSync(path).isDirectory()) {
       addMJsExtensionToImportStatements(path);
@@ -46,7 +46,7 @@ export const renameJsFilesToMJs = (outputDir: string) => {
     return;
   }
 
-  children.forEach(file => {
+  children.forEach((file) => {
     const path = `${outputDir}/${file}`;
     if (lstatSync(path).isDirectory()) {
       renameJsFilesToMJs(path);
@@ -64,7 +64,7 @@ export const compileToUMD = (filePaths: string[], outputDir: string): void => {
     outDir: outputDir,
     moduleResolution: ts.ModuleResolutionKind.NodeJs,
     target: ts.ScriptTarget.ES2020,
-    module: ts.ModuleKind.UMD
+    module: ts.ModuleKind.UMD,
   };
   ts.createProgram(filePaths, compilerOptionsUMD).emit();
 };

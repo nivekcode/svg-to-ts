@@ -16,7 +16,7 @@ import {
   generateTypeHelper,
   generateTypeHelperWithImport,
   generateTypeName,
-  generateVariableName
+  generateVariableName,
 } from './code-snippet-generators';
 
 describe('Generators', () => {
@@ -25,7 +25,7 @@ describe('Generators', () => {
       const options = {
         generateType: true,
         typeName: 'AppIcons',
-        interfaceName: 'IconInterface'
+        interfaceName: 'IconInterface',
       } as ConstantsConversionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: ${options.typeName};
@@ -37,7 +37,7 @@ describe('Generators', () => {
       const options = {
         generateTypeObject: true,
         typeName: 'AppIcons',
-        interfaceName: 'IconInterface'
+        interfaceName: 'IconInterface',
       } as ConstantsConversionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: AppIcons;
@@ -59,7 +59,7 @@ describe('Generators', () => {
         generateEnum: true,
         typeName: 'AppIcons',
         enumName: 'AppIconsEnum',
-        interfaceName: 'IconInterface'
+        interfaceName: 'IconInterface',
       } as ConstantsConversionOptions;
       const expected = `export interface ${options.interfaceName}{
         name: ${options.enumName};
@@ -72,19 +72,19 @@ describe('Generators', () => {
     it('should create type definition', () => {
       const options = { generateType: true, typeName: 'AppIcons' } as ConstantsConversionOptions;
       const types = ['alert', 'noResults'];
-      const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
+      const svgDefinitions = types.map((typeName) => ({ typeName })) as SvgDefinition[];
       const expected = `
-    export type ${options.typeName} = ${types.map(v => `'${v}'`).join(' | ')};`;
+    export type ${options.typeName} = ${types.map((v) => `'${v}'`).join(' | ')};`;
       expect(generateTypeDefinition(options, svgDefinitions)).toEqual(expected);
     });
 
     it('should create type definition object', () => {
       const options = { generateTypeObject: true, typeName: 'AppIcons' } as ConstantsConversionOptions;
       const types = ['alert', 'noResults'];
-      const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
+      const svgDefinitions = types.map((typeName) => ({ typeName })) as SvgDefinition[];
       const expected = `
     export const ${options.typeName} = {
-      ${types.map(v => `'${v}': '${v}'`).join(',')}
+      ${types.map((v) => `'${v}': '${v}'`).join(',')}
     };`;
       expect(generateTypeDefinition(options, svgDefinitions)).toEqual(expected);
     });
@@ -93,15 +93,15 @@ describe('Generators', () => {
       const options = {
         generateType: true,
         generateTypeObject: true,
-        typeName: 'AppIcons'
+        typeName: 'AppIcons',
       } as ConstantsConversionOptions;
       const types = ['alert', 'noResults'];
-      const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
+      const svgDefinitions = types.map((typeName) => ({ typeName })) as SvgDefinition[];
       let expected = `
-    export type ${options.typeName} = ${types.map(v => `'${v}'`).join(' | ')};`;
+    export type ${options.typeName} = ${types.map((v) => `'${v}'`).join(' | ')};`;
       expected += `
     export const ${options.typeName} = {
-      ${types.map(v => `'${v}': '${v}' as ${options.typeName}`).join(',')}
+      ${types.map((v) => `'${v}': '${v}' as ${options.typeName}`).join(',')}
     };`;
       expect(generateTypeDefinition(options, svgDefinitions)).toEqual(expected);
     });
@@ -111,14 +111,14 @@ describe('Generators', () => {
     it('should create enum definition', () => {
       const options = { generateEnum: true, enumName: 'AppIconsEnum' } as ConstantsConversionOptions;
       const types = ['alert', 'noResults'];
-      const svgDefinitions = types.map(typeName => ({ typeName })) as SvgDefinition[];
+      const svgDefinitions = types.map((typeName) => ({ typeName })) as SvgDefinition[];
       const expected = `
     export enum ${options.enumName} {${svgDefinitions
-        .map(
-          ({ typeName }, index) =>
-            `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`
-        )
-        .join('')};`;
+      .map(
+        ({ typeName }, index) =>
+          `${snakeCase(typeName).toUpperCase()} = '${typeName}'${index === svgDefinitions.length - 1 ? '}' : ','}`,
+      )
+      .join('')};`;
       expect(generateEnumDefinition(options, svgDefinitions)).toEqual(expected);
     });
   });
@@ -253,7 +253,7 @@ describe('Generators', () => {
       const iconsFolderName = 'build';
 
       const expectedStatement = `
-        import {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
+        import type {${interfaceName}} from './${iconsFolderName}/${modelFileName}';
         export type ${interfaceName}NameSubset<T extends Readonly<${interfaceName}[]>> = T[number]['name'];
        `;
 

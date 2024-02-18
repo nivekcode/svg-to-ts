@@ -7,7 +7,7 @@ describe('Complete Iconset-helper', () => {
     const fileNamesWithDefinitions = [
       { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
       { variableName: 'bar', prefix: 'sampleIcon', filenameWithoutEnding: 'bar' },
-      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' }
+      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' },
     ] as any;
     const expectedContent = `
     import {foo} from './sampleIcon-foo.icon';
@@ -24,7 +24,7 @@ describe('Complete Iconset-helper', () => {
     const fileNamesWithDefinitions = [
       { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
       { variableName: 'bar', prefix: 'sampleIcon', filenameWithoutEnding: 'bar' },
-      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' }
+      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' },
     ] as any;
     const expectedContent = `
     import {MyIcon} from './my-icons';
@@ -39,7 +39,7 @@ describe('Complete Iconset-helper', () => {
       completeIconSetName,
       'MyIcon',
       'my-icons',
-      true
+      true,
     );
     expect(unformatedString(expectedContent)).toEqual(unformatedString(generatedContent));
   });
@@ -48,7 +48,7 @@ describe('Complete Iconset-helper', () => {
     const fileNamesWithDefinitions = [
       { variableName: 'foo', prefix: 'sampleIcon', filenameWithoutEnding: 'foo' },
       { variableName: 'bar', prefix: 'sampleIcon', filenameWithoutEnding: 'bar' },
-      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' }
+      { variableName: 'baz', prefix: 'sampleIcon', filenameWithoutEnding: 'baz' },
     ] as any;
     const expectedContent = `
     import {foo} from './sampleIcon-foo.icon';
@@ -62,7 +62,7 @@ describe('Complete Iconset-helper', () => {
       completeIconSetName,
       'MyIcon',
       'my-icons',
-      false
+      false,
     );
     expect(unformatedString(expectedContent)).toEqual(unformatedString(generatedContent));
   });

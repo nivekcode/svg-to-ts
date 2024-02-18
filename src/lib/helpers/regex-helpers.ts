@@ -11,7 +11,7 @@ export const getFilePathsFromRegex = async (srcFiles: string[]) => {
 
   for (const regex of srcFilesRegexExpressions) {
     const directoryFiles = await getFilesFromRegex(regex, {
-      nodir: true
+      nodir: true,
     });
     if (directoryFiles.length === 0) {
       Logger.verboseInfo(`No matching files for regex: "${regex}"`);

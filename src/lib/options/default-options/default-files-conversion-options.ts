@@ -21,5 +21,5 @@ export const DEFAULT_FILES_CONVERSION_OPTIONS: FilesConversionOptions = {
   compilationOutput: SVG_TO_TS_COMPILATION_OUTPUT.ESM,
   verbose: false,
   barrelFileName: 'index',
-  delimiter: Delimiter.SNAKE
+  delimiter: Delimiter.SNAKE,
 };

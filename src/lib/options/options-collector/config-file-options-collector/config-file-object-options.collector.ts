@@ -42,7 +42,7 @@ export const mergeWithDefaults = async (options: ObjectConversionOptions): Promi
   if (!configOptions.outputDirectory) {
     configOptions.outputDirectory = DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory;
     Logger.verboseInfo(
-      `No 'outputDirectory' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory}" will be used`
+      `No 'outputDirectory' provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.outputDirectory}" will be used`,
     );
   }
 
@@ -69,7 +69,7 @@ export const mergeWithDefaults = async (options: ObjectConversionOptions): Promi
   if (configOptions.generateType === undefined) {
     configOptions.generateType = DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType;
     Logger.verboseInfo(
-      `No 'generateType' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType}" will be used`
+      `No 'generateType' property provided, "${DEFAULT_OBJECT_CONVERSION_OPTIONS.generateType}" will be used`,
     );
   }
 

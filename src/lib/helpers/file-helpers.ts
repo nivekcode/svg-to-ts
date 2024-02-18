@@ -1,8 +1,7 @@
 import fs from 'fs';
 import gfs from 'graceful-fs';
 import path from 'path';
-import typescriptParser from 'prettier/parser-typescript';
-import prettier from 'prettier/standalone';
+import * as prettier from 'prettier';
 import util from 'util';
 
 import { FILE_TYPE } from '../shared/file-type.model';
@@ -23,14 +22,17 @@ export async function writeFile(
   outputDirectory: string,
   fileName: string,
   fileContent: string,
-  fileType = FILE_TYPE.TS
+  fileType = FILE_TYPE.TS,
 ): Promise<void> {
+  const outputFile = path.join(outputDirectory, `${fileName}.${fileType}`);
   const formattedFileContent =
-    fileType === FILE_TYPE.TS ? formatContent(`${fileComment}${fileContent}`) : `${fileComment}${fileContent}`;
+    fileType === FILE_TYPE.TS
+      ? await formatContent(`${fileComment}${fileContent}`, outputFile)
+      : `${fileComment}${fileContent}`;
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
   }
-  await writeFileToFS(path.join(outputDirectory, `${fileName}.${fileType}`), formattedFileContent);
+  await writeFileToFS(outputFile, formattedFileContent);
 }
 
 export const readFile = async (filePath: string): Promise<string> => {
@@ -55,9 +57,14 @@ export const deleteFiles = (filePaths: string[]): void => {
   filePaths.forEach((filePath: string) => fs.unlinkSync(filePath));
 };
 
-const formatContent = (fileContent: string) =>
-  prettier.format(fileContent, {
-    parser: 'typescript',
-    plugins: [typescriptParser],
-    singleQuote: true
-  });
+const formatContent = async (fileContent: string, filePath: string) => {
+  // get the existing prettier config if it exists
+  const existingPrettierConfig = await prettier.resolveConfig(filePath);
+  // if there is no existing prettier config, use our default config
+  const defaultPrettierConfig: prettier.Options = { singleQuote: true };
+  const prettierConfig = existingPrettierConfig ?? defaultPrettierConfig;
+  // ensure even if there is a parser set in the existing config we still use the typescript parser
+  prettierConfig.parser = 'typescript';
+  // use the existing prettier config along with the defaults to format the file content
+  return await prettier.format(fileContent, prettierConfig);
+};
