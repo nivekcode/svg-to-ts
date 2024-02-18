@@ -1,3 +1,15 @@
+# [12.0.0](https://github.com/kreuzerk/svg-to-ts/compare/v11.0.1...v12.0.0) (2024-02-18)
+
+
+### Features
+
+* updates generateTypeHelper to use type keyword and updates prettier version ([2f3d9ee](https://github.com/kreuzerk/svg-to-ts/commit/2f3d9eefeddc7aae390e90bf85b7b6b4d1ba098d)), closes [#242](https://github.com/kreuzerk/svg-to-ts/issues/242)
+
+
+### BREAKING CHANGES
+
+* Typescript < 3.8 is no longer supported, please update to typescript >= 3.8
+
 ## [11.0.1](https://github.com/kreuzerk/svg-to-ts/compare/v11.0.0...v11.0.1) (2023-11-14)
 
 
