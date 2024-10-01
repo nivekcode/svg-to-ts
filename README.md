@@ -238,7 +238,7 @@ to solve a specific kind of problem. You can switch between approaches by passin
 ### 1. Converting to a single object (`conversionType==='object'`)
 
 In this scenario the SVG icons are converted to a single object. It's an approach that is suitable if your icon registry
-accepts an object with the filename as key and the svg data as key.
+accepts an object with the filename as key and the svg data as the value.
 
 #### Available options:
 
@@ -431,10 +431,11 @@ When you choose to generate UMD and ESM bundles the generated output will end up
 
 Let's say we have the following four svg files in a `inputfiles` folder.
 
-- expressionless.svg
-- full.svg
-- laughing.svg
-- smiling-face.svg
+- artist.svg
+- birthday.svg
+- chef.svg
+- sleep.svg
+- space.svg
 
 We can now run
 `svg-to-ts-files -s ./inputfiles -o ./dist`
