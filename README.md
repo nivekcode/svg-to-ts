@@ -7,7 +7,7 @@
 ![npms.io (final)](https://img.shields.io/npms-io/maintenance-score/svg-to-ts) ![GitHub Workflow](https://img.shields.io/github/workflow/status/kreuzerk/svg-to-ts/release) ![GitHub](https://img.shields.io/github/license/kreuzerk/svg-to-ts) ![npm](https://img.shields.io/npm/v/svg-to-ts)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-28-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -536,6 +536,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/coryjlewis/"><img src="https://avatars.githubusercontent.com/u/12702175?v=4?s=200" width="200px;" alt="Cory Lewis"/><br /><sub><b>Cory Lewis</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=mecharmor" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://logan.cool"><img src="https://avatars.githubusercontent.com/u/9579004?v=4?s=200" width="200px;" alt="Logan Cool"/><br /><sub><b>Logan Cool</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/issues?q=author%3Alogancool" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://justindietz.com"><img src="https://avatars.githubusercontent.com/u/5566979?v=4?s=200" width="200px;" alt="Justin Dietz"/><br /><sub><b>Justin Dietz</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/issues?q=author%3AJoA-MoS" title="Bug reports">🐛</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=JoA-MoS" title="Code">💻</a> <a href="#ideas-JoA-MoS" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/kreuzerk/svg-to-ts/commits?author=JoA-MoS" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tomer953"><img src="https://avatars.githubusercontent.com/u/1807493?v=4?s=200" width="200px;" alt="Tomer953"/><br /><sub><b>Tomer953</b></sub></a><br /><a href="https://github.com/kreuzerk/svg-to-ts/commits?author=tomer953" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
